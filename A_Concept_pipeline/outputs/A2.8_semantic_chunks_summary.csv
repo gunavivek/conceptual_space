@@ -1,0 +1,15 @@
+Doc_ID,Chunk_ID,Chunk_Text,Word_Count,Coverage_Type,Primary_Centroid,Semantic_Coherence,Concept_Density,Coverage_Confidence,Creation_Method,Content_Type
+finqa_test_617,finqa_test_617_concept_chunk_0,"['25. Deferred income [["""", ""2019"", ""2018""], ["""", ""$ million"", ""$ million""], [""C...",94,conceptual,Agreement,0.0,0.783,0.0,concept_guided,mixed
+finqa_test_96,finqa_test_96_concept_chunk_0,"['Contract Balances [[""(In millions)"", """", """", """"], [""Year Ended June 30,"", ""201...",325,conceptual,Agreement Term,0.0,0.852,0.373,concept_guided,narrative
+finqa_test_96,finqa_test_96_forced_coverage_0,"['Contract Balances [[""(In millions)"", """", """", """"], [""Year Ended June 30,"", ""201...",325,non_conceptual,Agreement Term,0.5,0.3,0.5,coverage_forced,narrative
+finqa_test_199,finqa_test_199_concept_chunk_0,"['Inventories and Inventory Valuation [[""March 31,"", """", """"], [""(in thousands)"",...",255,conceptual,Market,0.083,0.922,0.749,concept_guided,narrative
+finqa_test_199,finqa_test_199_forced_coverage_0,"['Inventories and Inventory Valuation [[""March 31,"", """", """"], [""(in thousands)"",...",255,non_conceptual,Market,0.5,0.3,0.5,coverage_forced,narrative
+finqa_test_1017,finqa_test_1017_concept_chunk_0,"['Discontinued Operations [["""", ""Year Ended December 31,"", """", """", ""2019 %"", ""20...",407,conceptual,Tax,0.084,0.879,0.517,concept_guided,narrative
+finqa_test_686,finqa_test_686_concept_chunk_0,"['Notes: (1) TWDV – Tax written down value [[""Company - 2018"", ""Provisions"", ""Ot...",339,conceptual,Tax,0.7,0.929,0.788,concept_guided,mixed
+rec_006,rec_006_concept_chunk_0,"['25. Deferred income [["""", ""2019"", ""2018""], ["""", ""$ million"", ""$ million""], [""C...",94,conceptual,Agreement,0.0,0.783,0.0,concept_guided,mixed
+rec_007,rec_007_concept_chunk_0,"['Contract Balances [[""(In millions)"", """", """", """"], [""Year Ended June 30,"", ""201...",325,conceptual,Agreement Term,0.0,0.852,0.373,concept_guided,narrative
+rec_007,rec_007_forced_coverage_0,"['Contract Balances [[""(In millions)"", """", """", """"], [""Year Ended June 30,"", ""201...",325,non_conceptual,Agreement Term,0.5,0.3,0.5,coverage_forced,narrative
+rec_008,rec_008_concept_chunk_0,"['Inventories and Inventory Valuation [[""March 31,"", """", """"], [""(in thousands)"",...",255,conceptual,Market,0.083,0.922,0.749,concept_guided,narrative
+rec_008,rec_008_forced_coverage_0,"['Inventories and Inventory Valuation [[""March 31,"", """", """"], [""(in thousands)"",...",255,non_conceptual,Market,0.5,0.3,0.5,coverage_forced,narrative
+rec_009,rec_009_concept_chunk_0,"['Discontinued Operations [["""", ""Year Ended December 31,"", """", """", ""2019 %"", ""20...",407,conceptual,Tax,0.084,0.879,0.517,concept_guided,narrative
+rec_010,rec_010_concept_chunk_0,"['Notes: (1) TWDV – Tax written down value [[""Company - 2018"", ""Provisions"", ""Ot...",339,conceptual,Tax,0.7,0.929,0.788,concept_guided,mixed

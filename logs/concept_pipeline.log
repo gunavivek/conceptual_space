@@ -1,0 +1,18 @@
+2025-08-20 19:28:16,186 - INFO - Test mode: Processing 5 records
+2025-08-20 19:28:17,910 - ERROR - Data source not found: ../data/tatqa-test.parquet
+2025-08-20 19:28:17,910 - INFO - ================================================================================
+2025-08-20 19:28:17,910 - INFO - CONCEPT BUILDING PIPELINE V2 - ENHANCED ARCHITECTURE
+2025-08-20 19:28:17,910 - INFO - ================================================================================
+2025-08-20 19:28:17,911 - ERROR - Missing required input files: ['../data/Information Map v1.xlsx', '../data/tatqa-test.parquet']
+2025-08-20 19:28:17,911 - INFO - Current working directory: C:\AiSearch\conceptual_space
+2025-08-20 19:28:17,912 - INFO - Files checked: ['../data/Information Map v1.xlsx', '../data/tatqa-test.parquet']
+2025-08-20 19:28:17,912 - ERROR - Input validation failed. Aborting pipeline.
+2025-08-24 12:27:34,761 - INFO - Test mode: Processing 5 records
+2025-08-24 12:27:35,344 - ERROR - Data source not found: ../data/tatqa-test.parquet
+2025-08-24 12:27:35,344 - INFO - ================================================================================
+2025-08-24 12:27:35,344 - INFO - CONCEPT BUILDING PIPELINE V2 - ENHANCED ARCHITECTURE
+2025-08-24 12:27:35,344 - INFO - ================================================================================
+2025-08-24 12:27:35,344 - ERROR - Missing required input files: ['../data/Information Map v1.xlsx', '../data/tatqa-test.parquet']
+2025-08-24 12:27:35,344 - INFO - Current working directory: C:\AiSearch\conceptual_space
+2025-08-24 12:27:35,344 - INFO - Files checked: ['../data/Information Map v1.xlsx', '../data/tatqa-test.parquet']
+2025-08-24 12:27:35,344 - ERROR - Input validation failed. Aborting pipeline.

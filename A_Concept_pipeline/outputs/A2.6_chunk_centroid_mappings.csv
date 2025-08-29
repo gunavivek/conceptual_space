@@ -1,0 +1,6 @@
+Chunk_ID,Chunk_Text,Centroid_Type,Centroid_Name,Domain,Confidence,Distance,Coverage_Type,Source
+test_chunk_0,Revenue recognition principles for deferred income and contr...,adaptive_concept,Assets,Finance,0.753,1.059,conceptual,adaptive
+test_chunk_1,SKU-2847-XYZ-BATCH-001,data_format,product_SKU,data_format,0.736,1.133,non_conceptual,generated
+test_chunk_2,Contact: john.smith@company.com for additional information,semantic_type,contact_information,semantic,0.75,1.069,non_conceptual,generated
+test_chunk_3,Table 1: Financial Performance Metrics for Q3 2024,adaptive_concept,Assets,Finance,0.748,1.08,conceptual,adaptive
+test_chunk_4,"Total revenue increased by 15.7% to $125,450,000 in the thir...",data_format,percentage_value,data_format,0.704,1.267,non_conceptual,generated
