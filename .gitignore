@@ -1,2 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+ENV/
+env.bak/
+venv.bak/
+
+# Data files (often large)
+*.parquet
+*.csv
+*.xlsx
+*.xls
+*.json.bak
+*.npy
+*.pkl
+*.pickle
+
+# Outputs and logs
+outputs/
+logs/
+*.log
+cache/
+embeddings/
+*.cache
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Documentation build
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Model files
+*.model
+*.h5
+*.pt
+*.pth
+*.onnx
+
+# Archive directories
+archive/
+Archive/
+old/
+backup/
+
+# Windows problematic files
 nul
 **/nul
+
+# Large files
+*.tar.gz
+*.zip
+*.7z
+*.rar
