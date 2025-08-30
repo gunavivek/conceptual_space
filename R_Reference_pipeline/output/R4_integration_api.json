@@ -1,0 +1,2089 @@
+{
+  "metadata": {
+    "creation_timestamp": "2025-08-29T15:27:31.386197",
+    "api_version": "2.0",
+    "total_concepts": 97
+  },
+  "integration_api": {
+    "quick_lookup": {
+      "agreement": {
+        "name": "Agreement",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "customer",
+          "intellectual_property_rights",
+          "partner",
+          "human_resource",
+          "legal_proceeding"
+        ],
+        "expansion_candidates": [
+          "partner",
+          "customer",
+          "intellectual_property_rights"
+        ]
+      },
+      "agreement_term": {
+        "name": "Agreement Term",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "license_term",
+          "location",
+          "policy",
+          "time"
+        ],
+        "expansion_candidates": [
+          "policy",
+          "license_term",
+          "location"
+        ]
+      },
+      "asset": {
+        "name": "Asset",
+        "domain": "finance",
+        "parent": "common_financial_concepts",
+        "children": [],
+        "related": [
+          "intellectual_property_rights",
+          "collateral",
+          "work_item",
+          "human_resource",
+          "investment_portfolio"
+        ],
+        "expansion_candidates": [
+          "collateral",
+          "work_item",
+          "intellectual_property_rights"
+        ]
+      },
+      "brand": {
+        "name": "Brand",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "market",
+          "partner",
+          "channel",
+          "message",
+          "business_entity"
+        ],
+        "expansion_candidates": [
+          "channel",
+          "partner",
+          "market"
+        ]
+      },
+      "business_entity": {
+        "name": "Business Entity",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "human_resource",
+          "financial_forecast",
+          "agreement",
+          "policy",
+          "intellectual_property_rights"
+        ],
+        "expansion_candidates": [
+          "financial_forecast",
+          "agreement",
+          "human_resource"
+        ]
+      },
+      "campaign": {
+        "name": "Campaign",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "plan",
+          "job",
+          "finance",
+          "product",
+          "human_resource"
+        ],
+        "expansion_candidates": [
+          "finance",
+          "plan",
+          "job"
+        ]
+      },
+      "channel": {
+        "name": "Channel",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "partner",
+          "customer",
+          "message",
+          "product",
+          "brand"
+        ],
+        "expansion_candidates": [
+          "partner",
+          "customer",
+          "message"
+        ]
+      },
+      "competency": {
+        "name": "Competency",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "content",
+          "human_resource",
+          "job",
+          "language"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "content",
+          "human_resource"
+        ]
+      },
+      "content": {
+        "name": "Content",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "submission",
+          "work_item",
+          "agreement",
+          "asset",
+          "campaign"
+        ],
+        "expansion_candidates": [
+          "submission",
+          "agreement",
+          "work_item"
+        ]
+      },
+      "content_impression": {
+        "name": "Content Impression",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [],
+        "expansion_candidates": []
+      },
+      "customer": {
+        "name": "Customer",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "beneficiary",
+          "partner",
+          "human_resource",
+          "agreement",
+          "market"
+        ],
+        "expansion_candidates": [
+          "partner",
+          "beneficiary",
+          "human_resource"
+        ]
+      },
+      "decision": {
+        "name": "Decision",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "financial_instrument",
+          "agreement",
+          "asset",
+          "business_entity",
+          "channel"
+        ],
+        "expansion_candidates": [
+          "agreement",
+          "asset",
+          "financial_instrument"
+        ]
+      },
+      "event": {
+        "name": "Event",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "work_event",
+          "incident",
+          "asset",
+          "campaign",
+          "decision"
+        ],
+        "expansion_candidates": [
+          "work_event",
+          "asset",
+          "incident"
+        ]
+      },
+      "facility": {
+        "name": "Facility",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "meeting",
+          "channel",
+          "agreement",
+          "asset",
+          "brand"
+        ],
+        "expansion_candidates": [
+          "channel",
+          "agreement",
+          "meeting"
+        ]
+      },
+      "finance": {
+        "name": "Finance",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "campaign",
+          "policy",
+          "strategy"
+        ],
+        "expansion_candidates": [
+          "policy",
+          "campaign",
+          "strategy"
+        ]
+      },
+      "currency": {
+        "name": "Currency",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "monetary_amount",
+          "financial_transaction",
+          "financial_account",
+          "market"
+        ],
+        "expansion_candidates": [
+          "financial_account",
+          "monetary_amount",
+          "financial_transaction"
+        ]
+      },
+      "financial_account": {
+        "name": "Financial Account",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "investment_portfolio",
+          "financial_transaction",
+          "monetary_amount",
+          "partner",
+          "currency"
+        ],
+        "expansion_candidates": [
+          "monetary_amount",
+          "financial_transaction",
+          "investment_portfolio"
+        ]
+      },
+      "financial_forecast": {
+        "name": "Financial Forecast",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "business_entity",
+          "campaign"
+        ],
+        "expansion_candidates": [
+          "business_entity",
+          "campaign"
+        ]
+      },
+      "financial_transaction": {
+        "name": "Financial Transaction",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "monetary_amount",
+          "payment",
+          "order",
+          "financial_account",
+          "currency"
+        ],
+        "expansion_candidates": [
+          "monetary_amount",
+          "payment",
+          "order"
+        ]
+      },
+      "monetary_amount": {
+        "name": "Monetary Amount",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "currency",
+          "payment",
+          "financial_transaction",
+          "tax",
+          "financial_account"
+        ],
+        "expansion_candidates": [
+          "currency",
+          "financial_transaction",
+          "payment"
+        ]
+      },
+      "payment": {
+        "name": "Payment",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "monetary_amount",
+          "financial_transaction",
+          "order",
+          "human_resource",
+          "agreement"
+        ],
+        "expansion_candidates": [
+          "monetary_amount",
+          "financial_transaction",
+          "order"
+        ]
+      },
+      "tax": {
+        "name": "Tax",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "monetary_amount",
+          "agreement"
+        ],
+        "expansion_candidates": [
+          "agreement",
+          "monetary_amount"
+        ]
+      },
+      "human_resource": {
+        "name": "Human Resource",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "job",
+          "work_item",
+          "customer",
+          "partner"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "job",
+          "work_item"
+        ]
+      },
+      "incident": {
+        "name": "Incident",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "event",
+          "agreement",
+          "asset",
+          "brand",
+          "business_entity"
+        ],
+        "expansion_candidates": [
+          "agreement",
+          "asset",
+          "event"
+        ]
+      },
+      "initiative": {
+        "name": "Initiative",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "human_resource",
+          "asset",
+          "campaign",
+          "content",
+          "customer"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "campaign",
+          "human_resource"
+        ]
+      },
+      "inquiry": {
+        "name": "Inquiry",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "business_entity",
+          "partner",
+          "channel",
+          "agreement",
+          "asset"
+        ],
+        "expansion_candidates": [
+          "channel",
+          "partner",
+          "business_entity"
+        ]
+      },
+      "intellectual_property_rights": {
+        "name": "Intellectual Property Rights",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "agreement",
+          "legal_proceeding",
+          "business_entity",
+          "brand"
+        ],
+        "expansion_candidates": [
+          "agreement",
+          "asset",
+          "legal_proceeding"
+        ]
+      },
+      "interaction": {
+        "name": "Interaction",
+        "domain": "government",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "legislation",
+          "infrastructure",
+          "dispute",
+          "evidence",
+          "vote"
+        ],
+        "expansion_candidates": [
+          "infrastructure",
+          "legislation",
+          "dispute"
+        ]
+      },
+      "investment_portfolio": {
+        "name": "Investment Portfolio",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "financial_account",
+          "asset",
+          "investment",
+          "monetary_amount",
+          "plan"
+        ],
+        "expansion_candidates": [
+          "financial_account",
+          "asset",
+          "investment"
+        ]
+      },
+      "job": {
+        "name": "Job",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "human_resource",
+          "work_item",
+          "campaign",
+          "business_entity"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "work_item",
+          "human_resource"
+        ]
+      },
+      "language": {
+        "name": "Language",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "training_course",
+          "message",
+          "competency",
+          "content",
+          "customer"
+        ],
+        "expansion_candidates": [
+          "competency",
+          "training_course",
+          "message"
+        ]
+      },
+      "legal_proceeding": {
+        "name": "Legal Proceeding",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "customer",
+          "agreement",
+          "intellectual_property_rights",
+          "partner",
+          "human_resource"
+        ],
+        "expansion_candidates": [
+          "agreement",
+          "customer",
+          "intellectual_property_rights"
+        ]
+      },
+      "location": {
+        "name": "Location",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "agreement_term",
+          "asset",
+          "campaign",
+          "channel",
+          "content"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "campaign",
+          "agreement_term"
+        ]
+      },
+      "market": {
+        "name": "Market",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "customer",
+          "partner",
+          "product",
+          "brand",
+          "order"
+        ],
+        "expansion_candidates": [
+          "partner",
+          "customer",
+          "product"
+        ]
+      },
+      "message": {
+        "name": "Message",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "customer",
+          "partner",
+          "channel",
+          "human_resource",
+          "plan"
+        ],
+        "expansion_candidates": [
+          "channel",
+          "partner",
+          "customer"
+        ]
+      },
+      "order": {
+        "name": "Order",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "product",
+          "financial_transaction",
+          "financial_instrument",
+          "partner",
+          "customer"
+        ],
+        "expansion_candidates": [
+          "financial_transaction",
+          "financial_instrument",
+          "product"
+        ]
+      },
+      "partner": {
+        "name": "Partner",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "customer",
+          "beneficiary",
+          "human_resource",
+          "channel",
+          "message"
+        ],
+        "expansion_candidates": [
+          "human_resource",
+          "customer",
+          "beneficiary"
+        ]
+      },
+      "plan": {
+        "name": "Plan",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "policy",
+          "strategy",
+          "objective",
+          "campaign",
+          "message"
+        ],
+        "expansion_candidates": [
+          "objective",
+          "policy",
+          "strategy"
+        ]
+      },
+      "policy": {
+        "name": "Policy",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "plan",
+          "strategy",
+          "partner",
+          "objective",
+          "customer"
+        ],
+        "expansion_candidates": [
+          "partner",
+          "plan",
+          "strategy"
+        ]
+      },
+      "product": {
+        "name": "Product",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "order",
+          "customer",
+          "market",
+          "strategy",
+          "partner"
+        ],
+        "expansion_candidates": [
+          "order",
+          "customer",
+          "market"
+        ]
+      },
+      "research": {
+        "name": "Research",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "content",
+          "decision",
+          "human_resource",
+          "initiative"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "asset",
+          "content"
+        ]
+      },
+      "schedule": {
+        "name": "Schedule",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "decision",
+          "initiative",
+          "time",
+          "training_course",
+          "meeting"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "initiative",
+          "time"
+        ]
+      },
+      "schedule_element": {
+        "name": "Schedule Element",
+        "domain": "government",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "work_item",
+          "human_resource"
+        ],
+        "expansion_candidates": [
+          "work_item",
+          "human_resource"
+        ]
+      },
+      "strategy": {
+        "name": "Strategy",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "policy",
+          "plan",
+          "product",
+          "customer",
+          "partner"
+        ],
+        "expansion_candidates": [
+          "policy",
+          "product",
+          "plan"
+        ]
+      },
+      "action_item": {
+        "name": "Action Item",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "objective",
+          "course_of_action",
+          "event"
+        ],
+        "expansion_candidates": [
+          "objective",
+          "course_of_action",
+          "event"
+        ]
+      },
+      "goal": {
+        "name": "Goal",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "decision",
+          "objective",
+          "vision"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "objective",
+          "vision"
+        ]
+      },
+      "objective": {
+        "name": "Objective",
+        "domain": "finance",
+        "parent": "common_strategic_concepts",
+        "children": [],
+        "related": [
+          "plan",
+          "policy",
+          "action_item",
+          "decision",
+          "goal"
+        ],
+        "expansion_candidates": [
+          "policy",
+          "plan",
+          "action_item"
+        ]
+      },
+      "vision": {
+        "name": "Vision",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "decision",
+          "goal"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "goal"
+        ]
+      },
+      "submission": {
+        "name": "Submission",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "content",
+          "decision",
+          "payment",
+          "inquiry",
+          "message"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "content",
+          "payment"
+        ]
+      },
+      "time": {
+        "name": "Time",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "agreement",
+          "agreement_term",
+          "decision",
+          "event",
+          "schedule"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "agreement",
+          "agreement_term"
+        ]
+      },
+      "training_course": {
+        "name": "Training Course",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "policy",
+          "language",
+          "business_entity",
+          "campaign",
+          "competency"
+        ],
+        "expansion_candidates": [
+          "business_entity",
+          "language",
+          "policy"
+        ]
+      },
+      "work": {
+        "name": "Work",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "incident",
+          "inquiry",
+          "message"
+        ],
+        "expansion_candidates": [
+          "message",
+          "inquiry",
+          "incident"
+        ]
+      },
+      "work_item": {
+        "name": "Work Item",
+        "domain": "finance",
+        "parent": "common_financial_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "job",
+          "human_resource",
+          "schedule_element",
+          "work_queue"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "job",
+          "human_resource"
+        ]
+      },
+      "work_queue": {
+        "name": "Work Queue",
+        "domain": "finance",
+        "parent": "common_concepts",
+        "children": [],
+        "related": [
+          "work_item",
+          "human_resource"
+        ],
+        "expansion_candidates": [
+          "work_item",
+          "human_resource"
+        ]
+      },
+      "geographic_space": {
+        "name": "Geographic Space",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "geographic_border",
+          "network",
+          "evidence",
+          "natural_resource",
+          "standard"
+        ],
+        "expansion_candidates": [
+          "evidence",
+          "network",
+          "geographic_border"
+        ]
+      },
+      "geographic_border": {
+        "name": "Geographic Border",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "geographic_space",
+          "evidence"
+        ],
+        "expansion_candidates": [
+          "geographic_space",
+          "evidence"
+        ]
+      },
+      "geographic_space_cadaster": {
+        "name": "Geographic Space Cadaster",
+        "domain": "transportation",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "cadaster"
+        ],
+        "expansion_candidates": [
+          "cadaster"
+        ]
+      },
+      "investment": {
+        "name": "Investment",
+        "domain": "insurance",
+        "parent": "transportation_financial_concepts",
+        "children": [],
+        "related": [
+          "investment_portfolio",
+          "asset"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "investment_portfolio"
+        ]
+      },
+      "conveyor": {
+        "name": "Conveyor",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "material",
+          "biological_organism",
+          "operation",
+          "route",
+          "trip"
+        ],
+        "expansion_candidates": [
+          "biological_organism",
+          "material",
+          "operation"
+        ]
+      },
+      "infrastructure": {
+        "name": "Infrastructure",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "interaction",
+          "operation",
+          "public_sector_entity"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "operation",
+          "public_sector_entity"
+        ]
+      },
+      "material": {
+        "name": "Material",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "conveyor",
+          "biological_organism",
+          "evidence",
+          "license"
+        ],
+        "expansion_candidates": [
+          "biological_organism",
+          "conveyor",
+          "evidence"
+        ]
+      },
+      "network": {
+        "name": "Network",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "geographic_space",
+          "operation"
+        ],
+        "expansion_candidates": [
+          "geographic_space",
+          "operation"
+        ]
+      },
+      "network_arc": {
+        "name": "Network Arc",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "network_node"
+        ],
+        "expansion_candidates": [
+          "network_node"
+        ]
+      },
+      "network_node": {
+        "name": "Network Node",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "network_arc"
+        ],
+        "expansion_candidates": [
+          "network_arc"
+        ]
+      },
+      "operation": {
+        "name": "Operation",
+        "domain": "government",
+        "parent": "transportation_operational_concepts",
+        "children": [],
+        "related": [
+          "infrastructure",
+          "conveyor",
+          "network",
+          "energy",
+          "biological_organism"
+        ],
+        "expansion_candidates": [
+          "infrastructure",
+          "network",
+          "conveyor"
+        ]
+      },
+      "route": {
+        "name": "Route",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "trip",
+          "conveyor",
+          "biological_organism",
+          "natural_resource",
+          "standard"
+        ],
+        "expansion_candidates": [
+          "biological_organism",
+          "trip",
+          "conveyor"
+        ]
+      },
+      "shipment": {
+        "name": "Shipment",
+        "domain": "manufacturing",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [],
+        "expansion_candidates": []
+      },
+      "shipment_item": {
+        "name": "Shipment Item",
+        "domain": "manufacturing",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [],
+        "expansion_candidates": []
+      },
+      "trip": {
+        "name": "Trip",
+        "domain": "government",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "route",
+          "conveyor",
+          "biological_organism",
+          "constituent"
+        ],
+        "expansion_candidates": [
+          "biological_organism",
+          "route",
+          "conveyor"
+        ]
+      },
+      "work_event": {
+        "name": "Work Event",
+        "domain": "transportation",
+        "parent": "transportation_concepts",
+        "children": [],
+        "related": [
+          "event"
+        ],
+        "expansion_candidates": [
+          "event"
+        ]
+      },
+      "meeting": {
+        "name": "Meeting",
+        "domain": "finance",
+        "parent": "telecom_concepts",
+        "children": [],
+        "related": [
+          "facility",
+          "message",
+          "asset",
+          "campaign",
+          "content"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "facility",
+          "message"
+        ]
+      },
+      "accreditation": {
+        "name": "Accreditation",
+        "domain": "government",
+        "parent": "manufacturing_concepts",
+        "children": [],
+        "related": [
+          "standard",
+          "evidence",
+          "public_sector_entity"
+        ],
+        "expansion_candidates": [
+          "public_sector_entity",
+          "standard",
+          "evidence"
+        ]
+      },
+      "dispute": {
+        "name": "Dispute",
+        "domain": "government",
+        "parent": "manufacturing_concepts",
+        "children": [],
+        "related": [
+          "interaction",
+          "conveyor",
+          "evidence",
+          "standard",
+          "vote"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "conveyor",
+          "evidence"
+        ]
+      },
+      "energy": {
+        "name": "Energy",
+        "domain": "government",
+        "parent": "manufacturing_concepts",
+        "children": [],
+        "related": [
+          "operation",
+          "biological_organism",
+          "standard",
+          "legislation"
+        ],
+        "expansion_candidates": [
+          "biological_organism",
+          "standard",
+          "operation"
+        ]
+      },
+      "financial_position": {
+        "name": "Financial Position",
+        "domain": "government",
+        "parent": "manufacturing_concepts",
+        "children": [],
+        "related": [
+          "public_sector_entity"
+        ],
+        "expansion_candidates": [
+          "public_sector_entity"
+        ]
+      },
+      "order_item": {
+        "name": "Order Item",
+        "domain": "government",
+        "parent": "manufacturing_concepts",
+        "children": [],
+        "related": [
+          "government_service"
+        ],
+        "expansion_candidates": [
+          "government_service"
+        ]
+      },
+      "product_forecast": {
+        "name": "Product Forecast",
+        "domain": "manufacturing",
+        "parent": "manufacturing_concepts",
+        "children": [],
+        "related": [],
+        "expansion_candidates": []
+      },
+      "course_of_action": {
+        "name": "Course of Action",
+        "domain": "government",
+        "parent": "manufacturing_strategic_concepts",
+        "children": [],
+        "related": [
+          "action_item"
+        ],
+        "expansion_candidates": [
+          "action_item"
+        ]
+      },
+      "beneficiary": {
+        "name": "Beneficiary",
+        "domain": "international development org",
+        "parent": "international development org_concepts",
+        "children": [],
+        "related": [
+          "customer",
+          "partner"
+        ],
+        "expansion_candidates": [
+          "partner",
+          "customer"
+        ]
+      },
+      "biological_organism": {
+        "name": "Biological Organism",
+        "domain": "government",
+        "parent": "international development org_concepts",
+        "children": [],
+        "related": [
+          "health_condition",
+          "conveyor",
+          "material",
+          "operation",
+          "route"
+        ],
+        "expansion_candidates": [
+          "material",
+          "conveyor",
+          "health_condition"
+        ]
+      },
+      "evidence": {
+        "name": "Evidence",
+        "domain": "government",
+        "parent": "international development org_concepts",
+        "children": [],
+        "related": [
+          "vote",
+          "interaction",
+          "geographic_space",
+          "geographic_border",
+          "conveyor"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "geographic_space",
+          "vote"
+        ]
+      },
+      "financial_instrument": {
+        "name": "Financial Instrument",
+        "domain": "finance",
+        "parent": "international development org_financial_concepts",
+        "children": [],
+        "related": [
+          "order",
+          "decision",
+          "asset",
+          "market",
+          "message"
+        ],
+        "expansion_candidates": [
+          "decision",
+          "order",
+          "asset"
+        ]
+      },
+      "health_condition": {
+        "name": "Health Condition",
+        "domain": "government",
+        "parent": "international development org_concepts",
+        "children": [],
+        "related": [
+          "biological_organism",
+          "standard",
+          "constituent"
+        ],
+        "expansion_candidates": [
+          "biological_organism",
+          "standard",
+          "constituent"
+        ]
+      },
+      "natural_resource": {
+        "name": "Natural Resource",
+        "domain": "government",
+        "parent": "international development org_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "geographic_space",
+          "operation",
+          "route",
+          "biological_organism"
+        ],
+        "expansion_candidates": [
+          "asset",
+          "geographic_space",
+          "operation"
+        ]
+      },
+      "standard": {
+        "name": "Standard",
+        "domain": "government",
+        "parent": "international development org_management_concepts",
+        "children": [],
+        "related": [
+          "accreditation",
+          "license",
+          "geographic_space",
+          "conveyor",
+          "operation"
+        ],
+        "expansion_candidates": [
+          "license",
+          "geographic_space",
+          "accreditation"
+        ]
+      },
+      "vote": {
+        "name": "Vote",
+        "domain": "government",
+        "parent": "international development org_concepts",
+        "children": [],
+        "related": [
+          "evidence",
+          "interaction",
+          "operation",
+          "dispute",
+          "standard"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "operation",
+          "evidence"
+        ]
+      },
+      "claim": {
+        "name": "Claim",
+        "domain": "government",
+        "parent": "insurance_concepts",
+        "children": [],
+        "related": [
+          "dispute",
+          "evidence",
+          "standard",
+          "constituent"
+        ],
+        "expansion_candidates": [
+          "standard",
+          "dispute",
+          "evidence"
+        ]
+      },
+      "device": {
+        "name": "Device",
+        "domain": "insurance",
+        "parent": "insurance_concepts",
+        "children": [],
+        "related": [],
+        "expansion_candidates": []
+      },
+      "case": {
+        "name": "Case",
+        "domain": "government",
+        "parent": "insurance_concepts",
+        "children": [],
+        "related": [
+          "government_service",
+          "conveyor",
+          "dispute",
+          "biological_organism",
+          "evidence"
+        ],
+        "expansion_candidates": [
+          "government_service",
+          "conveyor",
+          "dispute"
+        ]
+      },
+      "cadaster": {
+        "name": "Cadaster",
+        "domain": "insurance",
+        "parent": "insurance_concepts",
+        "children": [],
+        "related": [
+          "geographic_space_cadaster"
+        ],
+        "expansion_candidates": [
+          "geographic_space_cadaster"
+        ]
+      },
+      "constituent": {
+        "name": "Constituent",
+        "domain": "government",
+        "parent": "government_concepts",
+        "children": [],
+        "related": [
+          "license",
+          "interaction",
+          "conveyor",
+          "trip",
+          "dispute"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "license",
+          "conveyor"
+        ]
+      },
+      "government_service": {
+        "name": "Government Service",
+        "domain": "government",
+        "parent": "government_concepts",
+        "children": [],
+        "related": [
+          "order_item",
+          "case",
+          "interaction",
+          "evidence",
+          "standard"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "case",
+          "order_item"
+        ]
+      },
+      "legislation": {
+        "name": "Legislation",
+        "domain": "government",
+        "parent": "government_concepts",
+        "children": [],
+        "related": [
+          "interaction",
+          "energy",
+          "biological_organism",
+          "evidence",
+          "natural_resource"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "energy",
+          "biological_organism"
+        ]
+      },
+      "license": {
+        "name": "License",
+        "domain": "government",
+        "parent": "government_concepts",
+        "children": [],
+        "related": [
+          "constituent",
+          "public_sector_entity",
+          "standard",
+          "material",
+          "biological_organism"
+        ],
+        "expansion_candidates": [
+          "public_sector_entity",
+          "constituent",
+          "standard"
+        ]
+      },
+      "license_term": {
+        "name": "License Term",
+        "domain": "government",
+        "parent": "government_concepts",
+        "children": [],
+        "related": [
+          "agreement_term"
+        ],
+        "expansion_candidates": [
+          "agreement_term"
+        ]
+      },
+      "public_sector_entity": {
+        "name": "Public Sector Entity",
+        "domain": "government",
+        "parent": "government_concepts",
+        "children": [],
+        "related": [
+          "license",
+          "interaction",
+          "geographic_space",
+          "infrastructure",
+          "operation"
+        ],
+        "expansion_candidates": [
+          "interaction",
+          "license",
+          "geographic_space"
+        ]
+      },
+      "collateral": {
+        "name": "Collateral",
+        "domain": "finance",
+        "parent": "finance_financial_concepts",
+        "children": [],
+        "related": [
+          "asset",
+          "customer",
+          "agreement",
+          "partner",
+          "channel"
+        ],
+        "expansion_candidates": [
+          "agreement",
+          "asset",
+          "customer"
+        ]
+      }
+    },
+    "expansion_rules": {
+      "hierarchical": "include_parent_children_siblings",
+      "semantic": "include_top_5_similar",
+      "domain": "include_same_domain_concepts"
+    },
+    "concept_importance": {
+      "agreement": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "agreement_term": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "asset": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "brand": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "business_entity": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "campaign": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "channel": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "competency": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "content": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "content_impression": {
+        "connectivity_score": 0.0,
+        "relationship_count": 0,
+        "is_central": false
+      },
+      "customer": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "decision": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "event": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "facility": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "finance": {
+        "connectivity_score": 0.3,
+        "relationship_count": 3,
+        "is_central": false
+      },
+      "currency": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "financial_account": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "financial_forecast": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "financial_transaction": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "monetary_amount": {
+        "connectivity_score": 0.6,
+        "relationship_count": 6,
+        "is_central": false
+      },
+      "payment": {
+        "connectivity_score": 0.7,
+        "relationship_count": 7,
+        "is_central": false
+      },
+      "tax": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "human_resource": {
+        "connectivity_score": 1.0,
+        "relationship_count": 12,
+        "is_central": true
+      },
+      "incident": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "initiative": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "inquiry": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "intellectual_property_rights": {
+        "connectivity_score": 0.9,
+        "relationship_count": 9,
+        "is_central": true
+      },
+      "interaction": {
+        "connectivity_score": 0.8,
+        "relationship_count": 8,
+        "is_central": true
+      },
+      "investment_portfolio": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "job": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "language": {
+        "connectivity_score": 0.9,
+        "relationship_count": 9,
+        "is_central": true
+      },
+      "legal_proceeding": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "location": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "market": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "message": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "order": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "partner": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "plan": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "policy": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "product": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "research": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "schedule": {
+        "connectivity_score": 0.5,
+        "relationship_count": 5,
+        "is_central": false
+      },
+      "schedule_element": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "strategy": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "action_item": {
+        "connectivity_score": 0.3,
+        "relationship_count": 3,
+        "is_central": false
+      },
+      "goal": {
+        "connectivity_score": 0.3,
+        "relationship_count": 3,
+        "is_central": false
+      },
+      "objective": {
+        "connectivity_score": 0.5,
+        "relationship_count": 5,
+        "is_central": false
+      },
+      "vision": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "submission": {
+        "connectivity_score": 0.6,
+        "relationship_count": 6,
+        "is_central": false
+      },
+      "time": {
+        "connectivity_score": 0.5,
+        "relationship_count": 5,
+        "is_central": false
+      },
+      "training_course": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "work": {
+        "connectivity_score": 0.3,
+        "relationship_count": 3,
+        "is_central": false
+      },
+      "work_item": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "work_queue": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "geographic_space": {
+        "connectivity_score": 0.6,
+        "relationship_count": 6,
+        "is_central": false
+      },
+      "geographic_border": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "geographic_space_cadaster": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "investment": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "conveyor": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "infrastructure": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "material": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "network": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "network_arc": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "network_node": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "operation": {
+        "connectivity_score": 1.0,
+        "relationship_count": 13,
+        "is_central": true
+      },
+      "route": {
+        "connectivity_score": 0.5,
+        "relationship_count": 5,
+        "is_central": false
+      },
+      "shipment": {
+        "connectivity_score": 0.0,
+        "relationship_count": 0,
+        "is_central": false
+      },
+      "shipment_item": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "trip": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "work_event": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "meeting": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "accreditation": {
+        "connectivity_score": 0.3,
+        "relationship_count": 3,
+        "is_central": false
+      },
+      "dispute": {
+        "connectivity_score": 0.8,
+        "relationship_count": 8,
+        "is_central": true
+      },
+      "energy": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "financial_position": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "order_item": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "product_forecast": {
+        "connectivity_score": 0.0,
+        "relationship_count": 0,
+        "is_central": false
+      },
+      "course_of_action": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "beneficiary": {
+        "connectivity_score": 0.2,
+        "relationship_count": 2,
+        "is_central": false
+      },
+      "biological_organism": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "evidence": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "financial_instrument": {
+        "connectivity_score": 0.5,
+        "relationship_count": 5,
+        "is_central": false
+      },
+      "health_condition": {
+        "connectivity_score": 0.3,
+        "relationship_count": 3,
+        "is_central": false
+      },
+      "natural_resource": {
+        "connectivity_score": 0.9,
+        "relationship_count": 9,
+        "is_central": true
+      },
+      "standard": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "vote": {
+        "connectivity_score": 0.7,
+        "relationship_count": 7,
+        "is_central": false
+      },
+      "claim": {
+        "connectivity_score": 0.4,
+        "relationship_count": 4,
+        "is_central": false
+      },
+      "device": {
+        "connectivity_score": 0.0,
+        "relationship_count": 0,
+        "is_central": false
+      },
+      "case": {
+        "connectivity_score": 0.8,
+        "relationship_count": 8,
+        "is_central": true
+      },
+      "cadaster": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "constituent": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      },
+      "government_service": {
+        "connectivity_score": 0.6,
+        "relationship_count": 6,
+        "is_central": false
+      },
+      "legislation": {
+        "connectivity_score": 0.9,
+        "relationship_count": 9,
+        "is_central": true
+      },
+      "license": {
+        "connectivity_score": 0.6,
+        "relationship_count": 6,
+        "is_central": false
+      },
+      "license_term": {
+        "connectivity_score": 0.1,
+        "relationship_count": 1,
+        "is_central": false
+      },
+      "public_sector_entity": {
+        "connectivity_score": 0.9,
+        "relationship_count": 9,
+        "is_central": true
+      },
+      "collateral": {
+        "connectivity_score": 1.0,
+        "relationship_count": 10,
+        "is_central": true
+      }
+    }
+  }
+}

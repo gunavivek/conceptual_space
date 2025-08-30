@@ -1,0 +1,34 @@
+{
+  "statistics": {
+    "total_concepts": 97,
+    "total_clusters": 35,
+    "total_hierarchy_nodes": 131,
+    "hierarchy_max_depth": 3,
+    "hierarchy_avg_depth": 2.0381679389312977,
+    "cluster_avg_size": 2.7714285714285714,
+    "cluster_avg_coherence": 0.7637336164123594,
+    "relationships_total": 627,
+    "relationships_by_type": {
+      "semantic": 619,
+      "causal": 0,
+      "compositional": 8,
+      "temporal": 0
+    },
+    "avg_connectivity_score": 0.6412371134020619,
+    "avg_relationships_per_concept": 6.463917525773196
+  },
+  "performance_metrics": {
+    "start_time": 1756499250.8036337,
+    "end_time": null,
+    "processing_stages": {
+      "data_loading": 0.021134376525878906,
+      "clustering": 0.07820844650268555,
+      "hierarchy": 0.020533084869384766,
+      "relationships": 0.43061280250549316,
+      "enhancement": 0.0,
+      "statistics": 0.0,
+      "api_creation": 0.0
+    }
+  },
+  "timestamp": "2025-08-29T15:27:31.386197"
+}

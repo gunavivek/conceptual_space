@@ -1,0 +1,80 @@
+{
+  "execution_results": {
+    "pipeline": "R-Series Resource & Reasoning Pipeline",
+    "start_time": "2025-08-29T15:27:28.007307",
+    "end_time": "2025-08-29T15:27:31.423100",
+    "scripts_executed": [
+      {
+        "script": "R1: BIZBOK Resource Loader",
+        "file": "R1_bizbok_resource_loader.py",
+        "success": true,
+        "execution_time": 1.679008960723877,
+        "output_length": 1708,
+        "has_errors": false,
+        "return_code": 0
+      },
+      {
+        "script": "R2: Concept Validator",
+        "file": "R2_concept_validator.py",
+        "success": true,
+        "execution_time": 0.3708622455596924,
+        "output_length": 1330,
+        "has_errors": false,
+        "return_code": 0
+      },
+      {
+        "script": "R3: Reference Alignment",
+        "file": "R3_reference_alignment.py",
+        "success": true,
+        "execution_time": 0.41107702255249023,
+        "output_length": 1461,
+        "has_errors": false,
+        "return_code": 0
+      },
+      {
+        "script": "R4: Semantic Ontology Builder",
+        "file": "R4_semantic_ontology_builder.py",
+        "success": true,
+        "execution_time": 0.9548451900482178,
+        "output_length": 1948,
+        "has_errors": false,
+        "return_code": 0
+      }
+    ],
+    "success_count": 4,
+    "failure_count": 0,
+    "total_scripts": 4,
+    "overall_success": true,
+    "performance_summary": {}
+  },
+  "output_analysis": {
+    "files_created": [
+      "R1_CONCEPTS.json",
+      "R1_DOMAINS.json",
+      "R1_KEYWORDS.json",
+      "R2_validation_report.json",
+      "R3_alignment_mappings.json",
+      "R4_semantic_ontology.json",
+      "R4_integration_api.json"
+    ],
+    "file_sizes": {
+      "R1_CONCEPTS.json": 94845,
+      "R1_DOMAINS.json": 13683,
+      "R1_KEYWORDS.json": 171812,
+      "R2_validation_report.json": 114219,
+      "R3_alignment_mappings.json": 4393,
+      "R4_semantic_ontology.json": 290549,
+      "R4_integration_api.json": 52288
+    },
+    "data_quality": {
+      "concept_count": 97,
+      "cluster_count": 35,
+      "relationship_count": 627
+    }
+  },
+  "system_info": {
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "win32",
+    "working_directory": "C:\\AiSearch\\conceptual_space\\R_Reference_pipeline\\script"
+  }
+}

@@ -1,0 +1,8963 @@
+{
+  "metadata": {
+    "source": "BIZBOK Excel Resource",
+    "processing_timestamp": "2025-08-29T22:08:44.240934",
+    "total_keywords": 1157,
+    "version": "2.0"
+  },
+  "keyword_index": {
+    "agreement": [
+      "agreement",
+      "agreement_term",
+      "customer",
+      "human_resource",
+      "agreement",
+      "agreement_term",
+      "customer",
+      "human_resource",
+      "agreement",
+      "agreement_term",
+      "customer",
+      "human_resource",
+      "agreement",
+      "agreement_term",
+      "customer",
+      "human_resource",
+      "partner",
+      "agreement",
+      "agreement_term",
+      "beneficiary",
+      "human_resource",
+      "agreement",
+      "agreement_term",
+      "customer",
+      "claim",
+      "human_resource",
+      "agreement",
+      "agreement_term",
+      "claim",
+      "human_resource",
+      "agreement",
+      "agreement_term",
+      "customer",
+      "partner",
+      "collateral",
+      "human_resource"
+    ],
+    "binding": [
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement"
+    ],
+    "binding rights": [
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement"
+    ],
+    "entities": [
+      "agreement",
+      "interaction",
+      "plan",
+      "agreement",
+      "plan",
+      "agreement",
+      "agreement",
+      "interaction",
+      "agreement",
+      "interaction",
+      "agreement",
+      "agreement",
+      "interaction",
+      "agreement"
+    ],
+    "legal": [
+      "agreement",
+      "business_entity",
+      "customer",
+      "human_resource",
+      "intellectual_property_rights",
+      "legal_proceeding",
+      "partner",
+      "business_entity",
+      "intellectual_property_rights",
+      "agreement",
+      "customer",
+      "partner",
+      "human_resource",
+      "legal_proceeding",
+      "business_entity",
+      "intellectual_property_rights",
+      "agreement",
+      "customer",
+      "partner",
+      "human_resource",
+      "legal_proceeding",
+      "agreement",
+      "customer",
+      "human_resource",
+      "intellectual_property_rights",
+      "legal_proceeding",
+      "partner",
+      "agreement",
+      "beneficiary",
+      "human_resource",
+      "intellectual_property_rights",
+      "legal_proceeding",
+      "partner",
+      "business_entity",
+      "intellectual_property_rights",
+      "agreement",
+      "customer",
+      "partner",
+      "case",
+      "human_resource",
+      "agreement",
+      "case",
+      "human_resource",
+      "intellectual_property_rights",
+      "partner",
+      "business_entity",
+      "intellectual_property_rights",
+      "agreement",
+      "customer",
+      "partner",
+      "human_resource",
+      "legal_proceeding"
+    ],
+    "legal entities": [
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement"
+    ],
+    "legally": [
+      "agreement",
+      "agreement_term",
+      "agreement",
+      "agreement_term",
+      "agreement",
+      "agreement_term",
+      "agreement",
+      "agreement_term",
+      "agreement",
+      "agreement_term",
+      "agreement",
+      "agreement_term",
+      "agreement",
+      "agreement_term",
+      "license_term",
+      "agreement",
+      "agreement_term"
+    ],
+    "legally binding": [
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement"
+    ],
+    "obligations": [
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement",
+      "agreement"
+    ],
+    "rights": [
+      "agreement",
+      "intellectual_property_rights",
+      "geographic_space_cadaster",
+      "intellectual_property_rights",
+      "agreement",
+      "intellectual_property_rights",
+      "agreement",
+      "agreement",
+      "intellectual_property_rights",
+      "agreement",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "agreement",
+      "cadaster",
+      "agreement",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "agreement"
+    ],
+    "set": [
+      "agreement",
+      "agreement_term",
+      "interaction",
+      "investment_portfolio",
+      "plan",
+      "work_queue",
+      "agreement",
+      "agreement_term",
+      "network",
+      "network",
+      "agreement",
+      "agreement_term",
+      "work_queue",
+      "agreement",
+      "agreement_term",
+      "interaction",
+      "investment_portfolio",
+      "network",
+      "plan",
+      "course_of_action",
+      "work_queue",
+      "agreement",
+      "agreement_term",
+      "interaction",
+      "investment_portfolio",
+      "plan",
+      "course_of_action",
+      "work_queue",
+      "plan",
+      "agreement",
+      "agreement_term",
+      "network",
+      "work_queue",
+      "agreement",
+      "agreement_term",
+      "interaction",
+      "investment_portfolio",
+      "legislation",
+      "license_term",
+      "network",
+      "plan",
+      "policy",
+      "course_of_action",
+      "work_queue",
+      "plan",
+      "agreement",
+      "agreement_term",
+      "investment_portfolio",
+      "work_queue"
+    ],
+    "two": [
+      "agreement",
+      "interaction",
+      "agreement",
+      "event",
+      "network_arc",
+      "agreement",
+      "meeting",
+      "agreement",
+      "interaction",
+      "network_arc",
+      "agreement",
+      "interaction",
+      "agreement",
+      "meeting",
+      "agreement",
+      "interaction",
+      "agreement",
+      "meeting"
+    ],
+    "agreement term": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term"
+    ],
+    "bounds": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "condition": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "health_condition",
+      "agreement_term",
+      "agreement_term",
+      "health_condition",
+      "license_term",
+      "agreement_term"
+    ],
+    "condition set": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "enforceable": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "enforceable condition": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "forth": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "forth within": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "legally enforceable": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "set forth": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "term": [
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "within": [
+      "agreement_term",
+      "plan",
+      "agreement_term",
+      "network_node",
+      "plan",
+      "agreement_term",
+      "asset",
+      "agreement_term",
+      "network_node",
+      "agreement_term",
+      "agreement_term",
+      "agreement_term",
+      "license_term",
+      "agreement_term"
+    ],
+    "asset": [
+      "asset",
+      "work_item",
+      "investment",
+      "asset",
+      "work_item",
+      "investment",
+      "asset",
+      "work_item",
+      "asset",
+      "work_item",
+      "asset",
+      "financial_instrument",
+      "work_item",
+      "investment",
+      "asset",
+      "work_item",
+      "asset",
+      "financial_instrument",
+      "work_item",
+      "financial_instrument",
+      "collateral",
+      "asset",
+      "work_item"
+    ],
+    "intangible": [
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset"
+    ],
+    "intangible property": [
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset"
+    ],
+    "property": [
+      "asset",
+      "intellectual_property_rights",
+      "geographic_space_cadaster",
+      "intellectual_property_rights",
+      "asset",
+      "intellectual_property_rights",
+      "asset",
+      "asset",
+      "intellectual_property_rights",
+      "asset",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "asset",
+      "cadaster",
+      "asset",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "collateral",
+      "asset"
+    ],
+    "tangible": [
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset",
+      "asset"
+    ],
+    "brand": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "design": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "differentiates": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "differentiates products": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "identifies": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "identities": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "name": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "offerings": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "organizational": [
+      "brand",
+      "brand",
+      "plan",
+      "brand",
+      "plan",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "organizational identities": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "products": [
+      "brand",
+      "channel",
+      "customer",
+      "market",
+      "message",
+      "brand",
+      "market",
+      "channel",
+      "customer",
+      "material",
+      "message",
+      "brand",
+      "market",
+      "channel",
+      "customer",
+      "material",
+      "message",
+      "brand",
+      "channel",
+      "customer",
+      "market",
+      "material",
+      "message",
+      "beneficiary",
+      "brand",
+      "channel",
+      "market",
+      "message",
+      "brand",
+      "market",
+      "message",
+      "channel",
+      "customer",
+      "brand",
+      "channel",
+      "market",
+      "message",
+      "brand",
+      "market",
+      "message",
+      "channel",
+      "customer",
+      "partner"
+    ],
+    "symbol": [
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand",
+      "brand"
+    ],
+    "bodies": [
+      "business_entity",
+      "tax",
+      "business_entity",
+      "tax",
+      "business_entity",
+      "tax",
+      "tax",
+      "tax",
+      "business_entity",
+      "tax",
+      "tax",
+      "public_sector_entity",
+      "business_entity",
+      "tax"
+    ],
+    "body": [
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "evidence",
+      "standard",
+      "business_entity",
+      "evidence",
+      "geographic_space",
+      "public_sector_entity",
+      "standard",
+      "business_entity"
+    ],
+    "business": [
+      "business_entity",
+      "facility",
+      "inquiry",
+      "job",
+      "business_entity",
+      "policy",
+      "network",
+      "inquiry",
+      "job",
+      "business_entity",
+      "network",
+      "policy",
+      "asset",
+      "inquiry",
+      "job",
+      "business_entity",
+      "facility",
+      "job",
+      "network",
+      "business_entity",
+      "business_entity",
+      "facility",
+      "inquiry",
+      "job",
+      "job",
+      "network",
+      "business_entity",
+      "partner",
+      "facility",
+      "inquiry",
+      "job"
+    ],
+    "business entity": [
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity"
+    ],
+    "comprise": [
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "research",
+      "business_entity"
+    ],
+    "comprises": [
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity"
+    ],
+    "entity": [
+      "business_entity",
+      "customer",
+      "partner",
+      "business_entity",
+      "customer",
+      "partner",
+      "business_entity",
+      "customer",
+      "partner",
+      "business_entity",
+      "customer",
+      "partner",
+      "beneficiary",
+      "business_entity",
+      "partner",
+      "business_entity",
+      "customer",
+      "partner",
+      "constituent",
+      "partner",
+      "public_sector_entity",
+      "business_entity",
+      "customer",
+      "partner"
+    ],
+    "legal body": [
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity"
+    ],
+    "organization": [
+      "business_entity",
+      "customer",
+      "financial_forecast",
+      "payment",
+      "human_resource",
+      "message",
+      "partner",
+      "policy",
+      "strategy",
+      "business_entity",
+      "plan",
+      "strategy",
+      "customer",
+      "message",
+      "partner",
+      "financial_forecast",
+      "payment",
+      "human_resource",
+      "business_entity",
+      "plan",
+      "strategy",
+      "customer",
+      "partner",
+      "financial_forecast",
+      "payment",
+      "human_resource",
+      "message",
+      "business_entity",
+      "customer",
+      "payment",
+      "human_resource",
+      "inquiry",
+      "message",
+      "partner",
+      "policy",
+      "beneficiary",
+      "business_entity",
+      "payment",
+      "human_resource",
+      "inquiry",
+      "job",
+      "message",
+      "partner",
+      "policy",
+      "business_entity",
+      "message",
+      "policy",
+      "strategy",
+      "customer",
+      "partner",
+      "financial_forecast",
+      "payment",
+      "human_resource",
+      "constituent",
+      "payment",
+      "human_resource",
+      "inquiry",
+      "license",
+      "message",
+      "partner",
+      "business_entity",
+      "message",
+      "policy",
+      "strategy",
+      "customer",
+      "partner",
+      "financial_forecast",
+      "payment",
+      "human_resource"
+    ],
+    "single": [
+      "business_entity",
+      "business_entity",
+      "shipment_item",
+      "business_entity",
+      "shipment_item",
+      "business_entity",
+      "business_entity"
+    ],
+    "single organization": [
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity",
+      "business_entity"
+    ],
+    "achieve": [
+      "campaign",
+      "plan",
+      "action_item",
+      "campaign",
+      "action_item",
+      "operation",
+      "campaign",
+      "operation",
+      "action_item",
+      "campaign",
+      "operation",
+      "plan",
+      "course_of_action",
+      "campaign",
+      "operation",
+      "plan",
+      "course_of_action",
+      "campaign",
+      "plan",
+      "action_item",
+      "campaign",
+      "operation",
+      "plan",
+      "course_of_action",
+      "campaign",
+      "plan",
+      "action_item"
+    ],
+    "activities": [
+      "campaign",
+      "message",
+      "plan",
+      "campaign",
+      "message",
+      "campaign",
+      "message",
+      "campaign",
+      "message",
+      "course_of_action",
+      "message",
+      "course_of_action",
+      "campaign",
+      "message",
+      "plan",
+      "campaign",
+      "message",
+      "course_of_action",
+      "campaign",
+      "message",
+      "plan"
+    ],
+    "activity": [
+      "campaign",
+      "legal_proceeding",
+      "campaign",
+      "legal_proceeding",
+      "campaign",
+      "legal_proceeding",
+      "campaign",
+      "financial_position",
+      "legal_proceeding",
+      "strategy",
+      "campaign",
+      "financial_position",
+      "legal_proceeding",
+      "strategy",
+      "campaign",
+      "campaign",
+      "financial_position",
+      "license",
+      "strategy",
+      "campaign",
+      "legal_proceeding"
+    ],
+    "awareness": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "campaign": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "certain": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "certain goal": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "customers": [
+      "campaign",
+      "product",
+      "campaign",
+      "product",
+      "campaign",
+      "product",
+      "campaign",
+      "product",
+      "campaign",
+      "product",
+      "network",
+      "campaign",
+      "product"
+    ],
+    "example": [
+      "campaign",
+      "campaign",
+      "infrastructure",
+      "operation",
+      "campaign",
+      "operation",
+      "operation",
+      "campaign",
+      "campaign",
+      "campaign",
+      "operation",
+      "campaign"
+    ],
+    "goal": [
+      "campaign",
+      "goal",
+      "campaign",
+      "goal",
+      "campaign",
+      "goal",
+      "campaign",
+      "goal",
+      "objective",
+      "campaign",
+      "goal",
+      "objective",
+      "campaign",
+      "goal",
+      "campaign",
+      "goal",
+      "objective",
+      "campaign",
+      "goal"
+    ],
+    "health": [
+      "campaign",
+      "campaign",
+      "geographic_space",
+      "campaign",
+      "health_condition",
+      "campaign",
+      "campaign",
+      "health_condition",
+      "campaign"
+    ],
+    "health awareness": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "hiring": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "hiring activities": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "human": [
+      "campaign",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "campaign",
+      "conveyor",
+      "shipment",
+      "human_resource",
+      "job",
+      "campaign",
+      "shipment",
+      "conveyor",
+      "human_resource",
+      "job",
+      "campaign",
+      "conveyor",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "shipment",
+      "biological_organism",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "campaign",
+      "human_resource",
+      "job",
+      "biological_organism",
+      "campaign",
+      "conveyor",
+      "health_condition",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "campaign",
+      "human_resource",
+      "job"
+    ],
+    "human resources": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "marketing": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "marketing awareness": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "outreach": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "outreach activity": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "partners": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "patients": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "population": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "resources": [
+      "campaign",
+      "finance",
+      "investment_portfolio",
+      "campaign",
+      "finance",
+      "campaign",
+      "finance",
+      "campaign",
+      "energy",
+      "finance",
+      "investment_portfolio",
+      "biological_organism",
+      "finance",
+      "investment_portfolio",
+      "campaign",
+      "finance",
+      "campaign",
+      "finance",
+      "investment_portfolio",
+      "campaign",
+      "investment_portfolio",
+      "finance"
+    ],
+    "specific": [
+      "campaign",
+      "job",
+      "action_item",
+      "campaign",
+      "action_item",
+      "operation",
+      "job",
+      "campaign",
+      "operation",
+      "action_item",
+      "shipment_item",
+      "job",
+      "campaign",
+      "job",
+      "operation",
+      "order_item",
+      "campaign",
+      "job",
+      "order_item",
+      "operation",
+      "campaign",
+      "action_item",
+      "job",
+      "campaign",
+      "job",
+      "operation",
+      "order_item",
+      "campaign",
+      "action_item",
+      "job"
+    ],
+    "specific population": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "targets": [
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign",
+      "campaign"
+    ],
+    "analog": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "channel": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "communications": [
+      "channel",
+      "channel",
+      "submission",
+      "channel",
+      "submission",
+      "channel",
+      "channel",
+      "channel",
+      "submission",
+      "channel",
+      "channel",
+      "submission"
+    ],
+    "conduit": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "delivered": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "delivery": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "delivery service": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "digital": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "including": [
+      "channel",
+      "message",
+      "schedule_element",
+      "channel",
+      "message",
+      "event",
+      "channel",
+      "meeting",
+      "message",
+      "channel",
+      "message",
+      "schedule_element",
+      "biological_organism",
+      "channel",
+      "health_condition",
+      "message",
+      "material",
+      "schedule_element",
+      "message",
+      "channel",
+      "meeting",
+      "channel",
+      "material",
+      "message",
+      "schedule_element",
+      "message",
+      "channel",
+      "meeting"
+    ],
+    "internet": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "means": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "dispute",
+      "channel",
+      "channel",
+      "channel",
+      "partner"
+    ],
+    "phone": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "physical": [
+      "channel",
+      "facility",
+      "interaction",
+      "language",
+      "geographic_space",
+      "channel",
+      "conveyor",
+      "infrastructure",
+      "material",
+      "event",
+      "language",
+      "channel",
+      "material",
+      "conveyor",
+      "meeting",
+      "infrastructure",
+      "language",
+      "channel",
+      "conveyor",
+      "energy",
+      "facility",
+      "interaction",
+      "language",
+      "material",
+      "channel",
+      "geographic_space",
+      "health_condition",
+      "infrastructure",
+      "interaction",
+      "language",
+      "material",
+      "channel",
+      "meeting",
+      "facility",
+      "language",
+      "geographic_space",
+      "channel",
+      "conveyor",
+      "geographic_space",
+      "infrastructure",
+      "interaction",
+      "language",
+      "material",
+      "channel",
+      "meeting",
+      "facility",
+      "language"
+    ],
+    "physical conduit": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "physical means": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "radio": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "received": [
+      "channel",
+      "inquiry",
+      "channel",
+      "inquiry",
+      "channel",
+      "inquiry",
+      "channel",
+      "channel",
+      "channel",
+      "inquiry",
+      "channel",
+      "channel",
+      "inquiry"
+    ],
+    "related": [
+      "channel",
+      "financial_account",
+      "financial_transaction",
+      "plan",
+      "plan",
+      "policy",
+      "channel",
+      "event",
+      "financial_account",
+      "financial_transaction",
+      "work",
+      "plan",
+      "policy",
+      "channel",
+      "meeting",
+      "financial_account",
+      "financial_transaction",
+      "work",
+      "channel",
+      "financial_account",
+      "financial_transaction",
+      "channel",
+      "financial_account",
+      "financial_transaction",
+      "channel",
+      "meeting",
+      "financial_account",
+      "financial_transaction",
+      "work",
+      "case",
+      "channel",
+      "financial_account",
+      "financial_transaction",
+      "legislation",
+      "channel",
+      "financial_account",
+      "financial_transaction",
+      "meeting",
+      "work"
+    ],
+    "related services": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "satellite": [
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel",
+      "channel"
+    ],
+    "service": [
+      "channel",
+      "channel",
+      "operation",
+      "operation",
+      "channel",
+      "channel",
+      "operation",
+      "order_item",
+      "channel",
+      "order_item",
+      "channel",
+      "channel",
+      "government_service",
+      "order_item",
+      "channel"
+    ],
+    "services": [
+      "channel",
+      "customer",
+      "market",
+      "order",
+      "product",
+      "market",
+      "channel",
+      "customer",
+      "product",
+      "order",
+      "market",
+      "channel",
+      "customer",
+      "product",
+      "order",
+      "channel",
+      "customer",
+      "market",
+      "order",
+      "partner",
+      "product",
+      "beneficiary",
+      "channel",
+      "market",
+      "order",
+      "product",
+      "market",
+      "channel",
+      "customer",
+      "product",
+      "order",
+      "claim",
+      "network",
+      "case",
+      "channel",
+      "market",
+      "order",
+      "market",
+      "channel",
+      "customer",
+      "partner",
+      "product",
+      "order"
+    ],
+    "competency": [
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency"
+    ],
+    "knowledge": [
+      "competency",
+      "competency",
+      "research",
+      "competency",
+      "accreditation",
+      "competency",
+      "accreditation",
+      "competency",
+      "competency",
+      "accreditation",
+      "competency",
+      "competency"
+    ],
+    "knowledge necessary": [
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency"
+    ],
+    "necessary": [
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency"
+    ],
+    "skills": [
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency"
+    ],
+    "something": [
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency",
+      "competency"
+    ],
+    "audio": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "content": [
+      "content",
+      "content_impression",
+      "submission",
+      "submission",
+      "content",
+      "content_impression",
+      "submission",
+      "content",
+      "content_impression",
+      "submission",
+      "content",
+      "content_impression",
+      "submission",
+      "content",
+      "submission",
+      "content",
+      "content_impression",
+      "submission",
+      "content",
+      "content_impression",
+      "submission"
+    ],
+    "creative": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "creative work": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "experiential": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "forms": [
+      "content",
+      "content",
+      "business_entity",
+      "content",
+      "business_entity",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "image": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "manifested": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "media": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "mixed": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "still": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "still image": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "textual": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "visual": [
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content",
+      "content"
+    ],
+    "work": [
+      "content",
+      "schedule_element",
+      "work",
+      "work_item",
+      "work_queue",
+      "plan",
+      "operation",
+      "work",
+      "work_event",
+      "work_item",
+      "work_queue",
+      "operation",
+      "plan",
+      "research",
+      "content",
+      "work",
+      "work_item",
+      "work_queue",
+      "content",
+      "energy",
+      "operation",
+      "schedule_element",
+      "work",
+      "work_item",
+      "work_queue",
+      "content",
+      "operation",
+      "schedule_element",
+      "work",
+      "work_item",
+      "work_queue",
+      "content",
+      "work",
+      "work_item",
+      "work_queue",
+      "content",
+      "government_service",
+      "operation",
+      "schedule_element",
+      "work",
+      "work_item",
+      "work_queue",
+      "content",
+      "work",
+      "work_item",
+      "work_queue"
+    ],
+    "consumption": [
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression"
+    ],
+    "content consumption": [
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression"
+    ],
+    "content impression": [
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression"
+    ],
+    "impression": [
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression",
+      "content_impression"
+    ],
+    "instance": [
+      "content_impression",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "content_impression",
+      "content_impression",
+      "financial_transaction",
+      "content_impression",
+      "financial_transaction",
+      "case",
+      "financial_transaction",
+      "case",
+      "content_impression",
+      "financial_transaction",
+      "financial_transaction",
+      "content_impression"
+    ],
+    "beneficiary": [
+      "customer",
+      "customer",
+      "customer",
+      "customer",
+      "beneficiary",
+      "customer",
+      "customer"
+    ],
+    "customer": [
+      "customer",
+      "payment",
+      "customer",
+      "payment",
+      "customer",
+      "product",
+      "payment",
+      "customer",
+      "payment",
+      "payment",
+      "customer",
+      "claim",
+      "payment",
+      "customer",
+      "collateral",
+      "payment"
+    ],
+    "legal entity": [
+      "customer",
+      "partner",
+      "customer",
+      "partner",
+      "customer",
+      "partner",
+      "customer",
+      "partner",
+      "beneficiary",
+      "partner",
+      "customer",
+      "partner",
+      "partner",
+      "customer",
+      "partner"
+    ],
+    "plans": [
+      "customer",
+      "human_resource",
+      "message",
+      "partner",
+      "customer",
+      "message",
+      "partner",
+      "human_resource",
+      "customer",
+      "partner",
+      "human_resource",
+      "message",
+      "customer",
+      "human_resource",
+      "message",
+      "partner",
+      "beneficiary",
+      "human_resource",
+      "message",
+      "partner",
+      "message",
+      "customer",
+      "partner",
+      "human_resource",
+      "human_resource",
+      "message",
+      "partner",
+      "message",
+      "customer",
+      "partner",
+      "human_resource"
+    ],
+    "recipient": [
+      "customer",
+      "customer",
+      "customer",
+      "customer",
+      "beneficiary",
+      "customer",
+      "customer"
+    ],
+    "alternative": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "alternative options": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "conclusion": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "considering": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "considering alternative": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "decision": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "options": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "financial_instrument",
+      "decision",
+      "decision",
+      "financial_instrument",
+      "financial_instrument",
+      "decision"
+    ],
+    "reached": [
+      "decision",
+      "trip",
+      "decision",
+      "trip",
+      "decision",
+      "decision",
+      "trip",
+      "decision",
+      "trip",
+      "decision",
+      "decision",
+      "trip",
+      "decision"
+    ],
+    "resolution": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "case",
+      "decision",
+      "case",
+      "decision",
+      "decision"
+    ],
+    "resolution reached": [
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision",
+      "decision"
+    ],
+    "concern": [
+      "event",
+      "event",
+      "event",
+      "event"
+    ],
+    "especially": [
+      "event",
+      "energy",
+      "event",
+      "event",
+      "event"
+    ],
+    "especially one": [
+      "event",
+      "event",
+      "event",
+      "event"
+    ],
+    "event": [
+      "event",
+      "schedule_element",
+      "event",
+      "work_event",
+      "event",
+      "event",
+      "schedule_element",
+      "event",
+      "schedule_element",
+      "event",
+      "event",
+      "schedule_element",
+      "event"
+    ],
+    "happen": [
+      "event",
+      "event",
+      "event",
+      "event"
+    ],
+    "happened": [
+      "event",
+      "event",
+      "event",
+      "event"
+    ],
+    "importance": [
+      "event",
+      "event",
+      "event",
+      "event"
+    ],
+    "interest": [
+      "event",
+      "event",
+      "event",
+      "event"
+    ],
+    "occurrence": [
+      "event",
+      "incident",
+      "work_event",
+      "incident",
+      "event",
+      "event",
+      "event",
+      "incident",
+      "event",
+      "event",
+      "incident",
+      "event"
+    ],
+    "one": [
+      "event",
+      "interaction",
+      "order",
+      "schedule_element",
+      "submission",
+      "geographic_border",
+      "trip",
+      "order",
+      "order",
+      "trip",
+      "event",
+      "interaction",
+      "order",
+      "schedule_element",
+      "submission",
+      "trip",
+      "event",
+      "geographic_border",
+      "interaction",
+      "order",
+      "schedule_element",
+      "submission",
+      "trip",
+      "order",
+      "geographic_border",
+      "event",
+      "geographic_border",
+      "interaction",
+      "order",
+      "schedule_element",
+      "submission",
+      "trip",
+      "order"
+    ],
+    "conducted": [
+      "facility",
+      "facility",
+      "facility",
+      "facility"
+    ],
+    "facility": [
+      "facility",
+      "infrastructure",
+      "infrastructure",
+      "facility",
+      "infrastructure",
+      "facility",
+      "infrastructure",
+      "facility"
+    ],
+    "given": [
+      "facility",
+      "monetary_amount",
+      "interaction",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "interaction",
+      "product_forecast",
+      "monetary_amount",
+      "interaction",
+      "facility",
+      "monetary_amount",
+      "monetary_amount",
+      "interaction",
+      "monetary_amount",
+      "facility"
+    ],
+    "given place": [
+      "facility",
+      "facility",
+      "facility"
+    ],
+    "physical structure": [
+      "facility",
+      "infrastructure",
+      "infrastructure",
+      "facility",
+      "infrastructure",
+      "facility",
+      "infrastructure",
+      "facility"
+    ],
+    "place": [
+      "facility",
+      "event",
+      "meeting",
+      "location",
+      "meeting",
+      "facility",
+      "meeting",
+      "facility"
+    ],
+    "place where": [
+      "facility",
+      "facility",
+      "facility"
+    ],
+    "structure": [
+      "facility",
+      "work_queue",
+      "infrastructure",
+      "infrastructure",
+      "work_queue",
+      "facility",
+      "work_queue",
+      "infrastructure",
+      "work_queue",
+      "facility",
+      "work_queue",
+      "infrastructure",
+      "work_queue",
+      "facility",
+      "work_queue"
+    ],
+    "where": [
+      "facility",
+      "facility",
+      "facility",
+      "facility"
+    ],
+    "where business": [
+      "facility",
+      "facility",
+      "facility",
+      "facility"
+    ],
+    "aspects": [
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance"
+    ],
+    "finance": [
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance"
+    ],
+    "monetary": [
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "investment",
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "investment",
+      "finance",
+      "financial_account",
+      "tax",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "investment",
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "finance",
+      "financial_account",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax"
+    ],
+    "monetary aspects": [
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance",
+      "finance"
+    ],
+    "agreed": [
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency"
+    ],
+    "agreed medium": [
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency"
+    ],
+    "currency": [
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount",
+      "currency",
+      "monetary_amount"
+    ],
+    "exchange": [
+      "currency",
+      "financial_transaction",
+      "order",
+      "submission",
+      "financial_transaction",
+      "currency",
+      "order",
+      "order",
+      "currency",
+      "financial_transaction",
+      "currency",
+      "financial_transaction",
+      "order",
+      "submission",
+      "currency",
+      "financial_transaction",
+      "financial_instrument",
+      "order",
+      "submission",
+      "order",
+      "currency",
+      "financial_transaction",
+      "currency",
+      "financial_transaction",
+      "financial_instrument",
+      "order",
+      "submission",
+      "partner",
+      "financial_instrument",
+      "order",
+      "currency",
+      "financial_transaction"
+    ],
+    "medium": [
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency"
+    ],
+    "value": [
+      "currency",
+      "financial_account",
+      "monetary_amount",
+      "tax",
+      "investment_portfolio",
+      "geographic_space_cadaster",
+      "financial_account",
+      "currency",
+      "monetary_amount",
+      "tax",
+      "financial_account",
+      "currency",
+      "tax",
+      "monetary_amount",
+      "currency",
+      "financial_account",
+      "monetary_amount",
+      "tax",
+      "investment_portfolio",
+      "currency",
+      "financial_account",
+      "monetary_amount",
+      "tax",
+      "investment_portfolio",
+      "currency",
+      "financial_account",
+      "monetary_amount",
+      "tax",
+      "cadaster",
+      "currency",
+      "financial_account",
+      "monetary_amount",
+      "tax",
+      "investment_portfolio",
+      "partner",
+      "investment_portfolio",
+      "currency",
+      "financial_account",
+      "monetary_amount",
+      "tax"
+    ],
+    "value exchange": [
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency",
+      "currency"
+    ],
+    "account": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "assets": [
+      "financial_account",
+      "conveyor",
+      "material",
+      "network",
+      "financial_account",
+      "network",
+      "conveyor",
+      "financial_account",
+      "conveyor",
+      "financial_account",
+      "network",
+      "financial_account",
+      "material",
+      "financial_account",
+      "conveyor",
+      "financial_account",
+      "material",
+      "network",
+      "partner",
+      "financial_account"
+    ],
+    "categories": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "biological_organism",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "container": [
+      "financial_account",
+      "submission",
+      "work_queue",
+      "financial_account",
+      "financial_account",
+      "work_queue",
+      "financial_account",
+      "submission",
+      "work_queue",
+      "financial_account",
+      "submission",
+      "work_queue",
+      "financial_account",
+      "work_queue",
+      "financial_account",
+      "submission",
+      "work_queue",
+      "financial_account",
+      "work_queue"
+    ],
+    "equity": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "expense": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "financial": [
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction",
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction",
+      "order",
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction",
+      "financial_account",
+      "financial_forecast",
+      "financial_position",
+      "financial_transaction",
+      "financial_account",
+      "financial_forecast",
+      "financial_position",
+      "financial_transaction",
+      "financial_instrument",
+      "order",
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction",
+      "financial_account",
+      "financial_forecast",
+      "financial_position",
+      "financial_transaction",
+      "financial_instrument",
+      "financial_instrument",
+      "order",
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction"
+    ],
+    "financial account": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "income": [
+      "financial_account",
+      "investment_portfolio",
+      "investment",
+      "financial_account",
+      "investment",
+      "financial_account",
+      "financial_account",
+      "investment_portfolio",
+      "financial_account",
+      "investment_portfolio",
+      "investment",
+      "financial_account",
+      "financial_account",
+      "investment_portfolio",
+      "investment_portfolio",
+      "financial_account"
+    ],
+    "liabilities": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "monetary value": [
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax",
+      "financial_account",
+      "tax"
+    ],
+    "named": [
+      "financial_account",
+      "job",
+      "product",
+      "product",
+      "financial_account",
+      "job",
+      "product",
+      "financial_account",
+      "job",
+      "financial_account",
+      "job",
+      "product",
+      "financial_account",
+      "job",
+      "product",
+      "product",
+      "financial_account",
+      "job",
+      "financial_account",
+      "government_service",
+      "job",
+      "product",
+      "financial_account",
+      "job"
+    ],
+    "named container": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "organized": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "plan",
+      "financial_account",
+      "plan",
+      "financial_account",
+      "financial_account",
+      "plan",
+      "financial_account"
+    ],
+    "related categories": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "transactions": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "typically": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "typically organized": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "value transactions": [
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account",
+      "financial_account"
+    ],
+    "aspect": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "financial aspect": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "financial forecast": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "forecast": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "product_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "future": [
+      "financial_forecast",
+      "market",
+      "vision",
+      "time",
+      "investment",
+      "market",
+      "vision",
+      "financial_forecast",
+      "time",
+      "investment",
+      "market",
+      "vision",
+      "financial_forecast",
+      "time",
+      "market",
+      "vision",
+      "time",
+      "market",
+      "vision",
+      "time",
+      "investment",
+      "market",
+      "vision",
+      "financial_forecast",
+      "time",
+      "market",
+      "vision",
+      "time",
+      "market",
+      "vision",
+      "financial_forecast",
+      "time"
+    ],
+    "future financial": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "prediction": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "product_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "accounts": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "across": [
+      "financial_transaction",
+      "geographic_space",
+      "plan",
+      "financial_transaction",
+      "plan",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "geographic_space",
+      "financial_transaction",
+      "geographic_space",
+      "financial_transaction",
+      "geographic_space",
+      "operation",
+      "financial_transaction"
+    ],
+    "across businesses": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "agreements": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "amount": [
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment"
+    ],
+    "amount movement": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "businesses": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "exchange across": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "financial accounts": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "financial transaction": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "monetary amount": [
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "financial_transaction",
+      "monetary_amount",
+      "payment"
+    ],
+    "movement": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "related exchange": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "transaction": [
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction",
+      "financial_transaction"
+    ],
+    "expressed": [
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount"
+    ],
+    "given currency": [
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount",
+      "monetary_amount"
+    ],
+    "representation": [
+      "monetary_amount",
+      "language",
+      "monetary_amount",
+      "language",
+      "monetary_amount",
+      "language",
+      "financial_position",
+      "monetary_amount",
+      "language",
+      "financial_position",
+      "monetary_amount",
+      "language",
+      "monetary_amount",
+      "language",
+      "financial_position",
+      "monetary_amount",
+      "language",
+      "monetary_amount",
+      "language"
+    ],
+    "external": [
+      "payment",
+      "policy",
+      "payment",
+      "policy",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment"
+    ],
+    "external party": [
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment"
+    ],
+    "obligation": [
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment"
+    ],
+    "partner": [
+      "payment",
+      "partner",
+      "partner",
+      "payment",
+      "partner",
+      "payment",
+      "payment",
+      "partner",
+      "payment",
+      "partner",
+      "partner",
+      "payment",
+      "payment",
+      "partner",
+      "partner",
+      "payment"
+    ],
+    "party": [
+      "payment",
+      "order",
+      "policy",
+      "payment",
+      "order",
+      "policy",
+      "order",
+      "payment",
+      "accreditation",
+      "payment",
+      "order",
+      "accreditation",
+      "payment",
+      "order",
+      "order",
+      "payment",
+      "accreditation",
+      "payment",
+      "license",
+      "order",
+      "order",
+      "payment"
+    ],
+    "payment": [
+      "payment",
+      "schedule_element",
+      "payment",
+      "payment",
+      "payment",
+      "schedule_element",
+      "payment",
+      "schedule_element",
+      "payment",
+      "payment",
+      "schedule_element",
+      "payment"
+    ],
+    "receive": [
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment"
+    ],
+    "remit": [
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment",
+      "payment"
+    ],
+    "compulsory": [
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax"
+    ],
+    "compulsory contribution": [
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax"
+    ],
+    "contribution": [
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax"
+    ],
+    "governing": [
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax"
+    ],
+    "governing bodies": [
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax"
+    ],
+    "tax": [
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax",
+      "tax"
+    ],
+    "basis": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "benefits": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "compensation": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "human resource": [
+      "human_resource",
+      "job",
+      "schedule_element",
+      "human_resource",
+      "job",
+      "human_resource",
+      "job",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "human_resource",
+      "job",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "human_resource",
+      "job"
+    ],
+    "includes": [
+      "human_resource",
+      "conveyor",
+      "human_resource",
+      "operation",
+      "conveyor",
+      "human_resource",
+      "conveyor",
+      "operation",
+      "human_resource",
+      "human_resource"
+    ],
+    "includes compensation": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "individual": [
+      "human_resource",
+      "human_resource",
+      "work_queue",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "constituent",
+      "human_resource",
+      "license",
+      "human_resource"
+    ],
+    "individual who": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "legal agreement": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "permanent": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "permanent basis": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "resource": [
+      "human_resource",
+      "job",
+      "schedule_element",
+      "human_resource",
+      "job",
+      "human_resource",
+      "job",
+      "human_resource",
+      "job",
+      "schedule_element",
+      "human_resource",
+      "job",
+      "natural_resource",
+      "schedule_element",
+      "human_resource",
+      "job",
+      "human_resource",
+      "job",
+      "natural_resource",
+      "schedule_element",
+      "human_resource",
+      "job"
+    ],
+    "temporary": [
+      "human_resource",
+      "initiative",
+      "human_resource",
+      "initiative",
+      "human_resource",
+      "initiative",
+      "human_resource",
+      "initiative",
+      "human_resource",
+      "initiative",
+      "human_resource",
+      "initiative",
+      "human_resource",
+      "initiative",
+      "initiative",
+      "human_resource"
+    ],
+    "who": [
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "disruptive": [
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "experience": [
+      "incident",
+      "product",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "incident": [
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "potentially": [
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "potentially disruptive": [
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "unplanned": [
+      "incident",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "collection": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "public_sector_entity",
+      "initiative"
+    ],
+    "coordinated": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "coordinated collection": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "create": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "endeavors": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "endeavors undertaken": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "initiative": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "outcome": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "material",
+      "initiative",
+      "initiative",
+      "material",
+      "initiative"
+    ],
+    "temporary endeavors": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "undertaken": [
+      "initiative",
+      "initiative",
+      "research",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "unique": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "unique outcome": [
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative",
+      "initiative"
+    ],
+    "classified": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "comment": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "disseminated": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "exist": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "exist inside": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "feedback": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "harvested": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "identified": [
+      "inquiry",
+      "inquiry",
+      "shipment_item",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "inquiry": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "inside": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "outside": [
+      "inquiry",
+      "plan",
+      "inquiry",
+      "plan",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "question": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "request": [
+      "inquiry",
+      "order",
+      "inquiry",
+      "order",
+      "order",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "order",
+      "claim",
+      "inquiry",
+      "claim",
+      "inquiry",
+      "order",
+      "inquiry"
+    ],
+    "tracked": [
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry",
+      "inquiry"
+    ],
+    "copyrights": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "intellectual": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "intellectual property rights": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "legal protections": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "patents": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "protections": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "trademarks": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "about": [
+      "interaction",
+      "message",
+      "message",
+      "message",
+      "interaction",
+      "message",
+      "interaction",
+      "message",
+      "message",
+      "interaction",
+      "message",
+      "message"
+    ],
+    "channels": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "collaborations": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "contacts": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "contacts about": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "contemporaneous": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "contemporaneous collaborations": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "given subject": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "interaction": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "interviews": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "locations": [
+      "interaction",
+      "network",
+      "trip",
+      "network",
+      "trip",
+      "interaction",
+      "network",
+      "trip",
+      "interaction",
+      "trip",
+      "interaction",
+      "network",
+      "trip"
+    ],
+    "meetings": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "span": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "subject": [
+      "interaction",
+      "training_course",
+      "training_course",
+      "training_course",
+      "interaction",
+      "training_course",
+      "interaction",
+      "training_course",
+      "accreditation",
+      "training_course",
+      "interaction",
+      "training_course",
+      "training_course"
+    ],
+    "time": [
+      "interaction",
+      "schedule_element",
+      "time",
+      "operation",
+      "event",
+      "time",
+      "operation",
+      "meeting",
+      "time",
+      "financial_position",
+      "interaction",
+      "operation",
+      "product_forecast",
+      "schedule_element",
+      "time",
+      "financial_position",
+      "interaction",
+      "operation",
+      "schedule_element",
+      "time",
+      "meeting",
+      "time",
+      "financial_position",
+      "interaction",
+      "operation",
+      "schedule_element",
+      "time",
+      "meeting",
+      "time"
+    ],
+    "using": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "using one": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "virtual": [
+      "interaction",
+      "event",
+      "meeting",
+      "interaction",
+      "interaction",
+      "meeting",
+      "interaction",
+      "meeting"
+    ],
+    "virtual locations": [
+      "interaction",
+      "interaction",
+      "interaction",
+      "interaction"
+    ],
+    "expected": [
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "increase": [
+      "investment_portfolio",
+      "research",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "investment": [
+      "investment_portfolio",
+      "investment",
+      "investment",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "investment portfolio": [
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "portfolio": [
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "provide": [
+      "investment_portfolio",
+      "geographic_space",
+      "investment",
+      "investment",
+      "energy",
+      "investment_portfolio",
+      "order",
+      "investment_portfolio",
+      "order",
+      "investment",
+      "investment_portfolio",
+      "order",
+      "investment_portfolio"
+    ],
+    "provide income": [
+      "investment_portfolio",
+      "investment",
+      "investment",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "resources expected": [
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio",
+      "investment_portfolio"
+    ],
+    "accountabilities": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "accountable": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "accountable business": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "assigned": [
+      "job",
+      "work_item",
+      "job",
+      "work_item",
+      "job",
+      "work_item",
+      "job",
+      "work_item",
+      "job",
+      "work_item",
+      "job",
+      "work_item",
+      "job",
+      "work_item",
+      "job",
+      "work_item"
+    ],
+    "associated": [
+      "job",
+      "training_course",
+      "geographic_space_cadaster",
+      "network",
+      "job",
+      "training_course",
+      "network",
+      "job",
+      "training_course",
+      "job",
+      "network",
+      "training_course",
+      "health_condition",
+      "job",
+      "training_course",
+      "network",
+      "job",
+      "training_course",
+      "cadaster",
+      "job",
+      "network",
+      "training_course",
+      "job",
+      "training_course"
+    ],
+    "business duty": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "category": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "duty": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "executed": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "function": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "job": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "named category": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "non": [
+      "job",
+      "shipment",
+      "job",
+      "shipment",
+      "job",
+      "job",
+      "shipment",
+      "biological_organism",
+      "health_condition",
+      "job",
+      "job",
+      "biological_organism",
+      "job",
+      "job"
+    ],
+    "remunerative": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "role": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "whether": [
+      "job",
+      "conveyor",
+      "job",
+      "conveyor",
+      "job",
+      "conveyor",
+      "job",
+      "job",
+      "evidence",
+      "job",
+      "conveyor",
+      "job",
+      "job"
+    ],
+    "whether remunerative": [
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job",
+      "job"
+    ],
+    "communication": [
+      "language",
+      "message",
+      "message",
+      "language",
+      "infrastructure",
+      "language",
+      "message",
+      "language",
+      "message",
+      "infrastructure",
+      "language",
+      "message",
+      "message",
+      "language",
+      "infrastructure",
+      "language",
+      "message",
+      "message",
+      "language"
+    ],
+    "consisting": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "dialect": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "dialect variant": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "gestures": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "language": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "manifestations": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "meaning": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "method": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "numbers": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "physical manifestations": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "presented": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "sounds": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "structured": [
+      "language",
+      "training_course",
+      "language",
+      "training_course",
+      "language",
+      "training_course",
+      "language",
+      "training_course",
+      "language",
+      "training_course",
+      "language",
+      "training_course",
+      "language",
+      "training_course",
+      "language",
+      "training_course"
+    ],
+    "structured way": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "symbols": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "units": [
+      "language",
+      "plan",
+      "language",
+      "plan",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "variant": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "variant consisting": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "way": [
+      "language",
+      "route",
+      "language",
+      "route",
+      "language",
+      "language",
+      "route",
+      "language",
+      "language",
+      "language",
+      "route",
+      "language"
+    ],
+    "words": [
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language",
+      "language"
+    ],
+    "activity invoking": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding"
+    ],
+    "enforce": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding"
+    ],
+    "invoking": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding"
+    ],
+    "law": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "operation",
+      "legal_proceeding"
+    ],
+    "legal proceeding": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding"
+    ],
+    "power": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "infrastructure",
+      "legal_proceeding",
+      "energy",
+      "legal_proceeding",
+      "infrastructure",
+      "legal_proceeding",
+      "energy",
+      "infrastructure",
+      "legal_proceeding"
+    ],
+    "proceeding": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding"
+    ],
+    "tribunal": [
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding",
+      "legal_proceeding"
+    ],
+    "location": [
+      "location",
+      "schedule_element",
+      "operation",
+      "trip",
+      "location",
+      "operation",
+      "location",
+      "trip",
+      "location",
+      "operation",
+      "schedule_element",
+      "trip",
+      "location",
+      "operation",
+      "schedule_element",
+      "trip",
+      "location",
+      "location",
+      "operation",
+      "schedule_element",
+      "trip",
+      "location"
+    ],
+    "position": [
+      "location",
+      "location",
+      "location",
+      "financial_position",
+      "location",
+      "financial_position",
+      "location",
+      "location",
+      "financial_position",
+      "location",
+      "location"
+    ],
+    "site": [
+      "location",
+      "location",
+      "location",
+      "location",
+      "location",
+      "location",
+      "location",
+      "location"
+    ],
+    "constituting": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "demand": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "claim",
+      "case",
+      "case",
+      "claim",
+      "market",
+      "market"
+    ],
+    "existing": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "future products": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "individuals": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "market": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "organizations": [
+      "market",
+      "market",
+      "policy",
+      "market",
+      "policy",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "organizations constituting": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "populations": [
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market",
+      "market"
+    ],
+    "alerts": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "communication about": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "digitally": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "externally": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "externally targeted": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "focal points": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "including missives": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "internally": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "message": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "mission": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "missives": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "notifications": [
+      "message",
+      "submission",
+      "message",
+      "message",
+      "message",
+      "submission",
+      "message",
+      "submission",
+      "message",
+      "message",
+      "submission",
+      "message"
+    ],
+    "recorded": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "represented": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "represented communication": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "targeted": [
+      "message",
+      "message",
+      "trip",
+      "trip",
+      "message",
+      "message",
+      "trip",
+      "message",
+      "trip",
+      "message",
+      "message",
+      "trip",
+      "message"
+    ],
+    "targeted communication": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "verbal": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "written": [
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message",
+      "message"
+    ],
+    "another": [
+      "order",
+      "geographic_border",
+      "order",
+      "order",
+      "order",
+      "geographic_border",
+      "order",
+      "order",
+      "geographic_border",
+      "geographic_border",
+      "order",
+      "order"
+    ],
+    "buy": [
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order"
+    ],
+    "exchange goods": [
+      "order",
+      "order"
+    ],
+    "goods": [
+      "order",
+      "product",
+      "conveyor",
+      "product",
+      "order",
+      "product",
+      "order",
+      "conveyor",
+      "conveyor",
+      "order",
+      "partner",
+      "product",
+      "order",
+      "product",
+      "product",
+      "order",
+      "network",
+      "conveyor",
+      "government_service",
+      "order",
+      "product",
+      "order"
+    ],
+    "one party": [
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order"
+    ],
+    "order": [
+      "order",
+      "geographic_space",
+      "order",
+      "order",
+      "order",
+      "order_item",
+      "order",
+      "order_item",
+      "order",
+      "order",
+      "order_item",
+      "order"
+    ],
+    "sell": [
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order",
+      "order"
+    ],
+    "degree": [
+      "partner",
+      "partner",
+      "partner",
+      "partner",
+      "partner",
+      "partner"
+    ],
+    "involvement": [
+      "partner",
+      "partner",
+      "partner",
+      "partner",
+      "partner",
+      "partner"
+    ],
+    "plan": [
+      "plan",
+      "plan",
+      "plan",
+      "plan",
+      "plan",
+      "plan",
+      "strategy",
+      "case",
+      "plan",
+      "plan"
+    ],
+    "related activities": [
+      "plan"
+    ],
+    "result": [
+      "plan",
+      "objective",
+      "objective",
+      "research",
+      "objective",
+      "plan",
+      "objective",
+      "plan",
+      "objective",
+      "plan",
+      "objective",
+      "plan",
+      "objective",
+      "plan",
+      "objective"
+    ],
+    "action": [
+      "policy",
+      "strategy",
+      "action_item",
+      "strategy",
+      "action_item",
+      "strategy",
+      "action_item",
+      "strategy",
+      "course_of_action",
+      "strategy",
+      "course_of_action",
+      "policy",
+      "strategy",
+      "action_item",
+      "case",
+      "strategy",
+      "course_of_action",
+      "policy",
+      "strategy",
+      "action_item"
+    ],
+    "action adopted": [
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "adopted": [
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "course": [
+      "policy",
+      "action_item",
+      "training_course",
+      "action_item",
+      "route",
+      "training_course",
+      "action_item",
+      "route",
+      "asset",
+      "training_course",
+      "route",
+      "course_of_action",
+      "training_course",
+      "course_of_action",
+      "training_course",
+      "policy",
+      "action_item",
+      "training_course",
+      "route",
+      "course_of_action",
+      "training_course",
+      "policy",
+      "action_item",
+      "partner",
+      "training_course"
+    ],
+    "policy": [
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "principle": [
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "proposed": [
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "combination": [
+      "product",
+      "product",
+      "product",
+      "product",
+      "product",
+      "product",
+      "government_service",
+      "product"
+    ],
+    "named combination": [
+      "product",
+      "product",
+      "product",
+      "product",
+      "product",
+      "product",
+      "government_service",
+      "product"
+    ],
+    "offered": [
+      "product",
+      "product",
+      "product",
+      "product",
+      "product",
+      "product",
+      "government_service",
+      "product"
+    ],
+    "part": [
+      "product",
+      "product",
+      "shipment_item",
+      "product",
+      "business_entity",
+      "product",
+      "shipment_item",
+      "biological_organism",
+      "business_entity",
+      "product",
+      "product",
+      "product"
+    ],
+    "product": [
+      "product",
+      "product",
+      "product",
+      "product",
+      "product_forecast",
+      "product",
+      "product",
+      "product"
+    ],
+    "whole": [
+      "product",
+      "strategy",
+      "strategy",
+      "product",
+      "strategy",
+      "product",
+      "product",
+      "product",
+      "strategy",
+      "product",
+      "strategy",
+      "product"
+    ],
+    "investigation": [
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research"
+    ],
+    "materials": [
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research"
+    ],
+    "research": [
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research"
+    ],
+    "sources": [
+      "research",
+      "research",
+      "energy",
+      "research",
+      "research",
+      "research",
+      "energy",
+      "research",
+      "research"
+    ],
+    "systematic": [
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research"
+    ],
+    "systematic investigation": [
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research",
+      "research"
+    ],
+    "aggregation": [
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule"
+    ],
+    "elements": [
+      "schedule",
+      "schedule",
+      "material",
+      "schedule",
+      "material",
+      "schedule"
+    ],
+    "schedule": [
+      "schedule",
+      "schedule_element",
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule_element",
+      "schedule",
+      "schedule_element",
+      "schedule",
+      "schedule",
+      "schedule_element",
+      "schedule"
+    ],
+    "schedule elements": [
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule"
+    ],
+    "aligns": [
+      "schedule_element",
+      "strategy",
+      "strategy",
+      "strategy",
+      "schedule_element",
+      "schedule_element",
+      "schedule_element",
+      "strategy"
+    ],
+    "aligns time": [
+      "schedule_element",
+      "schedule_element",
+      "schedule_element",
+      "schedule_element"
+    ],
+    "element": [
+      "schedule_element",
+      "order_item",
+      "schedule_element",
+      "order_item",
+      "schedule_element",
+      "order_item",
+      "schedule_element"
+    ],
+    "including work": [
+      "schedule_element",
+      "schedule_element",
+      "schedule_element",
+      "schedule_element"
+    ],
+    "item": [
+      "schedule_element",
+      "action_item",
+      "work_item",
+      "action_item",
+      "shipment_item",
+      "work_item",
+      "action_item",
+      "shipment_item",
+      "work_item",
+      "content",
+      "order_item",
+      "schedule_element",
+      "shipment_item",
+      "work_item",
+      "content",
+      "order_item",
+      "schedule_element",
+      "work_item",
+      "action_item",
+      "work_item",
+      "content",
+      "order_item",
+      "schedule_element",
+      "work_item",
+      "action_item",
+      "work_item"
+    ],
+    "line": [
+      "schedule_element",
+      "geographic_border",
+      "schedule_element",
+      "geographic_border",
+      "schedule_element",
+      "geographic_border",
+      "geographic_border",
+      "schedule_element"
+    ],
+    "line item": [
+      "schedule_element",
+      "schedule_element",
+      "schedule_element",
+      "schedule_element"
+    ],
+    "objects": [
+      "schedule_element",
+      "network",
+      "network",
+      "network",
+      "schedule_element",
+      "submission",
+      "schedule_element",
+      "submission",
+      "license",
+      "network",
+      "schedule_element",
+      "submission"
+    ],
+    "schedule element": [
+      "schedule_element",
+      "schedule_element",
+      "schedule_element",
+      "schedule_element"
+    ],
+    "work item": [
+      "schedule_element",
+      "work_item",
+      "work_item",
+      "work_item",
+      "schedule_element",
+      "work_item",
+      "schedule_element",
+      "work_item",
+      "work_item",
+      "schedule_element",
+      "work_item",
+      "work_item"
+    ],
+    "action sequences": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "cohesive": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "cohesive whole": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "goals": [
+      "strategy",
+      "plan",
+      "strategy",
+      "plan",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "integrated": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "integrated pattern": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "objectives": [
+      "strategy",
+      "plan",
+      "strategy",
+      "plan",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "pattern": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "perspective": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "sequences": [
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "strategy": [
+      "strategy",
+      "objective",
+      "strategy",
+      "objective",
+      "strategy",
+      "objective",
+      "strategy",
+      "strategy",
+      "strategy",
+      "objective",
+      "strategy",
+      "strategy",
+      "objective"
+    ],
+    "action item": [
+      "action_item",
+      "action_item",
+      "action_item",
+      "action_item",
+      "action_item"
+    ],
+    "objective": [
+      "action_item",
+      "objective",
+      "action_item",
+      "objective",
+      "operation",
+      "operation",
+      "objective",
+      "action_item",
+      "operation",
+      "course_of_action",
+      "objective",
+      "operation",
+      "course_of_action",
+      "objective",
+      "objective",
+      "action_item",
+      "operation",
+      "course_of_action",
+      "objective",
+      "objective",
+      "action_item"
+    ],
+    "specific course": [
+      "action_item",
+      "action_item",
+      "action_item",
+      "action_item",
+      "action_item"
+    ],
+    "taken": [
+      "action_item",
+      "action_item",
+      "route",
+      "action_item",
+      "route",
+      "route",
+      "course_of_action",
+      "course_of_action",
+      "action_item",
+      "route",
+      "course_of_action",
+      "action_item"
+    ],
+    "directed": [
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal"
+    ],
+    "effort": [
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal"
+    ],
+    "end": [
+      "goal",
+      "goal",
+      "network_node",
+      "goal",
+      "network_node",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal"
+    ],
+    "end toward": [
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal"
+    ],
+    "toward": [
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal",
+      "goal"
+    ],
+    "defines": [
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "defines strategy": [
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "measurable": [
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "measurable result": [
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "quantitative": [
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "future state": [
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision"
+    ],
+    "imagined": [
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision"
+    ],
+    "imagined future": [
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision"
+    ],
+    "state": [
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "health_condition",
+      "vision",
+      "vision",
+      "health_condition",
+      "vision",
+      "vision"
+    ],
+    "vision": [
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision",
+      "vision"
+    ],
+    "exchange one": [
+      "submission",
+      "submission",
+      "submission",
+      "submission"
+    ],
+    "inquiries": [
+      "submission",
+      "submission",
+      "submission",
+      "submission"
+    ],
+    "messages": [
+      "submission",
+      "submission",
+      "submission",
+      "submission"
+    ],
+    "parties": [
+      "submission",
+      "dispute",
+      "submission",
+      "submission",
+      "submission"
+    ],
+    "requests": [
+      "submission",
+      "work",
+      "submission",
+      "work",
+      "submission",
+      "submission",
+      "submission",
+      "work",
+      "submission",
+      "submission",
+      "work",
+      "submission"
+    ],
+    "submission": [
+      "submission",
+      "submission",
+      "submission",
+      "submission",
+      "submission",
+      "submission",
+      "submission",
+      "submission"
+    ],
+    "used": [
+      "submission",
+      "material",
+      "material",
+      "asset",
+      "material",
+      "submission",
+      "material",
+      "submission",
+      "material",
+      "submission"
+    ],
+    "duration": [
+      "time",
+      "time",
+      "time",
+      "financial_position",
+      "time",
+      "financial_position",
+      "time",
+      "time",
+      "financial_position",
+      "time",
+      "time"
+    ],
+    "past": [
+      "time",
+      "time",
+      "time",
+      "time",
+      "time",
+      "time",
+      "time",
+      "time"
+    ],
+    "point": [
+      "time",
+      "network_node",
+      "route",
+      "trip",
+      "time",
+      "network_node",
+      "route",
+      "trip",
+      "time",
+      "financial_position",
+      "network_node",
+      "route",
+      "time",
+      "trip",
+      "financial_position",
+      "time",
+      "trip",
+      "time",
+      "financial_position",
+      "network_node",
+      "route",
+      "time",
+      "trip",
+      "time"
+    ],
+    "present": [
+      "time",
+      "work_queue",
+      "time",
+      "work_queue",
+      "time",
+      "time",
+      "work_queue",
+      "time",
+      "work_queue",
+      "work_queue",
+      "time",
+      "time",
+      "work_queue",
+      "work_queue",
+      "time"
+    ],
+    "consumable": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "consumable format": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "curriculum": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "format": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "matter": [
+      "training_course",
+      "material",
+      "training_course",
+      "material",
+      "training_course",
+      "material",
+      "training_course",
+      "natural_resource",
+      "training_course",
+      "training_course",
+      "natural_resource",
+      "training_course",
+      "training_course"
+    ],
+    "practical": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "practical subject": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "seminar": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "structured theoretical": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "subject matter": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "theoretical": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "training": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "training course": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "workshop": [
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course",
+      "training_course"
+    ],
+    "queues": [
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "task": [
+      "work",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work",
+      "work_item",
+      "work",
+      "work_item",
+      "work_item",
+      "work",
+      "work_item",
+      "work_item"
+    ],
+    "task queues": [
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "tasks": [
+      "work",
+      "work",
+      "work_queue",
+      "work",
+      "work",
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "bounded": [
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item"
+    ],
+    "bounded task": [
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item"
+    ],
+    "corresponding": [
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item"
+    ],
+    "corresponding asset": [
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item"
+    ],
+    "defined": [
+      "work_item",
+      "work_item",
+      "network_arc",
+      "work_item",
+      "network_arc",
+      "work_item",
+      "standard",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item"
+    ],
+    "stakeholder": [
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item",
+      "work_item"
+    ],
+    "well": [
+      "work_item",
+      "geographic_space",
+      "work_item",
+      "material",
+      "work_item",
+      "material",
+      "work_item",
+      "work_item",
+      "work_item",
+      "health_condition",
+      "work_item",
+      "work_item"
+    ],
+    "filter": [
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue"
+    ],
+    "hold": [
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue"
+    ],
+    "items": [
+      "work_queue",
+      "plan",
+      "conveyor",
+      "plan",
+      "shipment",
+      "conveyor",
+      "work_queue",
+      "conveyor",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "conveyor",
+      "work_queue",
+      "work_queue"
+    ],
+    "queue": [
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue"
+    ],
+    "sequence": [
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue"
+    ],
+    "work items": [
+      "work_queue",
+      "plan",
+      "plan",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue"
+    ],
+    "work queue": [
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue",
+      "work_queue"
+    ],
+    "access": [
+      "geographic_space"
+    ],
+    "across land": [
+      "geographic_space",
+      "geographic_space",
+      "geographic_space",
+      "geographic_space"
+    ],
+    "air": [
+      "geographic_space",
+      "geographic_space",
+      "geographic_space",
+      "geographic_space"
+    ],
+    "area": [
+      "geographic_space",
+      "geographic_space_cadaster",
+      "geographic_space",
+      "accreditation",
+      "geographic_space",
+      "cadaster",
+      "geographic_space"
+    ],
+    "area across": [
+      "geographic_space",
+      "geographic_space",
+      "geographic_space",
+      "geographic_space"
+    ],
+    "economic": [
+      "geographic_space"
+    ],
+    "enable": [
+      "geographic_space",
+      "material",
+      "material"
+    ],
+    "environmental": [
+      "geographic_space"
+    ],
+    "geographic": [
+      "geographic_space",
+      "geographic_border",
+      "geographic_space_cadaster",
+      "geographic_space",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border"
+    ],
+    "geographic space": [
+      "geographic_space",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border"
+    ],
+    "land": [
+      "geographic_space",
+      "geographic_space",
+      "geographic_space",
+      "geographic_space"
+    ],
+    "meet": [
+      "geographic_space"
+    ],
+    "meet economic": [
+      "geographic_space"
+    ],
+    "needed": [
+      "geographic_space"
+    ],
+    "physical area": [
+      "geographic_space",
+      "geographic_space",
+      "geographic_space",
+      "geographic_space"
+    ],
+    "recreational": [
+      "geographic_space"
+    ],
+    "restrict": [
+      "geographic_space"
+    ],
+    "restrict access": [
+      "geographic_space"
+    ],
+    "security": [
+      "geographic_space",
+      "infrastructure",
+      "collateral"
+    ],
+    "space": [
+      "geographic_space",
+      "geographic_border",
+      "geographic_space_cadaster",
+      "geographic_space",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border",
+      "cadaster",
+      "geographic_space",
+      "geographic_border"
+    ],
+    "water": [
+      "geographic_space",
+      "infrastructure",
+      "geographic_space",
+      "infrastructure",
+      "geographic_space",
+      "geographic_space",
+      "infrastructure"
+    ],
+    "another geographic": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "around": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "border": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "demarcation": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_space",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "demarcation around": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "geographic border": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "one geographic": [
+      "geographic_border",
+      "geographic_border",
+      "geographic_border",
+      "geographic_border"
+    ],
+    "area parcels": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "cadaster": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "description": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "extent": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "geographic space cadaster": [
+      "geographic_space_cadaster"
+    ],
+    "geometric": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "geometric description": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "ownership": [
+      "geographic_space_cadaster",
+      "financial_instrument",
+      "cadaster",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "parcels": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "property area": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "responsibilities": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "responsibilities associated": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "restrictions": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "tenure": [
+      "geographic_space_cadaster",
+      "cadaster"
+    ],
+    "asset purchased": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "higher": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "higher price": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "idea": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "monetary asset": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "price": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "profit": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "purchased": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "sold": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "type": [
+      "investment",
+      "investment",
+      "investment"
+    ],
+    "constitute": [
+      "market"
+    ],
+    "across organizational": [
+      "plan",
+      "plan"
+    ],
+    "articulated": [
+      "plan",
+      "plan"
+    ],
+    "articulated direction": [
+      "plan",
+      "plan"
+    ],
+    "direction": [
+      "plan",
+      "plan",
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "entities within": [
+      "plan",
+      "plan"
+    ],
+    "further": [
+      "plan",
+      "plan"
+    ],
+    "objectives across": [
+      "plan",
+      "plan"
+    ],
+    "organizational units": [
+      "plan",
+      "plan"
+    ],
+    "priorities": [
+      "plan",
+      "plan"
+    ],
+    "related work": [
+      "plan",
+      "plan"
+    ],
+    "actors": [
+      "policy",
+      "policy"
+    ],
+    "business directives": [
+      "policy",
+      "policy"
+    ],
+    "directives": [
+      "policy",
+      "policy",
+      "legislation"
+    ],
+    "driven": [
+      "policy",
+      "policy"
+    ],
+    "external organizations": [
+      "policy",
+      "policy"
+    ],
+    "governments": [
+      "policy",
+      "policy"
+    ],
+    "internal": [
+      "policy",
+      "policy"
+    ],
+    "internal business": [
+      "policy",
+      "policy"
+    ],
+    "legislation": [
+      "policy",
+      "policy",
+      "policy",
+      "policy",
+      "legislation"
+    ],
+    "party actors": [
+      "policy",
+      "policy"
+    ],
+    "principle driven": [
+      "policy",
+      "policy"
+    ],
+    "procedure": [
+      "policy",
+      "policy"
+    ],
+    "regulation": [
+      "policy",
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "related third": [
+      "policy",
+      "policy"
+    ],
+    "rule": [
+      "policy",
+      "policy",
+      "policy",
+      "policy"
+    ],
+    "statute": [
+      "policy",
+      "policy"
+    ],
+    "third": [
+      "policy",
+      "policy",
+      "accreditation",
+      "accreditation",
+      "accreditation",
+      "license"
+    ],
+    "treaty": [
+      "policy",
+      "policy"
+    ],
+    "conclusions": [
+      "research",
+      "research"
+    ],
+    "conclusions resulting": [
+      "research"
+    ],
+    "established": [
+      "research"
+    ],
+    "established facts": [
+      "research"
+    ],
+    "facts": [
+      "research",
+      "research",
+      "evidence",
+      "research",
+      "evidence",
+      "research"
+    ],
+    "resulting": [
+      "research"
+    ],
+    "animals": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "biological_organism",
+      "conveyor"
+    ],
+    "apparatus": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "automobiles": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "based vehicles": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "borne craft": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "but": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "energy"
+    ],
+    "capacity": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "carts": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "conveyor": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "limited": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "energy"
+    ],
+    "people": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "physical items": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "piloted": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "pulled devices": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "robot": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "transport": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "transport people": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "trucks": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "variety": [
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "whether human": [
+      "conveyor",
+      "conveyor",
+      "conveyor",
+      "conveyor"
+    ],
+    "unexpected": [
+      "incident",
+      "incident",
+      "incident",
+      "incident"
+    ],
+    "bridge": [
+      "infrastructure"
+    ],
+    "building": [
+      "infrastructure",
+      "infrastructure"
+    ],
+    "corridor": [
+      "infrastructure"
+    ],
+    "include": [
+      "infrastructure",
+      "operation",
+      "route",
+      "route",
+      "infrastructure",
+      "facility",
+      "human_resource",
+      "plan",
+      "route",
+      "human_resource",
+      "infrastructure",
+      "plan",
+      "human_resource",
+      "infrastructure",
+      "legislation",
+      "operation",
+      "plan",
+      "route"
+    ],
+    "infrastructure": [
+      "infrastructure",
+      "material",
+      "network",
+      "network",
+      "infrastructure",
+      "infrastructure",
+      "material",
+      "infrastructure",
+      "material",
+      "network"
+    ],
+    "rail": [
+      "infrastructure"
+    ],
+    "rail corridor": [
+      "infrastructure"
+    ],
+    "roadway": [
+      "infrastructure"
+    ],
+    "station": [
+      "infrastructure",
+      "operation",
+      "operation"
+    ],
+    "tunnel": [
+      "infrastructure"
+    ],
+    "construction": [
+      "material",
+      "material",
+      "material"
+    ],
+    "conveyors": [
+      "material",
+      "material",
+      "material"
+    ],
+    "maintenance": [
+      "material"
+    ],
+    "material": [
+      "material",
+      "material",
+      "material",
+      "material",
+      "material"
+    ],
+    "matter used": [
+      "material",
+      "material",
+      "material"
+    ],
+    "physical matter": [
+      "material"
+    ],
+    "physical products": [
+      "material",
+      "material",
+      "material"
+    ],
+    "powering": [
+      "material",
+      "material",
+      "material",
+      "material",
+      "material"
+    ],
+    "arcs": [
+      "network",
+      "network",
+      "network",
+      "network",
+      "network"
+    ],
+    "business objects": [
+      "network",
+      "network",
+      "network",
+      "network"
+    ],
+    "connected": [
+      "network",
+      "network",
+      "network",
+      "network",
+      "network"
+    ],
+    "connected arcs": [
+      "network",
+      "network",
+      "network",
+      "network",
+      "network"
+    ],
+    "network": [
+      "network",
+      "network_arc",
+      "network_node",
+      "network",
+      "network_arc",
+      "network_node",
+      "operation",
+      "network",
+      "network_arc",
+      "network_node",
+      "network",
+      "network",
+      "network_arc",
+      "network_node"
+    ],
+    "nodes": [
+      "network",
+      "network_arc",
+      "network",
+      "network_arc",
+      "network",
+      "network_arc",
+      "network",
+      "network",
+      "network_arc"
+    ],
+    "routes": [
+      "network",
+      "network",
+      "network",
+      "network"
+    ],
+    "system": [
+      "network",
+      "work_queue",
+      "network",
+      "network"
+    ],
+    "arc": [
+      "network_arc",
+      "network_arc",
+      "network_arc",
+      "network_arc"
+    ],
+    "association": [
+      "network_arc",
+      "strategy",
+      "strategy",
+      "network_arc",
+      "strategy"
+    ],
+    "connection": [
+      "network_arc",
+      "network_node",
+      "network_arc",
+      "network_arc",
+      "network_arc",
+      "network_node"
+    ],
+    "network arc": [
+      "network_arc",
+      "network_arc",
+      "network_arc",
+      "network_arc"
+    ],
+    "connection point": [
+      "network_node",
+      "network_node"
+    ],
+    "network node": [
+      "network_node",
+      "network_node",
+      "network_node",
+      "network_node"
+    ],
+    "node": [
+      "network_node",
+      "network_node",
+      "network_node",
+      "network_node"
+    ],
+    "boarding": [
+      "operation"
+    ],
+    "centers": [
+      "operation",
+      "operation"
+    ],
+    "constrained": [
+      "operation",
+      "operation",
+      "operation",
+      "operation",
+      "operation"
+    ],
+    "flight": [
+      "operation"
+    ],
+    "flight turnaround": [
+      "operation"
+    ],
+    "loading": [
+      "operation",
+      "operation"
+    ],
+    "objective constrained": [
+      "operation",
+      "operation",
+      "operation",
+      "operation",
+      "operation"
+    ],
+    "operation": [
+      "operation",
+      "operation",
+      "operation",
+      "operation",
+      "operation"
+    ],
+    "orchestration": [
+      "operation",
+      "operation",
+      "operation",
+      "operation",
+      "operation"
+    ],
+    "package": [
+      "operation",
+      "shipment_item",
+      "shipment_item"
+    ],
+    "package sorting": [
+      "operation"
+    ],
+    "service centers": [
+      "operation",
+      "operation"
+    ],
+    "sorting": [
+      "operation"
+    ],
+    "specific objective": [
+      "operation",
+      "operation",
+      "operation",
+      "operation",
+      "operation"
+    ],
+    "turnaround": [
+      "operation"
+    ],
+    "unloading": [
+      "operation"
+    ],
+    "along": [
+      "route",
+      "route",
+      "route",
+      "route"
+    ],
+    "course taken": [
+      "route",
+      "route",
+      "route",
+      "route"
+    ],
+    "destination": [
+      "route",
+      "trip",
+      "route",
+      "trip",
+      "route",
+      "trip",
+      "trip",
+      "route",
+      "trip"
+    ],
+    "getting": [
+      "route",
+      "route",
+      "route"
+    ],
+    "include stops": [
+      "route",
+      "route",
+      "route",
+      "route"
+    ],
+    "route": [
+      "route",
+      "route",
+      "route",
+      "route"
+    ],
+    "starting": [
+      "route",
+      "trip",
+      "route",
+      "trip",
+      "route",
+      "trip",
+      "trip",
+      "route",
+      "trip"
+    ],
+    "starting point": [
+      "route",
+      "trip",
+      "route",
+      "trip",
+      "route",
+      "trip",
+      "trip",
+      "route",
+      "trip"
+    ],
+    "stops": [
+      "route",
+      "route",
+      "route",
+      "route"
+    ],
+    "stops along": [
+      "route",
+      "route",
+      "route",
+      "route"
+    ],
+    "baggage": [
+      "shipment",
+      "shipment_item",
+      "shipment",
+      "shipment_item"
+    ],
+    "cargo": [
+      "shipment",
+      "shipment_item",
+      "shipment",
+      "shipment_item"
+    ],
+    "containing": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "contents": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "freight": [
+      "shipment",
+      "shipment_item",
+      "shipment",
+      "shipment_item"
+    ],
+    "human living": [
+      "shipment",
+      "shipment",
+      "shipment",
+      "biological_organism",
+      "biological_organism"
+    ],
+    "inanimate": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "living": [
+      "shipment",
+      "shipment",
+      "shipment",
+      "biological_organism",
+      "health_condition",
+      "biological_organism"
+    ],
+    "living contents": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "packages": [
+      "shipment",
+      "shipment"
+    ],
+    "packages containing": [
+      "shipment",
+      "shipment"
+    ],
+    "range": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "shipment": [
+      "shipment",
+      "shipment_item",
+      "shipment",
+      "shipment_item",
+      "shipment",
+      "shipment_item"
+    ],
+    "wide": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "wide range": [
+      "shipment",
+      "shipment",
+      "shipment"
+    ],
+    "overall": [
+      "shipment_item",
+      "product",
+      "shipment_item"
+    ],
+    "overall shipment": [
+      "shipment_item",
+      "shipment_item"
+    ],
+    "shipment item": [
+      "shipment_item",
+      "shipment_item",
+      "shipment_item"
+    ],
+    "single unit": [
+      "shipment_item",
+      "shipment_item"
+    ],
+    "unit": [
+      "shipment_item",
+      "shipment_item"
+    ],
+    "final": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "final destination": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "journey": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "point location": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "targeted locations": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "trip": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "until": [
+      "trip",
+      "trip",
+      "trip",
+      "trip",
+      "trip"
+    ],
+    "conferences": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "determinable": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "determinable time": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "engagements": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "gathering": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "gatherings": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "including physical": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "persons": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "related gatherings": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "virtual engagements": [
+      "event",
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "gestures presented": [
+      "language"
+    ],
+    "decisions": [
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "events": [
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "inbound": [
+      "work",
+      "submission",
+      "work",
+      "submission",
+      "work",
+      "submission",
+      "work",
+      "submission"
+    ],
+    "inbound requests": [
+      "work",
+      "submission",
+      "work",
+      "submission",
+      "work",
+      "submission",
+      "work",
+      "submission"
+    ],
+    "related decisions": [
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "schedules": [
+      "work",
+      "work",
+      "work",
+      "work"
+    ],
+    "work events": [
+      "work"
+    ],
+    "dates": [
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule"
+    ],
+    "milestones": [
+      "schedule",
+      "schedule",
+      "plan",
+      "plan",
+      "schedule",
+      "plan",
+      "schedule"
+    ],
+    "times": [
+      "schedule",
+      "schedule",
+      "schedule",
+      "schedule"
+    ],
+    "situation": [
+      "work_event",
+      "event",
+      "event",
+      "event"
+    ],
+    "work event": [
+      "work_event"
+    ],
+    "automated": [
+      "work_queue"
+    ],
+    "automated system": [
+      "work_queue"
+    ],
+    "processed": [
+      "work_queue"
+    ],
+    "defined connection": [
+      "network_arc",
+      "network_arc"
+    ],
+    "two nodes": [
+      "network_arc",
+      "network_arc"
+    ],
+    "connecting": [
+      "network_node",
+      "network_node"
+    ],
+    "connecting point": [
+      "network_node",
+      "network_node"
+    ],
+    "point within": [
+      "network_node",
+      "network_node"
+    ],
+    "base": [
+      "operation",
+      "evidence"
+    ],
+    "base station": [
+      "operation"
+    ],
+    "build": [
+      "operation"
+    ],
+    "monitoring": [
+      "operation",
+      "operation"
+    ],
+    "network build": [
+      "operation"
+    ],
+    "network monitoring": [
+      "operation"
+    ],
+    "station build": [
+      "operation"
+    ],
+    "reach": [
+      "research"
+    ],
+    "reach conclusions": [
+      "research"
+    ],
+    "stock": [
+      "research"
+    ],
+    "systematic work": [
+      "research"
+    ],
+    "work undertaken": [
+      "research"
+    ],
+    "needs": [
+      "product"
+    ],
+    "overall experience": [
+      "product"
+    ],
+    "satisfy": [
+      "product"
+    ],
+    "directly": [
+      "material",
+      "material"
+    ],
+    "indirectly": [
+      "material",
+      "material"
+    ],
+    "manufacturing": [
+      "material",
+      "facility",
+      "material",
+      "operation"
+    ],
+    "production": [
+      "material",
+      "material"
+    ],
+    "items containing": [
+      "shipment"
+    ],
+    "transported": [
+      "shipment"
+    ],
+    "transported items": [
+      "shipment"
+    ],
+    "identified item": [
+      "shipment_item"
+    ],
+    "included": [
+      "shipment_item"
+    ],
+    "specific identified": [
+      "shipment_item"
+    ],
+    "exchange financial": [
+      "order",
+      "order",
+      "order"
+    ],
+    "financial instruments": [
+      "order",
+      "order",
+      "order"
+    ],
+    "instruments": [
+      "order",
+      "order",
+      "legislation",
+      "order"
+    ],
+    "includes but": [
+      "conveyor",
+      "conveyor"
+    ],
+    "doing": [
+      "asset",
+      "government_service",
+      "partner"
+    ],
+    "doing business": [
+      "asset",
+      "partner"
+    ],
+    "property used": [
+      "asset"
+    ],
+    "used within": [
+      "asset"
+    ],
+    "meeting": [
+      "meeting",
+      "meeting",
+      "meeting"
+    ],
+    "antennas": [
+      "infrastructure"
+    ],
+    "communication lines": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "conduits": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "gas": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "grids": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "include power": [
+      "infrastructure",
+      "infrastructure"
+    ],
+    "lines": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "perimeters": [
+      "infrastructure"
+    ],
+    "power grids": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "roadways": [
+      "infrastructure",
+      "infrastructure",
+      "infrastructure"
+    ],
+    "security perimeters": [
+      "infrastructure"
+    ],
+    "towers": [
+      "infrastructure"
+    ],
+    "ability": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "accreditation": [
+      "accreditation",
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "acknowledged": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "acknowledged third": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "competence": [
+      "accreditation",
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "duly": [
+      "accreditation",
+      "accreditation",
+      "accreditation",
+      "license"
+    ],
+    "duly recognized": [
+      "accreditation",
+      "accreditation",
+      "accreditation",
+      "license"
+    ],
+    "endorsement": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "indicates": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "indicates ability": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "provenance": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "quality": [
+      "accreditation",
+      "accreditation",
+      "accreditation"
+    ],
+    "recognized": [
+      "accreditation",
+      "accreditation",
+      "standard",
+      "device",
+      "accreditation",
+      "license",
+      "standard"
+    ],
+    "third party": [
+      "accreditation",
+      "accreditation",
+      "accreditation",
+      "license"
+    ],
+    "component": [
+      "business_entity",
+      "business_entity"
+    ],
+    "forms part": [
+      "business_entity",
+      "business_entity"
+    ],
+    "structural": [
+      "business_entity",
+      "business_entity"
+    ],
+    "structural component": [
+      "business_entity",
+      "business_entity"
+    ],
+    "authored": [
+      "content",
+      "content",
+      "content"
+    ],
+    "authored item": [
+      "content",
+      "content",
+      "content"
+    ],
+    "among": [
+      "dispute"
+    ],
+    "among interested": [
+      "dispute"
+    ],
+    "argument": [
+      "dispute",
+      "dispute"
+    ],
+    "disagreement": [
+      "dispute",
+      "dispute",
+      "dispute"
+    ],
+    "disagreement among": [
+      "dispute"
+    ],
+    "dispute": [
+      "dispute",
+      "dispute",
+      "dispute"
+    ],
+    "interested": [
+      "dispute"
+    ],
+    "interested parties": [
+      "dispute"
+    ],
+    "official": [
+      "dispute"
+    ],
+    "official argument": [
+      "dispute"
+    ],
+    "chemical": [
+      "energy"
+    ],
+    "chemical resources": [
+      "energy"
+    ],
+    "derived": [
+      "energy"
+    ],
+    "devices": [
+      "energy"
+    ],
+    "energy": [
+      "energy",
+      "energy"
+    ],
+    "heat": [
+      "energy"
+    ],
+    "light": [
+      "energy"
+    ],
+    "machines": [
+      "energy"
+    ],
+    "provide light": [
+      "energy"
+    ],
+    "utilization": [
+      "energy"
+    ],
+    "work devices": [
+      "energy"
+    ],
+    "configurations": [
+      "facility"
+    ],
+    "docks": [
+      "facility"
+    ],
+    "include manufacturing": [
+      "facility"
+    ],
+    "manufacturing plants": [
+      "facility"
+    ],
+    "plants": [
+      "facility",
+      "biological_organism"
+    ],
+    "refineries": [
+      "facility"
+    ],
+    "shipping": [
+      "facility"
+    ],
+    "shipping docks": [
+      "facility"
+    ],
+    "structure where": [
+      "facility"
+    ],
+    "estimate": [
+      "financial_forecast",
+      "product_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "financial estimate": [
+      "financial_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "projection": [
+      "financial_forecast",
+      "product_forecast",
+      "financial_forecast",
+      "financial_forecast"
+    ],
+    "actual": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "actual financial": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "consolidated": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "financial position": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "financial standing": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "holistic": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "holistic representation": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "standing": [
+      "financial_position",
+      "financial_position",
+      "financial_position"
+    ],
+    "include compensation": [
+      "human_resource",
+      "human_resource",
+      "human_resource"
+    ],
+    "copyright": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "legal protection": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "patent": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "protection": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "trademark": [
+      "intellectual_property_rights",
+      "intellectual_property_rights",
+      "intellectual_property_rights"
+    ],
+    "facilities": [
+      "network"
+    ],
+    "center": [
+      "operation",
+      "operation"
+    ],
+    "dock": [
+      "operation"
+    ],
+    "loading dock": [
+      "operation"
+    ],
+    "manufacturing shift": [
+      "operation"
+    ],
+    "refinery": [
+      "operation"
+    ],
+    "service center": [
+      "operation"
+    ],
+    "shift": [
+      "operation",
+      "operation"
+    ],
+    "deliver": [
+      "order",
+      "order",
+      "order"
+    ],
+    "deliver goods": [
+      "order",
+      "order",
+      "order"
+    ],
+    "instruction": [
+      "order",
+      "order",
+      "order"
+    ],
+    "good": [
+      "order_item",
+      "order_item",
+      "order_item"
+    ],
+    "order element": [
+      "order_item",
+      "order_item",
+      "order_item"
+    ],
+    "order item": [
+      "order_item",
+      "order_item",
+      "order_item"
+    ],
+    "refers": [
+      "order_item",
+      "order_item",
+      "order_item"
+    ],
+    "specific good": [
+      "order_item",
+      "order_item",
+      "order_item"
+    ],
+    "provisioning": [
+      "partner",
+      "partner"
+    ],
+    "completed": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "include milestones": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "instructions": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "intended": [
+      "plan",
+      "research",
+      "plan",
+      "research",
+      "plan",
+      "research"
+    ],
+    "result when": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "sequenced": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "sequenced set": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "steps": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "when": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "when completed": [
+      "plan",
+      "plan",
+      "plan"
+    ],
+    "adhered": [
+      "policy",
+      "policy"
+    ],
+    "guideline": [
+      "policy",
+      "policy"
+    ],
+    "rule adopted": [
+      "policy",
+      "policy"
+    ],
+    "standard": [
+      "policy",
+      "policy",
+      "standard",
+      "standard"
+    ],
+    "given product": [
+      "product_forecast"
+    ],
+    "period": [
+      "product_forecast"
+    ],
+    "product forecast": [
+      "product_forecast"
+    ],
+    "establish": [
+      "research",
+      "evidence",
+      "research",
+      "research"
+    ],
+    "establish facts": [
+      "research",
+      "research",
+      "research"
+    ],
+    "insights": [
+      "research",
+      "research",
+      "research"
+    ],
+    "produce": [
+      "research",
+      "research",
+      "research"
+    ],
+    "produce insights": [
+      "research",
+      "research",
+      "research"
+    ],
+    "sources intended": [
+      "research",
+      "research",
+      "research"
+    ],
+    "get": [
+      "route"
+    ],
+    "aligned": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "aligned association": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "courses": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "guides": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "guides activity": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "provides": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "provides direction": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "visions": [
+      "strategy",
+      "strategy",
+      "strategy"
+    ],
+    "course of action": [
+      "course_of_action",
+      "course_of_action",
+      "course_of_action"
+    ],
+    "contributes": [
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "realization": [
+      "objective",
+      "objective",
+      "objective"
+    ],
+    "advantage": [
+      "beneficiary"
+    ],
+    "derives": [
+      "beneficiary"
+    ],
+    "biological": [
+      "biological_organism",
+      "biological_organism",
+      "health_condition"
+    ],
+    "biological organism": [
+      "biological_organism",
+      "biological_organism",
+      "health_condition"
+    ],
+    "consume": [
+      "biological_organism"
+    ],
+    "consume natural": [
+      "biological_organism"
+    ],
+    "earth": [
+      "biological_organism"
+    ],
+    "ecosystem": [
+      "biological_organism"
+    ],
+    "grow": [
+      "biological_organism"
+    ],
+    "living things": [
+      "biological_organism",
+      "health_condition"
+    ],
+    "microorganisms": [
+      "biological_organism"
+    ],
+    "natural": [
+      "biological_organism",
+      "natural_resource",
+      "natural_resource"
+    ],
+    "natural resources": [
+      "biological_organism"
+    ],
+    "organism": [
+      "biological_organism",
+      "biological_organism",
+      "health_condition"
+    ],
+    "react": [
+      "biological_organism"
+    ],
+    "reproduce": [
+      "biological_organism"
+    ],
+    "stimuli": [
+      "biological_organism"
+    ],
+    "things": [
+      "biological_organism",
+      "health_condition"
+    ],
+    "thrive": [
+      "biological_organism"
+    ],
+    "beneficiaries": [
+      "campaign",
+      "product"
+    ],
+    "example beneficiaries": [
+      "campaign"
+    ],
+    "members": [
+      "campaign"
+    ],
+    "supporters": [
+      "campaign"
+    ],
+    "board": [
+      "dispute"
+    ],
+    "challenge": [
+      "dispute"
+    ],
+    "determination": [
+      "dispute"
+    ],
+    "injustice": [
+      "dispute",
+      "dispute"
+    ],
+    "mediation": [
+      "dispute"
+    ],
+    "mediation review": [
+      "dispute"
+    ],
+    "perceived": [
+      "dispute",
+      "dispute"
+    ],
+    "perceived injustice": [
+      "dispute",
+      "dispute"
+    ],
+    "petition": [
+      "dispute"
+    ],
+    "protest": [
+      "dispute",
+      "dispute"
+    ],
+    "redress": [
+      "dispute"
+    ],
+    "resolved": [
+      "dispute"
+    ],
+    "review": [
+      "dispute"
+    ],
+    "review board": [
+      "dispute"
+    ],
+    "statement": [
+      "dispute"
+    ],
+    "accordance": [
+      "evidence",
+      "evidence"
+    ],
+    "base proof": [
+      "evidence"
+    ],
+    "establish truth": [
+      "evidence"
+    ],
+    "evidence": [
+      "evidence",
+      "financial_instrument",
+      "evidence",
+      "evidence",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "falsehood": [
+      "evidence"
+    ],
+    "preservation": [
+      "evidence"
+    ],
+    "privacy": [
+      "evidence"
+    ],
+    "proof": [
+      "evidence",
+      "evidence"
+    ],
+    "rules": [
+      "evidence",
+      "evidence",
+      "policy"
+    ],
+    "supported": [
+      "evidence",
+      "evidence"
+    ],
+    "supported body": [
+      "evidence",
+      "evidence"
+    ],
+    "truth": [
+      "evidence"
+    ],
+    "upon": [
+      "evidence"
+    ],
+    "bills": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "bonds": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "cash": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "financial instrument": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "futures": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "instrument": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "stocks": [
+      "financial_instrument",
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "tradeable": [
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "tradeable asset": [
+      "financial_instrument",
+      "financial_instrument"
+    ],
+    "affect": [
+      "health_condition"
+    ],
+    "biological organisms": [
+      "health_condition"
+    ],
+    "disabilities": [
+      "health_condition"
+    ],
+    "disease": [
+      "health_condition"
+    ],
+    "disorder": [
+      "health_condition"
+    ],
+    "health condition": [
+      "health_condition",
+      "health_condition"
+    ],
+    "human beings": [
+      "health_condition"
+    ],
+    "illness": [
+      "health_condition"
+    ],
+    "impairment": [
+      "health_condition"
+    ],
+    "including human": [
+      "health_condition"
+    ],
+    "injury": [
+      "health_condition"
+    ],
+    "medical": [
+      "health_condition"
+    ],
+    "medical disabilities": [
+      "health_condition"
+    ],
+    "mental": [
+      "health_condition"
+    ],
+    "mental disorder": [
+      "health_condition"
+    ],
+    "permanently": [
+      "health_condition"
+    ],
+    "temporarily": [
+      "health_condition"
+    ],
+    "temporarily affect": [
+      "health_condition"
+    ],
+    "things including": [
+      "health_condition"
+    ],
+    "disruptive experience": [
+      "incident",
+      "incident"
+    ],
+    "unplanned disruptive": [
+      "incident"
+    ],
+    "bridges": [
+      "infrastructure",
+      "infrastructure"
+    ],
+    "buildings": [
+      "infrastructure"
+    ],
+    "include buildings": [
+      "infrastructure"
+    ],
+    "pipelines": [
+      "infrastructure",
+      "infrastructure"
+    ],
+    "railways": [
+      "infrastructure",
+      "infrastructure"
+    ],
+    "tunnels": [
+      "infrastructure",
+      "infrastructure"
+    ],
+    "accountable organization": [
+      "job"
+    ],
+    "organization duty": [
+      "job"
+    ],
+    "chemicals": [
+      "material",
+      "material"
+    ],
+    "crops": [
+      "material",
+      "material"
+    ],
+    "elements used": [
+      "material",
+      "material"
+    ],
+    "equipment": [
+      "material",
+      "material"
+    ],
+    "food": [
+      "material",
+      "material"
+    ],
+    "growing": [
+      "material",
+      "material"
+    ],
+    "including sustaining": [
+      "material",
+      "material"
+    ],
+    "ingredients": [
+      "material",
+      "material"
+    ],
+    "life": [
+      "material",
+      "material"
+    ],
+    "outcome including": [
+      "material",
+      "material"
+    ],
+    "physical elements": [
+      "material",
+      "material"
+    ],
+    "sustaining": [
+      "material",
+      "material"
+    ],
+    "sustaining life": [
+      "material",
+      "material"
+    ],
+    "waste": [
+      "material",
+      "material"
+    ],
+    "natural resource": [
+      "natural_resource",
+      "natural_resource"
+    ],
+    "nature": [
+      "natural_resource",
+      "natural_resource"
+    ],
+    "occur": [
+      "natural_resource",
+      "natural_resource"
+    ],
+    "confirmed": [
+      "standard",
+      "standard"
+    ],
+    "convention": [
+      "standard",
+      "standard"
+    ],
+    "defined convention": [
+      "standard"
+    ],
+    "governance": [
+      "standard",
+      "standard"
+    ],
+    "governance body": [
+      "standard",
+      "standard"
+    ],
+    "measurement": [
+      "standard",
+      "standard"
+    ],
+    "recognized governance": [
+      "standard",
+      "standard"
+    ],
+    "specification": [
+      "standard",
+      "standard"
+    ],
+    "locations until": [
+      "trip",
+      "trip"
+    ],
+    "candidate": [
+      "vote",
+      "vote"
+    ],
+    "candidate election": [
+      "vote",
+      "vote"
+    ],
+    "choice": [
+      "vote",
+      "vote"
+    ],
+    "election": [
+      "vote",
+      "vote"
+    ],
+    "formal": [
+      "vote",
+      "vote"
+    ],
+    "formal indication": [
+      "vote",
+      "vote"
+    ],
+    "indication": [
+      "vote",
+      "vote"
+    ],
+    "proposition": [
+      "vote",
+      "evidence",
+      "evidence",
+      "vote"
+    ],
+    "referendum": [
+      "vote",
+      "vote"
+    ],
+    "vote": [
+      "vote",
+      "vote"
+    ],
+    "comprised": [
+      "business_entity"
+    ],
+    "integrates": [
+      "strategy"
+    ],
+    "policies": [
+      "strategy"
+    ],
+    "certification": [
+      "accreditation"
+    ],
+    "expertise": [
+      "accreditation"
+    ],
+    "specified": [
+      "accreditation"
+    ],
+    "specified subject": [
+      "accreditation"
+    ],
+    "disruptive occurrence": [
+      "incident"
+    ],
+    "claim": [
+      "claim",
+      "device",
+      "case",
+      "claim"
+    ],
+    "indemnify": [
+      "claim",
+      "claim"
+    ],
+    "provider": [
+      "claim"
+    ],
+    "terms": [
+      "claim",
+      "claim"
+    ],
+    "provision": [
+      "network"
+    ],
+    "approach": [
+      "device"
+    ],
+    "cataloged": [
+      "device"
+    ],
+    "contrivance": [
+      "device"
+    ],
+    "device": [
+      "device"
+    ],
+    "identifiable": [
+      "device"
+    ],
+    "implant": [
+      "device"
+    ],
+    "likelihood": [
+      "device"
+    ],
+    "machine": [
+      "device"
+    ],
+    "mitigate": [
+      "device"
+    ],
+    "outcomes": [
+      "device"
+    ],
+    "reagent": [
+      "device"
+    ],
+    "reduce": [
+      "device"
+    ],
+    "vitro": [
+      "device"
+    ],
+    "vitro reagent": [
+      "device"
+    ],
+    "act": [
+      "case"
+    ],
+    "address": [
+      "case"
+    ],
+    "case": [
+      "case",
+      "case"
+    ],
+    "context": [
+      "case",
+      "case"
+    ],
+    "healthcare": [
+      "case",
+      "case"
+    ],
+    "need": [
+      "case",
+      "case"
+    ],
+    "ongoing": [
+      "case"
+    ],
+    "ongoing healthcare": [
+      "case"
+    ],
+    "otherwise": [
+      "case"
+    ],
+    "otherwise address": [
+      "case"
+    ],
+    "report": [
+      "case"
+    ],
+    "requires": [
+      "case",
+      "case"
+    ],
+    "requires resolution": [
+      "case",
+      "case"
+    ],
+    "resolve": [
+      "case"
+    ],
+    "belief": [
+      "evidence"
+    ],
+    "facts indicating": [
+      "evidence"
+    ],
+    "indicating": [
+      "evidence"
+    ],
+    "indicating whether": [
+      "evidence"
+    ],
+    "true": [
+      "evidence"
+    ],
+    "valid": [
+      "evidence"
+    ],
+    "actuary": [
+      "geographic_space"
+    ],
+    "body responsible": [
+      "geographic_space"
+    ],
+    "describing": [
+      "geographic_space"
+    ],
+    "determined": [
+      "geographic_space"
+    ],
+    "government": [
+      "geographic_space",
+      "case",
+      "government_service"
+    ],
+    "government body": [
+      "geographic_space"
+    ],
+    "identifying": [
+      "geographic_space"
+    ],
+    "insurance": [
+      "geographic_space"
+    ],
+    "insurance actuary": [
+      "geographic_space"
+    ],
+    "responsible": [
+      "geographic_space"
+    ],
+    "living thing": [
+      "biological_organism"
+    ],
+    "thing": [
+      "biological_organism"
+    ],
+    "constituents": [
+      "campaign",
+      "claim",
+      "government_service"
+    ],
+    "government services": [
+      "case"
+    ],
+    "related government": [
+      "case"
+    ],
+    "social": [
+      "case"
+    ],
+    "social welfare": [
+      "case"
+    ],
+    "welfare": [
+      "case"
+    ],
+    "indemnify constituents": [
+      "claim"
+    ],
+    "constituent": [
+      "constituent",
+      "payment"
+    ],
+    "entity relative": [
+      "constituent"
+    ],
+    "relative": [
+      "constituent"
+    ],
+    "responsibility": [
+      "constituent"
+    ],
+    "sphere": [
+      "constituent"
+    ],
+    "assembly": [
+      "conveyor"
+    ],
+    "support": [
+      "evidence"
+    ],
+    "entitlements": [
+      "government_service"
+    ],
+    "government service": [
+      "government_service"
+    ],
+    "others": [
+      "government_service"
+    ],
+    "authoritative": [
+      "legislation"
+    ],
+    "authoritative directives": [
+      "legislation"
+    ],
+    "include laws": [
+      "legislation"
+    ],
+    "laws": [
+      "legislation"
+    ],
+    "related statutory": [
+      "legislation"
+    ],
+    "statutory": [
+      "legislation"
+    ],
+    "statutory instruments": [
+      "legislation"
+    ],
+    "agency": [
+      "license"
+    ],
+    "applied": [
+      "license"
+    ],
+    "authorization": [
+      "license"
+    ],
+    "awarded": [
+      "license"
+    ],
+    "engage": [
+      "license"
+    ],
+    "fishing": [
+      "license"
+    ],
+    "governmental": [
+      "license",
+      "public_sector_entity"
+    ],
+    "governmental agency": [
+      "license"
+    ],
+    "hazardous materials": [
+      "license"
+    ],
+    "license": [
+      "license",
+      "license_term"
+    ],
+    "perform": [
+      "license"
+    ],
+    "recognized governmental": [
+      "license"
+    ],
+    "regulated": [
+      "license"
+    ],
+    "regulated activity": [
+      "license"
+    ],
+    "regulated objects": [
+      "license"
+    ],
+    "use": [
+      "license"
+    ],
+    "license term": [
+      "license_term"
+    ],
+    "across government": [
+      "operation"
+    ],
+    "administrative": [
+      "operation"
+    ],
+    "administrative shift": [
+      "operation"
+    ],
+    "cycles": [
+      "operation"
+    ],
+    "cycles across": [
+      "operation"
+    ],
+    "enforcement": [
+      "operation"
+    ],
+    "law enforcement": [
+      "operation"
+    ],
+    "monitoring station": [
+      "operation"
+    ],
+    "shift cycles": [
+      "operation"
+    ],
+    "transportation": [
+      "operation"
+    ],
+    "transportation center": [
+      "operation"
+    ],
+    "codified": [
+      "policy"
+    ],
+    "codified proposed": [
+      "policy"
+    ],
+    "intent": [
+      "policy",
+      "partner"
+    ],
+    "principles": [
+      "policy"
+    ],
+    "procedures": [
+      "policy"
+    ],
+    "proposed intent": [
+      "policy"
+    ],
+    "regulations": [
+      "policy"
+    ],
+    "governmental bodies": [
+      "public_sector_entity"
+    ],
+    "governmental body": [
+      "public_sector_entity"
+    ],
+    "public": [
+      "public_sector_entity"
+    ],
+    "public sector entity": [
+      "public_sector_entity"
+    ],
+    "sector": [
+      "public_sector_entity"
+    ],
+    "assistance": [
+      "partner"
+    ],
+    "exchange value": [
+      "partner"
+    ],
+    "tradable": [
+      "financial_instrument"
+    ],
+    "tradable asset": [
+      "financial_instrument"
+    ],
+    "borrowing": [
+      "collateral"
+    ],
+    "collateral": [
+      "collateral"
+    ],
+    "customer offers": [
+      "collateral"
+    ],
+    "lending": [
+      "collateral"
+    ],
+    "lending agreement": [
+      "collateral"
+    ],
+    "offers": [
+      "collateral"
+    ],
+    "unintended": [
+      "incident"
+    ],
+    "unpleasant": [
+      "incident"
+    ],
+    "untoward": [
+      "incident"
+    ],
+    "unusual": [
+      "incident"
+    ]
+  }
+}

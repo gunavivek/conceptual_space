@@ -1,0 +1,154 @@
+{
+  "validation": {
+    "valid_relationships": 1067,
+    "invalid_relationships": [
+      {
+        "from": "legal_proceeding",
+        "to": "information",
+        "reason": "Target concept not found"
+      },
+      {
+        "from": "order",
+        "to": "information",
+        "reason": "Target concept not found"
+      },
+      {
+        "from": "time",
+        "to": "information",
+        "reason": "Target concept not found"
+      },
+      {
+        "from": "conveyor",
+        "to": "intellectual_property",
+        "reason": "Target concept not found"
+      },
+      {
+        "from": "trip",
+        "to": "information",
+        "reason": "Target concept not found"
+      },
+      {
+        "from": "work_event",
+        "to": "action_items",
+        "reason": "Target concept not found"
+      }
+    ],
+    "bidirectional_added": 370
+  },
+  "statistics": {
+    "processing": {
+      "total_rows": 516,
+      "valid_concepts": 516,
+      "skipped_rows": 419,
+      "domains": 8,
+      "unique_keywords": 1157
+    },
+    "concepts": {
+      "total": 97,
+      "avg_keywords_per_concept": 13.443298969072165,
+      "avg_relationships_per_concept": 14.474226804123711,
+      "max_keywords": 29,
+      "max_relationships": 45
+    },
+    "domains": {
+      "total": 8,
+      "distribution": {
+        "common": 54,
+        "transportation": 64,
+        "telecom": 63,
+        "manufacturing": 70,
+        "international development org": 70,
+        "insurance": 60,
+        "government": 80,
+        "finance": 55
+      }
+    },
+    "keywords": {
+      "total_unique": 1157,
+      "avg_concepts_per_keyword": 5.738115816767502,
+      "top_keywords": [
+        {
+          "keyword": "organization",
+          "concept_count": 69
+        },
+        {
+          "keyword": "legal",
+          "concept_count": 52
+        },
+        {
+          "keyword": "monetary",
+          "concept_count": 51
+        },
+        {
+          "keyword": "set",
+          "concept_count": 49
+        },
+        {
+          "keyword": "physical",
+          "concept_count": 47
+        },
+        {
+          "keyword": "work",
+          "concept_count": 46
+        },
+        {
+          "keyword": "products",
+          "concept_count": 43
+        },
+        {
+          "keyword": "services",
+          "concept_count": 43
+        },
+        {
+          "keyword": "value",
+          "concept_count": 40
+        },
+        {
+          "keyword": "related",
+          "concept_count": 39
+        },
+        {
+          "keyword": "human",
+          "concept_count": 37
+        },
+        {
+          "keyword": "agreement",
+          "concept_count": 36
+        },
+        {
+          "keyword": "one",
+          "concept_count": 33
+        },
+        {
+          "keyword": "financial",
+          "concept_count": 33
+        },
+        {
+          "keyword": "exchange",
+          "concept_count": 32
+        },
+        {
+          "keyword": "future",
+          "concept_count": 32
+        },
+        {
+          "keyword": "business",
+          "concept_count": 31
+        },
+        {
+          "keyword": "plans",
+          "concept_count": 31
+        },
+        {
+          "keyword": "specific",
+          "concept_count": 30
+        },
+        {
+          "keyword": "time",
+          "concept_count": 29
+        }
+      ]
+    }
+  },
+  "processing_timestamp": "2025-08-29T22:08:44.255259"
+}

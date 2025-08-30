@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "alignment_timestamp": "2025-08-29T15:27:30.444548",
+    "total_concepts_aligned": 3,
+    "alignment_method": "BIZBOK_similarity_matching",
+    "version": "2.0"
+  },
+  "alignment_mappings": {
+    "direct_alignments": {},
+    "suggested_alignments": {},
+    "custom_concepts": {
+      "mock_1": {
+        "alignment_type": "custom",
+        "alignment_confidence": 0.0,
+        "original_name": "Revenue Management",
+        "domain": "finance",
+        "reason": "No suitable BIZBOK alignment found",
+        "recommendation": "Consider adding to BIZBOK resources"
+      },
+      "mock_2": {
+        "alignment_type": "custom",
+        "alignment_confidence": 0.0,
+        "original_name": "Supply Chain Operations",
+        "domain": "operations",
+        "reason": "No suitable BIZBOK alignment found",
+        "recommendation": "Consider adding to BIZBOK resources"
+      },
+      "mock_3": {
+        "alignment_type": "custom",
+        "alignment_confidence": 0.0,
+        "original_name": "Cash Flow Analysis",
+        "domain": "finance",
+        "reason": "No suitable BIZBOK alignment found",
+        "recommendation": "Consider adding to BIZBOK resources"
+      }
+    },
+    "term_unifications": {},
+    "alignment_statistics": {
+      "total_processed": 3,
+      "direct_count": 0,
+      "suggested_count": 0,
+      "custom_count": 3
+    }
+  },
+  "standardized_concepts": {
+    "mock_1": {
+      "concept_id": "mock_1",
+      "standardized_name": "Revenue Management",
+      "original_name": "Revenue Management",
+      "standardized_definition": "Custom concept: Revenue Management",
+      "standardized_terms": [
+        "earnings",
+        "revenue",
+        "sales",
+        "income"
+      ],
+      "domain": "finance",
+      "alignment_confidence": 0.0,
+      "source": "pipeline_custom",
+      "bizbok_id": null,
+      "standardization_type": "custom",
+      "custom_standardization": true
+    },
+    "mock_2": {
+      "concept_id": "mock_2",
+      "standardized_name": "Supply Chain Operations",
+      "original_name": "Supply Chain Operations",
+      "standardized_definition": "Custom concept: Supply Chain Operations",
+      "standardized_terms": [
+        "logistics",
+        "chain",
+        "inventory",
+        "supply"
+      ],
+      "domain": "operations",
+      "alignment_confidence": 0.0,
+      "source": "pipeline_custom",
+      "bizbok_id": null,
+      "standardization_type": "custom",
+      "custom_standardization": true
+    },
+    "mock_3": {
+      "concept_id": "mock_3",
+      "standardized_name": "Cash Flow Analysis",
+      "original_name": "Cash Flow Analysis",
+      "standardized_definition": "Custom concept: Cash Flow Analysis",
+      "standardized_terms": [
+        "cash",
+        "working",
+        "flow",
+        "liquidity",
+        "capital"
+      ],
+      "domain": "finance",
+      "alignment_confidence": 0.0,
+      "source": "pipeline_custom",
+      "bizbok_id": null,
+      "standardization_type": "custom",
+      "custom_standardization": true
+    }
+  },
+  "quality_analysis": {
+    "total_concepts": 3,
+    "alignment_distribution": {
+      "direct_alignments": 0,
+      "suggested_alignments": 0,
+      "custom_concepts": 3
+    },
+    "alignment_percentages": {
+      "direct": 0.0,
+      "suggested": 0.0,
+      "custom": 100.0
+    },
+    "domain_alignment_quality": {
+      "finance": 0.0,
+      "operations": 0.0
+    },
+    "terminology_unification": {
+      "unified_terms": 0,
+      "avg_concepts_per_term": 0
+    },
+    "overall_alignment_rate": 0.0
+  },
+  "recommendations": [
+    {
+      "type": "alignment_rate",
+      "priority": "high",
+      "message": "Low alignment rate (0.0%) - review concept extraction to better match BIZBOK standards"
+    },
+    {
+      "type": "custom_concepts",
+      "priority": "medium",
+      "message": "High custom concepts (100.0%) - consider expanding BIZBOK resources"
+    },
+    {
+      "type": "domain_quality",
+      "priority": "medium",
+      "message": "Poor finance alignment quality (0.00) - strengthen finance BIZBOK concepts"
+    },
+    {
+      "type": "domain_quality",
+      "priority": "medium",
+      "message": "Poor operations alignment quality (0.00) - strengthen operations BIZBOK concepts"
+    }
+  ]
+}

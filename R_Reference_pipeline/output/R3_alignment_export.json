@@ -1,0 +1,52 @@
+{
+  "concept_dictionary": {
+    "mock_1": {
+      "name": "Revenue Management",
+      "definition": "Custom concept: Revenue Management",
+      "terms": [
+        "earnings",
+        "revenue",
+        "sales",
+        "income"
+      ],
+      "domain": "finance",
+      "source": "pipeline_custom"
+    },
+    "mock_2": {
+      "name": "Supply Chain Operations",
+      "definition": "Custom concept: Supply Chain Operations",
+      "terms": [
+        "logistics",
+        "chain",
+        "inventory",
+        "supply"
+      ],
+      "domain": "operations",
+      "source": "pipeline_custom"
+    },
+    "mock_3": {
+      "name": "Cash Flow Analysis",
+      "definition": "Custom concept: Cash Flow Analysis",
+      "terms": [
+        "cash",
+        "working",
+        "flow",
+        "liquidity",
+        "capital"
+      ],
+      "domain": "finance",
+      "source": "pipeline_custom"
+    }
+  },
+  "term_mappings": {},
+  "domain_hierarchies": {
+    "finance": [
+      "mock_1",
+      "mock_3"
+    ],
+    "operations": [
+      "mock_2"
+    ]
+  },
+  "alignment_registry": {}
+}
