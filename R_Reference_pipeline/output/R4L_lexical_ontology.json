@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "creation_timestamp": "2025-08-30T14:10:27.762457",
+    "creation_timestamp": "2025-08-30T15:05:53.330510",
     "total_concepts": 97,
-    "ontology_type": "BIZBOK_semantic",
+    "ontology_type": "BIZBOK_lexical",
     "version": "2.0",
     "cpu_optimized": true
   },
@@ -35,7 +35,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "agreement_term",
             "customer",
             "partner",
@@ -82,7 +82,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "license_term",
             "agreement",
             "policy"
@@ -117,7 +117,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "work_item",
             "investment_portfolio",
             "job",
@@ -161,7 +161,7 @@
         },
         "cluster": "cluster_1",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "market",
             "channel",
             "message",
@@ -205,7 +205,7 @@
         },
         "cluster": "cluster_1",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "financial_forecast",
             "intellectual_property_rights",
             "inquiry",
@@ -264,7 +264,7 @@
         },
         "cluster": "cluster_1",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "plan",
             "job",
             "finance",
@@ -319,7 +319,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "customer",
             "message",
             "product",
@@ -357,7 +357,7 @@
         },
         "cluster": "cluster_2",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "content",
             "human_resource",
             "job",
@@ -404,7 +404,7 @@
         },
         "cluster": "cluster_2",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "content_impression",
             "submission",
             "work_item",
@@ -442,7 +442,7 @@
         },
         "cluster": "cluster_3",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "content"
           ],
           "causal": [],
@@ -481,7 +481,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "beneficiary",
             "partner",
             "human_resource",
@@ -523,7 +523,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "agreement",
             "business_entity",
             "content",
@@ -565,7 +565,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "schedule_element",
             "order",
             "submission",
@@ -609,7 +609,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "interaction",
             "channel",
             "agreement",
@@ -646,7 +646,7 @@
         },
         "cluster": "cluster_4",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "monetary_amount",
             "tax",
             "payment",
@@ -685,7 +685,7 @@
         },
         "cluster": "cluster_4",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "monetary_amount",
             "investment_portfolio",
             "financial_account",
@@ -738,7 +738,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "tax",
             "financial_transaction",
             "monetary_amount",
@@ -779,7 +779,7 @@
         },
         "cluster": "cluster_4",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "business_entity",
             "finance"
           ],
@@ -827,7 +827,7 @@
         },
         "cluster": "cluster_4",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "monetary_amount",
             "payment",
             "financial_account",
@@ -868,7 +868,7 @@
         },
         "cluster": "cluster_4",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "currency",
             "payment",
             "financial_transaction",
@@ -913,7 +913,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "monetary_amount",
             "financial_transaction",
             "finance",
@@ -955,7 +955,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "monetary_amount",
             "finance",
             "financial_account",
@@ -1005,7 +1005,7 @@
         },
         "cluster": "cluster_2",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "schedule_element",
             "job",
             "work_item",
@@ -1052,7 +1052,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "agreement",
             "asset",
             "brand",
@@ -1097,7 +1097,7 @@
         },
         "cluster": "cluster_5",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "human_resource",
             "asset",
             "campaign",
@@ -1145,7 +1145,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "business_entity",
             "channel",
             "agreement",
@@ -1187,7 +1187,7 @@
         },
         "cluster": "cluster_1",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "asset",
             "legal_proceeding",
             "business_entity",
@@ -1244,7 +1244,7 @@
         },
         "cluster": "cluster_5",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "facility",
             "event",
             "plan",
@@ -1288,7 +1288,7 @@
         },
         "cluster": "cluster_5",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "asset",
             "investment",
             "currency",
@@ -1343,7 +1343,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "asset",
             "human_resource",
             "work_item",
@@ -1398,7 +1398,7 @@
         },
         "cluster": "cluster_2",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "training_course",
             "competency",
             "content",
@@ -1440,7 +1440,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "partner",
             "customer",
             "agreement",
@@ -1475,7 +1475,7 @@
         },
         "cluster": "cluster_6",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "schedule_element",
             "asset",
             "campaign",
@@ -1519,7 +1519,7 @@
         },
         "cluster": "cluster_1",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "customer",
             "product",
             "brand",
@@ -1577,7 +1577,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "customer",
             "partner",
             "channel",
@@ -1621,7 +1621,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "product",
             "event",
             "customer",
@@ -1661,7 +1661,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "customer",
             "beneficiary",
             "human_resource",
@@ -1700,7 +1700,7 @@
         },
         "cluster": "cluster_2",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "policy",
             "strategy",
             "objective",
@@ -1740,7 +1740,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "strategy",
             "plan",
             "case",
@@ -1782,7 +1782,7 @@
         },
         "cluster": "cluster_0",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "order",
             "customer",
             "market",
@@ -1820,7 +1820,7 @@
         },
         "cluster": "cluster_5",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "content",
             "decision",
             "human_resource",
@@ -1856,7 +1856,7 @@
         },
         "cluster": "cluster_5",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "schedule_element",
             "decision",
             "event",
@@ -1909,7 +1909,7 @@
         },
         "cluster": "cluster_6",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "human_resource",
             "event",
             "location",
@@ -1956,7 +1956,7 @@
         },
         "cluster": "cluster_4",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "policy",
             "plan",
             "objective",
@@ -1997,7 +1997,7 @@
         },
         "cluster": "cluster_7",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "objective",
             "strategy",
             "course_of_action"
@@ -2033,7 +2033,7 @@
         },
         "cluster": "cluster_8",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "decision",
             "strategy",
             "objective",
@@ -2072,7 +2072,7 @@
         },
         "cluster": "cluster_7",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "strategy",
             "plan",
             "policy",
@@ -2110,7 +2110,7 @@
         },
         "cluster": "cluster_8",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "strategy",
             "goal"
           ],
@@ -2151,7 +2151,7 @@
         },
         "cluster": "cluster_9",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "event",
             "content",
             "message",
@@ -2189,7 +2189,7 @@
         },
         "cluster": "cluster_10",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "schedule_element",
             "decision",
             "event",
@@ -2238,7 +2238,7 @@
         },
         "cluster": "cluster_2",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "interaction",
             "language",
             "business_entity",
@@ -2275,7 +2275,7 @@
         },
         "cluster": "cluster_11",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "work_item",
             "work_queue",
             "schedule_element",
@@ -2320,7 +2320,7 @@
         },
         "cluster": "cluster_9",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "asset",
             "job",
             "human_resource",
@@ -2364,7 +2364,7 @@
         },
         "cluster": "cluster_11",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "work",
             "work_item",
             "human_resource"
@@ -2421,7 +2421,7 @@
         },
         "cluster": "cluster_12",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -2460,7 +2460,7 @@
         },
         "cluster": "cluster_13",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -2507,7 +2507,7 @@
         },
         "cluster": "cluster_14",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "cadaster"
           ],
           "causal": [],
@@ -2552,7 +2552,7 @@
         },
         "cluster": "cluster_15",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "investment_portfolio",
             "asset",
             "infrastructure"
@@ -2609,7 +2609,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "material",
             "shipment",
             "operation",
@@ -2665,7 +2665,7 @@
         },
         "cluster": "cluster_15",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "operation",
             "investment"
           ],
@@ -2713,7 +2713,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "conveyor",
             "operation"
           ],
@@ -2757,7 +2757,7 @@
         },
         "cluster": "cluster_17",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "operation",
             "network_arc",
             "network_node"
@@ -2793,7 +2793,7 @@
         },
         "cluster": "cluster_17",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "network_node",
             "network",
             "route"
@@ -2829,7 +2829,7 @@
         },
         "cluster": "cluster_17",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "network_arc",
             "network"
           ],
@@ -2883,7 +2883,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "network",
             "infrastructure",
             "route",
@@ -2943,7 +2943,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "trip",
             "operation",
             "conveyor",
@@ -2992,7 +2992,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "shipment_item",
             "conveyor",
             "route",
@@ -3036,7 +3036,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "shipment",
             "conveyor",
             "route",
@@ -3088,7 +3088,7 @@
         },
         "cluster": "cluster_16",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "route",
             "conveyor",
             "shipment",
@@ -3124,7 +3124,7 @@
         },
         "cluster": "cluster_18",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3168,7 +3168,7 @@
         },
         "cluster": "cluster_19",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3211,7 +3211,7 @@
         },
         "cluster": "cluster_20",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3248,7 +3248,7 @@
         },
         "cluster": "cluster_21",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3294,7 +3294,7 @@
         },
         "cluster": "cluster_22",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3335,7 +3335,7 @@
         },
         "cluster": "cluster_23",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3371,7 +3371,7 @@
         },
         "cluster": "cluster_24",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3407,7 +3407,7 @@
         },
         "cluster": "cluster_25",
         "relationships": {
-          "semantic": [],
+          "lexical": [],
           "causal": [],
           "compositional": [],
           "temporal": []
@@ -3441,7 +3441,7 @@
         },
         "cluster": "cluster_7",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "action_item"
           ],
           "causal": [],
@@ -3481,7 +3481,7 @@
         },
         "cluster": "cluster_26",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "customer",
             "partner",
             "biological_organism",
@@ -3540,7 +3540,7 @@
         },
         "cluster": "cluster_26",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "health_condition",
             "natural_resource",
             "beneficiary",
@@ -3598,7 +3598,7 @@
         },
         "cluster": "cluster_26",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "standard",
             "beneficiary",
             "biological_organism",
@@ -3645,7 +3645,7 @@
         },
         "cluster": "cluster_27",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "standard"
           ],
           "causal": [],
@@ -3702,7 +3702,7 @@
         },
         "cluster": "cluster_26",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "biological_organism",
             "beneficiary",
             "standard"
@@ -3738,7 +3738,7 @@
         },
         "cluster": "cluster_27",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "asset",
             "biological_organism",
             "evidence",
@@ -3781,7 +3781,7 @@
         },
         "cluster": "cluster_26",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "evidence",
             "beneficiary",
             "biological_organism",
@@ -3823,7 +3823,7 @@
         },
         "cluster": "cluster_26",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "beneficiary",
             "evidence",
             "standard"
@@ -3862,7 +3862,7 @@
         },
         "cluster": "cluster_28",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "case",
             "device",
             "customer"
@@ -3908,7 +3908,7 @@
         },
         "cluster": "cluster_28",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "claim"
           ],
           "causal": [],
@@ -3957,7 +3957,7 @@
         },
         "cluster": "cluster_28",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "policy",
             "claim",
             "plan"
@@ -4006,7 +4006,7 @@
         },
         "cluster": "cluster_14",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "geographic_space_cadaster"
           ],
           "causal": [],
@@ -4042,7 +4042,7 @@
         },
         "cluster": "cluster_29",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "license",
             "government_service",
             "legislation"
@@ -4085,7 +4085,7 @@
         },
         "cluster": "cluster_29",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "constituent"
           ],
           "causal": [],
@@ -4126,7 +4126,7 @@
         },
         "cluster": "cluster_29",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "constituent",
             "public_sector_entity"
           ],
@@ -4181,7 +4181,7 @@
         },
         "cluster": "cluster_29",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "constituent",
             "public_sector_entity"
           ],
@@ -4225,7 +4225,7 @@
         },
         "cluster": "cluster_30",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "agreement_term"
           ],
           "causal": [],
@@ -4263,7 +4263,7 @@
         },
         "cluster": "cluster_31",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "license",
             "legislation"
           ],
@@ -4303,7 +4303,7 @@
         },
         "cluster": "cluster_32",
         "relationships": {
-          "semantic": [
+          "lexical": [
             "asset"
           ],
           "causal": [],
@@ -5348,15 +5348,15 @@
       }
     },
     "relationships": {
-      "semantic": {
+      "lexical": {
         "agreement": [
           {
             "concept_id": "agreement_term",
             "similarity": 0.525,
             "common_keywords": [
-              "set",
+              "legally",
               "agreement",
-              "legally"
+              "set"
             ]
           },
           {
@@ -5417,25 +5417,25 @@
             "concept_id": "license_term",
             "similarity": 0.7647058823529411,
             "common_keywords": [
-              "condition set",
-              "set",
-              "term",
-              "enforceable condition",
-              "within",
-              "enforceable",
               "forth",
+              "condition set",
+              "enforceable",
               "forth within",
+              "term",
+              "legally",
+              "condition",
+              "enforceable condition",
               "legally enforceable",
-              "bounds"
+              "set forth"
             ]
           },
           {
             "concept_id": "agreement",
             "similarity": 0.525,
             "common_keywords": [
-              "set",
+              "legally",
               "agreement",
-              "legally"
+              "set"
             ]
           },
           {
@@ -5450,11 +5450,11 @@
             "similarity": 0.6857142857142857,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5462,11 +5462,11 @@
             "similarity": 0.6,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5474,11 +5474,11 @@
             "similarity": 0.5935483870967742,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5486,11 +5486,11 @@
             "similarity": 0.5833333333333333,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5498,11 +5498,11 @@
             "similarity": 0.4833333333333333,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5510,11 +5510,11 @@
             "similarity": 0.4318181818181818,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5522,11 +5522,11 @@
             "similarity": 0.42857142857142855,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -5678,8 +5678,8 @@
             "concept_id": "job",
             "similarity": 0.4377358490566038,
             "common_keywords": [
-              "human",
-              "specific"
+              "specific",
+              "human"
             ]
           },
           {
@@ -5904,16 +5904,16 @@
             "concept_id": "beneficiary",
             "similarity": 0.7692307692307693,
             "common_keywords": [
-              "beneficiary",
               "legal",
-              "services",
-              "agreement",
-              "products",
               "entity",
               "legal entity",
+              "beneficiary",
               "recipient",
+              "agreement",
+              "plans",
+              "services",
               "organization",
-              "plans"
+              "products"
             ]
           },
           {
@@ -5923,8 +5923,8 @@
               "legal",
               "entity",
               "legal entity",
-              "organization",
-              "plans"
+              "plans",
+              "organization"
             ]
           },
           {
@@ -5932,9 +5932,9 @@
             "similarity": 0.5290322580645161,
             "common_keywords": [
               "legal",
-              "plans",
+              "organization",
               "agreement",
-              "organization"
+              "plans"
             ]
           },
           {
@@ -5957,9 +5957,9 @@
             "concept_id": "message",
             "similarity": 0.48823529411764705,
             "common_keywords": [
-              "plans",
               "organization",
-              "products"
+              "products",
+              "plans"
             ]
           },
           {
@@ -6049,8 +6049,8 @@
             "concept_id": "schedule_element",
             "similarity": 0.4588235294117647,
             "common_keywords": [
-              "event",
-              "one"
+              "one",
+              "event"
             ]
           },
           {
@@ -6261,8 +6261,8 @@
             "similarity": 0.46818181818181814,
             "common_keywords": [
               "value",
-              "monetary",
-              "monetary value"
+              "monetary value",
+              "monetary"
             ]
           },
           {
@@ -6270,8 +6270,8 @@
             "similarity": 0.45660377358490567,
             "common_keywords": [
               "financial",
-              "monetary",
-              "related"
+              "related",
+              "monetary"
             ]
           },
           {
@@ -6343,8 +6343,8 @@
             "concept_id": "monetary_amount",
             "similarity": 0.52,
             "common_keywords": [
-              "monetary",
               "amount",
+              "monetary",
               "monetary amount"
             ]
           },
@@ -6352,8 +6352,8 @@
             "concept_id": "payment",
             "similarity": 0.48823529411764705,
             "common_keywords": [
-              "monetary",
               "amount",
+              "monetary",
               "monetary amount"
             ]
           },
@@ -6362,8 +6362,8 @@
             "similarity": 0.45660377358490567,
             "common_keywords": [
               "financial",
-              "monetary",
-              "related"
+              "related",
+              "monetary"
             ]
           },
           {
@@ -6421,8 +6421,8 @@
             "concept_id": "payment",
             "similarity": 0.525,
             "common_keywords": [
-              "monetary",
               "amount",
+              "monetary",
               "monetary amount"
             ]
           },
@@ -6430,8 +6430,8 @@
             "concept_id": "financial_transaction",
             "similarity": 0.52,
             "common_keywords": [
-              "monetary",
               "amount",
+              "monetary",
               "monetary amount"
             ]
           },
@@ -6464,8 +6464,8 @@
             "concept_id": "monetary_amount",
             "similarity": 0.525,
             "common_keywords": [
-              "monetary",
               "amount",
+              "monetary",
               "monetary amount"
             ]
           },
@@ -6473,8 +6473,8 @@
             "concept_id": "financial_transaction",
             "similarity": 0.48823529411764705,
             "common_keywords": [
-              "monetary",
               "amount",
+              "monetary",
               "monetary amount"
             ]
           },
@@ -6543,8 +6543,8 @@
             "similarity": 0.46818181818181814,
             "common_keywords": [
               "value",
-              "monetary",
-              "monetary value"
+              "monetary value",
+              "monetary"
             ]
           },
           {
@@ -6559,13 +6559,13 @@
             "similarity": 0.5904761904761905,
             "common_keywords": [
               "property",
-              "human resource",
-              "asset",
-              "human",
+              "investment",
               "resource",
+              "asset",
+              "human resource",
               "capital",
               "holding",
-              "investment"
+              "human"
             ]
           },
           {
@@ -6573,13 +6573,13 @@
             "similarity": 0.5818181818181818,
             "common_keywords": [
               "property",
-              "human resource",
-              "asset",
-              "human",
+              "investment",
               "resource",
+              "asset",
+              "human resource",
               "capital",
               "holding",
-              "investment"
+              "human"
             ]
           },
           {
@@ -6587,11 +6587,11 @@
             "similarity": 0.5666666666666667,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -6599,9 +6599,9 @@
             "similarity": 0.5290322580645161,
             "common_keywords": [
               "legal",
-              "plans",
+              "organization",
               "agreement",
-              "organization"
+              "plans"
             ]
           },
           {
@@ -6609,16 +6609,16 @@
             "similarity": 0.503448275862069,
             "common_keywords": [
               "legal",
-              "plans",
-              "organization"
+              "organization",
+              "plans"
             ]
           },
           {
             "concept_id": "message",
             "similarity": 0.44166666666666665,
             "common_keywords": [
-              "plans",
-              "organization"
+              "organization",
+              "plans"
             ]
           },
           {
@@ -6818,11 +6818,11 @@
             "similarity": 0.4833333333333333,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -6929,27 +6929,27 @@
             "similarity": 0.6,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
             "concept_id": "investment",
             "similarity": 0.5,
             "common_keywords": [
-              "asset",
               "earnings",
-              "income",
-              "sales",
-              "return",
               "provide income",
-              "investment",
               "gain",
-              "profit",
-              "margin"
+              "margin",
+              "receipts",
+              "provide",
+              "asset",
+              "capital",
+              "holding",
+              "yield"
             ]
           },
           {
@@ -7003,11 +7003,11 @@
             "similarity": 0.5935483870967742,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -7015,34 +7015,34 @@
             "similarity": 0.5818181818181818,
             "common_keywords": [
               "property",
-              "human resource",
-              "asset",
-              "human",
+              "investment",
               "resource",
+              "asset",
+              "human resource",
               "capital",
               "holding",
-              "investment"
+              "human"
             ]
           },
           {
             "concept_id": "work_item",
             "similarity": 0.5794871794871794,
             "common_keywords": [
-              "property",
               "assigned",
-              "asset",
+              "property",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
             "concept_id": "campaign",
             "similarity": 0.4377358490566038,
             "common_keywords": [
-              "human",
-              "specific"
+              "specific",
+              "human"
             ]
           },
           {
@@ -7292,17 +7292,17 @@
             "concept_id": "customer",
             "similarity": 0.48823529411764705,
             "common_keywords": [
-              "plans",
               "organization",
-              "products"
+              "products",
+              "plans"
             ]
           },
           {
             "concept_id": "partner",
             "similarity": 0.4625,
             "common_keywords": [
-              "plans",
-              "organization"
+              "organization",
+              "plans"
             ]
           },
           {
@@ -7317,8 +7317,8 @@
             "concept_id": "human_resource",
             "similarity": 0.44166666666666665,
             "common_keywords": [
-              "plans",
-              "organization"
+              "organization",
+              "plans"
             ]
           },
           {
@@ -7369,8 +7369,8 @@
             "concept_id": "product",
             "similarity": 0.5,
             "common_keywords": [
-              "services",
-              "goods"
+              "goods",
+              "services"
             ]
           },
           {
@@ -7413,8 +7413,8 @@
               "legal",
               "entity",
               "legal entity",
-              "organization",
-              "plans"
+              "plans",
+              "organization"
             ]
           },
           {
@@ -7424,8 +7424,8 @@
               "legal",
               "entity",
               "legal entity",
-              "organization",
-              "plans"
+              "plans",
+              "organization"
             ]
           },
           {
@@ -7433,16 +7433,16 @@
             "similarity": 0.503448275862069,
             "common_keywords": [
               "legal",
-              "plans",
-              "organization"
+              "organization",
+              "plans"
             ]
           },
           {
             "concept_id": "message",
             "similarity": 0.4625,
             "common_keywords": [
-              "plans",
-              "organization"
+              "organization",
+              "plans"
             ]
           },
           {
@@ -7487,37 +7487,37 @@
             "concept_id": "policy",
             "similarity": 0.7157894736842105,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "strategy",
             "similarity": 0.6307692307692307,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "objective",
             "similarity": 0.5388888888888889,
             "common_keywords": [
-              "result",
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "result",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
@@ -7532,12 +7532,12 @@
             "concept_id": "case",
             "similarity": 0.4375,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
@@ -7575,51 +7575,51 @@
             "concept_id": "strategy",
             "similarity": 0.72,
             "common_keywords": [
-              "tactic",
               "action",
               "methodology",
-              "plan",
-              "strategy",
-              "organization",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "organization",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "plan",
             "similarity": 0.7157894736842105,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "case",
             "similarity": 0.46875,
             "common_keywords": [
-              "tactic",
               "action",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "objective",
             "similarity": 0.44999999999999996,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
@@ -7664,8 +7664,8 @@
             "concept_id": "order",
             "similarity": 0.5,
             "common_keywords": [
-              "services",
-              "goods"
+              "goods",
+              "services"
             ]
           },
           {
@@ -7819,21 +7819,21 @@
             "similarity": 0.5904761904761905,
             "common_keywords": [
               "property",
-              "human resource",
-              "asset",
-              "human",
+              "investment",
               "resource",
+              "asset",
+              "human resource",
               "capital",
               "holding",
-              "investment"
+              "human"
             ]
           },
           {
             "concept_id": "event",
             "similarity": 0.4588235294117647,
             "common_keywords": [
-              "event",
-              "one"
+              "one",
+              "event"
             ]
           },
           {
@@ -7876,14 +7876,14 @@
             "similarity": 0.40714285714285714,
             "common_keywords": [
               "property",
-              "asset",
-              "item",
+              "investment",
               "resource",
               "work item",
+              "work",
+              "asset",
+              "item",
               "capital",
-              "holding",
-              "investment",
-              "work"
+              "holding"
             ]
           }
         ],
@@ -7892,38 +7892,38 @@
             "concept_id": "policy",
             "similarity": 0.72,
             "common_keywords": [
-              "tactic",
               "action",
               "methodology",
-              "plan",
-              "strategy",
-              "organization",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "organization",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "plan",
             "similarity": 0.6307692307692307,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "objective",
             "similarity": 0.6222222222222222,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
@@ -7990,10 +7990,10 @@
             "similarity": 0.4166666666666667,
             "common_keywords": [
               "action",
-              "achieve",
+              "course",
               "taken",
               "objective",
-              "course"
+              "achieve"
             ]
           }
         ],
@@ -8024,37 +8024,37 @@
             "concept_id": "strategy",
             "similarity": 0.6222222222222222,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "plan",
             "similarity": 0.5388888888888889,
             "common_keywords": [
-              "result",
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "result",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
             "concept_id": "policy",
             "similarity": 0.44999999999999996,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
@@ -8250,24 +8250,24 @@
             "similarity": 0.6857142857142857,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
             "concept_id": "job",
             "similarity": 0.5794871794871794,
             "common_keywords": [
-              "property",
               "assigned",
-              "asset",
+              "property",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -8275,11 +8275,11 @@
             "similarity": 0.5666666666666667,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -8309,14 +8309,14 @@
             "similarity": 0.40714285714285714,
             "common_keywords": [
               "property",
-              "asset",
-              "item",
+              "investment",
               "resource",
               "work item",
+              "work",
+              "asset",
+              "item",
               "capital",
-              "holding",
-              "investment",
-              "work"
+              "holding"
             ]
           },
           {
@@ -8363,16 +8363,16 @@
             "concept_id": "cadaster",
             "similarity": 0.9230769230769231,
             "common_keywords": [
-              "cadaster",
-              "asset",
-              "area",
-              "property area",
-              "space",
-              "investment",
-              "responsibilities associated",
+              "value",
+              "restrictions",
+              "area parcels",
               "geometric",
-              "tenure",
-              "extent"
+              "responsibilities associated",
+              "extent",
+              "space",
+              "asset",
+              "geometric description",
+              "capital"
             ]
           }
         ],
@@ -8381,16 +8381,16 @@
             "concept_id": "investment_portfolio",
             "similarity": 0.5,
             "common_keywords": [
-              "asset",
               "earnings",
-              "income",
-              "sales",
-              "return",
               "provide income",
-              "investment",
               "gain",
-              "profit",
-              "margin"
+              "margin",
+              "receipts",
+              "provide",
+              "asset",
+              "capital",
+              "holding",
+              "yield"
             ]
           },
           {
@@ -8398,11 +8398,11 @@
             "similarity": 0.4318181818181818,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -8453,8 +8453,8 @@
             "concept_id": "operation",
             "similarity": 0.44651162790697674,
             "common_keywords": [
-              "example",
-              "include"
+              "include",
+              "example"
             ]
           },
           {
@@ -8485,10 +8485,10 @@
             "common_keywords": [
               "operation",
               "process",
-              "system",
-              "procedure",
               "method",
-              "workflow"
+              "system",
+              "workflow",
+              "procedure"
             ]
           },
           {
@@ -8554,18 +8554,18 @@
             "common_keywords": [
               "operation",
               "process",
-              "system",
-              "procedure",
               "method",
-              "workflow"
+              "system",
+              "workflow",
+              "procedure"
             ]
           },
           {
             "concept_id": "infrastructure",
             "similarity": 0.44651162790697674,
             "common_keywords": [
-              "example",
-              "include"
+              "include",
+              "example"
             ]
           },
           {
@@ -8591,9 +8591,9 @@
             "concept_id": "trip",
             "similarity": 0.5481481481481482,
             "common_keywords": [
-              "point",
               "destination",
               "starting",
+              "point",
               "starting point"
             ]
           },
@@ -8630,10 +8630,10 @@
             "concept_id": "shipment_item",
             "similarity": 0.5538461538461539,
             "common_keywords": [
-              "freight",
               "shipment",
-              "baggage",
-              "cargo"
+              "freight",
+              "cargo",
+              "baggage"
             ]
           },
           {
@@ -8659,10 +8659,10 @@
             "concept_id": "shipment",
             "similarity": 0.5538461538461539,
             "common_keywords": [
-              "freight",
               "shipment",
-              "baggage",
-              "cargo"
+              "freight",
+              "cargo",
+              "baggage"
             ]
           },
           {
@@ -8686,9 +8686,9 @@
             "concept_id": "route",
             "similarity": 0.5481481481481482,
             "common_keywords": [
-              "point",
               "destination",
               "starting",
+              "point",
               "starting point"
             ]
           },
@@ -8722,10 +8722,10 @@
             "similarity": 0.4166666666666667,
             "common_keywords": [
               "action",
-              "achieve",
+              "course",
               "taken",
               "objective",
-              "course"
+              "achieve"
             ]
           }
         ],
@@ -8734,16 +8734,16 @@
             "concept_id": "customer",
             "similarity": 0.7692307692307693,
             "common_keywords": [
-              "beneficiary",
               "legal",
-              "services",
-              "agreement",
-              "products",
               "entity",
               "legal entity",
+              "beneficiary",
               "recipient",
+              "agreement",
+              "plans",
+              "services",
               "organization",
-              "plans"
+              "products"
             ]
           },
           {
@@ -8753,8 +8753,8 @@
               "legal",
               "entity",
               "legal entity",
-              "organization",
-              "plans"
+              "plans",
+              "organization"
             ]
           },
           {
@@ -8788,10 +8788,10 @@
             "concept_id": "health_condition",
             "similarity": 0.4980392156862745,
             "common_keywords": [
-              "living",
-              "non",
-              "including",
               "things",
+              "including",
+              "non",
+              "living",
               "living things"
             ]
           },
@@ -8859,10 +8859,10 @@
             "concept_id": "biological_organism",
             "similarity": 0.4980392156862745,
             "common_keywords": [
-              "living",
-              "non",
-              "including",
               "things",
+              "including",
+              "non",
+              "living",
               "living things"
             ]
           },
@@ -8883,11 +8883,11 @@
             "similarity": 0.42857142857142855,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           },
           {
@@ -8984,9 +8984,9 @@
             "concept_id": "customer",
             "similarity": 0.42647058823529416,
             "common_keywords": [
+              "customer",
               "services",
-              "agreement",
-              "customer"
+              "agreement"
             ]
           }
         ],
@@ -9004,13 +9004,13 @@
             "concept_id": "policy",
             "similarity": 0.46875,
             "common_keywords": [
-              "tactic",
               "action",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           },
           {
@@ -9025,12 +9025,12 @@
             "concept_id": "plan",
             "similarity": 0.4375,
             "common_keywords": [
-              "tactic",
               "methodology",
-              "plan",
-              "strategy",
               "approach",
-              "policy"
+              "tactic",
+              "policy",
+              "plan",
+              "strategy"
             ]
           }
         ],
@@ -9039,16 +9039,16 @@
             "concept_id": "geographic_space_cadaster",
             "similarity": 0.9230769230769231,
             "common_keywords": [
-              "cadaster",
-              "asset",
-              "area",
-              "property area",
-              "space",
-              "investment",
-              "responsibilities associated",
+              "value",
+              "restrictions",
+              "area parcels",
               "geometric",
-              "tenure",
-              "extent"
+              "responsibilities associated",
+              "extent",
+              "space",
+              "asset",
+              "geometric description",
+              "capital"
             ]
           }
         ],
@@ -9113,16 +9113,16 @@
             "concept_id": "agreement_term",
             "similarity": 0.7647058823529411,
             "common_keywords": [
-              "condition set",
-              "set",
-              "term",
-              "enforceable condition",
-              "within",
-              "enforceable",
               "forth",
+              "condition set",
+              "enforceable",
               "forth within",
+              "term",
+              "legally",
+              "condition",
+              "enforceable condition",
               "legally enforceable",
-              "bounds"
+              "set forth"
             ]
           }
         ],
@@ -9146,11 +9146,11 @@
             "similarity": 0.5833333333333333,
             "common_keywords": [
               "property",
-              "asset",
+              "investment",
               "resource",
+              "asset",
               "capital",
-              "holding",
-              "investment"
+              "holding"
             ]
           }
         ]
@@ -9535,26 +9535,26 @@
         "coherence_score": 0.2793767202846849,
         "size": 20,
         "top_keywords": [
-          "buy",
-          "whether remunerative",
-          "physical conduit",
+          "identified",
+          "intangible",
+          "law",
+          "related services",
+          "considering alternative",
+          "legally",
+          "tax",
+          "incident",
+          "satellite",
+          "whether",
+          "exchange goods",
+          "reached",
+          "recipient",
+          "binding rights",
           "agreement",
-          "asset",
-          "enforceable",
-          "internally",
-          "given",
-          "job",
-          "value transactions",
-          "bounds",
-          "potentially",
-          "accountabilities",
           "categories",
-          "where business",
-          "action",
-          "legal entity",
-          "account",
-          "structure",
-          "condition"
+          "equity",
+          "governing bodies",
+          "bounds",
+          "accountable"
         ]
       },
       "cluster_1": {
@@ -9569,26 +9569,26 @@
         "coherence_score": 0.35819397993311036,
         "size": 5,
         "top_keywords": [
-          "legal",
-          "activity",
-          "existing",
-          "services",
+          "organizational",
+          "future",
+          "intellectual",
+          "constituting",
+          "demand",
           "entity",
           "resources",
-          "market",
-          "comprises",
-          "hiring activities",
-          "protections",
-          "organizational",
-          "business entity",
-          "organization",
-          "populations",
-          "population",
-          "legal body",
-          "customers",
+          "trademarks",
+          "copyrights",
+          "single organization",
           "identities",
-          "example",
-          "certain"
+          "design",
+          "customers",
+          "outreach",
+          "outreach activity",
+          "campaign",
+          "health",
+          "services",
+          "hiring activities",
+          "specific"
         ]
       },
       "cluster_2": {
@@ -9604,26 +9604,26 @@
         "coherence_score": 0.33481481481481484,
         "size": 6,
         "top_keywords": [
-          "consisting",
-          "agreement",
-          "consumable format",
-          "meaning",
-          "image",
-          "experiential",
-          "mixed",
-          "result",
-          "necessary",
-          "language",
-          "training",
-          "seminar",
-          "sounds",
-          "audio",
-          "presented",
-          "physical",
-          "still image",
-          "units",
           "competency",
-          "manifested"
+          "media",
+          "format",
+          "includes compensation",
+          "agreement",
+          "dialect",
+          "training",
+          "curriculum",
+          "basis",
+          "training course",
+          "plans",
+          "theoretical",
+          "individual who",
+          "language",
+          "resource",
+          "consumable format",
+          "subject matter",
+          "related",
+          "knowledge necessary",
+          "legal agreement"
         ]
       },
       "cluster_3": {
@@ -9634,12 +9634,12 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "content impression",
-          "consumption",
+          "content consumption",
+          "content",
           "instance",
           "impression",
-          "content",
-          "content consumption"
+          "consumption",
+          "content impression"
         ]
       },
       "cluster_4": {
@@ -9655,26 +9655,26 @@
         "coherence_score": 0.2997339868934072,
         "size": 6,
         "top_keywords": [
-          "cohesive",
-          "action sequences",
-          "aspect",
+          "pattern",
+          "future",
+          "value",
+          "financial transaction",
+          "related exchange",
+          "integrated",
+          "financial aspect",
           "resources",
-          "amount",
-          "financial accounts",
+          "objectives",
+          "financial forecast",
+          "aspect",
+          "businesses",
+          "whole",
+          "agreements",
+          "forecast",
+          "monetary aspects",
           "currency",
-          "value exchange",
-          "instance",
-          "movement",
-          "expressed",
-          "organization",
+          "strategy",
           "exchange",
-          "given",
-          "monetary",
-          "finance",
-          "exchange across",
-          "across businesses",
-          "action",
-          "monetary aspects"
+          "perspective"
         ]
       },
       "cluster_5": {
@@ -9689,26 +9689,26 @@
         "coherence_score": 0.30196078431372547,
         "size": 5,
         "top_keywords": [
-          "investment portfolio",
-          "about",
-          "resources",
-          "endeavors undertaken",
-          "outcome",
-          "contemporaneous",
-          "given",
-          "coordinated collection",
-          "interviews",
+          "subject",
+          "elements",
+          "value",
+          "schedule",
           "unique outcome",
-          "endeavors",
-          "set",
-          "income",
+          "channels",
+          "provide income",
+          "resources",
+          "schedule elements",
           "initiative",
-          "meetings",
           "using one",
-          "portfolio",
-          "expected",
+          "aggregation",
+          "using",
+          "coordinated",
+          "coordinated collection",
+          "set",
+          "given subject",
           "resources expected",
-          "investigation"
+          "one",
+          "provide"
         ]
       },
       "cluster_6": {
@@ -9720,26 +9720,26 @@
         "coherence_score": 0.4357142857142857,
         "size": 2,
         "top_keywords": [
-          "element",
-          "human resource",
-          "schedule element",
-          "aligns time",
+          "including",
+          "schedule",
+          "including work",
+          "work",
+          "location",
           "position",
+          "schedule element",
+          "one",
+          "work item",
+          "aligns",
+          "line",
+          "human resource",
+          "aligns time",
+          "resource",
+          "site",
+          "time",
+          "item",
           "line item",
           "event",
-          "work item",
-          "payment",
-          "line",
-          "human",
-          "resource",
-          "schedule",
-          "site",
-          "one",
-          "work",
-          "time",
-          "aligns",
-          "including",
-          "item"
+          "objects"
         ]
       },
       "cluster_7": {
@@ -9752,25 +9752,25 @@
         "coherence_score": 0.3047619047619048,
         "size": 3,
         "top_keywords": [
+          "action item",
           "measurable result",
-          "taken",
           "result",
-          "set",
-          "action",
           "measurable",
-          "course of action",
-          "specific",
-          "specific course",
-          "objective",
-          "course",
-          "item",
-          "activities",
-          "achieve",
-          "defines",
+          "set",
           "strategy",
-          "defines strategy",
+          "specific",
           "quantitative",
-          "action item"
+          "activities",
+          "objective",
+          "achieve",
+          "defines strategy",
+          "action",
+          "defines",
+          "taken",
+          "item",
+          "specific course",
+          "course",
+          "course of action"
         ]
       },
       "cluster_8": {
@@ -9782,18 +9782,18 @@
         "coherence_score": 0.4,
         "size": 2,
         "top_keywords": [
-          "future state",
-          "goal",
-          "vision",
-          "future",
           "toward",
-          "end",
-          "effort",
-          "directed",
-          "state",
-          "end toward",
           "imagined",
-          "imagined future"
+          "future",
+          "imagined future",
+          "end toward",
+          "vision",
+          "goal",
+          "end",
+          "state",
+          "future state",
+          "directed",
+          "effort"
         ]
       },
       "cluster_9": {
@@ -9806,25 +9806,25 @@
         "size": 2,
         "top_keywords": [
           "inquiries",
-          "task",
-          "assigned",
-          "asset",
-          "container",
-          "submission",
-          "defined",
-          "content",
-          "exchange",
-          "work item",
-          "requests",
-          "used",
-          "bounded",
+          "well",
+          "work",
           "exchange one",
-          "corresponding asset",
-          "corresponding",
-          "notifications",
-          "stakeholder",
+          "assigned",
+          "exchange",
+          "parties",
           "one",
-          "messages"
+          "work item",
+          "submission",
+          "asset",
+          "used",
+          "messages",
+          "corresponding asset",
+          "task",
+          "content",
+          "bounded task",
+          "corresponding",
+          "bounded",
+          "item"
         ]
       },
       "cluster_10": {
@@ -9836,11 +9836,11 @@
         "size": 1,
         "top_keywords": [
           "future",
-          "duration",
           "past",
-          "point",
           "time",
-          "present"
+          "present",
+          "point",
+          "duration"
         ]
       },
       "cluster_11": {
@@ -9852,22 +9852,22 @@
         "coherence_score": 0.4625,
         "size": 2,
         "top_keywords": [
-          "set",
+          "items",
+          "task queues",
           "task",
+          "queue",
           "work items",
           "work queue",
+          "structure",
           "present",
-          "tasks",
-          "container",
-          "items",
-          "filter",
-          "queue",
-          "task queues",
           "sequence",
           "work",
-          "structure",
           "hold",
-          "queues"
+          "container",
+          "tasks",
+          "filter",
+          "queues",
+          "set"
         ]
       },
       "cluster_12": {
@@ -9878,26 +9878,26 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "economic",
-          "area",
-          "geographic space",
           "meet",
-          "land",
-          "environmental",
+          "well",
+          "needed",
+          "physical area",
           "health",
-          "space",
-          "order",
+          "land",
           "meet economic",
-          "air",
-          "across",
+          "recreational",
+          "enable",
           "provide",
-          "restrict access",
-          "restrict",
-          "water",
-          "across land",
+          "space",
+          "geographic space",
+          "access",
+          "area across",
           "physical",
-          "geographic",
-          "access"
+          "economic",
+          "security",
+          "environmental",
+          "water",
+          "restrict"
         ]
       },
       "cluster_13": {
@@ -9908,19 +9908,19 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "another geographic",
-          "line",
-          "around",
-          "border",
-          "space",
-          "another",
-          "geographic border",
-          "geographic space",
-          "demarcation",
           "demarcation around",
-          "one",
           "one geographic",
-          "geographic"
+          "around",
+          "another geographic",
+          "one",
+          "another",
+          "space",
+          "line",
+          "geographic",
+          "geographic border",
+          "border",
+          "demarcation",
+          "geographic space"
         ]
       },
       "cluster_14": {
@@ -9932,26 +9932,26 @@
         "coherence_score": 0.9230769230769231,
         "size": 2,
         "top_keywords": [
-          "cadaster",
-          "area",
-          "property area",
-          "space",
-          "geographic space cadaster",
-          "tenure",
-          "responsibilities associated",
-          "geometric",
-          "extent",
           "value",
-          "property",
-          "area parcels",
-          "description",
-          "associated",
           "restrictions",
-          "rights",
-          "responsibilities",
-          "parcels",
+          "area parcels",
+          "geometric",
+          "responsibilities associated",
           "geographic",
-          "geometric description"
+          "extent",
+          "space",
+          "geometric description",
+          "geographic space cadaster",
+          "cadaster",
+          "ownership",
+          "associated",
+          "tenure",
+          "property area",
+          "description",
+          "responsibilities",
+          "property",
+          "area",
+          "parcels"
         ]
       },
       "cluster_15": {
@@ -9963,26 +9963,26 @@
         "coherence_score": 0.4,
         "size": 2,
         "top_keywords": [
-          "purchased",
-          "asset",
-          "idea",
-          "rail corridor",
-          "type",
-          "monetary",
-          "bridge",
-          "example",
-          "income",
-          "tunnel",
-          "building",
+          "station",
+          "future",
           "provide income",
-          "higher price",
-          "asset purchased",
-          "investment",
-          "structure",
+          "infrastructure",
+          "idea",
+          "bridge",
           "roadway",
-          "profit",
-          "sold",
-          "station"
+          "higher",
+          "building",
+          "provide",
+          "asset",
+          "asset purchased",
+          "physical",
+          "price",
+          "physical structure",
+          "investment",
+          "monetary asset",
+          "monetary",
+          "purchased",
+          "income"
         ]
       },
       "cluster_16": {
@@ -9999,26 +9999,26 @@
         "coherence_score": 0.3378710088566125,
         "size": 7,
         "top_keywords": [
-          "packages containing",
-          "physical matter",
-          "flight",
-          "living contents",
-          "limited",
-          "specific objective",
-          "cargo",
-          "final destination",
-          "unloading",
-          "shipment",
-          "carts",
-          "specific",
           "powering",
-          "point",
-          "conveyors",
-          "course taken",
-          "physical",
-          "range",
-          "single",
-          "item"
+          "capacity",
+          "whether",
+          "material",
+          "getting",
+          "location",
+          "reached",
+          "overall",
+          "loading",
+          "package sorting",
+          "unloading",
+          "include stops",
+          "physical products",
+          "construction",
+          "robot",
+          "service centers",
+          "destination",
+          "flight turnaround",
+          "carts",
+          "along"
         ]
       },
       "cluster_17": {
@@ -10032,25 +10032,25 @@
         "size": 3,
         "top_keywords": [
           "network arc",
-          "system",
-          "assets",
-          "association",
-          "connected",
-          "network",
-          "connection",
-          "set",
-          "nodes",
-          "routes",
-          "business objects",
-          "locations",
-          "network node",
-          "node",
           "infrastructure",
-          "connected arcs",
-          "associated",
+          "connected",
+          "connection point",
           "point",
-          "arc",
-          "business"
+          "set",
+          "arcs",
+          "routes",
+          "network",
+          "business objects",
+          "system",
+          "associated",
+          "connected arcs",
+          "business",
+          "assets",
+          "network node",
+          "locations",
+          "nodes",
+          "objects",
+          "association"
         ]
       },
       "cluster_18": {
@@ -10061,11 +10061,11 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
+          "situation",
           "event",
           "work event",
-          "situation",
-          "occurrence",
-          "work"
+          "work",
+          "occurrence"
         ]
       },
       "cluster_19": {
@@ -10076,24 +10076,24 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "engagements",
-          "gathering",
-          "gatherings",
           "including",
+          "persons",
+          "physical",
+          "meeting",
+          "place",
           "related",
           "conferences",
+          "gatherings",
           "including physical",
-          "persons",
-          "meeting",
-          "virtual",
-          "determinable",
-          "related gatherings",
           "time",
-          "physical",
-          "determinable time",
-          "place",
+          "related gatherings",
           "virtual engagements",
-          "two"
+          "determinable",
+          "engagements",
+          "gathering",
+          "two",
+          "virtual",
+          "determinable time"
         ]
       },
       "cluster_20": {
@@ -10104,23 +10104,23 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "third",
-          "third party",
-          "accreditation",
-          "provenance",
-          "acknowledged",
-          "endorsement",
           "indicates ability",
           "competence",
+          "acknowledged third",
+          "accreditation",
+          "provenance",
+          "third",
+          "indicates",
+          "endorsement",
+          "third party",
+          "party",
+          "ability",
+          "quality",
           "recognized",
           "duly recognized",
-          "indicates",
-          "knowledge",
-          "party",
-          "quality",
           "duly",
-          "acknowledged third",
-          "ability"
+          "knowledge",
+          "acknowledged"
         ]
       },
       "cluster_21": {
@@ -10131,17 +10131,17 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "dispute",
+          "interested",
+          "official",
           "parties",
-          "disagreement",
           "among",
           "argument",
-          "among interested",
-          "official",
-          "interested parties",
+          "disagreement",
           "official argument",
-          "disagreement among",
-          "interested"
+          "interested parties",
+          "dispute",
+          "among interested",
+          "disagreement among"
         ]
       },
       "cluster_22": {
@@ -10152,24 +10152,24 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
+          "heat",
+          "resources",
+          "but",
+          "work",
           "devices",
           "especially",
-          "resources",
+          "energy",
+          "provide light",
+          "provide",
+          "light",
+          "limited",
+          "power",
+          "chemical",
+          "chemical resources",
+          "physical",
           "work devices",
           "machines",
-          "power",
-          "provide light",
-          "limited",
-          "energy",
-          "chemical resources",
-          "provide",
-          "but",
           "derived",
-          "work",
-          "physical",
-          "light",
-          "heat",
-          "chemical",
           "sources",
           "utilization"
         ]
@@ -10182,21 +10182,21 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "activity",
-          "actual",
-          "actual financial",
-          "representation",
-          "financial",
-          "standing",
-          "duration",
-          "time",
-          "holistic",
           "consolidated",
+          "financial",
           "holistic representation",
-          "point",
+          "standing",
+          "actual",
+          "financial standing",
+          "representation",
+          "activity",
+          "time",
           "financial position",
+          "holistic",
           "position",
-          "financial standing"
+          "actual financial",
+          "point",
+          "duration"
         ]
       },
       "cluster_24": {
@@ -10207,16 +10207,16 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "order element",
-          "service",
-          "element",
-          "item",
-          "good",
-          "refers",
           "specific",
-          "order",
+          "order item",
+          "service",
           "specific good",
-          "order item"
+          "element",
+          "refers",
+          "item",
+          "order",
+          "order element",
+          "good"
         ]
       },
       "cluster_25": {
@@ -10227,16 +10227,16 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "product forecast",
-          "projection",
           "prediction",
-          "period",
-          "given",
-          "estimate",
-          "time",
-          "product",
           "given product",
-          "forecast"
+          "given",
+          "period",
+          "projection",
+          "time",
+          "product forecast",
+          "forecast",
+          "product",
+          "estimate"
         ]
       },
       "cluster_26": {
@@ -10252,26 +10252,26 @@
         "coherence_score": 0.3585561497326204,
         "size": 6,
         "top_keywords": [
-          "evidence",
-          "indication",
+          "recipient",
           "agreement",
-          "privacy",
-          "mental disorder",
           "categories",
-          "biological",
-          "preservation",
-          "governance",
-          "recognized governance",
-          "legal entity",
-          "convention",
+          "natural",
+          "human beings",
           "medical",
-          "condition",
-          "base proof",
-          "things",
-          "vote",
-          "biological organism",
-          "organism",
-          "state"
+          "recognized governance",
+          "consume",
+          "impairment",
+          "choice",
+          "referendum",
+          "illness",
+          "plans",
+          "injury",
+          "affect",
+          "convention",
+          "health condition",
+          "standard",
+          "grow",
+          "stimuli"
         ]
       },
       "cluster_27": {
@@ -10284,25 +10284,25 @@
         "size": 2,
         "top_keywords": [
           "evidence",
+          "bills",
+          "matter",
           "cash",
-          "tradeable asset",
-          "asset",
-          "instrument",
-          "natural",
+          "occur",
           "nature",
+          "natural",
           "exchange",
-          "tradeable",
-          "stocks",
+          "asset",
+          "tradeable asset",
           "options",
-          "bonds",
-          "futures",
-          "financial instrument",
           "financial",
           "resource",
-          "matter",
-          "occur",
-          "bills",
-          "ownership"
+          "futures",
+          "ownership",
+          "tradeable",
+          "financial instrument",
+          "stocks",
+          "instrument",
+          "natural resource"
         ]
       },
       "cluster_28": {
@@ -10315,26 +10315,26 @@
         "coherence_score": 0.40669627307558337,
         "size": 3,
         "top_keywords": [
-          "services",
-          "legal",
-          "agreement",
-          "vitro",
-          "provider",
-          "act",
+          "vitro reagent",
+          "demand",
+          "likelihood",
           "requires resolution",
-          "mitigate",
-          "healthcare",
-          "instance",
-          "machine",
-          "address",
-          "outcomes",
-          "reduce",
-          "implant",
+          "claim",
+          "agreement",
+          "requires",
+          "services",
+          "terms",
           "indemnify",
-          "report",
-          "contrivance",
-          "action",
-          "ongoing healthcare"
+          "otherwise address",
+          "legal",
+          "vitro",
+          "request",
+          "cataloged",
+          "address",
+          "need",
+          "context",
+          "otherwise",
+          "resolution"
         ]
       },
       "cluster_29": {
@@ -10348,26 +10348,26 @@
         "coherence_score": 0.28541666666666665,
         "size": 4,
         "top_keywords": [
-          "third",
-          "activity",
-          "hazardous materials",
-          "directives",
-          "service",
-          "use",
           "entity",
-          "include",
+          "statutory",
+          "authoritative",
           "governmental agency",
-          "relative",
-          "organization",
-          "regulated",
-          "legislation",
-          "awarded",
-          "duly",
-          "goods",
+          "perform",
+          "use",
+          "work",
+          "related statutory",
+          "third party",
           "set",
-          "governmental",
-          "engage",
-          "authoritative directives"
+          "third",
+          "individual",
+          "goods",
+          "entitlements",
+          "service",
+          "directives",
+          "license",
+          "regulated activity",
+          "applied",
+          "party"
         ]
       },
       "cluster_30": {
@@ -10378,21 +10378,21 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "condition set",
-          "set",
-          "enforceable condition",
-          "term",
-          "within",
-          "license",
-          "enforceable",
-          "license term",
           "forth",
+          "condition set",
+          "enforceable",
           "forth within",
-          "legally enforceable",
-          "bounds",
+          "term",
+          "legally",
           "condition",
+          "license",
+          "license term",
+          "enforceable condition",
+          "legally enforceable",
           "set forth",
-          "legally"
+          "within",
+          "bounds",
+          "set"
         ]
       },
       "cluster_31": {
@@ -10403,16 +10403,16 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "public sector entity",
-          "governmental bodies",
-          "entity",
-          "public",
-          "sector",
-          "governmental body",
           "bodies",
-          "governmental",
+          "sector",
+          "collection",
           "body",
-          "collection"
+          "public",
+          "public sector entity",
+          "entity",
+          "governmental body",
+          "governmental",
+          "governmental bodies"
         ]
       },
       "cluster_32": {
@@ -10423,17 +10423,17 @@
         "coherence_score": 1.0,
         "size": 1,
         "top_keywords": [
-          "property",
-          "agreement",
-          "borrowing",
-          "asset",
-          "lending agreement",
-          "collateral",
+          "customer",
           "customer offers",
           "offers",
           "lending",
+          "property",
+          "lending agreement",
+          "asset",
+          "agreement",
           "security",
-          "customer"
+          "collateral",
+          "borrowing"
         ]
       }
     },
@@ -10447,7 +10447,7 @@
       "cluster_avg_coherence": 0.6723167053303672,
       "relationships_total": 547,
       "relationships_by_type": {
-        "semantic": 535,
+        "lexical": 535,
         "causal": 0,
         "compositional": 12,
         "temporal": 0

@@ -9,7 +9,7 @@
     "cluster_avg_coherence": 0.6723167053303672,
     "relationships_total": 547,
     "relationships_by_type": {
-      "semantic": 535,
+      "lexical": 535,
       "causal": 0,
       "compositional": 12,
       "temporal": 0
@@ -18,17 +18,17 @@
     "avg_relationships_per_concept": 5.639175257731959
   },
   "performance_metrics": {
-    "start_time": 1756581027.2371175,
+    "start_time": 1756584352.8670213,
     "end_time": null,
     "processing_stages": {
-      "data_loading": 0.0,
-      "clustering": 0.07980632781982422,
-      "hierarchy": 0.009029865264892578,
-      "relationships": 0.43549132347106934,
-      "enhancement": 0.0010120868682861328,
+      "data_loading": 0.005980730056762695,
+      "clustering": 0.059952497482299805,
+      "hierarchy": 0.010801553726196289,
+      "relationships": 0.3857543468475342,
+      "enhancement": 0.0010004043579101562,
       "statistics": 0.0,
       "api_creation": 0.0
     }
   },
-  "timestamp": "2025-08-30T14:10:27.786104"
+  "timestamp": "2025-08-30T15:05:53.355320"
 }

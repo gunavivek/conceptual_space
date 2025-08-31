@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-R4: Semantic Ontology Builder
+R4L: Lexical Ontology Builder
 Part of R-Pipeline (Resource & Reasoning Pipeline)
-Builds a semantic BIZBOK ontology with hierarchical structure and rich relationships
-CPU-optimized for 500+ concepts with lightweight semantic analysis
+Builds a lexical BIZBOK ontology with hierarchical structure and keyword-based relationships
+CPU-optimized for 500+ concepts with lightweight lexical analysis
+Note: Uses keyword similarity (Jaccard), not true semantic embeddings (R4S will use embeddings)
 """
 
 import json
@@ -14,7 +15,7 @@ from collections import defaultdict, Counter
 import time
 import re
 
-# Business domain synonyms for semantic expansion
+# Business domain synonyms for lexical expansion
 BUSINESS_SYNONYMS = {
     'revenue': ['income', 'sales', 'earnings', 'receipts', 'turnover'],
     'cost': ['expense', 'expenditure', 'outlay', 'spending', 'charge'],
@@ -37,8 +38,8 @@ HIERARCHY_PATTERNS = {
     'strategic_concepts': ['strategy', 'plan', 'policy', 'goal', 'objective']
 }
 
-class SemanticOntologyBuilder:
-    """Main class for building semantic BIZBOK ontology"""
+class LexicalOntologyBuilder:
+    """Main class for building lexical BIZBOK ontology using keyword similarity"""
     
     def __init__(self):
         self.script_dir = Path(__file__).parent.parent
@@ -56,7 +57,7 @@ class SemanticOntologyBuilder:
             "concepts": {},
             "hierarchy": {},
             "relationships": {
-                "semantic": defaultdict(list),
+                "lexical": defaultdict(list),
                 "causal": defaultdict(list),
                 "compositional": defaultdict(list),
                 "temporal": defaultdict(list)
@@ -123,8 +124,8 @@ class SemanticOntologyBuilder:
         
         return list(expanded)
     
-    def calculate_semantic_similarity(self, concept1_id, concept2_id):
-        """Calculate lightweight semantic similarity between concepts"""
+    def calculate_lexical_similarity(self, concept1_id, concept2_id):
+        """Calculate lightweight lexical similarity between concepts"""
         concept1 = self.bizbok_concepts[concept1_id]
         concept2 = self.bizbok_concepts[concept2_id]
         
@@ -162,9 +163,9 @@ class SemanticOntologyBuilder:
             "common_keywords": list(keywords1 & keywords2)[:10]
         }
     
-    def build_semantic_clusters(self):
-        """Build semantic clusters using efficient similarity calculation"""
-        print("\n[PROCESS] Building semantic clusters...")
+    def build_lexical_clusters(self):
+        """Build lexical clusters using efficient similarity calculation"""
+        print("\n[PROCESS] Building lexical clusters...")
         start_time = time.time()
         
         # Pre-calculate similarity matrix for efficiency
@@ -195,7 +196,7 @@ class SemanticOntologyBuilder:
             # Find similar concepts
             for other_id in concept_ids[i+1:]:
                 if other_id not in clustered:
-                    similarity = self.calculate_semantic_similarity(concept_id, other_id)
+                    similarity = self.calculate_lexical_similarity(concept_id, other_id)
                     if similarity["similarity_score"] >= similarity_threshold:
                         cluster["members"].append(other_id)
                         cluster["cluster_keywords"].update(self.bizbok_concepts[other_id]["keywords"])
@@ -207,7 +208,7 @@ class SemanticOntologyBuilder:
                 comparisons = 0
                 for j, member1 in enumerate(cluster["members"]):
                     for member2 in cluster["members"][j+1:]:
-                        sim = self.calculate_semantic_similarity(member1, member2)
+                        sim = self.calculate_lexical_similarity(member1, member2)
                         total_similarity += sim["similarity_score"]
                         comparisons += 1
                 cluster["coherence_score"] = total_similarity / comparisons if comparisons > 0 else 0
@@ -234,7 +235,7 @@ class SemanticOntologyBuilder:
             }
         
         elapsed = time.time() - start_time
-        print(f"   [OK] Created {len(clusters)} semantic clusters in {elapsed:.1f} seconds")
+        print(f"   [OK] Created {len(clusters)} lexical clusters in {elapsed:.1f} seconds")
         print(f"   [OK] Average cluster size: {np.mean([len(c['members']) for c in clusters]):.1f}")
     
     def build_concept_hierarchy(self):
@@ -318,34 +319,34 @@ class SemanticOntologyBuilder:
         print(f"   [OK] Maximum depth: {max_level} levels")
         print(f"   [OK] Leaf concepts: {leaf_count}")
     
-    def extract_semantic_relationships(self):
-        """Extract multiple types of semantic relationships"""
-        print("\n[PROCESS] Extracting semantic relationships...")
+    def extract_lexical_relationships(self):
+        """Extract multiple types of lexical relationships"""
+        print("\n[PROCESS] Extracting lexical relationships...")
         
         relationship_counts = {
-            "semantic": 0,
+            "lexical": 0,
             "causal": 0,
             "compositional": 0,
             "temporal": 0
         }
         
         for concept_id, concept in self.bizbok_concepts.items():
-            # 1. Semantic relationships (high similarity)
-            semantic_related = []
+            # 1. Lexical relationships (high similarity)
+            lexical_related = []
             for other_id in self.bizbok_concepts:
                 if other_id != concept_id:
-                    similarity = self.calculate_semantic_similarity(concept_id, other_id)
+                    similarity = self.calculate_lexical_similarity(concept_id, other_id)
                     if similarity["similarity_score"] >= 0.4:
-                        semantic_related.append({
+                        lexical_related.append({
                             "concept_id": other_id,
                             "similarity": similarity["similarity_score"],
                             "common_keywords": similarity["common_keywords"]
                         })
             
             # Sort by similarity and keep top 10
-            semantic_related.sort(key=lambda x: x["similarity"], reverse=True)
-            self.ontology["relationships"]["semantic"][concept_id] = semantic_related[:10]
-            relationship_counts["semantic"] += len(semantic_related[:10])
+            lexical_related.sort(key=lambda x: x["similarity"], reverse=True)
+            self.ontology["relationships"]["lexical"][concept_id] = lexical_related[:10]
+            relationship_counts["lexical"] += len(lexical_related[:10])
             
             # 2. Causal relationships (from definition analysis)
             definition = concept["definition"].lower()
@@ -423,7 +424,7 @@ class SemanticOntologyBuilder:
             relationship_counts["temporal"] += len(temporal_relations[:3])
         
         # Convert defaultdicts to regular dicts
-        for rel_type in ["semantic", "causal", "compositional", "temporal"]:
+        for rel_type in ["lexical", "causal", "compositional", "temporal"]:
             self.ontology["relationships"][rel_type] = dict(self.ontology["relationships"][rel_type])
         
         print(f"   [OK] Extracted {sum(relationship_counts.values())} total relationships")
@@ -447,7 +448,7 @@ class SemanticOntologyBuilder:
             
             # Count relationships
             relationship_count = 0
-            for rel_type in ["semantic", "causal", "compositional", "temporal"]:
+            for rel_type in ["lexical", "causal", "compositional", "temporal"]:
                 relationships = self.ontology["relationships"][rel_type].get(concept_id, [])
                 relationship_count += len(relationships)
             
@@ -466,10 +467,10 @@ class SemanticOntologyBuilder:
                 },
                 "cluster": concept_cluster,
                 "relationships": {
-                    "semantic": [r["concept_id"] for r in self.ontology["relationships"]["semantic"].get(concept_id, [])][:5],
-                    "causal": [r["concept_id"] for r in self.ontology["relationships"]["causal"].get(concept_id, [])][:3],
-                    "compositional": [r["concept_id"] for r in self.ontology["relationships"]["compositional"].get(concept_id, [])][:3],
-                    "temporal": [r["concept_id"] for r in self.ontology["relationships"]["temporal"].get(concept_id, [])][:2]
+                    "lexical": [r["concept_id"] if isinstance(r, dict) else r for r in self.ontology["relationships"]["lexical"].get(concept_id, [])][:5],
+                    "causal": self.ontology["relationships"]["causal"].get(concept_id, [])[:3],
+                    "compositional": self.ontology["relationships"]["compositional"].get(concept_id, [])[:3],
+                    "temporal": self.ontology["relationships"]["temporal"].get(concept_id, [])[:2]
                 },
                 "ontology_metadata": {
                     "relationship_count": relationship_count,
@@ -491,7 +492,7 @@ class SemanticOntologyBuilder:
         
         # Relationship statistics
         relationship_stats = {}
-        for rel_type in ["semantic", "causal", "compositional", "temporal"]:
+        for rel_type in ["lexical", "causal", "compositional", "temporal"]:
             rel_count = sum(len(rels) for rels in self.ontology["relationships"][rel_type].values())
             relationship_stats[rel_type] = rel_count
         
@@ -524,7 +525,7 @@ class SemanticOntologyBuilder:
         }
         
         print(f"   [OK] Total concepts: {total_concepts}")
-        print(f"   [OK] Semantic clusters: {total_clusters}")
+        print(f"   [OK] Lexical clusters: {total_clusters}")
         print(f"   [OK] Hierarchy depth: {max_depth} levels")
         print(f"   [OK] Total relationships: {sum(relationship_stats.values())}")
         print(f"   [OK] Avg relationships/concept: {self.ontology['statistics']['avg_relationships_per_concept']:.1f}")
@@ -537,7 +538,7 @@ class SemanticOntologyBuilder:
             "quick_lookup": {},
             "expansion_rules": {
                 "hierarchical": "include_parent_children_siblings",
-                "semantic": "include_top_5_similar",
+                "lexical": "include_top_5_similar",
                 "domain": "include_same_domain_concepts"
             },
             "concept_importance": {}
@@ -550,9 +551,9 @@ class SemanticOntologyBuilder:
                 "domain": concept_data["domain"],
                 "parent": concept_data["hierarchy"]["parent"],
                 "children": concept_data["hierarchy"]["children"][:5],
-                "related": concept_data["relationships"]["semantic"][:5],
+                "related": concept_data["relationships"]["lexical"][:5],
                 "expansion_candidates": list(set(
-                    concept_data["relationships"]["semantic"][:3] +
+                    concept_data["relationships"]["lexical"][:3] +
                     concept_data["hierarchy"]["children"][:2]
                 ))
             }
@@ -570,19 +571,19 @@ class SemanticOntologyBuilder:
         """Save ontology outputs"""
         print("\n[SAVE] Saving ontology outputs...")
         
-        # Main semantic ontology
+        # Main lexical ontology
         ontology_output = {
             "metadata": {
                 "creation_timestamp": datetime.now().isoformat(),
                 "total_concepts": len(self.ontology["concepts"]),
-                "ontology_type": "BIZBOK_semantic",
+                "ontology_type": "BIZBOK_lexical",
                 "version": "2.0",
                 "cpu_optimized": True
             },
             "ontology": self.ontology
         }
         
-        output_path = self.output_dir / "R4_semantic_ontology.json"
+        output_path = self.output_dir / "R4L_lexical_ontology.json"
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(ontology_output, f, indent=2, ensure_ascii=False)
         print(f"   [OK] Saved {output_path.name}")
@@ -597,7 +598,7 @@ class SemanticOntologyBuilder:
             "integration_api": integration_api
         }
         
-        api_path = self.output_dir / "R4_integration_api.json"
+        api_path = self.output_dir / "R4L_integration_api.json"
         with open(api_path, 'w', encoding='utf-8') as f:
             json.dump(api_output, f, indent=2, ensure_ascii=False)
         print(f"   [OK] Saved {api_path.name}")
@@ -609,7 +610,7 @@ class SemanticOntologyBuilder:
             "timestamp": datetime.now().isoformat()
         }
         
-        stats_path = self.output_dir / "R4_ontology_statistics.json"
+        stats_path = self.output_dir / "R4L_ontology_statistics.json"
         with open(stats_path, 'w', encoding='utf-8') as f:
             json.dump(stats_output, f, indent=2, ensure_ascii=False)
         print(f"   [OK] Saved {stats_path.name}")
@@ -617,7 +618,7 @@ class SemanticOntologyBuilder:
     def run(self):
         """Main execution method"""
         print("="*60)
-        print("R4: Semantic Ontology Builder")
+        print("R4L: Lexical Ontology Builder")
         print("R-Pipeline: Resource & Reasoning Pipeline")
         print("="*60)
         
@@ -629,9 +630,9 @@ class SemanticOntologyBuilder:
             self.load_r_pipeline_data()
             self.performance_metrics["processing_stages"]["data_loading"] = time.time() - stage_start
             
-            # Build semantic clusters
+            # Build lexical clusters
             stage_start = time.time()
-            self.build_semantic_clusters()
+            self.build_lexical_clusters()
             self.performance_metrics["processing_stages"]["clustering"] = time.time() - stage_start
             
             # Build hierarchy
@@ -641,7 +642,7 @@ class SemanticOntologyBuilder:
             
             # Extract relationships
             stage_start = time.time()
-            self.extract_semantic_relationships()
+            self.extract_lexical_relationships()
             self.performance_metrics["processing_stages"]["relationships"] = time.time() - stage_start
             
             # Enhance concepts
@@ -676,14 +677,14 @@ class SemanticOntologyBuilder:
                 print(f"   - {stage}: {duration:.2f}s")
             
             print("\n[REPORT] Ontology Quality Metrics:")
-            print(f"   Semantic clusters: {self.ontology['statistics']['total_clusters']}")
+            print(f"   Lexical clusters: {self.ontology['statistics']['total_clusters']}")
             print(f"   Hierarchy depth: {self.ontology['statistics']['hierarchy_max_depth']} levels")
             print(f"   Total relationships: {self.ontology['statistics']['relationships_total']}")
             print(f"   Avg connectivity: {self.ontology['statistics']['avg_connectivity_score']:.3f}")
             print(f"   Cluster coherence: {self.ontology['statistics']['cluster_avg_coherence']:.3f}")
             
-            print(f"\n[SUCCESS] R4 Semantic Ontology Builder completed successfully!")
-            print(f"   Created rich BIZBOK ontology with {len(self.ontology['concepts'])} concepts")
+            print(f"\n[SUCCESS] R4L Lexical Ontology Builder completed successfully!")
+            print(f"   Created lexical BIZBOK ontology with {len(self.ontology['concepts'])} concepts")
             
             return True
             
@@ -695,7 +696,7 @@ class SemanticOntologyBuilder:
 
 def main():
     """Main entry point"""
-    builder = SemanticOntologyBuilder()
+    builder = LexicalOntologyBuilder()
     return builder.run()
 
 if __name__ == "__main__":

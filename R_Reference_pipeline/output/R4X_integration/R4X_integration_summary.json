@@ -1,0 +1,98 @@
+{
+  "r4x_version": "1.0.0",
+  "integration_timestamp": "2025-08-30T20:38:20.352547",
+  "semantic_spaces": {
+    "ontology": 97,
+    "document": 4,
+    "question": 5
+  },
+  "cross_space_bridges": {
+    "ontology_document": 0,
+    "ontology_question": 0,
+    "document_question": 2,
+    "tri_space_consensus": 0
+  },
+  "unified_concepts": 104,
+  "performance_metrics": {
+    "integration_start_time": 1756604299.710176,
+    "space_loading_times": {
+      "ontology": 0.014034032821655273,
+      "document": 0.5848734378814697,
+      "question": 0.0
+    },
+    "bridge_building_times": {
+      "ontology_document": 0.0,
+      "ontology_question": 0.0,
+      "document_question": 0.0,
+      "tri_space_consensus": 0.0
+    },
+    "fusion_processing_times": {}
+  },
+  "integration_analytics": {
+    "space_statistics": {
+      "ontology_space": {
+        "concept_count": 97,
+        "relationship_count": 345,
+        "average_relationships_per_concept": 3.556701030927835
+      },
+      "document_space": {
+        "concept_count": 4,
+        "document_count": 10,
+        "average_concepts_per_document": 1.4
+      },
+      "question_space": {
+        "concept_count": 5,
+        "question_pattern_count": 20,
+        "intent_category_count": 19
+      }
+    },
+    "bridge_statistics": {
+      "ontology_document": {
+        "bridge_count": 0,
+        "average_strength": NaN,
+        "high_confidence_bridges": 0
+      },
+      "ontology_question": {
+        "bridge_count": 0,
+        "average_strength": NaN,
+        "high_confidence_bridges": 0
+      },
+      "document_question": {
+        "bridge_count": 2,
+        "average_strength": 0.0,
+        "high_confidence_bridges": 0
+      },
+      "tri_space_consensus": {
+        "bridge_count": 0,
+        "average_strength": NaN,
+        "high_confidence_bridges": 0
+      }
+    },
+    "fusion_quality": {
+      "consensus_concept_count": 0,
+      "consensus_ratio": 0.0,
+      "average_confidence": 0.0,
+      "tri_space_coverage": 0
+    },
+    "coverage_analysis": {
+      "total_unique_concepts": 104,
+      "ontology_only": 97,
+      "document_only": 2,
+      "question_only": 3,
+      "all_three_spaces": 0,
+      "ontology_document_overlap": 0,
+      "ontology_question_overlap": 0,
+      "document_question_overlap": 2
+    },
+    "consensus_analysis": {
+      "high_consensus_concepts": 0,
+      "medium_consensus_concepts": 0,
+      "low_consensus_concepts": 104,
+      "consensus_distribution": {
+        "high": 0,
+        "medium": 0,
+        "low": 104
+      }
+    }
+  }
+}
