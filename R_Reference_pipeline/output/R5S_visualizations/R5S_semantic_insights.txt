@@ -1,0 +1,40 @@
+
+R5S SEMANTIC ONTOLOGY VISUALIZATION INSIGHTS
+============================================
+Generated: 2025-08-31T21:07:24.418309
+Processing Time: 4.23 seconds
+
+SEMANTIC STRUCTURE ANALYSIS:
+----------------------------
+• Total Concepts Visualized: 97
+• Semantic Relationships: 120
+• Semantic Domains: 7
+• Taxonomy Depth: 3 levels
+
+VISUALIZATION OUTPUTS:
+----------------------
+Interactive Visualizations:
+  ✓ R5S_knowledge_graph.html
+  ✓ R5S_taxonomy_tree.html
+  ✓ R5S_domain_clusters.html
+  ✓ R5S_relationship_matrix.html
+
+Static Publication Figures:
+  ✓ R5S_relationship_distribution.png
+  ✓ R5S_domain_coherence.png
+  ✓ R5S_r4l_vs_r4s_comparison.png
+
+KEY SEMANTIC INSIGHTS:
+---------------------
+• Most Connected Domain: organizational_structure
+• Relationship Types: 5
+• Visualization Quality: 0.93/1.0
+
+USAGE RECOMMENDATIONS:
+---------------------
+1. Start with R5S_knowledge_graph.html for overall semantic structure
+2. Use R5S_taxonomy_tree.html to explore IS_A hierarchies
+3. Examine R5S_domain_clusters.html for semantic groupings
+4. Review static charts for publication-ready figures
+
+FILES LOCATION: C:\AiSearch\conceptual_space\R_Reference_pipeline\output\R5S_visualizations

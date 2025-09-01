@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "created": "2025-08-31T21:07:24.418309",
+    "processing_time": 4.2273194789886475,
+    "visualization_tool": "R5S_Semantic_Visualizer_v2.0"
+  },
+  "input_data_summary": {
+    "concepts_visualized": 97,
+    "relationships_visualized": 120,
+    "semantic_clusters": 7,
+    "hierarchy_depth": 3
+  },
+  "visualizations_created": {
+    "interactive_html": [
+      "R5S_knowledge_graph.html",
+      "R5S_taxonomy_tree.html",
+      "R5S_domain_clusters.html",
+      "R5S_relationship_matrix.html"
+    ],
+    "static_images": [
+      "R5S_relationship_distribution.png",
+      "R5S_domain_coherence.png",
+      "R5S_r4l_vs_r4s_comparison.png"
+    ]
+  },
+  "key_insights": {
+    "semantic_domains_identified": 7,
+    "relationship_types_visualized": 5,
+    "most_connected_domain": "organizational_structure",
+    "visualization_quality_score": 0.925
+  },
+  "performance_metrics": {
+    "start_time": 1756692440.19099,
+    "visualization_stages": {
+      "data_loading": 0.003996610641479492,
+      "interactive_viz": 0.5924193859100342,
+      "static_viz": 3.630903482437134
+    }
+  }
+}

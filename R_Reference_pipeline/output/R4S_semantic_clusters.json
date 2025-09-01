@@ -1,0 +1,220 @@
+{
+  "organizational_structure": {
+    "concepts": [
+      "agreement",
+      "agreement_term",
+      "brand",
+      "business_entity",
+      "campaign",
+      "competency",
+      "customer",
+      "payment",
+      "human_resource",
+      "inquiry",
+      "intellectual_property_rights",
+      "interaction",
+      "job",
+      "location",
+      "market",
+      "order",
+      "partner",
+      "policy",
+      "product",
+      "time",
+      "shipment",
+      "shipment_item",
+      "beneficiary",
+      "claim",
+      "constituent",
+      "legislation",
+      "license",
+      "license_term",
+      "public_sector_entity",
+      "collateral"
+    ],
+    "concept_count": 30,
+    "central_concept": "job",
+    "coherence": 0.1378539340624922,
+    "domain_keywords": [
+      "agreement",
+      "entities",
+      "legal",
+      "legally",
+      "rights",
+      "set",
+      "two",
+      "bounds",
+      "condition",
+      "condition set"
+    ]
+  },
+  "resource_management": {
+    "concepts": [
+      "asset",
+      "facility",
+      "research",
+      "conveyor",
+      "infrastructure",
+      "material",
+      "network",
+      "biological_organism",
+      "natural_resource"
+    ],
+    "concept_count": 9,
+    "central_concept": "network",
+    "coherence": 0.14093029927420175,
+    "domain_keywords": [
+      "business",
+      "facility",
+      "physical",
+      "physical structure",
+      "structure",
+      "animals",
+      "assets",
+      "human",
+      "infrastructure",
+      "matter"
+    ]
+  },
+  "information_management": {
+    "concepts": [
+      "channel",
+      "content",
+      "content_impression",
+      "language",
+      "message",
+      "submission",
+      "accreditation"
+    ],
+    "concept_count": 7,
+    "central_concept": "channel",
+    "coherence": 0.29066515889419514,
+    "domain_keywords": [
+      "including",
+      "physical",
+      "products",
+      "content",
+      "communication",
+      "notifications"
+    ]
+  },
+  "strategic_planning": {
+    "concepts": [
+      "decision",
+      "incident",
+      "initiative",
+      "plan",
+      "strategy",
+      "action_item",
+      "goal",
+      "objective",
+      "vision",
+      "course_of_action",
+      "device",
+      "case"
+    ],
+    "concept_count": 12,
+    "central_concept": "decision",
+    "coherence": 0.5076680760258292,
+    "domain_keywords": [
+      "resolution",
+      "achieve",
+      "activities",
+      "plan",
+      "result",
+      "set",
+      "action",
+      "strategy",
+      "course",
+      "objective"
+    ]
+  },
+  "operational_processes": {
+    "concepts": [
+      "event",
+      "legal_proceeding",
+      "schedule",
+      "schedule_element",
+      "training_course",
+      "work",
+      "work_item",
+      "work_queue",
+      "geographic_space",
+      "geographic_border",
+      "geographic_space_cadaster",
+      "network_arc",
+      "network_node",
+      "operation",
+      "route",
+      "trip",
+      "work_event",
+      "meeting",
+      "dispute",
+      "energy",
+      "order_item",
+      "product_forecast",
+      "government_service"
+    ],
+    "concept_count": 23,
+    "central_concept": "event",
+    "coherence": 0.19525961867376185,
+    "domain_keywords": [
+      "especially",
+      "event",
+      "occurrence",
+      "one",
+      "power",
+      "schedule",
+      "element",
+      "including",
+      "item",
+      "line"
+    ]
+  },
+  "financial_management": {
+    "concepts": [
+      "finance",
+      "currency",
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction",
+      "monetary_amount",
+      "tax",
+      "investment_portfolio",
+      "investment",
+      "financial_position",
+      "financial_instrument"
+    ],
+    "concept_count": 11,
+    "central_concept": "currency",
+    "coherence": 0.21741689452453825,
+    "domain_keywords": [
+      "monetary",
+      "resources",
+      "currency",
+      "exchange",
+      "value",
+      "financial",
+      "income",
+      "monetary value",
+      "related",
+      "future"
+    ]
+  },
+  "uncategorized": {
+    "concepts": [
+      "evidence",
+      "health_condition",
+      "standard",
+      "vote",
+      "cadaster"
+    ],
+    "concept_count": 5,
+    "central_concept": "evidence",
+    "coherence": 0.36227963525835866,
+    "domain_keywords": [
+      "body",
+      "associated"
+    ]
+  }
+}

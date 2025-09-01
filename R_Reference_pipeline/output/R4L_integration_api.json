@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "creation_timestamp": "2025-08-30T15:05:53.343023",
+    "creation_timestamp": "2025-08-31T20:04:24.702844",
     "api_version": "2.0",
     "total_concepts": 97
   },
@@ -19,8 +19,8 @@
           "asset"
         ],
         "expansion_candidates": [
-          "customer",
           "agreement_term",
+          "customer",
           "partner"
         ]
       },
@@ -54,8 +54,8 @@
         ],
         "expansion_candidates": [
           "job",
-          "work_item",
-          "investment_portfolio"
+          "investment_portfolio",
+          "work_item"
         ]
       },
       "brand": {
@@ -71,9 +71,9 @@
           "campaign"
         ],
         "expansion_candidates": [
-          "message",
+          "channel",
           "market",
-          "channel"
+          "message"
         ]
       },
       "business_entity": {
@@ -90,8 +90,8 @@
         ],
         "expansion_candidates": [
           "intellectual_property_rights",
-          "inquiry",
-          "financial_forecast"
+          "financial_forecast",
+          "inquiry"
         ]
       },
       "campaign": {
@@ -107,8 +107,8 @@
           "brand"
         ],
         "expansion_candidates": [
-          "finance",
           "job",
+          "finance",
           "plan"
         ]
       },
@@ -161,9 +161,9 @@
           "channel"
         ],
         "expansion_candidates": [
-          "submission",
           "work_item",
-          "content_impression"
+          "content_impression",
+          "submission"
         ]
       },
       "content_impression": {
@@ -191,9 +191,9 @@
           "market"
         ],
         "expansion_candidates": [
-          "partner",
+          "human_resource",
           "beneficiary",
-          "human_resource"
+          "partner"
         ]
       },
       "decision": {
@@ -227,9 +227,9 @@
           "agreement"
         ],
         "expansion_candidates": [
-          "submission",
           "schedule_element",
-          "order"
+          "order",
+          "submission"
         ]
       },
       "facility": {
@@ -246,8 +246,8 @@
         ],
         "expansion_candidates": [
           "interaction",
-          "agreement",
-          "channel"
+          "channel",
+          "agreement"
         ]
       },
       "finance": {
@@ -263,9 +263,9 @@
           "campaign"
         ],
         "expansion_candidates": [
-          "tax",
           "payment",
-          "monetary_amount"
+          "monetary_amount",
+          "tax"
         ]
       },
       "currency": {
@@ -280,9 +280,9 @@
           "finance"
         ],
         "expansion_candidates": [
-          "monetary_amount",
+          "financial_account",
           "investment_portfolio",
-          "financial_account"
+          "monetary_amount"
         ]
       },
       "financial_account": {
@@ -298,9 +298,9 @@
           "currency"
         ],
         "expansion_candidates": [
-          "tax",
+          "monetary_amount",
           "financial_transaction",
-          "monetary_amount"
+          "tax"
         ]
       },
       "financial_forecast": {
@@ -330,9 +330,9 @@
           "order"
         ],
         "expansion_candidates": [
-          "payment",
+          "financial_account",
           "monetary_amount",
-          "financial_account"
+          "payment"
         ]
       },
       "monetary_amount": {
@@ -348,9 +348,9 @@
           "finance"
         ],
         "expansion_candidates": [
-          "payment",
+          "currency",
           "financial_transaction",
-          "currency"
+          "payment"
         ]
       },
       "payment": {
@@ -367,8 +367,8 @@
         ],
         "expansion_candidates": [
           "finance",
-          "financial_transaction",
-          "monetary_amount"
+          "monetary_amount",
+          "financial_transaction"
         ]
       },
       "tax": {
@@ -383,9 +383,9 @@
           "agreement"
         ],
         "expansion_candidates": [
+          "financial_account",
           "finance",
-          "monetary_amount",
-          "financial_account"
+          "monetary_amount"
         ]
       },
       "human_resource": {
@@ -401,9 +401,9 @@
           "partner"
         ],
         "expansion_candidates": [
+          "schedule_element",
           "job",
-          "work_item",
-          "schedule_element"
+          "work_item"
         ]
       },
       "incident": {
@@ -419,8 +419,8 @@
           "channel"
         ],
         "expansion_candidates": [
-          "brand",
           "asset",
+          "brand",
           "agreement"
         ]
       },
@@ -437,9 +437,9 @@
           "customer"
         ],
         "expansion_candidates": [
-          "campaign",
           "asset",
-          "human_resource"
+          "human_resource",
+          "campaign"
         ]
       },
       "inquiry": {
@@ -455,9 +455,9 @@
           "brand"
         ],
         "expansion_candidates": [
+          "channel",
           "business_entity",
-          "agreement",
-          "channel"
+          "agreement"
         ]
       },
       "intellectual_property_rights": {
@@ -492,8 +492,8 @@
         ],
         "expansion_candidates": [
           "event",
-          "plan",
-          "facility"
+          "facility",
+          "plan"
         ]
       },
       "investment_portfolio": {
@@ -509,8 +509,8 @@
           "business_entity"
         ],
         "expansion_candidates": [
-          "asset",
           "investment",
+          "asset",
           "currency"
         ]
       },
@@ -528,8 +528,8 @@
         ],
         "expansion_candidates": [
           "asset",
-          "work_item",
-          "human_resource"
+          "human_resource",
+          "work_item"
         ]
       },
       "language": {
@@ -545,8 +545,8 @@
           "location"
         ],
         "expansion_candidates": [
-          "content",
           "competency",
+          "content",
           "training_course"
         ]
       },
@@ -564,8 +564,8 @@
         ],
         "expansion_candidates": [
           "customer",
-          "partner",
-          "agreement"
+          "agreement",
+          "partner"
         ]
       },
       "location": {
@@ -581,9 +581,9 @@
           "content"
         ],
         "expansion_candidates": [
-          "campaign",
+          "schedule_element",
           "asset",
-          "schedule_element"
+          "campaign"
         ]
       },
       "market": {
@@ -599,8 +599,8 @@
           "campaign"
         ],
         "expansion_candidates": [
-          "brand",
           "customer",
+          "brand",
           "product"
         ]
       },
@@ -618,8 +618,8 @@
         ],
         "expansion_candidates": [
           "customer",
-          "partner",
-          "channel"
+          "channel",
+          "partner"
         ]
       },
       "order": {
@@ -635,9 +635,9 @@
           "agreement"
         ],
         "expansion_candidates": [
-          "customer",
+          "event",
           "product",
-          "event"
+          "customer"
         ]
       },
       "partner": {
@@ -671,9 +671,9 @@
           "case"
         ],
         "expansion_candidates": [
-          "objective",
           "policy",
-          "strategy"
+          "strategy",
+          "objective"
         ]
       },
       "policy": {
@@ -689,8 +689,8 @@
           "customer"
         ],
         "expansion_candidates": [
-          "case",
           "plan",
+          "case",
           "strategy"
         ]
       },
@@ -743,8 +743,8 @@
           "interaction"
         ],
         "expansion_candidates": [
-          "event",
           "schedule_element",
+          "event",
           "decision"
         ]
       },
@@ -762,8 +762,8 @@
         ],
         "expansion_candidates": [
           "event",
-          "location",
-          "human_resource"
+          "human_resource",
+          "location"
         ]
       },
       "strategy": {
@@ -779,9 +779,9 @@
           "action_item"
         ],
         "expansion_candidates": [
-          "objective",
           "policy",
-          "plan"
+          "plan",
+          "objective"
         ]
       },
       "action_item": {
@@ -795,9 +795,9 @@
           "course_of_action"
         ],
         "expansion_candidates": [
-          "objective",
           "course_of_action",
-          "strategy"
+          "strategy",
+          "objective"
         ]
       },
       "goal": {
@@ -812,9 +812,9 @@
           "vision"
         ],
         "expansion_candidates": [
+          "decision",
           "strategy",
-          "objective",
-          "decision"
+          "objective"
         ]
       },
       "objective": {
@@ -830,8 +830,8 @@
           "decision"
         ],
         "expansion_candidates": [
-          "policy",
           "plan",
+          "policy",
           "strategy"
         ]
       },
@@ -845,8 +845,8 @@
           "goal"
         ],
         "expansion_candidates": [
-          "goal",
-          "strategy"
+          "strategy",
+          "goal"
         ]
       },
       "submission": {
@@ -862,9 +862,9 @@
           "inquiry"
         ],
         "expansion_candidates": [
+          "event",
           "content",
-          "message",
-          "event"
+          "message"
         ]
       },
       "time": {
@@ -879,8 +879,8 @@
           "schedule"
         ],
         "expansion_candidates": [
-          "event",
           "schedule_element",
+          "event",
           "decision"
         ]
       },
@@ -897,9 +897,9 @@
           "competency"
         ],
         "expansion_candidates": [
-          "language",
           "interaction",
-          "business_entity"
+          "business_entity",
+          "language"
         ]
       },
       "work": {
@@ -915,8 +915,8 @@
           "inquiry"
         ],
         "expansion_candidates": [
-          "work_item",
           "schedule_element",
+          "work_item",
           "work_queue"
         ]
       },
@@ -949,9 +949,9 @@
           "human_resource"
         ],
         "expansion_candidates": [
+          "human_resource",
           "work",
-          "work_item",
-          "human_resource"
+          "work_item"
         ]
       },
       "geographic_space": {
@@ -994,8 +994,8 @@
         ],
         "expansion_candidates": [
           "asset",
-          "infrastructure",
-          "investment_portfolio"
+          "investment_portfolio",
+          "infrastructure"
         ]
       },
       "conveyor": {
@@ -1012,8 +1012,8 @@
         ],
         "expansion_candidates": [
           "shipment",
-          "operation",
-          "material"
+          "material",
+          "operation"
         ]
       },
       "infrastructure": {
@@ -1026,8 +1026,8 @@
           "investment"
         ],
         "expansion_candidates": [
-          "operation",
-          "investment"
+          "investment",
+          "operation"
         ]
       },
       "material": {
@@ -1040,8 +1040,8 @@
           "operation"
         ],
         "expansion_candidates": [
-          "operation",
-          "conveyor"
+          "conveyor",
+          "operation"
         ]
       },
       "network": {
@@ -1055,9 +1055,9 @@
           "network_node"
         ],
         "expansion_candidates": [
+          "network_arc",
           "operation",
-          "network_node",
-          "network_arc"
+          "network_node"
         ]
       },
       "network_arc": {
@@ -1071,9 +1071,9 @@
           "route"
         ],
         "expansion_candidates": [
-          "route",
+          "network_node",
           "network",
-          "network_node"
+          "route"
         ]
       },
       "network_node": {
@@ -1121,9 +1121,9 @@
           "shipment"
         ],
         "expansion_candidates": [
+          "conveyor",
           "operation",
-          "trip",
-          "conveyor"
+          "trip"
         ]
       },
       "shipment": {
@@ -1138,9 +1138,9 @@
           "trip"
         ],
         "expansion_candidates": [
-          "shipment_item",
+          "route",
           "conveyor",
-          "route"
+          "shipment_item"
         ]
       },
       "shipment_item": {
@@ -1155,9 +1155,9 @@
           "trip"
         ],
         "expansion_candidates": [
+          "route",
           "shipment",
-          "conveyor",
-          "route"
+          "conveyor"
         ]
       },
       "trip": {
@@ -1172,9 +1172,9 @@
           "shipment_item"
         ],
         "expansion_candidates": [
+          "route",
           "shipment",
-          "conveyor",
-          "route"
+          "conveyor"
         ]
       },
       "work_event": {
@@ -1284,9 +1284,9 @@
           "standard"
         ],
         "expansion_candidates": [
+          "health_condition",
           "beneficiary",
-          "natural_resource",
-          "health_condition"
+          "natural_resource"
         ]
       },
       "evidence": {
@@ -1302,9 +1302,9 @@
           "vote"
         ],
         "expansion_candidates": [
-          "biological_organism",
+          "standard",
           "beneficiary",
-          "standard"
+          "biological_organism"
         ]
       },
       "financial_instrument": {
@@ -1330,9 +1330,9 @@
           "standard"
         ],
         "expansion_candidates": [
-          "biological_organism",
+          "standard",
           "beneficiary",
-          "standard"
+          "biological_organism"
         ]
       },
       "natural_resource": {
@@ -1348,8 +1348,8 @@
         ],
         "expansion_candidates": [
           "asset",
-          "biological_organism",
-          "evidence"
+          "evidence",
+          "biological_organism"
         ]
       },
       "standard": {
@@ -1365,9 +1365,9 @@
           "health_condition"
         ],
         "expansion_candidates": [
-          "biological_organism",
+          "evidence",
           "beneficiary",
-          "evidence"
+          "biological_organism"
         ]
       },
       "vote": {
@@ -1381,9 +1381,9 @@
           "standard"
         ],
         "expansion_candidates": [
+          "standard",
           "beneficiary",
-          "evidence",
-          "standard"
+          "evidence"
         ]
       },
       "claim": {
@@ -1397,8 +1397,8 @@
           "customer"
         ],
         "expansion_candidates": [
-          "customer",
           "case",
+          "customer",
           "device"
         ]
       },
@@ -1425,9 +1425,9 @@
           "plan"
         ],
         "expansion_candidates": [
-          "plan",
+          "claim",
           "policy",
-          "claim"
+          "plan"
         ]
       },
       "cadaster": {
@@ -1453,9 +1453,9 @@
           "legislation"
         ],
         "expansion_candidates": [
+          "license",
           "government_service",
-          "legislation",
-          "license"
+          "legislation"
         ]
       },
       "government_service": {
@@ -1480,8 +1480,8 @@
           "public_sector_entity"
         ],
         "expansion_candidates": [
-          "constituent",
-          "public_sector_entity"
+          "public_sector_entity",
+          "constituent"
         ]
       },
       "license": {
@@ -1494,8 +1494,8 @@
           "public_sector_entity"
         ],
         "expansion_candidates": [
-          "constituent",
-          "public_sector_entity"
+          "public_sector_entity",
+          "constituent"
         ]
       },
       "license_term": {
@@ -1520,8 +1520,8 @@
           "legislation"
         ],
         "expansion_candidates": [
-          "legislation",
-          "license"
+          "license",
+          "legislation"
         ]
       },
       "collateral": {

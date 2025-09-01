@@ -19,9 +19,10 @@ sys.path.append(str(Path(__file__).parent.parent.parent / "R_Reference_pipeline"
 
 try:
     from R4X_cross_pipeline_semantic_integrator import R4X_CrossPipelineSemanticIntegrator
-    from R4X_semantic_fusion_engine import R4X_SemanticFusionEngine
+    from R4X_semantic_fusion_engine import SemanticFusionEngine
+    R4X_SemanticFusionEngine = SemanticFusionEngine
 except ImportError:
-    print("⚠️  Warning: R4X components not found. Running in fallback mode.")
+    print("[WARNING] R4X components not found. Running in fallback mode.")
     R4X_CrossPipelineSemanticIntegrator = None
     R4X_SemanticFusionEngine = None
 
@@ -42,9 +43,9 @@ class B34_R4X_IntentEnhancer:
         if R4X_CrossPipelineSemanticIntegrator:
             try:
                 self.r4x_integrator = R4X_CrossPipelineSemanticIntegrator()
-                print("✓ R4X Cross-Pipeline Semantic Integrator initialized")
+                print("[OK] R4X Cross-Pipeline Semantic Integrator initialized")
             except Exception as e:
-                print(f"⚠️  R4X initialization warning: {e}")
+                print(f"[WARNING]  R4X initialization warning: {e}")
         
         # Intent enhancement configurations
         self.enhancement_strategies = {
@@ -156,7 +157,7 @@ class B34_R4X_IntentEnhancer:
             }
             
         except Exception as e:
-            print(f"⚠️  R4X enhancement error: {e}")
+            print(f"[WARNING]  R4X enhancement error: {e}")
             return {
                 "enhancement_status": "error",
                 "enhanced_intent": standard_intent_analysis,
@@ -550,7 +551,7 @@ def save_output(data: Dict[str, Any], output_path: str = "outputs/B3_4_r4x_inten
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved R4X intent enhancement results to {full_path}")
+    print(f"[OK] Saved R4X intent enhancement results to {full_path}")
 
 def main():
     """Main execution for B3.4 R4X Intent Enhancement"""
@@ -570,7 +571,7 @@ def main():
         print(f"Processing question: {question}")
         
         if not has_intent_analysis:
-            print("⚠️  No intent analysis found, using fallback analysis")
+            print("[WARNING]  No intent analysis found, using fallback analysis")
         
         # Process intent enhancement
         print("Enhancing intent understanding with R4X tri-semantic integration...")
@@ -616,11 +617,11 @@ def main():
         # Save output
         save_output(enhancement_results)
         
-        print("\n✓ B3.4 R4X Intent Enhancement completed successfully!")
+        print("\n[OK] B3.4 R4X Intent Enhancement completed successfully!")
         print("  Revolutionary tri-semantic question understanding achieved!")
         
     except Exception as e:
-        print(f"❌ Error in B3.4 R4X Intent Enhancement: {str(e)}")
+        print(f"[ERROR] Error in B3.4 R4X Intent Enhancement: {str(e)}")
         raise
 
 if __name__ == "__main__":

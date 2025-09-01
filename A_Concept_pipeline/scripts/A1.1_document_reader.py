@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 from datetime import datetime
 
-def load_documents(data_path="data/test_5_records.parquet"):
+def load_documents(data_path="data/test_mode_5_records.parquet"):
     """
     Load documents from parquet file
     
@@ -30,23 +30,40 @@ def load_documents(data_path="data/test_5_records.parquet"):
     # Load parquet file
     df = pd.read_parquet(full_path)
     
-    # Process documents
+    # Process documents  
     documents = []
     for idx, row in df.iterrows():
+        # Handle the real FinQA data structure
+        doc_array = row.get("documents", [])
+        if hasattr(doc_array, 'tolist'):
+            doc_array = doc_array.tolist()
+        
+        # Combine all document texts
+        combined_text = ""
+        if isinstance(doc_array, list):
+            for doc_item in doc_array:
+                if isinstance(doc_item, str):
+                    combined_text += doc_item + " "
+        
         doc = {
-            "doc_id": row.get("doc_id", f"doc_{idx}"),
-            "text": row.get("text", ""),
+            "doc_id": row.get("id", f"doc_{idx}"),
+            "text": combined_text.strip(),
+            "question": str(row.get("question", "")),
             "metadata": {
                 "source": str(full_path),
                 "index": idx,
-                "loaded_at": datetime.now().isoformat()
+                "loaded_at": datetime.now().isoformat(),
+                "dataset_name": str(row.get("dataset_name", "")),
+                "original_response": str(row.get("response", ""))
             }
         }
         
-        # Add any additional fields from the parquet
-        for col in df.columns:
-            if col not in ["doc_id", "text"]:
-                doc["metadata"][col] = row.get(col)
+        # Add numeric fields safely
+        numeric_fields = ["adherence_score", "relevance_score", "utilization_score", "completeness_score"]
+        for field in numeric_fields:
+            value = row.get(field)
+            if pd.notna(value):
+                doc["metadata"][field] = float(value)
         
         documents.append(doc)
     
@@ -75,7 +92,7 @@ def save_output(data, output_path="outputs/A1.1_raw_documents.json"):
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved {data['count']} documents to {full_path}")
+    print(f"[OK] Saved {data['count']} documents to {full_path}")
     
     # Also save metadata
     meta_path = full_path.with_suffix('.meta.json')

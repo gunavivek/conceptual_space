@@ -25,7 +25,7 @@ try:
     from R4X_cross_pipeline_semantic_integrator import R4X_CrossPipelineSemanticIntegrator
     from R4X_semantic_fusion_engine import R4X_SemanticFusionEngine
 except ImportError:
-    print("⚠️  Warning: R4X components not found. Visualization will show available data only.")
+    print("[WARNING]  Warning: R4X components not found. Visualization will show available data only.")
     R4X_CrossPipelineSemanticIntegrator = None
     R4X_SemanticFusionEngine = None
 
@@ -49,7 +49,7 @@ class R5X_TriSemanticVisualizer:
                 self.r4x_integrator = R4X_CrossPipelineSemanticIntegrator()
                 print("✓ R4X Cross-Pipeline Semantic Integrator initialized")
             except Exception as e:
-                print(f"⚠️  R4X initialization warning: {e}")
+                print(f"[WARNING]  R4X initialization warning: {e}")
         
         # Visualization configurations
         self.visualization_types = {
@@ -928,7 +928,7 @@ class R5X_TriSemanticVisualizer:
                 
                 # Open visualization in browser
                 visualization_url = f"http://localhost:{port}/R5X_tri_semantic_visualization.html"
-                print(f"🚀 Launching R5X Tri-Semantic Visualizer at: {visualization_url}")
+                print(f"[START] Launching R5X Tri-Semantic Visualizer at: {visualization_url}")
                 
                 # Change to output directory and open browser
                 import os
@@ -963,7 +963,7 @@ class R5X_TriSemanticVisualizer:
                     os.chdir(original_dir)
                     
         except Exception as e:
-            print(f"❌ Error launching visualization: {e}")
+            print(f"[ERROR] Error launching visualization: {e}")
             print(f"You can manually open: {html_file}")
 
 def main():
@@ -985,7 +985,7 @@ def main():
         visualizer.launch_visualization(html_file)
         
     except Exception as e:
-        print(f"❌ Error in R5X Tri-Semantic Visualizer: {str(e)}")
+        print(f"[ERROR] Error in R5X Tri-Semantic Visualizer: {str(e)}")
         raise
 
 if __name__ == "__main__":

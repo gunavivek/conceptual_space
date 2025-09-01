@@ -46,11 +46,11 @@ class A_Pipeline_R4X_Enhancement:
         if R4X_CrossPipelineSemanticIntegrator:
             try:
                 self.r4x_integrator = R4X_CrossPipelineSemanticIntegrator()
-                print("✅ R4X Cross-Pipeline Semantic Integrator initialized")
+                print("[SUCCESS] R4X Cross-Pipeline Semantic Integrator initialized")
             except Exception as e:
-                print(f"⚠️  Warning: Could not initialize R4X: {e}")
+                print(f"[WARNING]  Warning: Could not initialize R4X: {e}")
         else:
-            print("⚠️  Warning: Running without R4X integration")
+            print("[WARNING]  Warning: Running without R4X integration")
         
         # Enhancement metrics
         self.enhancement_metrics = {
@@ -375,7 +375,7 @@ class A_Pipeline_R4X_Enhancement:
             print(f"Error: Input file not found: {input_path}")
             return {'error': f'Input file not found: {input_path}'}
         
-        print(f"\n🚀 [A2.9] Processing document batch: {input_file}")
+        print(f"\n[START] [A2.9] Processing document batch: {input_file}")
         
         # Load input data
         if input_path.suffix == '.csv':
@@ -439,11 +439,11 @@ class A_Pipeline_R4X_Enhancement:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(batch_summary, f, indent=2, ensure_ascii=False)
         
-        print(f"\n✅ [A2.9] Batch processing complete!")
-        print(f"   📊 Documents processed: {batch_summary['documents_processed']}")
-        print(f"   ✅ Successful enhancements: {batch_summary['successful_enhancements']}")
-        print(f"   ⏱️  Processing time: {processing_time:.2f} seconds")
-        print(f"   💾 Results saved: {output_path}")
+        print(f"\n[SUCCESS] [A2.9] Batch processing complete!")
+        print(f"   [STATS] Documents processed: {batch_summary['documents_processed']}")
+        print(f"   [SUCCESS] Successful enhancements: {batch_summary['successful_enhancements']}")
+        print(f"   [TIME] Processing time: {processing_time:.2f} seconds")
+        print(f"   [SAVE] Results saved: {output_path}")
         
         return batch_summary
     
@@ -505,7 +505,7 @@ def main():
     """Main function to run A2.9 R4X enhancement"""
     
     print("=" * 80)
-    print("🚀 A2.9: R4X Semantic Enhancement for A-Pipeline")
+    print("[START] A2.9: R4X Semantic Enhancement for A-Pipeline")
     print("   Revolutionary tri-semantic document processing enhancement")
     print("=" * 80)
     
@@ -537,11 +537,11 @@ def main():
     results = enhancer.process_document_batch("sample_documents.json")
     
     if 'error' not in results:
-        print("\n🎉 A2.9 R4X Enhancement completed successfully!")
+        print("\n[COMPLETE] A2.9 R4X Enhancement completed successfully!")
         print("   This represents a revolutionary advancement in document processing")
         print("   through tri-semantic integration!")
     else:
-        print(f"\n❌ Enhancement failed: {results['error']}")
+        print(f"\n[ERROR] Enhancement failed: {results['error']}")
 
 
 if __name__ == "__main__":

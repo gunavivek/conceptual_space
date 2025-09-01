@@ -19,9 +19,10 @@ sys.path.append(str(Path(__file__).parent.parent.parent / "R_Reference_pipeline"
 
 try:
     from R4X_cross_pipeline_semantic_integrator import R4X_CrossPipelineSemanticIntegrator
-    from R4X_semantic_fusion_engine import R4X_SemanticFusionEngine
+    from R4X_semantic_fusion_engine import SemanticFusionEngine
+    R4X_SemanticFusionEngine = SemanticFusionEngine
 except ImportError:
-    print("⚠️  Warning: R4X components not found. Running in fallback mode.")
+    print("[WARNING] R4X components not found. Running in fallback mode.")
     R4X_CrossPipelineSemanticIntegrator = None
     R4X_SemanticFusionEngine = None
 
@@ -42,9 +43,9 @@ class B41_R4X_AnswerSynthesizer:
         if R4X_CrossPipelineSemanticIntegrator:
             try:
                 self.r4x_integrator = R4X_CrossPipelineSemanticIntegrator()
-                print("✓ R4X Cross-Pipeline Semantic Integrator initialized")
+                print("[OK] R4X Cross-Pipeline Semantic Integrator initialized")
             except Exception as e:
-                print(f"⚠️  R4X initialization warning: {e}")
+                print(f"[WARNING]  R4X initialization warning: {e}")
         
         # Answer synthesis strategies
         self.synthesis_strategies = {
@@ -523,7 +524,7 @@ def save_output(data: Dict[str, Any], output_path: str = "outputs/B4_1_r4x_answe
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved R4X answer synthesis results to {full_path}")
+    print(f"[OK] Saved R4X answer synthesis results to {full_path}")
 
 def main():
     """Main execution for B4.1 R4X Answer Synthesis"""
@@ -574,11 +575,11 @@ def main():
         # Save output
         save_output(synthesis_results)
         
-        print("\n✓ B4.1 R4X Answer Synthesis completed successfully!")
+        print("\n[OK] B4.1 R4X Answer Synthesis completed successfully!")
         print("  Revolutionary tri-semantic answer generation achieved!")
         
     except Exception as e:
-        print(f"❌ Error in B4.1 R4X Answer Synthesis: {str(e)}")
+        print(f"[ERROR] Error in B4.1 R4X Answer Synthesis: {str(e)}")
         raise
 
 if __name__ == "__main__":

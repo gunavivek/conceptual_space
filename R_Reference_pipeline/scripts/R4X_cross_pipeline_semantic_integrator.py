@@ -44,7 +44,11 @@ class R4X_CrossPipelineSemanticIntegrator:
         self.semantic_fusion_engine = None
         self.cross_space_bridges = {}
         self.integration_analytics = {}
-        self.unified_semantic_graph = {}
+        self.unified_semantic_graph = {
+            'concepts': {},
+            'relationships': {},
+            'fusion_metadata': {}
+        }
         
         # Performance metrics
         self.performance_metrics = {

@@ -163,7 +163,7 @@ def save_output(data, output_path="outputs/A2.1_preprocessed_documents.json"):
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved preprocessed documents to {full_path}")
+    print(f"[OK] Saved preprocessed documents to {full_path}")
     
     # Save metadata
     meta_path = full_path.with_suffix('.meta.json')

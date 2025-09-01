@@ -1,0 +1,3404 @@
+{
+  "metadata": {
+    "version": "2.0_ENHANCED",
+    "created": "2025-08-31T20:39:04.021997",
+    "processing_time": 0.05204272270202637,
+    "enhancement_level": "FULL_R1_INTEGRATION"
+  },
+  "input_sources": {
+    "r1_concepts": 97,
+    "r1_domains": 8,
+    "r1_keywords": 1157
+  },
+  "concepts": {
+    "agreement": {
+      "name": "agreement",
+      "definition": "A set of legally binding rights and obligations between two or more legal entities.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "agreement",
+        "binding",
+        "binding rights",
+        "entities",
+        "legal",
+        "legal entities",
+        "legally",
+        "legally binding",
+        "obligations",
+        "rights",
+        "set",
+        "two"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "agreement_term": {
+      "name": "agreement_term",
+      "definition": "Legally enforceable condition set forth within the bounds of an agreement.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "agreement",
+        "agreement term",
+        "bounds",
+        "condition",
+        "condition set",
+        "enforceable",
+        "enforceable condition",
+        "forth",
+        "forth within",
+        "legally",
+        "legally enforceable",
+        "set",
+        "set forth",
+        "term",
+        "within"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "agreement"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "asset": {
+      "name": "asset",
+      "definition": "Tangible or intangible property.",
+      "original_domain": "common",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "asset",
+        "intangible",
+        "intangible property",
+        "property",
+        "tangible"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "intangible"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "brand": {
+      "name": "brand",
+      "definition": "A name, symbol, or design that identifies and differentiates products, offerings, or organizational identities.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "brand",
+        "design",
+        "differentiates",
+        "differentiates products",
+        "identifies",
+        "identities",
+        "name",
+        "offerings",
+        "organizational",
+        "organizational identities",
+        "products",
+        "symbol"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ],
+        "HAS_PROPERTY": [
+          "name"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "business_entity": {
+      "name": "business_entity",
+      "definition": "A legal body or bodies that comprises or comprise a single organization.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "bodies",
+        "body",
+        "business",
+        "business entity",
+        "comprise",
+        "comprises",
+        "entity",
+        "legal",
+        "legal body",
+        "organization",
+        "single",
+        "single organization"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "campaign": {
+      "name": "campaign",
+      "definition": "An outreach activity that targets a specific population, for example, customers, human resources, partners, and patients, to achieve a certain goal, such as marketing awareness, hiring activities, and health awareness.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "achieve",
+        "activities",
+        "activity",
+        "awareness",
+        "campaign",
+        "certain",
+        "certain goal",
+        "customers",
+        "example",
+        "goal",
+        "health",
+        "health awareness",
+        "hiring",
+        "hiring activities",
+        "human",
+        "human resources",
+        "marketing",
+        "marketing awareness",
+        "outreach",
+        "outreach activity",
+        "partners",
+        "patients",
+        "population",
+        "resources",
+        "specific",
+        "specific population",
+        "targets"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "competency"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "channel": {
+      "name": "channel",
+      "definition": "A digital, analog, or physical conduit through which products, related services, or communications are delivered or received, including the Internet, phone, delivery service, satellite, radio, or physical means.",
+      "original_domain": "common",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "analog",
+        "channel",
+        "communications",
+        "conduit",
+        "delivered",
+        "delivery",
+        "delivery service",
+        "digital",
+        "including",
+        "internet",
+        "means",
+        "phone",
+        "physical",
+        "physical conduit",
+        "physical means",
+        "products",
+        "radio",
+        "received",
+        "related",
+        "related services",
+        "satellite",
+        "service",
+        "services"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "competency": {
+      "name": "competency",
+      "definition": "The skills and knowledge necessary to do something.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "competency",
+        "knowledge",
+        "knowledge necessary",
+        "necessary",
+        "skills",
+        "something"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "competency"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "content": {
+      "name": "content",
+      "definition": "A creative work, such as is manifested in audio/visual, still image, textual, experiential, mixed-media, or other forms.",
+      "original_domain": "common",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "audio",
+        "content",
+        "creative",
+        "creative work",
+        "experiential",
+        "forms",
+        "image",
+        "manifested",
+        "media",
+        "mixed",
+        "still",
+        "still image",
+        "textual",
+        "visual",
+        "work"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "content_impression": {
+      "name": "content_impression",
+      "definition": "Instance of content consumption.",
+      "original_domain": "common",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "consumption",
+        "content",
+        "content consumption",
+        "content impression",
+        "impression",
+        "instance"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "customer": {
+      "name": "customer",
+      "definition": "A legal entity that has, plans to have, or has had an agreement with the organization, or is a recipient or beneficiary of the organization's products or services.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "agreement",
+        "beneficiary",
+        "customer",
+        "entity",
+        "legal",
+        "legal entity",
+        "organization",
+        "plans",
+        "products",
+        "recipient",
+        "services"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "organization",
+          "organization"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "decision": {
+      "name": "decision",
+      "definition": "A conclusion or resolution reached after considering alternative options.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "alternative",
+        "alternative options",
+        "conclusion",
+        "considering",
+        "considering alternative",
+        "decision",
+        "options",
+        "reached",
+        "resolution",
+        "resolution reached"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "event": {
+      "name": "event",
+      "definition": "An occurrence that has happened or may happen, especially one of importance, concern, or interest.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "concern",
+        "especially",
+        "especially one",
+        "event",
+        "happen",
+        "happened",
+        "importance",
+        "interest",
+        "occurrence",
+        "one"
+      ],
+      "relationships": {
+        "IS_A": [
+          "occurrence"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "facility": {
+      "name": "facility",
+      "definition": "A physical structure at a given place where business is conducted.",
+      "original_domain": "common",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "business",
+        "conducted",
+        "facility",
+        "given",
+        "given place",
+        "physical",
+        "physical structure",
+        "place",
+        "place where",
+        "structure",
+        "where",
+        "where business"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "finance": {
+      "name": "finance",
+      "definition": "Monetary aspects and resources.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "aspects",
+        "finance",
+        "monetary",
+        "monetary aspects",
+        "resources"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "definition": "An agreed medium of value exchange.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "agreed",
+        "agreed medium",
+        "currency",
+        "exchange",
+        "medium",
+        "value",
+        "value exchange"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount",
+          "value",
+          "currency"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 5
+      }
+    },
+    "financial_account": {
+      "name": "financial_account",
+      "definition": "A named container of monetary value transactions that are typically organized into assets, liabilities, income, expense, equity, and other related categories.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "account",
+        "assets",
+        "categories",
+        "container",
+        "equity",
+        "expense",
+        "financial",
+        "financial account",
+        "income",
+        "liabilities",
+        "monetary",
+        "monetary value",
+        "named",
+        "named container",
+        "organized",
+        "related",
+        "related categories",
+        "transactions",
+        "typically",
+        "typically organized",
+        "value",
+        "value transactions"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount",
+          "value"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 4
+      }
+    },
+    "financial_forecast": {
+      "name": "financial_forecast",
+      "definition": "A prediction of a future financial aspect of the organization.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "aspect",
+        "financial",
+        "financial aspect",
+        "financial forecast",
+        "forecast",
+        "future",
+        "future financial",
+        "organization",
+        "prediction"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 4
+      }
+    },
+    "financial_transaction": {
+      "name": "financial_transaction",
+      "definition": "An instance of a monetary amount movement or related exchange across businesses, agreements, or financial accounts.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "accounts",
+        "across",
+        "across businesses",
+        "agreements",
+        "amount",
+        "amount movement",
+        "businesses",
+        "exchange",
+        "exchange across",
+        "financial",
+        "financial accounts",
+        "financial transaction",
+        "instance",
+        "monetary",
+        "monetary amount",
+        "movement",
+        "related",
+        "related exchange",
+        "transaction"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount",
+          "amount"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 4
+      }
+    },
+    "monetary_amount": {
+      "name": "monetary_amount",
+      "definition": "A representation of value as expressed in a given currency.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "amount",
+        "currency",
+        "expressed",
+        "given",
+        "given currency",
+        "monetary",
+        "monetary amount",
+        "representation",
+        "value"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount",
+          "value",
+          "currency",
+          "amount"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 6
+      }
+    },
+    "payment": {
+      "name": "payment",
+      "definition": "An obligation to remit or receive a monetary amount between an organization and a customer, partner, or other external party.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "amount",
+        "customer",
+        "external",
+        "external party",
+        "monetary",
+        "monetary amount",
+        "obligation",
+        "organization",
+        "partner",
+        "party",
+        "payment",
+        "receive",
+        "remit"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount",
+          "amount"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 5
+      }
+    },
+    "tax": {
+      "name": "tax",
+      "definition": "A compulsory contribution of monetary value to governing bodies.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "bodies",
+        "compulsory",
+        "compulsory contribution",
+        "contribution",
+        "governing",
+        "governing bodies",
+        "monetary",
+        "monetary value",
+        "tax",
+        "value"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "value"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "human_resource": {
+      "name": "human_resource",
+      "definition": "An individual who has, plans to have, or has had a legal agreement with the organization, which includes compensation and other benefits, on a temporary or permanent basis.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "agreement",
+        "basis",
+        "benefits",
+        "compensation",
+        "human",
+        "human resource",
+        "includes",
+        "includes compensation",
+        "individual",
+        "individual who",
+        "legal",
+        "legal agreement",
+        "organization",
+        "permanent",
+        "permanent basis",
+        "plans",
+        "resource",
+        "temporary",
+        "who"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "organization",
+          "competency",
+          "organization",
+          "compensation"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 5
+      }
+    },
+    "incident": {
+      "name": "incident",
+      "definition": "An unplanned, disruptive, or potentially disruptive, experience.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "disruptive",
+        "experience",
+        "incident",
+        "potentially",
+        "potentially disruptive",
+        "unplanned"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "initiative": {
+      "name": "initiative",
+      "definition": "A coordinated collection of temporary endeavors undertaken to create a unique outcome.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "collection",
+        "coordinated",
+        "coordinated collection",
+        "create",
+        "endeavors",
+        "endeavors undertaken",
+        "initiative",
+        "outcome",
+        "temporary",
+        "temporary endeavors",
+        "undertaken",
+        "unique",
+        "unique outcome"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "inquiry": {
+      "name": "inquiry",
+      "definition": "A question, request, feedback, or comment that may exist inside or outside of the business, which can be received, identified, harvested, disseminated, classified, and tracked.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "business",
+        "classified",
+        "comment",
+        "disseminated",
+        "exist",
+        "exist inside",
+        "feedback",
+        "harvested",
+        "identified",
+        "inquiry",
+        "inside",
+        "outside",
+        "question",
+        "received",
+        "request",
+        "tracked"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "intellectual_property_rights": {
+      "name": "intellectual_property_rights",
+      "definition": "Legal protections, such as patents, trademarks, and copyrights.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "copyrights",
+        "intellectual",
+        "intellectual property rights",
+        "legal",
+        "legal protections",
+        "patents",
+        "property",
+        "protections",
+        "rights",
+        "trademarks"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "interaction": {
+      "name": "interaction",
+      "definition": "A set of contemporaneous collaborations or contacts about a given subject, over a span of time, between two or more entities, using one or more channels, at one or more physical or virtual locations such as meetings, interviews, seminars, or consultations.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "about",
+        "channels",
+        "collaborations",
+        "contacts",
+        "contacts about",
+        "contemporaneous",
+        "contemporaneous collaborations",
+        "entities",
+        "given",
+        "given subject",
+        "interaction",
+        "interviews",
+        "locations",
+        "meetings",
+        "one",
+        "physical",
+        "set",
+        "span",
+        "subject",
+        "time",
+        "two",
+        "using",
+        "using one",
+        "virtual",
+        "virtual locations"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "time"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "investment_portfolio": {
+      "name": "investment_portfolio",
+      "definition": "A set of resources expected to increase in value or provide income.",
+      "original_domain": "common",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "expected",
+        "income",
+        "increase",
+        "investment",
+        "investment portfolio",
+        "portfolio",
+        "provide",
+        "provide income",
+        "resources",
+        "resources expected",
+        "set",
+        "value"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "value"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "job": {
+      "name": "job",
+      "definition": "A named category of accountabilities, whether remunerative or non-remunerative, associated with an assigned, specific, and accountable business duty, role, or function that can be executed by a human or non-human resource.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "accountabilities",
+        "accountable",
+        "accountable business",
+        "assigned",
+        "associated",
+        "business",
+        "business duty",
+        "category",
+        "duty",
+        "executed",
+        "function",
+        "human",
+        "human resource",
+        "job",
+        "named",
+        "named category",
+        "non",
+        "remunerative",
+        "resource",
+        "role",
+        "specific",
+        "whether",
+        "whether remunerative"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "assigned",
+          "role",
+          "competency",
+          "assigned",
+          "category"
+        ],
+        "PART_OF": [
+          "organization"
+        ],
+        "REQUIRES": [
+          "competency"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 7
+      }
+    },
+    "language": {
+      "name": "language",
+      "definition": "A method of communication or dialect variant consisting of units of representation or meaning, such as numbers, words, symbols, sounds, or other physical manifestations and gestures, presented in a structured way.",
+      "original_domain": "common",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "communication",
+        "consisting",
+        "dialect",
+        "dialect variant",
+        "gestures",
+        "language",
+        "manifestations",
+        "meaning",
+        "method",
+        "numbers",
+        "physical",
+        "physical manifestations",
+        "presented",
+        "representation",
+        "sounds",
+        "structured",
+        "structured way",
+        "symbols",
+        "units",
+        "variant",
+        "variant consisting",
+        "way",
+        "words"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "legal_proceeding": {
+      "name": "legal_proceeding",
+      "definition": "An activity invoking the power of a tribunal to enforce a law.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "activity",
+        "activity invoking",
+        "enforce",
+        "invoking",
+        "law",
+        "legal",
+        "legal proceeding",
+        "power",
+        "proceeding",
+        "tribunal"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "location": {
+      "name": "location",
+      "definition": "A position or site.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "location",
+        "position",
+        "site"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "location"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "market": {
+      "name": "market",
+      "definition": "Individuals, populations of individuals, or organizations constituting the demand for existing or future products and services.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "constituting",
+        "demand",
+        "existing",
+        "future",
+        "future products",
+        "individuals",
+        "market",
+        "organizations",
+        "organizations constituting",
+        "populations",
+        "products",
+        "services"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "message": {
+      "name": "message",
+      "definition": "A verbal, written, recorded, or digitally-represented communication, including missives, notifications, alerts, and other internally or externally targeted communication about the organization's mission, products, plans, activities, and other focal points.",
+      "original_domain": "common",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "about",
+        "activities",
+        "alerts",
+        "communication",
+        "communication about",
+        "digitally",
+        "externally",
+        "externally targeted",
+        "focal points",
+        "including",
+        "including missives",
+        "internally",
+        "message",
+        "mission",
+        "missives",
+        "notifications",
+        "organization",
+        "plans",
+        "products",
+        "recorded",
+        "represented",
+        "represented communication",
+        "targeted",
+        "targeted communication",
+        "verbal",
+        "written"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "order": {
+      "name": "order",
+      "definition": "A request by one party to another to buy, sell, or exchange goods or services.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "another",
+        "buy",
+        "exchange",
+        "exchange goods",
+        "goods",
+        "one",
+        "one party",
+        "order",
+        "party",
+        "request",
+        "sell",
+        "services"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "partner": {
+      "name": "partner",
+      "definition": "A legal entity that has, plans to have, or has had some degree of involvement with the organization.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "degree",
+        "entity",
+        "involvement",
+        "legal",
+        "legal entity",
+        "organization",
+        "partner",
+        "plans"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "organization",
+          "organization"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "plan": {
+      "name": "plan",
+      "definition": "A set of related activities to achieve a result.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "achieve",
+        "activities",
+        "plan",
+        "related",
+        "related activities",
+        "result",
+        "set"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "policy": {
+      "name": "policy",
+      "definition": "A course or principle of action adopted or proposed by an organization.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "action",
+        "action adopted",
+        "adopted",
+        "course",
+        "organization",
+        "policy",
+        "principle",
+        "proposed"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "product": {
+      "name": "product",
+      "definition": "A named combination of goods and services that can be offered to customers, in whole or in part.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "combination",
+        "customers",
+        "goods",
+        "named",
+        "named combination",
+        "offered",
+        "part",
+        "product",
+        "services",
+        "whole"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "research": {
+      "name": "research",
+      "definition": "A systematic investigation into materials and sources.",
+      "original_domain": "common",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "investigation",
+        "materials",
+        "research",
+        "sources",
+        "systematic",
+        "systematic investigation"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "schedule": {
+      "name": "schedule",
+      "definition": "An aggregation of schedule elements.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "aggregation",
+        "elements",
+        "schedule",
+        "schedule elements"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "schedule_element": {
+      "name": "schedule_element",
+      "definition": "A line item that aligns time and one or more other objects, including work item, human resource, payment, event, and location.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "aligns",
+        "aligns time",
+        "element",
+        "event",
+        "human",
+        "human resource",
+        "including",
+        "including work",
+        "item",
+        "line",
+        "line item",
+        "location",
+        "objects",
+        "one",
+        "payment",
+        "resource",
+        "schedule",
+        "schedule element",
+        "time",
+        "work",
+        "work item"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "competency",
+          "amount",
+          "location",
+          "time"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 7
+      }
+    },
+    "strategy": {
+      "name": "strategy",
+      "definition": "An integrated pattern and perspective that aligns an organization’s goals, objectives, and action sequences into a cohesive whole.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "action",
+        "action sequences",
+        "aligns",
+        "cohesive",
+        "cohesive whole",
+        "goals",
+        "integrated",
+        "integrated pattern",
+        "objectives",
+        "organization",
+        "pattern",
+        "perspective",
+        "sequences",
+        "strategy",
+        "whole"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "action_item": {
+      "name": "action_item",
+      "definition": "A specific course to be taken to achieve an objective.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "achieve",
+        "action",
+        "action item",
+        "course",
+        "item",
+        "objective",
+        "specific",
+        "specific course",
+        "taken"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "goal": {
+      "name": "goal",
+      "definition": "An end toward which effort is or should be directed.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "directed",
+        "effort",
+        "end",
+        "end toward",
+        "goal",
+        "toward"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "objective": {
+      "name": "objective",
+      "definition": "A quantitative, measurable result that defines strategy.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "defines",
+        "defines strategy",
+        "measurable",
+        "measurable result",
+        "objective",
+        "quantitative",
+        "result",
+        "strategy"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "vision": {
+      "name": "vision",
+      "definition": "An imagined future state of being.",
+      "original_domain": "common",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "future",
+        "future state",
+        "imagined",
+        "imagined future",
+        "state",
+        "vision"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "submission": {
+      "name": "submission",
+      "definition": "A container that is used to exchange one or more requests, inquiries, messages, notifications, or other content between parties.",
+      "original_domain": "common",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "container",
+        "content",
+        "exchange",
+        "exchange one",
+        "inquiries",
+        "messages",
+        "notifications",
+        "one",
+        "parties",
+        "requests",
+        "submission",
+        "used"
+      ],
+      "relationships": {
+        "IS_A": [
+          "container"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "time": {
+      "name": "time",
+      "definition": "A point or duration in the past, present, or future.",
+      "original_domain": "common",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "duration",
+        "future",
+        "past",
+        "point",
+        "present",
+        "time"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "time"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "training_course": {
+      "name": "training_course",
+      "definition": "The structured theoretical or practical subject matter in a consumable format, associated with a curriculum, workshop, or seminar.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "associated",
+        "consumable",
+        "consumable format",
+        "course",
+        "curriculum",
+        "format",
+        "matter",
+        "practical",
+        "practical subject",
+        "seminar",
+        "structured",
+        "structured theoretical",
+        "subject",
+        "subject matter",
+        "theoretical",
+        "training",
+        "training course",
+        "workshop"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "curriculum",
+          "curriculum"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "work": {
+      "name": "work",
+      "definition": "Tasks and task queues.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "queues",
+        "task",
+        "task queues",
+        "tasks",
+        "work"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "work_item": {
+      "name": "work_item",
+      "definition": "A defined, well-bounded task that may be assigned to a stakeholder or corresponding asset.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "asset",
+        "assigned",
+        "bounded",
+        "bounded task",
+        "corresponding",
+        "corresponding asset",
+        "defined",
+        "item",
+        "stakeholder",
+        "task",
+        "well",
+        "work",
+        "work item"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "work_queue": {
+      "name": "work_queue",
+      "definition": "A container to hold, sequence, filter, structure, and present a set of work items.",
+      "original_domain": "common",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "container",
+        "filter",
+        "hold",
+        "items",
+        "present",
+        "queue",
+        "sequence",
+        "set",
+        "structure",
+        "work",
+        "work items",
+        "work queue"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "geographic_space": {
+      "name": "geographic_space",
+      "definition": "A physical area across land, air, and water, in order to provide for the well-being of, and enable or restrict access to, that space as needed to meet economic, environmental, security, health, recreational, and other needs that arise.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "access",
+        "across",
+        "across land",
+        "air",
+        "area",
+        "area across",
+        "economic",
+        "enable",
+        "environmental",
+        "geographic",
+        "geographic space",
+        "health",
+        "land",
+        "meet",
+        "meet economic",
+        "needed",
+        "order",
+        "physical",
+        "physical area",
+        "provide",
+        "recreational",
+        "restrict",
+        "restrict access",
+        "security",
+        "space",
+        "water",
+        "well"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "geographic_border": {
+      "name": "geographic_border",
+      "definition": "A line of demarcation around a geographic space or between one geographic space and another geographic space.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "another",
+        "another geographic",
+        "around",
+        "border",
+        "demarcation",
+        "demarcation around",
+        "geographic",
+        "geographic border",
+        "geographic space",
+        "line",
+        "one",
+        "one geographic",
+        "space"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "geographic_space_cadaster": {
+      "name": "geographic_space_cadaster",
+      "definition": "A geometric description of area parcels, extent, value, ownership, tenure, rights, restrictions, and responsibilities associated with a property area or space.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "area",
+        "area parcels",
+        "associated",
+        "cadaster",
+        "description",
+        "extent",
+        "geographic",
+        "geographic space cadaster",
+        "geometric",
+        "geometric description",
+        "ownership",
+        "parcels",
+        "property",
+        "property area",
+        "responsibilities",
+        "responsibilities associated",
+        "restrictions",
+        "rights",
+        "space",
+        "tenure",
+        "value"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "description",
+          "value",
+          "property"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "investment": {
+      "name": "investment",
+      "definition": "Any type of monetary asset purchased with the idea that the asset will provide income in the future or will be sold at a higher price for a profit.",
+      "original_domain": "transportation",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "asset",
+        "asset purchased",
+        "future",
+        "higher",
+        "higher price",
+        "idea",
+        "income",
+        "investment",
+        "monetary",
+        "monetary asset",
+        "price",
+        "profit",
+        "provide",
+        "provide income",
+        "purchased",
+        "sold",
+        "type"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "type",
+          "idea"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "conveyor": {
+      "name": "conveyor",
+      "definition": "Any variety of an apparatus, whether human- or robot-piloted, that has the capacity to transport people, animals, goods, assets, or other physical items, and includes, but is not limited to trucks, carts, automobiles, rail-based vehicles and assemblies, air-borne craft, water-borne craft, animal-pulled devices, and animal-assemblies.",
+      "original_domain": "transportation",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "animals",
+        "apparatus",
+        "assets",
+        "automobiles",
+        "based vehicles",
+        "borne craft",
+        "but",
+        "capacity",
+        "carts",
+        "conveyor",
+        "goods",
+        "human",
+        "includes",
+        "items",
+        "limited",
+        "people",
+        "physical",
+        "physical items",
+        "piloted",
+        "pulled devices",
+        "robot",
+        "transport",
+        "transport people",
+        "trucks",
+        "variety",
+        "whether",
+        "whether human"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "competency",
+          "capacity"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "infrastructure": {
+      "name": "infrastructure",
+      "definition": "A physical structure or facility, which may include, for example, a building, station, bridge, tunnel, rail corridor, or roadway.",
+      "original_domain": "transportation",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "bridge",
+        "building",
+        "corridor",
+        "example",
+        "facility",
+        "include",
+        "infrastructure",
+        "physical",
+        "physical structure",
+        "rail",
+        "rail corridor",
+        "roadway",
+        "station",
+        "structure",
+        "tunnel"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "material": {
+      "name": "material",
+      "definition": "Physical matter used in the construction and maintenance of assets and infrastructure, and the powering of physical products and conveyors.",
+      "original_domain": "transportation",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "assets",
+        "construction",
+        "conveyors",
+        "infrastructure",
+        "maintenance",
+        "material",
+        "matter",
+        "matter used",
+        "physical",
+        "physical matter",
+        "physical products",
+        "powering",
+        "products",
+        "used"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "network": {
+      "name": "network",
+      "definition": "A set of connected arcs and nodes that may be associated with a system of infrastructure, assets, locations, routes, and other business objects.",
+      "original_domain": "transportation",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "arcs",
+        "assets",
+        "associated",
+        "business",
+        "business objects",
+        "connected",
+        "connected arcs",
+        "infrastructure",
+        "locations",
+        "network",
+        "nodes",
+        "objects",
+        "routes",
+        "set",
+        "system"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "infrastructure",
+          "system"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "network_arc": {
+      "name": "network_arc",
+      "definition": "A connection or association between nodes in a network.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "arc",
+        "association",
+        "connection",
+        "network",
+        "network arc",
+        "nodes"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "network_node": {
+      "name": "network_node",
+      "definition": "A connection point in a network.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "connection",
+        "connection point",
+        "network",
+        "network node",
+        "node",
+        "point"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "operation": {
+      "name": "operation",
+      "definition": "An orchestration of work to achieve a specific objective constrained by time and location that include, for example, flight turnaround, package sorting, loading/unloading, boarding, and service centers.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "achieve",
+        "boarding",
+        "centers",
+        "constrained",
+        "example",
+        "flight",
+        "flight turnaround",
+        "include",
+        "loading",
+        "location",
+        "objective",
+        "objective constrained",
+        "operation",
+        "orchestration",
+        "package",
+        "package sorting",
+        "service",
+        "service centers",
+        "sorting",
+        "specific",
+        "specific objective",
+        "time",
+        "turnaround",
+        "unloading",
+        "work"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "resource"
+        ],
+        "CAUSES": [
+          "result"
+        ],
+        "HAS_PROPERTY": [
+          "location",
+          "time"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 4
+      }
+    },
+    "route": {
+      "name": "route",
+      "definition": "A way or course taken in getting from a starting point to a destination, which may include stops along the way.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "along",
+        "course",
+        "course taken",
+        "destination",
+        "getting",
+        "include",
+        "include stops",
+        "point",
+        "route",
+        "starting",
+        "starting point",
+        "stops",
+        "stops along",
+        "taken",
+        "way"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "shipment": {
+      "name": "shipment",
+      "definition": "Freight, cargo, baggage, or packages containing a wide range of inanimate or non-human living contents.",
+      "original_domain": "transportation",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "baggage",
+        "cargo",
+        "containing",
+        "contents",
+        "freight",
+        "human",
+        "human living",
+        "inanimate",
+        "living",
+        "living contents",
+        "non",
+        "packages",
+        "packages containing",
+        "range",
+        "shipment",
+        "wide",
+        "wide range"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "competency"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "shipment_item": {
+      "name": "shipment_item",
+      "definition": "A single unit of freight, cargo, baggage, or package that is part of an overall shipment.",
+      "original_domain": "transportation",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "baggage",
+        "cargo",
+        "freight",
+        "item",
+        "overall",
+        "overall shipment",
+        "package",
+        "part",
+        "shipment",
+        "shipment item",
+        "single",
+        "single unit",
+        "unit"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "shipment",
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "trip": {
+      "name": "trip",
+      "definition": "A journey between a starting point location and one or more targeted locations, until a final destination is reached.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "destination",
+        "final",
+        "final destination",
+        "journey",
+        "location",
+        "locations",
+        "one",
+        "point",
+        "point location",
+        "reached",
+        "starting",
+        "starting point",
+        "targeted",
+        "targeted locations",
+        "trip",
+        "until"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "location"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "work_event": {
+      "name": "work_event",
+      "definition": "A situation or an occurrence.",
+      "original_domain": "transportation",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "event",
+        "occurrence",
+        "situation",
+        "work",
+        "work event"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "meeting": {
+      "name": "meeting",
+      "definition": "A gathering of two or more persons at a determinable time and place, including physical and virtual engagements, conferences, or related gatherings.",
+      "original_domain": "telecom",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "conferences",
+        "determinable",
+        "determinable time",
+        "engagements",
+        "gathering",
+        "gatherings",
+        "including",
+        "including physical",
+        "meeting",
+        "persons",
+        "physical",
+        "place",
+        "related",
+        "related gatherings",
+        "time",
+        "two",
+        "virtual",
+        "virtual engagements"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "time"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "accreditation": {
+      "name": "accreditation",
+      "definition": "An endorsement by a duly recognized and acknowledged third party that indicates ability, competence, knowledge, provenance, or quality.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "information_management",
+      "keywords": [
+        "ability",
+        "accreditation",
+        "acknowledged",
+        "acknowledged third",
+        "competence",
+        "duly",
+        "duly recognized",
+        "endorsement",
+        "indicates",
+        "indicates ability",
+        "knowledge",
+        "party",
+        "provenance",
+        "quality",
+        "recognized",
+        "third",
+        "third party"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "dispute": {
+      "name": "dispute",
+      "definition": "An official argument or disagreement among interested parties.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "among",
+        "among interested",
+        "argument",
+        "disagreement",
+        "disagreement among",
+        "dispute",
+        "interested",
+        "interested parties",
+        "official",
+        "official argument",
+        "parties"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "energy": {
+      "name": "energy",
+      "definition": "Sources of power, such as but not limited to, those derived from the utilization of physical or chemical resources, especially to provide light and heat and to work devices and machines.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "but",
+        "chemical",
+        "chemical resources",
+        "derived",
+        "devices",
+        "energy",
+        "especially",
+        "heat",
+        "light",
+        "limited",
+        "machines",
+        "physical",
+        "power",
+        "provide",
+        "provide light",
+        "resources",
+        "sources",
+        "utilization",
+        "work",
+        "work devices"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "resource"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "financial_position": {
+      "name": "financial_position",
+      "definition": "A consolidated and holistic representation of actual financial standing or activity for a point in time or duration.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "activity",
+        "actual",
+        "actual financial",
+        "consolidated",
+        "duration",
+        "financial",
+        "financial position",
+        "financial standing",
+        "holistic",
+        "holistic representation",
+        "point",
+        "position",
+        "representation",
+        "standing",
+        "time"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount",
+          "time"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 4
+      }
+    },
+    "order_item": {
+      "name": "order_item",
+      "definition": "An order element that refers to a specific good or service.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "element",
+        "good",
+        "item",
+        "order",
+        "order element",
+        "order item",
+        "refers",
+        "service",
+        "specific",
+        "specific good"
+      ],
+      "relationships": {
+        "IS_A": [
+          "order"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "product_forecast": {
+      "name": "product_forecast",
+      "definition": "An estimate, prediction, or projection for period of time for a given product.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "estimate",
+        "forecast",
+        "given",
+        "given product",
+        "period",
+        "prediction",
+        "product",
+        "product forecast",
+        "projection",
+        "time"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "time"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "course_of_action": {
+      "name": "course_of_action",
+      "definition": "A set of activities to be taken to achieve an objective.",
+      "original_domain": "manufacturing",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "achieve",
+        "action",
+        "activities",
+        "course",
+        "course of action",
+        "objective",
+        "set",
+        "taken"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "beneficiary": {
+      "name": "beneficiary",
+      "definition": "A legal entity that has, plans to have, or has had an agreement with the organization, or is a recipient of or derives an advantage from the organization's products or services.",
+      "original_domain": "international development org",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "advantage",
+        "agreement",
+        "beneficiary",
+        "derives",
+        "entity",
+        "legal",
+        "legal entity",
+        "organization",
+        "plans",
+        "products",
+        "recipient",
+        "services"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "organization",
+          "organization"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "biological_organism": {
+      "name": "biological_organism",
+      "definition": "Non-human living things, including all categories of animals, plants, and microorganisms that are part of the earth's ecosystem, react to stimuli, consume natural resources to grow, thrive, reproduce, and can affect the well-being of beneficiaries.",
+      "original_domain": "international development org",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "animals",
+        "biological",
+        "biological organism",
+        "categories",
+        "consume",
+        "consume natural",
+        "earth",
+        "ecosystem",
+        "grow",
+        "human",
+        "human living",
+        "including",
+        "living",
+        "living things",
+        "microorganisms",
+        "natural",
+        "natural resources",
+        "non",
+        "organism",
+        "part",
+        "plants",
+        "react",
+        "reproduce",
+        "resources",
+        "stimuli",
+        "things",
+        "thrive"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization",
+          "earth"
+        ],
+        "HAS_PROPERTY": [
+          "competency"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "evidence": {
+      "name": "evidence",
+      "definition": "A supported body of facts, upon which to base proof, or establish truth or falsehood, in accordance with rules, such as for privacy or preservation.",
+      "original_domain": "international development org",
+      "semantic_domain": "uncategorized",
+      "keywords": [
+        "accordance",
+        "base",
+        "base proof",
+        "body",
+        "establish",
+        "establish truth",
+        "evidence",
+        "facts",
+        "falsehood",
+        "preservation",
+        "privacy",
+        "proof",
+        "rules",
+        "supported",
+        "supported body",
+        "truth",
+        "upon"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "financial_instrument": {
+      "name": "financial_instrument",
+      "definition": "A tradeable asset, such as stocks, bonds, bills of exchange, futures, options, evidence of ownership, and cash.",
+      "original_domain": "international development org",
+      "semantic_domain": "financial_management",
+      "keywords": [
+        "asset",
+        "bills",
+        "bonds",
+        "cash",
+        "evidence",
+        "exchange",
+        "financial",
+        "financial instrument",
+        "futures",
+        "instrument",
+        "options",
+        "ownership",
+        "stocks",
+        "tradeable",
+        "tradeable asset"
+      ],
+      "relationships": {
+        "REQUIRES": [
+          "authorization"
+        ],
+        "HAS_PROPERTY": [
+          "currency",
+          "amount"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "health_condition": {
+      "name": "health_condition",
+      "definition": "A physical or mental disorder, disease, illness, injury, impairment, state, medical disabilities, or non-medical disabilities, that may permanently or temporarily affect and can be associated with living things including human beings and other biological organisms.",
+      "original_domain": "international development org",
+      "semantic_domain": "uncategorized",
+      "keywords": [
+        "affect",
+        "associated",
+        "biological organisms",
+        "condition",
+        "disabilities",
+        "disease",
+        "disorder",
+        "health",
+        "health condition",
+        "human beings",
+        "illness",
+        "impairment",
+        "including",
+        "including human",
+        "injury",
+        "living",
+        "living things",
+        "medical",
+        "medical disabilities",
+        "mental",
+        "mental disorder",
+        "non",
+        "permanently",
+        "physical",
+        "state",
+        "temporarily",
+        "temporarily affect",
+        "things",
+        "things including"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "natural_resource": {
+      "name": "natural_resource",
+      "definition": "Matter that can occur in nature.",
+      "original_domain": "international development org",
+      "semantic_domain": "resource_management",
+      "keywords": [
+        "matter",
+        "natural",
+        "natural resource",
+        "nature",
+        "occur",
+        "resource"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "competency"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "standard": {
+      "name": "standard",
+      "definition": "A defined convention, specification, or measurement, as confirmed by a recognized governance body.",
+      "original_domain": "international development org",
+      "semantic_domain": "uncategorized",
+      "keywords": [
+        "body",
+        "confirmed",
+        "convention",
+        "defined",
+        "defined convention",
+        "governance",
+        "governance body",
+        "measurement",
+        "recognized",
+        "recognized governance",
+        "specification",
+        "standard"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "vote": {
+      "name": "vote",
+      "definition": "A formal indication of choice such as for a candidate election, referendum, or proposition.",
+      "original_domain": "international development org",
+      "semantic_domain": "uncategorized",
+      "keywords": [
+        "candidate",
+        "candidate election",
+        "choice",
+        "election",
+        "formal",
+        "formal indication",
+        "indication",
+        "proposition",
+        "referendum",
+        "vote"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "claim": {
+      "name": "claim",
+      "definition": "A demand or request to indemnify a customer or the provider of services under the terms of an agreement.",
+      "original_domain": "insurance",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "agreement",
+        "claim",
+        "customer",
+        "demand",
+        "indemnify",
+        "provider",
+        "request",
+        "services",
+        "terms"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "device": {
+      "name": "device",
+      "definition": "A machine, contrivance, implant, or in vitro reagent that is recognized, identifiable, and cataloged as an approach to reduce the likelihood of a claim, or mitigate the outcomes of a claim.",
+      "original_domain": "insurance",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "approach",
+        "cataloged",
+        "claim",
+        "contrivance",
+        "device",
+        "identifiable",
+        "implant",
+        "likelihood",
+        "machine",
+        "mitigate",
+        "outcomes",
+        "reagent",
+        "recognized",
+        "reduce",
+        "vitro",
+        "vitro reagent"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "case": {
+      "name": "case",
+      "definition": "A plan of action to, act on, report on, resolve, or otherwise address an instance of a need or demand that requires resolution, such as in the context of legal, ongoing healthcare, or claim.",
+      "original_domain": "insurance",
+      "semantic_domain": "strategic_planning",
+      "keywords": [
+        "act",
+        "action",
+        "address",
+        "case",
+        "claim",
+        "context",
+        "demand",
+        "healthcare",
+        "instance",
+        "legal",
+        "need",
+        "ongoing",
+        "ongoing healthcare",
+        "otherwise",
+        "otherwise address",
+        "plan",
+        "report",
+        "requires",
+        "requires resolution",
+        "resolution",
+        "resolve"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "cadaster": {
+      "name": "cadaster",
+      "definition": "A geometric description of area parcels, extent, value, ownership, tenure, rights, restrictions, and responsibilities associated with a property area or space.",
+      "original_domain": "insurance",
+      "semantic_domain": "uncategorized",
+      "keywords": [
+        "area",
+        "area parcels",
+        "associated",
+        "cadaster",
+        "description",
+        "extent",
+        "geometric",
+        "geometric description",
+        "ownership",
+        "parcels",
+        "property",
+        "property area",
+        "responsibilities",
+        "responsibilities associated",
+        "restrictions",
+        "rights",
+        "space",
+        "tenure",
+        "value"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "description",
+          "value",
+          "property"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 3
+      }
+    },
+    "constituent": {
+      "name": "constituent",
+      "definition": "An individual or entity relative to an organization's sphere of responsibility.",
+      "original_domain": "government",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "constituent",
+        "entity",
+        "entity relative",
+        "individual",
+        "organization",
+        "relative",
+        "responsibility",
+        "sphere"
+      ],
+      "relationships": {
+        "HAS_PROPERTY": [
+          "responsibility"
+        ],
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "government_service": {
+      "name": "government_service",
+      "definition": "A named combination of goods, doing-of-work-for-others, and entitlements that can be offered to constituents.",
+      "original_domain": "government",
+      "semantic_domain": "operational_processes",
+      "keywords": [
+        "combination",
+        "constituents",
+        "doing",
+        "entitlements",
+        "goods",
+        "government",
+        "government service",
+        "named",
+        "named combination",
+        "offered",
+        "others",
+        "service",
+        "work"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "legislation": {
+      "name": "legislation",
+      "definition": "A set of authoritative directives that include laws or related statutory instruments.",
+      "original_domain": "government",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "authoritative",
+        "authoritative directives",
+        "directives",
+        "include",
+        "include laws",
+        "instruments",
+        "laws",
+        "legislation",
+        "related",
+        "related statutory",
+        "set",
+        "statutory",
+        "statutory instruments"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "license": {
+      "name": "license",
+      "definition": "An authorization to perform a regulated activity, awarded by duly recognized governmental agency or third party, applied to an individual or organization, to engage in an activity, such as fishing, or use of regulated objects, such as modes of transportation or hazardous materials.",
+      "original_domain": "government",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "activity",
+        "agency",
+        "applied",
+        "authorization",
+        "awarded",
+        "duly",
+        "duly recognized",
+        "engage",
+        "fishing",
+        "governmental",
+        "governmental agency",
+        "hazardous materials",
+        "individual",
+        "license",
+        "objects",
+        "organization",
+        "party",
+        "perform",
+        "recognized",
+        "recognized governmental",
+        "regulated",
+        "regulated activity",
+        "regulated objects",
+        "third",
+        "third party",
+        "use"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 1
+      }
+    },
+    "license_term": {
+      "name": "license_term",
+      "definition": "A legally enforceable condition set forth within the bounds of a license.",
+      "original_domain": "government",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "bounds",
+        "condition",
+        "condition set",
+        "enforceable",
+        "enforceable condition",
+        "forth",
+        "forth within",
+        "legally",
+        "legally enforceable",
+        "license",
+        "license term",
+        "set",
+        "set forth",
+        "term",
+        "within"
+      ],
+      "relationships": {
+        "PART_OF": [
+          "license",
+          "organization"
+        ]
+      },
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 2
+      }
+    },
+    "public_sector_entity": {
+      "name": "public_sector_entity",
+      "definition": "A governmental body or collection of governmental bodies.",
+      "original_domain": "government",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "bodies",
+        "body",
+        "collection",
+        "entity",
+        "governmental",
+        "governmental bodies",
+        "governmental body",
+        "public",
+        "public sector entity",
+        "sector"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    },
+    "collateral": {
+      "name": "collateral",
+      "definition": "Property or other asset that a customer offers as security to a borrowing or lending agreement.",
+      "original_domain": "finance",
+      "semantic_domain": "organizational_structure",
+      "keywords": [
+        "agreement",
+        "asset",
+        "borrowing",
+        "collateral",
+        "customer",
+        "customer offers",
+        "lending",
+        "lending agreement",
+        "offers",
+        "property",
+        "security"
+      ],
+      "relationships": {},
+      "enhancement_applied": {
+        "keyword_context": true,
+        "domain_context": true,
+        "relationship_count": 0
+      }
+    }
+  },
+  "taxonomy": {
+    "root": "business_concept",
+    "domain_roots": {
+      "telecom_concept": [
+        "meeting"
+      ],
+      "manufacturing_concept": [
+        "energy",
+        "financial_position",
+        "order_item",
+        "product_forecast"
+      ],
+      "common_concept": [
+        "agreement_term",
+        "asset",
+        "brand",
+        "business_entity",
+        "campaign",
+        "competency",
+        "customer",
+        "event",
+        "currency",
+        "financial_account",
+        "financial_forecast",
+        "financial_transaction",
+        "monetary_amount",
+        "payment",
+        "tax",
+        "human_resource",
+        "interaction",
+        "investment_portfolio",
+        "job",
+        "location",
+        "market",
+        "message",
+        "partner",
+        "policy",
+        "schedule_element",
+        "strategy",
+        "submission",
+        "time",
+        "training_course"
+      ],
+      "international development org_concept": [
+        "beneficiary",
+        "biological_organism",
+        "financial_instrument",
+        "natural_resource"
+      ],
+      "transportation_concept": [
+        "geographic_space_cadaster",
+        "investment",
+        "conveyor",
+        "network",
+        "operation",
+        "shipment",
+        "shipment_item",
+        "trip"
+      ],
+      "insurance_concept": [
+        "cadaster"
+      ],
+      "government_concept": [
+        "constituent",
+        "license",
+        "license_term"
+      ]
+    },
+    "levels": {
+      "1": [
+        "telecom_concept",
+        "manufacturing_concept",
+        "common_concept",
+        "international development org_concept",
+        "transportation_concept",
+        "insurance_concept",
+        "government_concept"
+      ],
+      "2": [
+        "order",
+        "occurrence",
+        "container"
+      ],
+      "3": [
+        "order_item",
+        "event",
+        "submission"
+      ]
+    },
+    "graph": {
+      "occurrence": [
+        "event"
+      ],
+      "container": [
+        "submission"
+      ],
+      "order": [
+        "order_item"
+      ],
+      "common_concept": [
+        "order",
+        "occurrence",
+        "container"
+      ]
+    },
+    "reverse_graph": {
+      "event": [
+        "occurrence"
+      ],
+      "submission": [
+        "container"
+      ],
+      "order_item": [
+        "order"
+      ],
+      "order": [
+        "common_concept"
+      ],
+      "occurrence": [
+        "common_concept"
+      ],
+      "container": [
+        "common_concept"
+      ]
+    },
+    "max_depth": 3
+  },
+  "semantic_clusters": {
+    "organizational_structure": {
+      "concepts": [
+        "agreement",
+        "agreement_term",
+        "brand",
+        "business_entity",
+        "campaign",
+        "competency",
+        "customer",
+        "payment",
+        "human_resource",
+        "inquiry",
+        "intellectual_property_rights",
+        "interaction",
+        "job",
+        "location",
+        "market",
+        "order",
+        "partner",
+        "policy",
+        "product",
+        "time",
+        "shipment",
+        "shipment_item",
+        "beneficiary",
+        "claim",
+        "constituent",
+        "legislation",
+        "license",
+        "license_term",
+        "public_sector_entity",
+        "collateral"
+      ],
+      "concept_count": 30,
+      "central_concept": "job",
+      "coherence": 0.1378539340624922,
+      "domain_keywords": [
+        "agreement",
+        "entities",
+        "legal",
+        "legally",
+        "rights",
+        "set",
+        "two",
+        "bounds",
+        "condition",
+        "condition set"
+      ]
+    },
+    "resource_management": {
+      "concepts": [
+        "asset",
+        "facility",
+        "research",
+        "conveyor",
+        "infrastructure",
+        "material",
+        "network",
+        "biological_organism",
+        "natural_resource"
+      ],
+      "concept_count": 9,
+      "central_concept": "network",
+      "coherence": 0.14093029927420175,
+      "domain_keywords": [
+        "business",
+        "facility",
+        "physical",
+        "physical structure",
+        "structure",
+        "animals",
+        "assets",
+        "human",
+        "infrastructure",
+        "matter"
+      ]
+    },
+    "information_management": {
+      "concepts": [
+        "channel",
+        "content",
+        "content_impression",
+        "language",
+        "message",
+        "submission",
+        "accreditation"
+      ],
+      "concept_count": 7,
+      "central_concept": "channel",
+      "coherence": 0.29066515889419514,
+      "domain_keywords": [
+        "including",
+        "physical",
+        "products",
+        "content",
+        "communication",
+        "notifications"
+      ]
+    },
+    "strategic_planning": {
+      "concepts": [
+        "decision",
+        "incident",
+        "initiative",
+        "plan",
+        "strategy",
+        "action_item",
+        "goal",
+        "objective",
+        "vision",
+        "course_of_action",
+        "device",
+        "case"
+      ],
+      "concept_count": 12,
+      "central_concept": "decision",
+      "coherence": 0.5076680760258292,
+      "domain_keywords": [
+        "resolution",
+        "achieve",
+        "activities",
+        "plan",
+        "result",
+        "set",
+        "action",
+        "strategy",
+        "course",
+        "objective"
+      ]
+    },
+    "operational_processes": {
+      "concepts": [
+        "event",
+        "legal_proceeding",
+        "schedule",
+        "schedule_element",
+        "training_course",
+        "work",
+        "work_item",
+        "work_queue",
+        "geographic_space",
+        "geographic_border",
+        "geographic_space_cadaster",
+        "network_arc",
+        "network_node",
+        "operation",
+        "route",
+        "trip",
+        "work_event",
+        "meeting",
+        "dispute",
+        "energy",
+        "order_item",
+        "product_forecast",
+        "government_service"
+      ],
+      "concept_count": 23,
+      "central_concept": "event",
+      "coherence": 0.19525961867376185,
+      "domain_keywords": [
+        "especially",
+        "event",
+        "occurrence",
+        "one",
+        "power",
+        "schedule",
+        "element",
+        "including",
+        "item",
+        "line"
+      ]
+    },
+    "financial_management": {
+      "concepts": [
+        "finance",
+        "currency",
+        "financial_account",
+        "financial_forecast",
+        "financial_transaction",
+        "monetary_amount",
+        "tax",
+        "investment_portfolio",
+        "investment",
+        "financial_position",
+        "financial_instrument"
+      ],
+      "concept_count": 11,
+      "central_concept": "currency",
+      "coherence": 0.21741689452453825,
+      "domain_keywords": [
+        "monetary",
+        "resources",
+        "currency",
+        "exchange",
+        "value",
+        "financial",
+        "income",
+        "monetary value",
+        "related",
+        "future"
+      ]
+    },
+    "uncategorized": {
+      "concepts": [
+        "evidence",
+        "health_condition",
+        "standard",
+        "vote",
+        "cadaster"
+      ],
+      "concept_count": 5,
+      "central_concept": "evidence",
+      "coherence": 0.36227963525835866,
+      "domain_keywords": [
+        "body",
+        "associated"
+      ]
+    }
+  },
+  "statistics": {
+    "metadata": {
+      "version": "2.0_ENHANCED",
+      "created": "2025-08-31T20:39:04.021997",
+      "processing_time": 0.05204272270202637,
+      "enhancement_level": "FULL_R1_INTEGRATION"
+    },
+    "input_sources": {
+      "r1_concepts": 97,
+      "r1_domains": 8,
+      "r1_keywords": 1157
+    },
+    "counts": {
+      "total_concepts": 97,
+      "total_relationships": 120,
+      "semantic_clusters": 7,
+      "relationship_types": 5,
+      "inference_rules_applied": 2
+    },
+    "relationship_distribution": {
+      "PART_OF": 27,
+      "HAS_PROPERTY": 76,
+      "REQUIRES": 13,
+      "IS_A": 3,
+      "CAUSES": 1
+    },
+    "quality_metrics": {
+      "semantic_coverage": 0.5154639175257731,
+      "avg_relationships_per_concept": 1.2371134020618557,
+      "avg_cluster_coherence": 0.26458194524476814,
+      "taxonomy_depth": 3,
+      "domain_integration_score": 0.2242344602126456
+    },
+    "enhancement_metrics": {
+      "keyword_enhanced_extractions": 76,
+      "domain_enhanced_inferences": 0,
+      "cross_domain_relationships": 13
+    },
+    "performance_metrics": {
+      "start_time": 1756690743.9699547,
+      "processing_stages": {
+        "data_loading": 0.0019981861114501953,
+        "enhanced_parsing": 0.0,
+        "enhanced_extraction": 0.03451967239379883,
+        "enhanced_taxonomy": 0.0,
+        "enhanced_reasoning": 0.0,
+        "enhanced_clustering": 0.015524864196777344
+      }
+    }
+  },
+  "enhancement_info": {
+    "used_keywords": true,
+    "used_domains": true,
+    "applied_inference": true,
+    "enhancement_level": "COMPREHENSIVE"
+  }
+}

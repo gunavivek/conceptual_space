@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BIZBOK Semantic Ontology - Interactive Visualization</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        #mynetwork {
+            width: 100%;
+            height: 700px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        .info {
+            background: #f7f7f7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 5px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 BIZBOK Semantic Ontology - Interactive Network</h1>
+        
+        <div class="info">
+            <strong>📌 Instructions:</strong><br>
+            • <b>Zoom:</b> Mouse wheel or pinch<br>
+            • <b>Pan:</b> Click and drag background<br>
+            • <b>Select:</b> Click node to highlight connections<br>
+            • <b>Move:</b> Drag nodes to rearrange<br>
+            • <b>Info:</b> Hover over nodes and edges for details
+        </div>
+        
+        <div class="info">
+            <strong>🎨 Color Legend - Domains:</strong><br>
+            <span style="color: #FF9999; font-size: 16px;">●</span> Common &nbsp;&nbsp;
+            <span style="color: #66B3FF; font-size: 16px;">●</span> Transportation &nbsp;&nbsp;
+            <span style="color: #99FF99; font-size: 16px;">●</span> Int'l Development &nbsp;&nbsp;
+            <span style="color: #FFCC99; font-size: 16px;">●</span> Manufacturing<br>
+            <span style="color: #FF99CC; font-size: 16px;">●</span> Government &nbsp;&nbsp;
+            <span style="color: #99CCFF; font-size: 16px;">●</span> Insurance &nbsp;&nbsp;
+            <span style="color: #FFB366; font-size: 16px;">●</span> Telecom &nbsp;&nbsp;
+            <span style="color: #B366FF; font-size: 16px;">●</span> Finance
+        </div>
+        
+        <div class="info">
+            <strong>🔗 Relationship Types:</strong><br>
+            <span style="color: #4169E1;">━</span> <strong>IS_A</strong> (blue): Hierarchical inheritance relationships<br>
+            <span style="color: #228B22;">━</span> <strong>PART_OF</strong> (green): Compositional part-whole relationships<br>
+            <span style="color: #FF8C00;">━</span> <strong>HAS_PROPERTY</strong> (orange): Property-attribute relationships<br>
+            <span style="color: #DC143C;">━</span> <strong>REQUIRES</strong> (red): Dependency relationships<br>
+            <span style="color: #9966FF;">━</span> <strong>USED_FOR</strong> (purple): Functional purpose relationships
+        </div>
+        
+        <div class="info">
+            <strong>⚠️ Note:</strong> "Semantic" relationships use <strong>meaning-based</strong> pattern recognition + domain inference rules. Hover over edges to see relationship types. This R5S implements true semantic understanding vs R4L lexical similarity.
+        </div>
+        
+        <div id="mynetwork"></div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">97</div>
+                <div class="stat-label">Concepts</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1</div>
+                <div class="stat-label">Domains</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">37</div>
+                <div class="stat-label">Relationships</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Relation Types</div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        // Create nodes and edges
+        var nodes = new vis.DataSet([{"id": "agreement", "label": "agreement", "title": "Concept: agreement\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "agreement_term", "label": "agreement_term", "title": "Concept: agreement_term\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "asset", "label": "asset", "title": "Concept: asset\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "brand", "label": "brand", "title": "Concept: brand\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "business_entity", "label": "business_entity", "title": "Concept: business_entity\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "campaign", "label": "campaign", "title": "Concept: campaign\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "channel", "label": "channel", "title": "Concept: channel\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "competency", "label": "competency", "title": "Concept: competency\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "content", "label": "content", "title": "Concept: content\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "content_impression", "label": "content_impression", "title": "Concept: content_impression\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "customer", "label": "customer", "title": "Concept: customer\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "decision", "label": "decision", "title": "Concept: decision\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "event", "label": "event", "title": "Concept: event\nDomain: common\nTotal Relationships: 1\nIS_A: 1\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "facility", "label": "facility", "title": "Concept: facility\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "finance", "label": "finance", "title": "Concept: finance\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "currency", "label": "currency", "title": "Concept: currency\nDomain: common\nTotal Relationships: 5\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 4\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 5, "level": 1}, {"id": "financial_account", "label": "financial_account", "title": "Concept: financial_account\nDomain: common\nTotal Relationships: 4\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 3\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 4, "level": 1}, {"id": "financial_forecast", "label": "financial_forecast", "title": "Concept: financial_forecast\nDomain: common\nTotal Relationships: 4\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 2\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 4, "level": 1}, {"id": "financial_transaction", "label": "financial_transaction", "title": "Concept: financial_transaction\nDomain: common\nTotal Relationships: 4\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 3\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 4, "level": 1}, {"id": "monetary_amount", "label": "monetary_amount", "title": "Concept: monetary_amount\nDomain: common\nTotal Relationships: 6\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 5\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 6, "level": 1}, {"id": "payment", "label": "payment", "title": "Concept: payment\nDomain: common\nTotal Relationships: 5\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 3\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 5, "level": 1}, {"id": "tax", "label": "tax", "title": "Concept: tax\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "human_resource", "label": "human_resource", "title": "Concept: human_resource\nDomain: common\nTotal Relationships: 5\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 4\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 5, "level": 1}, {"id": "incident", "label": "incident", "title": "Concept: incident\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "initiative", "label": "initiative", "title": "Concept: initiative\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "inquiry", "label": "inquiry", "title": "Concept: inquiry\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "intellectual_property_rights", "label": "intellectual_property_rights", "title": "Concept: intellectual_property_rights\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "interaction", "label": "interaction", "title": "Concept: interaction\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "investment_portfolio", "label": "investment_portfolio", "title": "Concept: investment_portfolio\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "job", "label": "job", "title": "Concept: job\nDomain: common\nTotal Relationships: 7\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 5\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 7, "level": 1}, {"id": "language", "label": "language", "title": "Concept: language\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "legal_proceeding", "label": "legal_proceeding", "title": "Concept: legal_proceeding\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "location", "label": "location", "title": "Concept: location\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "market", "label": "market", "title": "Concept: market\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "message", "label": "message", "title": "Concept: message\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "order", "label": "order", "title": "Concept: order\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "partner", "label": "partner", "title": "Concept: partner\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "plan", "label": "plan", "title": "Concept: plan\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "policy", "label": "policy", "title": "Concept: policy\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "product", "label": "product", "title": "Concept: product\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "research", "label": "research", "title": "Concept: research\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "schedule", "label": "schedule", "title": "Concept: schedule\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "schedule_element", "label": "schedule_element", "title": "Concept: schedule_element\nDomain: common\nTotal Relationships: 7\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 5\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 7, "level": 1}, {"id": "strategy", "label": "strategy", "title": "Concept: strategy\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "action_item", "label": "action_item", "title": "Concept: action_item\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "goal", "label": "goal", "title": "Concept: goal\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "objective", "label": "objective", "title": "Concept: objective\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "vision", "label": "vision", "title": "Concept: vision\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "submission", "label": "submission", "title": "Concept: submission\nDomain: common\nTotal Relationships: 1\nIS_A: 1\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "time", "label": "time", "title": "Concept: time\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "training_course", "label": "training_course", "title": "Concept: training_course\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "work", "label": "work", "title": "Concept: work\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "work_item", "label": "work_item", "title": "Concept: work_item\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "work_queue", "label": "work_queue", "title": "Concept: work_queue\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "geographic_space", "label": "geographic_space", "title": "Concept: geographic_space\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "geographic_border", "label": "geographic_border", "title": "Concept: geographic_border\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "geographic_space_cadaster", "label": "geographic_space_cadaster", "title": "Concept: geographic_space_cadaster\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 3\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "investment", "label": "investment", "title": "Concept: investment\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "conveyor", "label": "conveyor", "title": "Concept: conveyor\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "infrastructure", "label": "infrastructure", "title": "Concept: infrastructure\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "material", "label": "material", "title": "Concept: material\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "network", "label": "network", "title": "Concept: network\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "network_arc", "label": "network_arc", "title": "Concept: network_arc\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "network_node", "label": "network_node", "title": "Concept: network_node\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "operation", "label": "operation", "title": "Concept: operation\nDomain: common\nTotal Relationships: 4\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 2\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 4, "level": 1}, {"id": "route", "label": "route", "title": "Concept: route\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "shipment", "label": "shipment", "title": "Concept: shipment\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "shipment_item", "label": "shipment_item", "title": "Concept: shipment_item\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 2\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "trip", "label": "trip", "title": "Concept: trip\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "work_event", "label": "work_event", "title": "Concept: work_event\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "meeting", "label": "meeting", "title": "Concept: meeting\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "accreditation", "label": "accreditation", "title": "Concept: accreditation\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "dispute", "label": "dispute", "title": "Concept: dispute\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "energy", "label": "energy", "title": "Concept: energy\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "financial_position", "label": "financial_position", "title": "Concept: financial_position\nDomain: common\nTotal Relationships: 4\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 3\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 4, "level": 1}, {"id": "order_item", "label": "order_item", "title": "Concept: order_item\nDomain: common\nTotal Relationships: 1\nIS_A: 1\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "product_forecast", "label": "product_forecast", "title": "Concept: product_forecast\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "course_of_action", "label": "course_of_action", "title": "Concept: course_of_action\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "beneficiary", "label": "beneficiary", "title": "Concept: beneficiary\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 2\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "biological_organism", "label": "biological_organism", "title": "Concept: biological_organism\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 2\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "evidence", "label": "evidence", "title": "Concept: evidence\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "financial_instrument", "label": "financial_instrument", "title": "Concept: financial_instrument\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 2\nREQUIRES: 1\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "health_condition", "label": "health_condition", "title": "Concept: health_condition\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "natural_resource", "label": "natural_resource", "title": "Concept: natural_resource\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "standard", "label": "standard", "title": "Concept: standard\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "vote", "label": "vote", "title": "Concept: vote\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "claim", "label": "claim", "title": "Concept: claim\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "device", "label": "device", "title": "Concept: device\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "case", "label": "case", "title": "Concept: case\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "cadaster", "label": "cadaster", "title": "Concept: cadaster\nDomain: common\nTotal Relationships: 3\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 3\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 3, "level": 1}, {"id": "constituent", "label": "constituent", "title": "Concept: constituent\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 1\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "government_service", "label": "government_service", "title": "Concept: government_service\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "legislation", "label": "legislation", "title": "Concept: legislation\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "license", "label": "license", "title": "Concept: license\nDomain: common\nTotal Relationships: 1\nIS_A: 0\nPART_OF: 1\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 1, "level": 1}, {"id": "license_term", "label": "license_term", "title": "Concept: license_term\nDomain: common\nTotal Relationships: 2\nIS_A: 0\nPART_OF: 2\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 2, "level": 1}, {"id": "public_sector_entity", "label": "public_sector_entity", "title": "Concept: public_sector_entity\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}, {"id": "collateral", "label": "collateral", "title": "Concept: collateral\nDomain: common\nTotal Relationships: 0\nIS_A: 0\nPART_OF: 0\nHAS_PROPERTY: 0\nREQUIRES: 0\nUSED_FOR: 0", "group": "common", "color": "#FF9999", "value": 0, "level": 1}]);
+        var edges = new vis.DataSet([{"from": "agreement_term", "to": "agreement", "color": {"color": "#228B22", "opacity": 0.6}, "title": "PART_OF: agreement_term \u2192 agreement", "width": 2}, {"from": "campaign", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: campaign \u2192 competency", "width": 2}, {"from": "competency", "to": "competency", "color": {"color": "#DC143C", "opacity": 0.6}, "title": "REQUIRES: competency \u2192 competency", "width": 2}, {"from": "currency", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: currency \u2192 currency", "width": 2}, {"from": "currency", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: currency \u2192 currency", "width": 2}, {"from": "financial_account", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: financial_account \u2192 currency", "width": 2}, {"from": "financial_forecast", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: financial_forecast \u2192 currency", "width": 2}, {"from": "financial_transaction", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: financial_transaction \u2192 currency", "width": 2}, {"from": "monetary_amount", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: monetary_amount \u2192 currency", "width": 2}, {"from": "monetary_amount", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: monetary_amount \u2192 currency", "width": 2}, {"from": "payment", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: payment \u2192 currency", "width": 2}, {"from": "human_resource", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: human_resource \u2192 competency", "width": 2}, {"from": "interaction", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: interaction \u2192 time", "width": 2}, {"from": "job", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: job \u2192 competency", "width": 2}, {"from": "job", "to": "competency", "color": {"color": "#DC143C", "opacity": 0.6}, "title": "REQUIRES: job \u2192 competency", "width": 2}, {"from": "location", "to": "location", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: location \u2192 location", "width": 2}, {"from": "schedule_element", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: schedule_element \u2192 currency", "width": 2}, {"from": "schedule_element", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: schedule_element \u2192 competency", "width": 2}, {"from": "schedule_element", "to": "location", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: schedule_element \u2192 location", "width": 2}, {"from": "schedule_element", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: schedule_element \u2192 time", "width": 2}, {"from": "time", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: time \u2192 time", "width": 2}, {"from": "conveyor", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: conveyor \u2192 competency", "width": 2}, {"from": "network", "to": "infrastructure", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: network \u2192 infrastructure", "width": 2}, {"from": "operation", "to": "location", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: operation \u2192 location", "width": 2}, {"from": "operation", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: operation \u2192 time", "width": 2}, {"from": "shipment", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: shipment \u2192 competency", "width": 2}, {"from": "shipment_item", "to": "shipment", "color": {"color": "#228B22", "opacity": 0.6}, "title": "PART_OF: shipment_item \u2192 shipment", "width": 2}, {"from": "trip", "to": "location", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: trip \u2192 location", "width": 2}, {"from": "meeting", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: meeting \u2192 time", "width": 2}, {"from": "financial_position", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: financial_position \u2192 currency", "width": 2}, {"from": "financial_position", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: financial_position \u2192 time", "width": 2}, {"from": "order_item", "to": "order", "color": {"color": "#4169E1", "opacity": 0.6}, "title": "IS_A: order_item \u2192 order", "width": 2}, {"from": "product_forecast", "to": "time", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: product_forecast \u2192 time", "width": 2}, {"from": "biological_organism", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: biological_organism \u2192 competency", "width": 2}, {"from": "financial_instrument", "to": "currency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: financial_instrument \u2192 currency", "width": 2}, {"from": "natural_resource", "to": "competency", "color": {"color": "#FF8C00", "opacity": 0.6}, "title": "HAS_PROPERTY: natural_resource \u2192 competency", "width": 2}, {"from": "license_term", "to": "license", "color": {"color": "#228B22", "opacity": 0.6}, "title": "PART_OF: license_term \u2192 license", "width": 2}]);
+        
+        // Create network
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        
+        var options = {
+            nodes: {
+                shape: 'dot',
+                scaling: {
+                    min: 10,
+                    max: 40,
+                    label: {
+                        min: 8,
+                        max: 20
+                    }
+                },
+                font: {
+                    size: 12,
+                    face: 'Segoe UI'
+                },
+                borderWidth: 2
+            },
+            edges: {
+                width: 0.5,
+                smooth: {
+                    type: 'continuous',
+                    roundness: 0.5
+                }
+            },
+            physics: {
+                stabilization: {
+                    iterations: 200
+                },
+                barnesHut: {
+                    gravitationalConstant: -2000,
+                    springConstant: 0.001,
+                    springLength: 200,
+                    damping: 0.09
+                }
+            },
+            interaction: {
+                hover: true,
+                tooltipDelay: 200,
+                navigationButtons: true,
+                keyboard: true
+            },
+            groups: {
+                useDefaultGroups: false
+            }
+        };
+        
+        var network = new vis.Network(container, data, options);
+        
+        // Add click handler
+        network.on("click", function(params) {
+            if (params.nodes.length > 0) {
+                var nodeId = params.nodes[0];
+                var node = nodes.get(nodeId);
+                console.log('Selected:', node.label);
+            }
+        });
+        
+        // Stabilization progress
+        network.on("stabilizationProgress", function(params) {
+            console.log('Stabilization progress:', params.iterations + '/' + params.total);
+        });
+        
+        network.once("stabilizationIterationsDone", function() {
+            console.log("Stabilization complete");
+        });
+    </script>
+</body>
+</html>

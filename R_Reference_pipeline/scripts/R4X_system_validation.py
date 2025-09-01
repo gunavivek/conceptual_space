@@ -94,9 +94,9 @@ class R4X_SystemValidator:
         # Test R4X Semantic Fusion Engine  
         print("  Testing R4X Semantic Fusion Engine...")
         try:
-            from R4X_semantic_fusion_engine import R4X_SemanticFusionEngine
+            from R4X_semantic_fusion_engine import SemanticFusionEngine
             
-            fusion_engine = R4X_SemanticFusionEngine()
+            fusion_engine = SemanticFusionEngine()
             
             # Test fusion strategies
             test_perspectives = {
@@ -524,7 +524,7 @@ class R4X_SystemValidator:
         with open(json_report_path, 'w', encoding='utf-8') as f:
             json.dump(report_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Validation report saved: {json_report_path}")
+        print(f"[OK] Validation report saved: {json_report_path}")
         return str(json_report_path)
     
     def _summarize_test_category(self, category: str) -> Dict[str, Any]:
@@ -581,27 +581,27 @@ class R4X_SystemValidator:
         
         try:
             # Phase 1: Test Core Components
-            print("\\n📋 Phase 1: Core R4X Component Testing")
+            print("\\n[PHASE 1] Core R4X Component Testing")
             print("-" * 50)
             core_results = self.test_core_r4x_components()
             
             # Phase 2: Test Enhanced Pipeline Scripts  
-            print("\\n📋 Phase 2: Enhanced Pipeline Script Testing")
+            print("\\n[PHASE] Phase 2: Enhanced Pipeline Script Testing")
             print("-" * 50)
             pipeline_results = self.test_enhanced_pipeline_scripts()
             
             # Phase 3: Test End-to-End Integration
-            print("\\n📋 Phase 3: End-to-End Integration Testing")
+            print("\\n[PHASE] Phase 3: End-to-End Integration Testing")
             print("-" * 50)
             e2e_results = self.test_end_to_end_integration()
             
             # Phase 4: Performance Assessment
-            print("\\n📋 Phase 4: System Performance Assessment")
+            print("\\n[PHASE] Phase 4: System Performance Assessment")
             print("-" * 50)
             performance_results = self.assess_system_performance()
             
             # Generate comprehensive report
-            print("\\n📋 Phase 5: Validation Report Generation")
+            print("\\n[PHASE] Phase 5: Validation Report Generation")
             print("-" * 50)
             report_path = self.generate_validation_report()
             
@@ -625,7 +625,7 @@ class R4X_SystemValidator:
                 'partial_results': self.test_results
             }
             
-            print(f"❌ Validation error: {e}")
+            print(f"[ERROR] Validation error: {e}")
             return error_info
 
 def main():
@@ -660,17 +660,17 @@ def main():
                 for i, rec in enumerate(performance['recommendations'], 1):
                     print(f"  {i}. {rec}")
             
-            print(f"\\n📄 Detailed Report: {validation_results['report_path']}")
-            print("\\n✅ R4X System Validation Completed Successfully!")
+            print(f"\\n[REPORT] Detailed Report: {validation_results['report_path']}")
+            print("\\n[SUCCESS] R4X System Validation Completed Successfully!")
             
         else:
-            print("\\n❌ Validation completed with errors")
+            print("\\n[ERROR] Validation completed with errors")
             print(f"Error: {validation_results.get('error', 'Unknown error')}")
         
         print("="*80)
         
     except Exception as e:
-        print(f"❌ Critical validation error: {str(e)}")
+        print(f"[ERROR] Critical validation error: {str(e)}")
         raise
 
 if __name__ == "__main__":

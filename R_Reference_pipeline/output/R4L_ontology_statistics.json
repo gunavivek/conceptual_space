@@ -18,17 +18,17 @@
     "avg_relationships_per_concept": 5.639175257731959
   },
   "performance_metrics": {
-    "start_time": 1756584352.8670213,
+    "start_time": 1756688664.1522808,
     "end_time": null,
     "processing_stages": {
-      "data_loading": 0.005980730056762695,
-      "clustering": 0.059952497482299805,
-      "hierarchy": 0.010801553726196289,
-      "relationships": 0.3857543468475342,
-      "enhancement": 0.0010004043579101562,
+      "data_loading": 0.015906333923339844,
+      "clustering": 0.06035280227661133,
+      "hierarchy": 0.008003473281860352,
+      "relationships": 0.4409019947052002,
+      "enhancement": 0.0020058155059814453,
       "statistics": 0.0,
       "api_creation": 0.0
     }
   },
-  "timestamp": "2025-08-30T15:05:53.355320"
+  "timestamp": "2025-08-31T20:04:24.708849"
 }

@@ -1,6 +1,6 @@
 {
   "r4x_version": "1.0.0",
-  "integration_timestamp": "2025-08-30T20:38:20.352547",
+  "integration_timestamp": "2025-08-31T08:44:56.503700",
   "semantic_spaces": {
     "ontology": 97,
     "document": 4,
@@ -14,10 +14,10 @@
   },
   "unified_concepts": 104,
   "performance_metrics": {
-    "integration_start_time": 1756604299.710176,
+    "integration_start_time": 1756647893.9312236,
     "space_loading_times": {
-      "ontology": 0.014034032821655273,
-      "document": 0.5848734378814697,
+      "ontology": 0.0053501129150390625,
+      "document": 2.473278045654297,
       "question": 0.0
     },
     "bridge_building_times": {

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "alignment_timestamp": "2025-08-30T09:13:42.616998",
+    "alignment_timestamp": "2025-08-31T20:04:23.845409",
     "total_concepts_aligned": 97,
     "alignment_method": "BIZBOK_similarity_matching",
     "version": "2.0"
@@ -2287,89 +2287,88 @@
     "suggested_alignments": {},
     "custom_concepts": {},
     "term_unifications": {
-      "legally binding": [
+      "legal entities": [
         "agreement"
       ],
       "binding rights": [
         "agreement"
       ],
-      "entities": [
+      "binding": [
         "agreement"
       ],
       "legal": [
-        "human_resource",
-        "agreement",
-        "legal_proceeding",
         "beneficiary",
-        "case",
-        "customer",
+        "legal_proceeding",
         "intellectual_property_rights",
+        "agreement",
         "business_entity",
+        "customer",
         "partner"
       ],
-      "legal entities": [
-        "agreement"
-      ],
-      "obligations": [
-        "agreement"
-      ],
-      "two": [
-        "interaction",
-        "agreement"
-      ],
-      "agreement": [
-        "human_resource",
-        "agreement",
-        "agreement_term",
-        "beneficiary",
-        "collateral",
-        "claim",
-        "customer"
-      ],
       "set": [
-        "course_of_action",
+        "agreement_term",
         "interaction",
-        "plan",
-        "agreement",
+        "course_of_action",
         "investment_portfolio",
+        "agreement",
+        "license_term",
+        "plan",
+        "network",
+        "legislation",
         "work_queue"
       ],
-      "rights": [
-        "intellectual_property_rights",
+      "entities": [
+        "agreement",
+        "interaction"
+      ],
+      "legally binding": [
         "agreement"
       ],
-      "legally enforceable": [
-        "license_term",
+      "rights": [
+        "agreement",
+        "intellectual_property_rights"
+      ],
+      "legally": [
+        "agreement",
         "agreement_term"
       ],
-      "agreement term": [
-        "agreement_term"
-      ],
-      "enforceable": [
-        "license_term",
-        "agreement_term"
-      ],
-      "forth within": [
-        "license_term",
-        "agreement_term"
-      ],
-      "term": [
-        "license_term",
-        "agreement_term"
-      ],
-      "set forth": [
-        "license_term",
-        "agreement_term"
-      ],
-      "condition set": [
-        "license_term",
-        "agreement_term"
-      ],
-      "forth": [
-        "license_term",
-        "agreement_term"
+      "agreement": [
+        "beneficiary",
+        "agreement",
+        "human_resource",
+        "claim",
+        "customer",
+        "collateral"
       ],
       "bounds": [
+        "agreement_term",
+        "license_term"
+      ],
+      "enforceable": [
+        "agreement_term",
+        "license_term"
+      ],
+      "enforceable condition": [
+        "agreement_term",
+        "license_term"
+      ],
+      "term": [
+        "agreement_term",
+        "license_term"
+      ],
+      "legally enforceable": [
+        "agreement_term",
+        "license_term"
+      ],
+      "condition set": [
+        "agreement_term",
+        "license_term"
+      ],
+      "within": [
+        "agreement_term",
+        "license_term"
+      ],
+      "set forth": [
         "agreement_term"
       ],
       "intangible": [
@@ -2378,25 +2377,28 @@
       "intangible property": [
         "asset"
       ],
-      "asset": [
-        "asset",
-        "collateral",
-        "work_item",
-        "financial_instrument",
-        "investment"
+      "tangible": [
+        "asset"
       ],
       "property": [
         "asset",
-        "geographic_space_cadaster",
         "collateral",
-        "intellectual_property_rights",
-        "cadaster"
+        "intellectual_property_rights"
       ],
-      "tangible": [
+      "asset": [
         "asset"
       ],
       "design": [
         "brand"
+      ],
+      "products": [
+        "beneficiary",
+        "market",
+        "material",
+        "brand",
+        "message",
+        "customer",
+        "channel"
       ],
       "name": [
         "brand"
@@ -2404,221 +2406,197 @@
       "organizational identities": [
         "brand"
       ],
-      "organizational": [
-        "brand"
-      ],
-      "offerings": [
-        "brand"
-      ],
-      "symbol": [
+      "identities": [
         "brand"
       ],
       "identifies": [
         "brand"
       ],
-      "identities": [
+      "organizational": [
         "brand"
       ],
-      "products": [
-        "customer",
-        "brand",
-        "market",
-        "beneficiary"
+      "brand": [
+        "brand"
       ],
-      "differentiates": [
+      "symbol": [
+        "brand"
+      ],
+      "differentiates products": [
         "brand"
       ],
       "business entity": [
         "business_entity"
       ],
-      "single": [
+      "entity": [
+        "beneficiary",
+        "public_sector_entity",
+        "constituent",
         "business_entity",
-        "shipment_item"
+        "customer",
+        "partner"
+      ],
+      "legal body": [
+        "business_entity"
+      ],
+      "business": [
+        "job",
+        "network",
+        "business_entity",
+        "inquiry",
+        "facility"
+      ],
+      "comprise": [
+        "business_entity"
+      ],
+      "single organization": [
+        "business_entity"
+      ],
+      "body": [
+        "public_sector_entity",
+        "business_entity",
+        "standard",
+        "evidence"
+      ],
+      "single": [
+        "shipment_item",
+        "business_entity"
       ],
       "bodies": [
         "tax",
         "business_entity",
         "public_sector_entity"
       ],
-      "body": [
-        "standard",
-        "evidence",
-        "business_entity",
-        "public_sector_entity"
-      ],
-      "business": [
-        "inquiry",
-        "job",
-        "facility",
-        "business_entity",
-        "network"
-      ],
-      "legal body": [
-        "business_entity"
-      ],
-      "comprises": [
-        "business_entity"
-      ],
-      "organization": [
-        "strategy",
-        "payment",
-        "constituent",
-        "beneficiary",
-        "policy",
-        "customer",
-        "financial_forecast",
-        "business_entity",
-        "partner"
-      ],
-      "entity": [
-        "partner",
-        "beneficiary",
-        "customer",
-        "public_sector_entity",
-        "business_entity",
-        "constituent"
-      ],
-      "resources": [
-        "biological_organism",
+      "activities": [
         "campaign",
-        "investment_portfolio",
-        "energy",
-        "finance"
+        "course_of_action",
+        "message",
+        "plan"
       ],
-      "marketing": [
+      "outreach": [
         "campaign"
       ],
       "goal": [
         "campaign",
         "goal"
       ],
-      "activity": [
-        "legal_proceeding",
-        "license",
+      "hiring": [
         "campaign"
-      ],
-      "targets": [
-        "campaign"
-      ],
-      "specific": [
-        "action_item",
-        "campaign",
-        "job",
-        "operation",
-        "order_item"
       ],
       "campaign": [
         "campaign"
       ],
-      "awareness": [
+      "specific population": [
         "campaign"
       ],
-      "partners": [
+      "marketing awareness": [
         "campaign"
       ],
-      "customers": [
-        "product",
+      "achieve": [
+        "course_of_action",
+        "plan",
+        "action_item",
+        "campaign",
+        "operation"
+      ],
+      "example": [
+        "campaign",
+        "infrastructure",
+        "operation"
+      ],
+      "certain": [
         "campaign"
       ],
-      "radio": [
-        "channel"
-      ],
-      "physical": [
-        "geographic_space",
-        "interaction",
-        "channel",
+      "including": [
         "health_condition",
-        "language",
-        "energy",
-        "conveyor",
-        "facility"
+        "meeting",
+        "message",
+        "biological_organism",
+        "channel",
+        "schedule_element"
       ],
-      "service": [
-        "order_item",
-        "operation",
-        "channel"
-      ],
-      "channel": [
-        "channel"
-      ],
-      "physical means": [
-        "channel"
-      ],
-      "means": [
+      "satellite": [
         "channel"
       ],
       "related services": [
         "channel"
       ],
+      "phone": [
+        "channel"
+      ],
+      "related": [
+        "financial_transaction",
+        "plan",
+        "financial_account",
+        "legislation",
+        "channel"
+      ],
+      "delivered": [
+        "channel"
+      ],
       "analog": [
         "channel"
       ],
-      "digital": [
+      "radio": [
         "channel"
       ],
-      "services": [
-        "product",
-        "channel",
-        "claim"
-      ],
-      "necessary": [
-        "competency"
+      "physical conduit": [
+        "channel"
       ],
       "knowledge": [
         "accreditation",
         "competency"
       ],
-      "knowledge necessary": [
-        "competency"
-      ],
       "competency": [
-        "competency"
-      ],
-      "something": [
         "competency"
       ],
       "skills": [
         "competency"
       ],
-      "visual": [
-        "content"
+      "necessary": [
+        "competency"
       ],
-      "creative work": [
-        "content"
+      "something": [
+        "competency"
       ],
-      "textual": [
-        "content"
-      ],
-      "media": [
-        "content"
+      "knowledge necessary": [
+        "competency"
       ],
       "content": [
         "content",
         "content_impression",
         "submission"
       ],
-      "mixed": [
+      "forms": [
+        "content"
+      ],
+      "textual": [
+        "content"
+      ],
+      "audio": [
+        "content"
+      ],
+      "creative work": [
+        "content"
+      ],
+      "image": [
         "content"
       ],
       "still image": [
         "content"
       ],
-      "creative": [
+      "still": [
         "content"
       ],
-      "forms": [
+      "manifested": [
         "content"
       ],
-      "experiential": [
+      "visual": [
         "content"
-      ],
-      "content consumption": [
-        "content_impression"
       ],
       "content impression": [
         "content_impression"
       ],
-      "impression": [
+      "content consumption": [
         "content_impression"
       ],
       "consumption": [
@@ -2627,44 +2605,55 @@
       "instance": [
         "content_impression"
       ],
-      "legal entity": [
-        "customer",
-        "beneficiary",
-        "partner"
+      "impression": [
+        "content_impression"
       ],
       "customer": [
-        "customer",
-        "payment",
         "claim",
-        "collateral"
+        "customer",
+        "collateral",
+        "payment"
+      ],
+      "beneficiary": [
+        "beneficiary",
+        "customer"
       ],
       "plans": [
-        "customer",
         "beneficiary",
+        "customer",
+        "partner"
+      ],
+      "legal entity": [
+        "beneficiary",
+        "customer",
         "partner"
       ],
       "recipient": [
-        "customer",
-        "beneficiary"
-      ],
-      "beneficiary": [
+        "beneficiary",
         "customer"
       ],
+      "organization": [
+        "financial_forecast",
+        "policy",
+        "constituent",
+        "customer",
+        "partner"
+      ],
       "considering": [
-        "decision"
-      ],
-      "options": [
-        "financial_instrument",
-        "decision"
-      ],
-      "conclusion": [
         "decision"
       ],
       "alternative": [
         "decision"
       ],
-      "decision": [
+      "alternative options": [
         "decision"
+      ],
+      "conclusion": [
+        "decision"
+      ],
+      "reached": [
+        "decision",
+        "trip"
       ],
       "resolution": [
         "decision"
@@ -2672,80 +2661,91 @@
       "resolution reached": [
         "decision"
       ],
-      "alternative options": [
-        "decision"
+      "options": [
+        "decision",
+        "financial_instrument"
       ],
       "considering alternative": [
         "decision"
       ],
-      "reached": [
+      "decision": [
         "decision"
       ],
       "interest": [
         "event"
       ],
-      "one": [
+      "event": [
         "event",
+        "work_event"
+      ],
+      "one": [
         "geographic_border",
         "submission",
         "trip",
+        "event",
         "order"
       ],
-      "event": [
+      "occurrence": [
         "event",
         "work_event"
       ],
       "happen": [
         "event"
       ],
-      "occurrence": [
+      "especially": [
         "event",
-        "work_event"
+        "energy"
       ],
       "concern": [
-        "event"
-      ],
-      "importance": [
         "event"
       ],
       "especially one": [
         "event"
       ],
-      "especially": [
+      "importance": [
         "event"
       ],
       "happened": [
         "event"
       ],
-      "where": [
-        "facility"
-      ],
       "place": [
         "meeting",
         "facility"
       ],
-      "where business": [
+      "where": [
         "facility"
       ],
-      "given": [
-        "monetary_amount",
-        "interaction",
-        "product_forecast",
+      "facility": [
+        "infrastructure",
         "facility"
       ],
       "place where": [
         "facility"
       ],
-      "structure": [
+      "physical": [
         "infrastructure",
-        "work_queue",
+        "meeting",
+        "material",
         "facility"
       ],
-      "facility": [
+      "given": [
+        "monetary_amount",
+        "product_forecast",
+        "facility"
+      ],
+      "physical structure": [
+        "infrastructure",
         "facility"
       ],
       "conducted": [
         "facility"
+      ],
+      "where business": [
+        "facility"
+      ],
+      "resources": [
+        "investment_portfolio",
+        "finance"
       ],
       "monetary aspects": [
         "finance"
@@ -2753,18 +2753,13 @@
       "aspects": [
         "finance"
       ],
-      "monetary": [
-        "tax",
-        "financial_transaction",
-        "financial_account",
-        "finance",
-        "monetary_amount"
-      ],
       "finance": [
         "finance"
       ],
-      "agreed": [
-        "currency"
+      "monetary": [
+        "monetary_amount",
+        "tax",
+        "finance"
       ],
       "medium": [
         "currency"
@@ -2772,112 +2767,115 @@
       "value exchange": [
         "currency"
       ],
-      "value": [
-        "geographic_space_cadaster",
-        "tax",
-        "financial_account",
-        "investment_portfolio",
-        "cadaster",
-        "currency",
-        "monetary_amount"
-      ],
       "agreed medium": [
         "currency"
       ],
       "currency": [
-        "currency",
-        "monetary_amount"
+        "monetary_amount",
+        "currency"
       ],
       "exchange": [
-        "submission",
-        "financial_transaction",
         "currency",
+        "submission",
+        "financial_instrument",
+        "financial_transaction",
         "order"
       ],
-      "related categories": [
+      "value": [
+        "monetary_amount",
+        "tax",
+        "currency",
+        "investment_portfolio"
+      ],
+      "agreed": [
+        "currency"
+      ],
+      "typically": [
         "financial_account"
       ],
       "expense": [
         "financial_account"
       ],
-      "value transactions": [
-        "financial_account"
+      "financial": [
+        "financial_account",
+        "financial_forecast",
+        "financial_transaction"
       ],
-      "financial account": [
-        "financial_account"
+      "categories": [
+        "financial_account",
+        "biological_organism"
       ],
-      "typically": [
+      "transactions": [
         "financial_account"
       ],
       "account": [
         "financial_account"
       ],
-      "transactions": [
+      "organized": [
+        "financial_account"
+      ],
+      "typically organized": [
         "financial_account"
       ],
       "liabilities": [
         "financial_account"
       ],
-      "prediction": [
-        "financial_forecast",
-        "product_forecast"
-      ],
-      "future financial": [
+      "financial forecast": [
         "financial_forecast"
       ],
-      "financial": [
-        "financial_forecast",
-        "financial_position",
-        "financial_instrument"
+      "financial aspect": [
+        "financial_forecast"
       ],
       "future": [
-        "vision",
         "financial_forecast",
-        "investment",
         "time",
-        "market"
+        "market",
+        "vision",
+        "investment"
       ],
-      "financial aspect": [
+      "prediction": [
+        "product_forecast",
+        "financial_forecast"
+      ],
+      "forecast": [
+        "product_forecast",
+        "financial_forecast"
+      ],
+      "future financial": [
         "financial_forecast"
       ],
       "aspect": [
         "financial_forecast"
       ],
-      "forecast": [
-        "financial_forecast",
-        "product_forecast"
-      ],
-      "financial forecast": [
-        "financial_forecast"
-      ],
-      "amount movement": [
-        "financial_transaction"
-      ],
-      "financial transaction": [
-        "financial_transaction"
-      ],
-      "movement": [
+      "financial accounts": [
         "financial_transaction"
       ],
       "businesses": [
         "financial_transaction"
       ],
-      "amount": [
-        "financial_transaction",
-        "payment",
-        "monetary_amount"
-      ],
-      "exchange across": [
-        "financial_transaction"
-      ],
       "across": [
+        "geographic_space",
         "financial_transaction"
       ],
-      "related": [
-        "meeting",
-        "financial_transaction",
-        "plan",
-        "legislation"
+      "across businesses": [
+        "financial_transaction"
+      ],
+      "amount": [
+        "monetary_amount",
+        "payment",
+        "financial_transaction"
+      ],
+      "monetary amount": [
+        "monetary_amount",
+        "financial_transaction"
+      ],
+      "related exchange": [
+        "financial_transaction"
+      ],
+      "representation": [
+        "monetary_amount",
+        "language",
+        "financial_position"
       ],
       "given currency": [
         "monetary_amount"
@@ -2885,38 +2883,34 @@
       "expressed": [
         "monetary_amount"
       ],
-      "representation": [
-        "financial_position",
-        "monetary_amount"
+      "obligation": [
+        "payment"
       ],
-      "monetary amount": [
+      "external party": [
+        "payment"
+      ],
+      "partner": [
         "payment",
-        "monetary_amount"
+        "partner"
       ],
-      "payment": [
+      "party": [
+        "license",
+        "order",
         "payment"
       ],
       "receive": [
         "payment"
       ],
+      "remit": [
+        "payment"
+      ],
+      "payment": [
+        "payment"
+      ],
       "external": [
         "payment"
       ],
-      "obligation": [
-        "payment"
-      ],
-      "party": [
-        "accreditation",
-        "payment",
-        "order"
-      ],
-      "external party": [
-        "payment"
-      ],
-      "compulsory": [
-        "tax"
-      ],
-      "contribution": [
+      "monetary value": [
         "tax"
       ],
       "governing bodies": [
@@ -2928,44 +2922,51 @@
       "governing": [
         "tax"
       ],
+      "compulsory": [
+        "tax"
+      ],
+      "contribution": [
+        "tax"
+      ],
       "tax": [
         "tax"
       ],
-      "monetary value": [
-        "tax"
-      ],
-      "includes": [
-        "conveyor",
-        "human_resource"
-      ],
-      "individual who": [
-        "human_resource"
-      ],
-      "permanent basis": [
-        "human_resource"
-      ],
       "includes compensation": [
-        "human_resource"
-      ],
-      "who": [
-        "human_resource"
-      ],
-      "legal agreement": [
-        "human_resource"
-      ],
-      "basis": [
         "human_resource"
       ],
       "benefits": [
         "human_resource"
       ],
-      "incident": [
-        "incident"
+      "resource": [
+        "job",
+        "human_resource",
+        "natural_resource",
+        "schedule_element"
+      ],
+      "permanent basis": [
+        "human_resource"
+      ],
+      "temporary": [
+        "human_resource"
+      ],
+      "individual": [
+        "human_resource",
+        "license",
+        "constituent"
+      ],
+      "basis": [
+        "human_resource"
+      ],
+      "permanent": [
+        "human_resource"
+      ],
+      "includes": [
+        "human_resource"
       ],
       "disruptive": [
         "incident"
       ],
-      "experience": [
+      "potentially": [
         "incident"
       ],
       "unplanned": [
@@ -2974,10 +2975,20 @@
       "potentially disruptive": [
         "incident"
       ],
-      "potentially": [
+      "incident": [
         "incident"
       ],
-      "temporary endeavors": [
+      "experience": [
+        "incident"
+      ],
+      "endeavors": [
+        "initiative"
+      ],
+      "collection": [
+        "initiative",
+        "public_sector_entity"
+      ],
+      "coordinated": [
         "initiative"
       ],
       "outcome": [
@@ -2986,28 +2997,25 @@
       "initiative": [
         "initiative"
       ],
-      "create": [
-        "initiative"
-      ],
-      "undertaken": [
-        "initiative"
-      ],
-      "unique": [
-        "initiative"
-      ],
-      "coordinated": [
-        "initiative"
-      ],
-      "endeavors undertaken": [
+      "temporary endeavors": [
         "initiative"
       ],
       "unique outcome": [
         "initiative"
       ],
+      "endeavors undertaken": [
+        "initiative"
+      ],
+      "create": [
+        "initiative"
+      ],
       "coordinated collection": [
         "initiative"
       ],
-      "exist inside": [
+      "exist": [
+        "inquiry"
+      ],
+      "harvested": [
         "inquiry"
       ],
       "feedback": [
@@ -3016,78 +3024,70 @@
       "outside": [
         "inquiry"
       ],
-      "inquiry": [
-        "inquiry"
-      ],
-      "question": [
-        "inquiry"
-      ],
-      "harvested": [
+      "inside": [
         "inquiry"
       ],
       "identified": [
         "inquiry"
       ],
-      "request": [
-        "claim",
-        "inquiry",
-        "order"
-      ],
       "received": [
         "inquiry"
       ],
-      "trademarks": [
-        "intellectual_property_rights"
+      "classified": [
+        "inquiry"
       ],
-      "protections": [
-        "intellectual_property_rights"
-      ],
-      "intellectual property rights": [
-        "intellectual_property_rights"
+      "inquiry": [
+        "inquiry"
       ],
       "intellectual": [
-        "intellectual_property_rights"
-      ],
-      "copyrights": [
-        "intellectual_property_rights"
-      ],
-      "patents": [
         "intellectual_property_rights"
       ],
       "legal protections": [
         "intellectual_property_rights"
       ],
-      "collaborations": [
+      "trademarks": [
+        "intellectual_property_rights"
+      ],
+      "intellectual property rights": [
+        "intellectual_property_rights"
+      ],
+      "patents": [
+        "intellectual_property_rights"
+      ],
+      "copyrights": [
+        "intellectual_property_rights"
+      ],
+      "protections": [
+        "intellectual_property_rights"
+      ],
+      "contemporaneous": [
         "interaction"
       ],
-      "time": [
-        "schedule_element",
+      "virtual": [
         "interaction",
-        "operation",
-        "product_forecast",
-        "meeting",
-        "time",
-        "financial_position"
+        "meeting"
       ],
-      "interviews": [
+      "using one": [
         "interaction"
       ],
-      "virtual locations": [
-        "interaction"
+      "about": [
+        "interaction",
+        "message"
       ],
       "interaction": [
         "interaction"
       ],
-      "meetings": [
+      "contacts": [
         "interaction"
       ],
-      "expected": [
-        "investment_portfolio"
+      "subject": [
+        "interaction",
+        "training_course"
       ],
-      "portfolio": [
-        "investment_portfolio"
+      "given subject": [
+        "interaction"
       ],
-      "income": [
+      "investment": [
         "investment",
         "investment_portfolio"
       ],
@@ -3095,7 +3095,11 @@
         "investment",
         "investment_portfolio"
       ],
-      "investment portfolio": [
+      "income": [
+        "investment",
+        "investment_portfolio"
+      ],
+      "portfolio": [
         "investment_portfolio"
       ],
       "provide": [
@@ -3106,137 +3110,128 @@
       "resources expected": [
         "investment_portfolio"
       ],
-      "associated": [
-        "geographic_space_cadaster",
-        "job",
-        "health_condition",
-        "training_course",
-        "cadaster",
-        "network"
+      "investment portfolio": [
+        "investment_portfolio"
       ],
-      "function": [
+      "remunerative": [
         "job"
       ],
-      "named category": [
-        "job"
-      ],
-      "accountable business": [
-        "job"
-      ],
-      "business duty": [
+      "whether remunerative": [
         "job"
       ],
       "role": [
         "job"
       ],
-      "whether": [
+      "accountable business": [
         "job"
       ],
       "executed": [
         "job"
       ],
-      "variant consisting": [
-        "language"
+      "job": [
+        "job"
       ],
-      "meaning": [
+      "accountable": [
+        "job"
+      ],
+      "accountabilities": [
+        "job"
+      ],
+      "physical manifestations": [
         "language"
       ],
       "manifestations": [
         "language"
       ],
-      "dialect": [
+      "gestures": [
+        "language"
+      ],
+      "method": [
+        "language"
+      ],
+      "language": [
+        "language"
+      ],
+      "sounds": [
+        "language"
+      ],
+      "communication": [
+        "language"
+      ],
+      "numbers": [
         "language"
       ],
       "presented": [
         "language"
       ],
-      "units": [
-        "language"
-      ],
-      "way": [
-        "route",
-        "language"
-      ],
-      "structured": [
-        "language"
-      ],
-      "variant": [
-        "language"
-      ],
-      "law": [
-        "legal_proceeding"
-      ],
-      "tribunal": [
+      "legal proceeding": [
         "legal_proceeding"
       ],
       "proceeding": [
         "legal_proceeding"
       ],
+      "invoking": [
+        "legal_proceeding"
+      ],
+      "tribunal": [
+        "legal_proceeding"
+      ],
       "enforce": [
-        "legal_proceeding"
-      ],
-      "power": [
-        "energy",
-        "legal_proceeding"
-      ],
-      "legal proceeding": [
         "legal_proceeding"
       ],
       "activity invoking": [
         "legal_proceeding"
       ],
-      "invoking": [
+      "power": [
+        "legal_proceeding",
+        "energy"
+      ],
+      "activity": [
         "legal_proceeding"
+      ],
+      "law": [
+        "legal_proceeding"
+      ],
+      "position": [
+        "location",
+        "financial_position"
       ],
       "site": [
         "location"
       ],
-      "position": [
-        "location"
-      ],
       "location": [
-        "schedule_element",
-        "location"
+        "trip",
+        "location",
+        "operation",
+        "schedule_element"
       ],
-      "organizations constituting": [
+      "populations": [
         "market"
       ],
-      "demand": [
-        "market",
-        "claim"
-      ],
-      "future products": [
+      "services": [
+        "product",
+        "claim",
         "market"
       ],
-      "organizations": [
-        "market"
-      ],
-      "market": [
+      "constituting": [
         "market"
       ],
       "individuals": [
         "market"
       ],
-      "populations": [
+      "future products": [
+        "market"
+      ],
+      "market": [
         "market"
       ],
       "existing": [
         "market"
       ],
-      "communication about": [
-        "message"
+      "organizations": [
+        "market"
       ],
-      "targeted": [
-        "message",
-        "trip"
-      ],
-      "internally": [
-        "message"
-      ],
-      "focal points": [
-        "message"
-      ],
-      "alerts": [
+      "represented": [
         "message"
       ],
       "externally": [
@@ -3245,84 +3240,78 @@
       "mission": [
         "message"
       ],
-      "activities": [
-        "message",
-        "plan",
-        "course_of_action"
-      ],
-      "represented communication": [
+      "written": [
         "message"
       ],
-      "including missives": [
+      "externally targeted": [
+        "message"
+      ],
+      "focal points": [
         "message"
       ],
       "another": [
         "geographic_border",
         "order"
       ],
-      "exchange goods": [
+      "goods": [
+        "product",
+        "order",
+        "government_service"
+      ],
+      "one party": [
         "order"
       ],
       "sell": [
         "order"
       ],
-      "buy": [
-        "order"
-      ],
-      "goods": [
-        "conveyor",
-        "government_service",
-        "product",
+      "request": [
+        "claim",
         "order"
       ],
       "order": [
         "order_item",
         "order"
       ],
-      "involvement": [
-        "partner"
+      "exchange goods": [
+        "order"
       ],
-      "partner": [
+      "involvement": [
         "partner"
       ],
       "degree": [
         "partner"
       ],
       "result": [
-        "plan",
-        "objective"
+        "objective",
+        "plan"
       ],
       "plan": [
+        "case",
         "plan"
       ],
       "related activities": [
         "plan"
       ],
-      "achieve": [
-        "course_of_action",
-        "action_item",
-        "plan"
-      ],
       "action": [
         "strategy",
-        "action_item",
-        "policy",
-        "course_of_action"
-      ],
-      "course": [
         "course_of_action",
-        "action_item",
-        "route",
         "policy",
-        "training_course"
-      ],
-      "adopted": [
-        "policy"
+        "action_item"
       ],
       "action adopted": [
         "policy"
       ],
+      "course": [
+        "course_of_action",
+        "policy",
+        "training_course",
+        "action_item",
+        "route"
+      ],
       "proposed": [
+        "policy"
+      ],
+      "adopted": [
         "policy"
       ],
       "policy": [
@@ -3331,40 +3320,39 @@
       "principle": [
         "policy"
       ],
-      "offered": [
-        "product",
-        "government_service"
-      ],
-      "part": [
-        "product",
-        "shipment_item"
+      "customers": [
+        "product"
       ],
       "combination": [
         "product",
         "government_service"
+      ],
+      "offered": [
+        "product",
+        "government_service"
+      ],
+      "named": [
+        "product",
+        "government_service"
+      ],
+      "part": [
+        "biological_organism",
+        "shipment_item",
+        "product"
+      ],
+      "whole": [
+        "strategy",
+        "product"
       ],
       "named combination": [
         "product",
         "government_service"
       ],
       "product": [
-        "product",
-        "product_forecast"
-      ],
-      "whole": [
+        "product_forecast",
         "product"
       ],
-      "named": [
-        "product",
-        "government_service"
-      ],
       "systematic investigation": [
-        "research"
-      ],
-      "research": [
-        "research"
-      ],
-      "systematic": [
         "research"
       ],
       "materials": [
@@ -3373,93 +3361,107 @@
       "investigation": [
         "research"
       ],
-      "sources": [
+      "research": [
         "research"
       ],
+      "systematic": [
+        "research"
+      ],
+      "sources": [
+        "research",
+        "energy"
+      ],
       "aggregation": [
-        "schedule"
-      ],
-      "elements": [
-        "schedule"
-      ],
-      "schedule": [
-        "schedule_element",
         "schedule"
       ],
       "schedule elements": [
         "schedule"
       ],
-      "line": [
-        "schedule_element",
-        "geographic_border"
+      "schedule": [
+        "schedule",
+        "schedule_element"
+      ],
+      "elements": [
+        "schedule"
+      ],
+      "element": [
+        "order_item",
+        "schedule_element"
+      ],
+      "time": [
+        "time",
+        "product_forecast",
+        "meeting",
+        "financial_position",
+        "operation",
+        "schedule_element"
+      ],
+      "work item": [
+        "work_item",
+        "schedule_element"
+      ],
+      "objects": [
+        "schedule_element"
       ],
       "line item": [
         "schedule_element"
       ],
-      "aligns time": [
-        "schedule_element"
-      ],
-      "work item": [
-        "schedule_element"
-      ],
-      "work": [
-        "schedule_element",
-        "work",
-        "work_item",
-        "operation",
-        "government_service",
-        "energy",
-        "work_event"
-      ],
       "item": [
-        "schedule_element",
-        "action_item",
         "shipment_item",
+        "order_item",
+        "action_item",
         "work_item",
-        "order_item"
-      ],
-      "schedule element": [
         "schedule_element"
       ],
-      "aligns": [
-        "strategy"
-      ],
-      "objectives": [
+      "integrated": [
         "strategy"
       ],
       "integrated pattern": [
         "strategy"
       ],
-      "cohesive whole": [
+      "aligns": [
         "strategy"
       ],
       "pattern": [
         "strategy"
       ],
-      "action sequences": [
+      "objectives": [
         "strategy"
       ],
-      "sequences": [
+      "perspective": [
         "strategy"
       ],
       "cohesive": [
         "strategy"
       ],
+      "sequences": [
+        "strategy"
+      ],
       "objective": [
+        "objective",
         "course_of_action",
-        "action_item",
-        "objective"
+        "action_item"
+      ],
+      "specific course": [
+        "action_item"
       ],
       "taken": [
         "course_of_action",
         "action_item",
         "route"
       ],
+      "specific": [
+        "order_item",
+        "action_item"
+      ],
       "action item": [
         "action_item"
       ],
-      "specific course": [
-        "action_item"
+      "end": [
+        "goal"
+      ],
+      "directed": [
+        "goal"
       ],
       "toward": [
         "goal"
@@ -3470,31 +3472,31 @@
       "effort": [
         "goal"
       ],
-      "directed": [
-        "goal"
-      ],
-      "end": [
-        "goal"
-      ],
-      "defines strategy": [
-        "objective"
-      ],
       "measurable result": [
         "objective"
       ],
-      "quantitative": [
+      "defines strategy": [
         "objective"
       ],
       "measurable": [
         "objective"
       ],
-      "strategy": [
-        "objective"
-      ],
       "defines": [
         "objective"
       ],
+      "strategy": [
+        "objective"
+      ],
+      "quantitative": [
+        "objective"
+      ],
+      "future state": [
+        "vision"
+      ],
       "imagined": [
+        "vision"
+      ],
+      "vision": [
         "vision"
       ],
       "state": [
@@ -3503,97 +3505,88 @@
       "imagined future": [
         "vision"
       ],
-      "vision": [
-        "vision"
-      ],
-      "future state": [
-        "vision"
-      ],
       "inquiries": [
-        "submission"
-      ],
-      "requests": [
         "submission"
       ],
       "used": [
         "submission",
         "material"
       ],
+      "container": [
+        "submission",
+        "work_queue"
+      ],
       "messages": [
         "submission"
       ],
-      "submission": [
-        "submission"
-      ],
-      "container": [
-        "work_queue",
+      "exchange one": [
         "submission"
       ],
       "notifications": [
         "submission"
       ],
-      "present": [
-        "work_queue",
-        "time"
+      "submission": [
+        "submission"
       ],
-      "past": [
-        "time"
+      "present": [
+        "time",
+        "work_queue"
       ],
       "point": [
+        "trip",
         "time",
-        "financial_position",
         "network_node"
       ],
       "duration": [
         "time"
       ],
-      "format": [
-        "training_course"
-      ],
-      "matter": [
-        "natural_resource",
-        "material",
-        "training_course"
-      ],
-      "curriculum": [
-        "training_course"
+      "past": [
+        "time"
       ],
       "practical": [
         "training_course"
       ],
-      "subject matter": [
-        "training_course"
-      ],
-      "workshop": [
+      "structured": [
         "training_course"
       ],
       "consumable format": [
         "training_course"
       ],
-      "seminar": [
+      "theoretical": [
         "training_course"
       ],
-      "queues": [
-        "work"
+      "training": [
+        "training_course"
       ],
-      "task": [
-        "work_item",
-        "work"
+      "structured theoretical": [
+        "training_course"
+      ],
+      "consumable": [
+        "training_course"
+      ],
+      "associated": [
+        "network",
+        "training_course"
       ],
       "tasks": [
         "work"
       ],
+      "task": [
+        "work",
+        "work_item"
+      ],
       "task queues": [
         "work"
       ],
-      "defined": [
-        "standard",
-        "work_item"
+      "work": [
+        "work",
+        "work_event",
+        "work_queue"
       ],
-      "stakeholder": [
-        "work_item"
+      "queues": [
+        "work"
       ],
-      "bounded task": [
+      "bounded": [
         "work_item"
       ],
       "well": [
@@ -3602,84 +3595,87 @@
       "corresponding": [
         "work_item"
       ],
+      "defined": [
+        "work_item",
+        "standard"
+      ],
+      "stakeholder": [
+        "work_item"
+      ],
+      "bounded task": [
+        "work_item"
+      ],
       "corresponding asset": [
         "work_item"
       ],
-      "queue": [
+      "structure": [
+        "work_queue"
+      ],
+      "items": [
+        "conveyor",
         "work_queue"
       ],
       "work queue": [
         "work_queue"
       ],
-      "work items": [
+      "sequence": [
         "work_queue"
       ],
-      "items": [
+      "queue": [
         "work_queue"
       ],
       "hold": [
         "work_queue"
       ],
-      "filter": [
-        "work_queue"
-      ],
-      "water": [
+      "economic": [
         "geographic_space"
       ],
-      "area across": [
-        "geographic_space"
-      ],
-      "enable": [
-        "geographic_space"
-      ],
-      "environmental": [
-        "geographic_space"
-      ],
-      "across land": [
-        "geographic_space"
-      ],
-      "area": [
-        "geographic_space",
-        "cadaster",
-        "geographic_space_cadaster"
-      ],
-      "air": [
+      "land": [
         "geographic_space"
       ],
       "meet": [
         "geographic_space"
       ],
+      "geographic": [
+        "geographic_space",
+        "geographic_space_cadaster"
+      ],
+      "security": [
+        "geographic_space",
+        "collateral"
+      ],
+      "area across": [
+        "geographic_space"
+      ],
+      "across land": [
+        "geographic_space"
+      ],
+      "access": [
+        "geographic_space"
+      ],
+      "geographic space": [
+        "geographic_border"
+      ],
+      "line": [
+        "geographic_border"
+      ],
       "one geographic": [
         "geographic_border"
       ],
-      "border": [
+      "around": [
         "geographic_border"
       ],
       "demarcation": [
         "geographic_border"
       ],
+      "border": [
+        "geographic_border"
+      ],
+      "another geographic": [
+        "geographic_border"
+      ],
       "geographic border": [
         "geographic_border"
-      ],
-      "demarcation around": [
-        "geographic_border"
-      ],
-      "geographic": [
-        "geographic_border"
-      ],
-      "geographic space": [
-        "geographic_border"
-      ],
-      "extent": [
-        "cadaster",
-        "geographic_space_cadaster"
-      ],
-      "geographic space cadaster": [
-        "geographic_space_cadaster"
-      ],
-      "parcels": [
-        "cadaster",
-        "geographic_space_cadaster"
       ],
       "geometric description": [
         "cadaster",
@@ -3689,93 +3685,101 @@
         "cadaster",
         "geographic_space_cadaster"
       ],
+      "parcels": [
+        "cadaster",
+        "geographic_space_cadaster"
+      ],
+      "description": [
+        "cadaster",
+        "geographic_space_cadaster"
+      ],
+      "tenure": [
+        "cadaster",
+        "geographic_space_cadaster"
+      ],
+      "ownership": [
+        "financial_instrument",
+        "cadaster",
+        "geographic_space_cadaster"
+      ],
       "geometric": [
         "cadaster",
         "geographic_space_cadaster"
       ],
-      "asset purchased": [
-        "investment"
+      "cadaster": [
+        "cadaster",
+        "geographic_space_cadaster"
       ],
-      "profit": [
-        "investment"
+      "area": [
+        "cadaster",
+        "geographic_space_cadaster"
       ],
       "price": [
-        "investment"
-      ],
-      "idea": [
         "investment"
       ],
       "purchased": [
         "investment"
       ],
+      "sold": [
+        "investment"
+      ],
+      "monetary asset": [
+        "investment"
+      ],
+      "profit": [
+        "investment"
+      ],
       "type": [
         "investment"
       ],
-      "automobiles": [
+      "based vehicles": [
+        "conveyor"
+      ],
+      "trucks": [
+        "conveyor"
+      ],
+      "borne craft": [
+        "conveyor"
+      ],
+      "people": [
         "conveyor"
       ],
       "transport people": [
         "conveyor"
       ],
-      "physical items": [
+      "pulled devices": [
+        "conveyor"
+      ],
+      "capacity": [
+        "conveyor"
+      ],
+      "apparatus": [
         "conveyor"
       ],
       "but": [
         "conveyor",
         "energy"
       ],
-      "transport": [
-        "conveyor"
-      ],
-      "capacity": [
-        "conveyor"
-      ],
-      "variety": [
-        "conveyor"
-      ],
       "building": [
         "infrastructure"
       ],
-      "station": [
+      "bridge": [
         "infrastructure"
       ],
       "tunnel": [
         "infrastructure"
       ],
-      "rail corridor": [
-        "infrastructure"
+      "include": [
+        "infrastructure",
+        "legislation",
+        "route"
       ],
-      "roadway": [
-        "infrastructure"
-      ],
-      "rail": [
+      "station": [
         "infrastructure"
       ],
       "infrastructure": [
+        "network",
         "infrastructure",
-        "network",
-        "material"
-      ],
-      "physical structure": [
-        "infrastructure"
-      ],
-      "corridor": [
-        "infrastructure"
-      ],
-      "assets": [
-        "network",
-        "material"
-      ],
-      "conveyors": [
-        "material"
-      ],
-      "physical matter": [
-        "material"
-      ],
-      "material": [
-        "material"
-      ],
-      "matter used": [
         "material"
       ],
       "physical products": [
@@ -3784,29 +3788,45 @@
       "powering": [
         "material"
       ],
+      "assets": [
+        "network",
+        "material"
+      ],
+      "material": [
+        "material"
+      ],
+      "conveyors": [
+        "material"
+      ],
+      "physical matter": [
+        "material"
+      ],
       "routes": [
-        "network"
-      ],
-      "business objects": [
-        "network"
-      ],
-      "network": [
-        "network_arc",
-        "network_node",
         "network"
       ],
       "system": [
         "network"
       ],
+      "arcs": [
+        "network"
+      ],
+      "network": [
+        "network",
+        "network_arc",
+        "network_node"
+      ],
       "connected arcs": [
         "network"
       ],
-      "objects": [
-        "network"
+      "association": [
+        "network_arc"
       ],
       "connection": [
         "network_arc",
         "network_node"
+      ],
+      "nodes": [
+        "network_arc"
       ],
       "network arc": [
         "network_arc"
@@ -3814,78 +3834,69 @@
       "arc": [
         "network_arc"
       ],
-      "nodes": [
-        "network_arc"
-      ],
-      "association": [
-        "network_arc"
-      ],
-      "network node": [
+      "node": [
         "network_node"
       ],
-      "node": [
+      "network node": [
         "network_node"
       ],
       "connection point": [
         "network_node"
       ],
-      "turnaround": [
+      "objective constrained": [
         "operation"
       ],
-      "sorting": [
+      "service centers": [
         "operation"
       ],
-      "specific objective": [
+      "boarding": [
         "operation"
       ],
-      "flight turnaround": [
+      "flight": [
         "operation"
       ],
-      "constrained": [
+      "centers": [
         "operation"
       ],
-      "orchestration": [
+      "unloading": [
         "operation"
+      ],
+      "starting point": [
+        "trip",
+        "route"
       ],
       "along": [
+        "route"
+      ],
+      "route": [
         "route"
       ],
       "stops": [
         "route"
       ],
-      "include": [
-        "route"
-      ],
       "starting": [
-        "route",
-        "trip"
-      ],
-      "include stops": [
+        "trip",
         "route"
       ],
       "stops along": [
         "route"
       ],
-      "course taken": [
+      "getting": [
         "route"
       ],
-      "range": [
-        "shipment"
+      "baggage": [
+        "shipment",
+        "shipment_item"
       ],
-      "living": [
-        "biological_organism",
-        "health_condition",
-        "shipment"
-      ],
-      "packages containing": [
-        "shipment"
-      ],
-      "packages": [
+      "non": [
         "shipment"
       ],
       "shipment": [
         "shipment",
         "shipment_item"
+      ],
+      "packages containing": [
+        "shipment"
       ],
       "cargo": [
         "shipment",
@@ -3894,45 +3905,40 @@
       "wide range": [
         "shipment"
       ],
-      "baggage": [
-        "shipment",
-        "shipment_item"
-      ],
-      "freight": [
-        "shipment",
-        "shipment_item"
-      ],
-      "inanimate": [
+      "wide": [
         "shipment"
       ],
-      "shipment item": [
+      "containing": [
+        "shipment"
+      ],
+      "human": [
+        "shipment"
+      ],
+      "range": [
+        "shipment"
+      ],
+      "unit": [
         "shipment_item"
       ],
-      "single unit": [
+      "overall shipment": [
         "shipment_item"
       ],
       "overall": [
         "shipment_item"
       ],
-      "final destination": [
-        "trip"
+      "shipment item": [
+        "shipment_item"
       ],
-      "destination": [
-        "trip"
-      ],
-      "trip": [
-        "trip"
-      ],
-      "until": [
-        "trip"
-      ],
-      "point location": [
+      "targeted": [
         "trip"
       ],
       "journey": [
         "trip"
       ],
-      "locations": [
+      "final": [
+        "trip"
+      ],
+      "point location": [
         "trip"
       ],
       "work event": [
@@ -3941,132 +3947,137 @@
       "situation": [
         "work_event"
       ],
+      "determinable": [
+        "meeting"
+      ],
       "gathering": [
         "meeting"
       ],
-      "conferences": [
+      "meeting": [
         "meeting"
       ],
       "determinable time": [
         "meeting"
       ],
-      "engagements": [
+      "conferences": [
         "meeting"
       ],
-      "persons": [
-        "meeting"
-      ],
-      "related gatherings": [
-        "meeting"
-      ],
-      "including": [
-        "meeting"
-      ],
-      "third": [
-        "accreditation"
-      ],
-      "acknowledged": [
-        "accreditation"
-      ],
-      "third party": [
-        "accreditation"
-      ],
-      "provenance": [
-        "accreditation"
-      ],
-      "ability": [
-        "accreditation"
+      "recognized": [
+        "device",
+        "accreditation",
+        "license",
+        "standard"
       ],
       "duly recognized": [
-        "license",
+        "accreditation",
+        "license"
+      ],
+      "quality": [
+        "accreditation"
+      ],
+      "accreditation": [
+        "accreditation"
+      ],
+      "third": [
+        "accreditation",
+        "license"
+      ],
+      "indicates ability": [
+        "accreditation"
+      ],
+      "acknowledged third": [
         "accreditation"
       ],
       "competence": [
         "accreditation"
       ],
-      "endorsement": [
+      "acknowledged": [
         "accreditation"
       ],
-      "among": [
-        "dispute"
-      ],
-      "official argument": [
-        "dispute"
-      ],
-      "disagreement": [
+      "interested parties": [
         "dispute"
       ],
       "argument": [
         "dispute"
       ],
-      "disagreement among": [
+      "among": [
         "dispute"
       ],
-      "parties": [
+      "official": [
         "dispute"
       ],
-      "interested parties": [
-        "dispute"
-      ],
-      "interested": [
-        "dispute"
-      ],
-      "dispute": [
+      "official argument": [
         "dispute"
       ],
       "among interested": [
         "dispute"
       ],
-      "chemical resources": [
+      "disagreement among": [
+        "dispute"
+      ],
+      "disagreement": [
+        "dispute"
+      ],
+      "interested": [
+        "dispute"
+      ],
+      "parties": [
+        "dispute"
+      ],
+      "devices": [
         "energy"
       ],
-      "work devices": [
+      "machines": [
         "energy"
       ],
       "heat": [
         "energy"
       ],
-      "provide light": [
+      "work devices": [
         "energy"
       ],
-      "holistic representation": [
+      "derived": [
+        "energy"
+      ],
+      "actual financial": [
         "financial_position"
       ],
-      "actual": [
+      "standing": [
         "financial_position"
       ],
       "financial position": [
         "financial_position"
       ],
-      "actual financial": [
+      "actual": [
         "financial_position"
       ],
-      "holistic": [
+      "consolidated": [
         "financial_position"
       ],
       "financial standing": [
         "financial_position"
       ],
-      "order item": [
-        "order_item"
-      ],
-      "element": [
-        "order_item"
-      ],
-      "refers": [
-        "order_item"
+      "holistic representation": [
+        "financial_position"
       ],
       "order element": [
-        "order_item"
-      ],
-      "specific good": [
         "order_item"
       ],
       "good": [
         "order_item"
       ],
-      "period": [
-        "product_forecast"
+      "service": [
+        "order_item",
+        "government_service"
+      ],
+      "refers": [
+        "order_item"
+      ],
+      "specific good": [
+        "order_item"
+      ],
+      "order item": [
+        "order_item"
       ],
       "projection": [
         "product_forecast"
@@ -4074,124 +4085,141 @@
       "estimate": [
         "product_forecast"
       ],
+      "product forecast": [
+        "product_forecast"
+      ],
       "given product": [
         "product_forecast"
       ],
-      "product forecast": [
+      "period": [
         "product_forecast"
       ],
       "course of action": [
         "course_of_action"
       ],
-      "derives": [
-        "beneficiary"
-      ],
       "advantage": [
         "beneficiary"
       ],
-      "ecosystem": [
-        "biological_organism"
+      "derives": [
+        "beneficiary"
       ],
-      "reproduce": [
-        "biological_organism"
-      ],
-      "biological organism": [
-        "biological_organism"
-      ],
-      "stimuli": [
-        "biological_organism"
-      ],
-      "react": [
-        "biological_organism"
-      ],
-      "human living": [
-        "biological_organism"
-      ],
-      "natural": [
-        "natural_resource",
+      "consume": [
         "biological_organism"
       ],
       "things": [
         "biological_organism",
         "health_condition"
       ],
-      "base proof": [
-        "evidence"
+      "grow": [
+        "biological_organism"
       ],
-      "evidence": [
-        "evidence",
-        "financial_instrument"
+      "plants": [
+        "biological_organism"
       ],
-      "rules": [
-        "evidence"
+      "living": [
+        "biological_organism",
+        "health_condition"
       ],
-      "accordance": [
-        "evidence"
+      "consume natural": [
+        "biological_organism"
       ],
-      "facts": [
-        "evidence"
+      "organism": [
+        "biological_organism"
       ],
-      "establish truth": [
-        "evidence"
-      ],
-      "falsehood": [
-        "evidence"
-      ],
-      "base": [
+      "supported": [
         "evidence"
       ],
       "truth": [
         "evidence"
       ],
+      "establish truth": [
+        "evidence"
+      ],
+      "proof": [
+        "evidence"
+      ],
+      "base proof": [
+        "evidence"
+      ],
+      "establish": [
+        "evidence"
+      ],
+      "preservation": [
+        "evidence"
+      ],
+      "falsehood": [
+        "evidence"
+      ],
+      "supported body": [
+        "evidence"
+      ],
+      "futures": [
+        "financial_instrument"
+      ],
       "financial instrument": [
+        "financial_instrument"
+      ],
+      "bonds": [
         "financial_instrument"
       ],
       "tradeable asset": [
         "financial_instrument"
       ],
-      "ownership": [
+      "instrument": [
         "financial_instrument"
       ],
       "stocks": [
         "financial_instrument"
       ],
-      "cash": [
+      "bills": [
         "financial_instrument"
-      ],
-      "futures": [
-        "financial_instrument"
-      ],
-      "medical": [
-        "health_condition"
-      ],
-      "affect": [
-        "health_condition"
-      ],
-      "temporarily affect": [
-        "health_condition"
       ],
       "illness": [
+        "health_condition"
+      ],
+      "temporarily": [
+        "health_condition"
+      ],
+      "things including": [
+        "health_condition"
+      ],
+      "condition": [
         "health_condition"
       ],
       "disorder": [
         "health_condition"
       ],
-      "biological organisms": [
+      "human beings": [
         "health_condition"
       ],
-      "nature": [
-        "natural_resource"
+      "injury": [
+        "health_condition"
       ],
       "natural resource": [
+        "natural_resource"
+      ],
+      "natural": [
         "natural_resource"
       ],
       "occur": [
         "natural_resource"
       ],
-      "resource": [
+      "matter": [
         "natural_resource"
       ],
-      "confirmed": [
+      "nature": [
+        "natural_resource"
+      ],
+      "recognized governance": [
+        "standard"
+      ],
+      "specification": [
+        "standard"
+      ],
+      "measurement": [
+        "standard"
+      ],
+      "convention": [
         "standard"
       ],
       "governance": [
@@ -4200,79 +4228,59 @@
       "governance body": [
         "standard"
       ],
-      "measurement": [
+      "standard": [
         "standard"
-      ],
-      "recognized governance": [
-        "standard"
-      ],
-      "convention": [
-        "standard"
-      ],
-      "specification": [
-        "standard"
-      ],
-      "recognized": [
-        "standard"
-      ],
-      "election": [
-        "vote"
-      ],
-      "choice": [
-        "vote"
       ],
       "candidate": [
-        "vote"
-      ],
-      "candidate election": [
-        "vote"
-      ],
-      "formal": [
-        "vote"
-      ],
-      "referendum": [
-        "vote"
-      ],
-      "proposition": [
-        "vote"
-      ],
-      "indication": [
-        "vote"
-      ],
-      "formal indication": [
         "vote"
       ],
       "vote": [
         "vote"
       ],
-      "provider": [
-        "claim"
+      "proposition": [
+        "vote"
       ],
-      "indemnify": [
-        "claim"
+      "formal indication": [
+        "vote"
+      ],
+      "indication": [
+        "vote"
+      ],
+      "election": [
+        "vote"
+      ],
+      "referendum": [
+        "vote"
+      ],
+      "formal": [
+        "vote"
+      ],
+      "candidate election": [
+        "vote"
+      ],
+      "choice": [
+        "vote"
       ],
       "terms": [
         "claim"
       ],
       "claim": [
+        "device",
         "claim"
       ],
-      "outcomes": [
+      "indemnify": [
+        "claim"
+      ],
+      "demand": [
+        "claim"
+      ],
+      "provider": [
+        "claim"
+      ],
+      "mitigate": [
         "device"
       ],
-      "identifiable": [
-        "device"
-      ],
-      "vitro reagent": [
-        "device"
-      ],
-      "approach": [
-        "device"
-      ],
-      "contrivance": [
-        "device"
-      ],
-      "machine": [
+      "vitro": [
         "device"
       ],
       "cataloged": [
@@ -4281,31 +4289,19 @@
       "likelihood": [
         "device"
       ],
-      "mitigate": [
+      "approach": [
         "device"
       ],
-      "device": [
+      "implant": [
         "device"
       ],
-      "case": [
-        "case"
+      "identifiable": [
+        "device"
       ],
-      "address": [
-        "case"
+      "vitro reagent": [
+        "device"
       ],
-      "need": [
-        "case"
-      ],
-      "requires resolution": [
-        "case"
-      ],
-      "report": [
-        "case"
-      ],
-      "otherwise address": [
-        "case"
-      ],
-      "context": [
+      "ongoing": [
         "case"
       ],
       "ongoing healthcare": [
@@ -4314,32 +4310,44 @@
       "requires": [
         "case"
       ],
-      "tenure": [
+      "otherwise address": [
+        "case"
+      ],
+      "case": [
+        "case"
+      ],
+      "requires resolution": [
+        "case"
+      ],
+      "report": [
+        "case"
+      ],
+      "act": [
+        "case"
+      ],
+      "need": [
+        "case"
+      ],
+      "property area": [
         "cadaster",
         "geographic_space_cadaster"
       ],
       "constituent": [
         "constituent"
       ],
-      "relative": [
+      "sphere": [
         "constituent"
       ],
       "responsibility": [
         "constituent"
       ],
-      "individual": [
-        "constituent"
-      ],
       "entity relative": [
         "constituent"
       ],
-      "sphere": [
+      "relative": [
         "constituent"
       ],
       "government": [
-        "government_service"
-      ],
-      "entitlements": [
         "government_service"
       ],
       "government service": [
@@ -4348,25 +4356,10 @@
       "constituents": [
         "government_service"
       ],
-      "authoritative": [
-        "legislation"
-      ],
-      "statutory": [
-        "legislation"
-      ],
-      "directives": [
-        "legislation"
+      "doing": [
+        "government_service"
       ],
       "laws": [
-        "legislation"
-      ],
-      "statutory instruments": [
-        "legislation"
-      ],
-      "related statutory": [
-        "legislation"
-      ],
-      "authoritative directives": [
         "legislation"
       ],
       "include laws": [
@@ -4375,59 +4368,62 @@
       "legislation": [
         "legislation"
       ],
+      "authoritative": [
+        "legislation"
+      ],
+      "instruments": [
+        "legislation"
+      ],
+      "statutory": [
+        "legislation"
+      ],
+      "authoritative directives": [
+        "legislation"
+      ],
       "hazardous materials": [
         "license"
       ],
-      "governmental agency": [
+      "fishing": [
         "license"
       ],
-      "awarded": [
+      "regulated activity": [
         "license"
       ],
-      "perform": [
+      "recognized governmental": [
         "license"
       ],
-      "regulated": [
-        "license"
-      ],
-      "agency": [
-        "license"
-      ],
-      "applied": [
-        "license"
-      ],
-      "regulated objects": [
+      "engage": [
         "license"
       ],
       "license term": [
         "license_term"
       ],
-      "enforceable condition": [
+      "license": [
         "license_term"
-      ],
-      "within": [
-        "license_term"
-      ],
-      "public": [
-        "public_sector_entity"
       ],
       "governmental": [
         "public_sector_entity"
       ],
-      "governmental bodies": [
+      "public": [
         "public_sector_entity"
       ],
       "public sector entity": [
         "public_sector_entity"
       ],
-      "governmental body": [
-        "public_sector_entity"
-      ],
       "sector": [
         "public_sector_entity"
       ],
-      "collection": [
+      "governmental bodies": [
         "public_sector_entity"
+      ],
+      "governmental body": [
+        "public_sector_entity"
+      ],
+      "lending agreement": [
+        "collateral"
+      ],
+      "customer offers": [
+        "collateral"
       ],
       "lending": [
         "collateral"
@@ -4435,16 +4431,10 @@
       "offers": [
         "collateral"
       ],
-      "borrowing": [
-        "collateral"
-      ],
-      "customer offers": [
-        "collateral"
-      ],
       "collateral": [
         "collateral"
       ],
-      "lending agreement": [
+      "borrowing": [
         "collateral"
       ]
     },
@@ -4481,18 +4471,18 @@
       "bizbok_id": "agreement",
       "standardization_type": "direct",
       "merged_terms": [
-        "binding",
-        "obligations",
+        "set",
+        "legally binding",
         "agreement",
-        "entities",
-        "legal",
+        "binding",
         "binding rights",
         "rights",
-        "legally",
-        "legally binding",
+        "entities",
+        "legal entities",
+        "obligations",
         "two",
-        "set",
-        "legal entities"
+        "legal",
+        "legally"
       ]
     },
     "agreement_term": {
@@ -4523,21 +4513,21 @@
       "bizbok_id": "agreement_term",
       "standardization_type": "direct",
       "merged_terms": [
-        "enforceable",
-        "condition",
-        "term",
-        "agreement",
-        "condition set",
-        "enforceable condition",
-        "bounds",
         "forth",
-        "forth within",
-        "within",
-        "legally",
-        "legally enforceable",
-        "agreement term",
         "set",
-        "set forth"
+        "set forth",
+        "agreement",
+        "condition",
+        "legally enforceable",
+        "term",
+        "enforceable",
+        "enforceable condition",
+        "forth within",
+        "bounds",
+        "condition set",
+        "agreement term",
+        "within",
+        "legally"
       ]
     },
     "asset": {
@@ -4558,11 +4548,11 @@
       "bizbok_id": "asset",
       "standardization_type": "direct",
       "merged_terms": [
+        "tangible",
+        "intangible",
         "asset",
         "property",
-        "tangible",
-        "intangible property",
-        "intangible"
+        "intangible property"
       ]
     },
     "brand": {
@@ -4590,18 +4580,18 @@
       "bizbok_id": "brand",
       "standardization_type": "direct",
       "merged_terms": [
-        "offerings",
-        "design",
-        "differentiates products",
-        "symbol",
-        "organizational identities",
-        "identifies",
-        "differentiates",
-        "identities",
+        "organizational",
         "products",
+        "organizational identities",
+        "offerings",
         "name",
         "brand",
-        "organizational"
+        "differentiates products",
+        "symbol",
+        "identities",
+        "differentiates",
+        "identifies",
+        "design"
       ]
     },
     "business_entity": {
@@ -4629,17 +4619,17 @@
       "bizbok_id": "business_entity",
       "standardization_type": "direct",
       "merged_terms": [
-        "comprises",
         "single organization",
-        "legal",
         "comprise",
-        "single",
+        "comprises",
         "business",
         "bodies",
+        "single",
         "organization",
-        "business entity",
         "entity",
+        "legal",
         "legal body",
+        "business entity",
         "body"
       ]
     },
@@ -4683,33 +4673,33 @@
       "bizbok_id": "campaign",
       "standardization_type": "direct",
       "merged_terms": [
-        "goal",
-        "patients",
-        "specific population",
-        "example",
-        "outreach activity",
         "certain goal",
-        "population",
-        "specific",
         "awareness",
-        "marketing",
-        "outreach",
-        "resources",
-        "achieve",
-        "partners",
-        "human",
-        "campaign",
-        "marketing awareness",
-        "health",
-        "human resources",
         "health awareness",
-        "targets",
-        "customers",
-        "hiring",
-        "hiring activities",
-        "certain",
+        "achieve",
         "activity",
-        "activities"
+        "outreach activity",
+        "hiring",
+        "specific",
+        "targets",
+        "outreach",
+        "hiring activities",
+        "customers",
+        "resources",
+        "human",
+        "certain",
+        "human resources",
+        "marketing awareness",
+        "example",
+        "health",
+        "activities",
+        "campaign",
+        "specific population",
+        "marketing",
+        "population",
+        "patients",
+        "partners",
+        "goal"
       ]
     },
     "channel": {
@@ -4748,29 +4738,29 @@
       "bizbok_id": "channel",
       "standardization_type": "direct",
       "merged_terms": [
-        "service",
-        "delivery service",
-        "delivery",
-        "received",
-        "conduit",
-        "related services",
         "physical conduit",
+        "related",
+        "digital",
+        "means",
+        "phone",
+        "analog",
+        "internet",
+        "delivered",
+        "radio",
+        "delivery",
+        "satellite",
+        "delivery service",
+        "service",
+        "received",
+        "channel",
+        "related services",
+        "services",
         "including",
         "physical means",
-        "delivered",
-        "phone",
-        "radio",
-        "analog",
-        "channel",
-        "digital",
         "products",
-        "services",
-        "physical",
-        "internet",
-        "related",
-        "means",
         "communications",
-        "satellite"
+        "conduit",
+        "physical"
       ]
     },
     "competency": {
@@ -4792,12 +4782,12 @@
       "bizbok_id": "competency",
       "standardization_type": "direct",
       "merged_terms": [
-        "skills",
+        "knowledge necessary",
         "knowledge",
         "necessary",
-        "knowledge necessary",
-        "competency",
-        "something"
+        "something",
+        "skills",
+        "competency"
       ]
     },
     "content": {
@@ -4828,21 +4818,21 @@
       "bizbok_id": "content",
       "standardization_type": "direct",
       "merged_terms": [
-        "visual",
-        "forms",
         "work",
-        "creative work",
-        "mixed",
-        "audio",
-        "image",
-        "still image",
-        "content",
         "creative",
-        "media",
-        "manifested",
-        "textual",
+        "image",
         "still",
-        "experiential"
+        "mixed",
+        "media",
+        "experiential",
+        "content",
+        "audio",
+        "creative work",
+        "manifested",
+        "forms",
+        "still image",
+        "textual",
+        "visual"
       ]
     },
     "content_impression": {
@@ -4864,12 +4854,12 @@
       "bizbok_id": "content_impression",
       "standardization_type": "direct",
       "merged_terms": [
+        "content consumption",
         "content impression",
         "instance",
-        "consumption",
-        "content consumption",
         "content",
-        "impression"
+        "impression",
+        "consumption"
       ]
     },
     "customer": {
@@ -4896,17 +4886,17 @@
       "bizbok_id": "customer",
       "standardization_type": "direct",
       "merged_terms": [
-        "agreement",
-        "recipient",
         "beneficiary",
-        "legal",
-        "entity",
-        "customer",
-        "organization",
+        "agreement",
+        "services",
         "products",
-        "legal entity",
+        "organization",
+        "entity",
+        "legal",
         "plans",
-        "services"
+        "legal entity",
+        "customer",
+        "recipient"
       ]
     },
     "decision": {
@@ -4932,16 +4922,16 @@
       "bizbok_id": "decision",
       "standardization_type": "direct",
       "merged_terms": [
-        "alternative options",
+        "conclusion",
+        "resolution",
         "options",
-        "alternative",
+        "decision",
         "considering alternative",
         "resolution reached",
-        "reached",
         "considering",
-        "decision",
-        "resolution",
-        "conclusion"
+        "alternative",
+        "alternative options",
+        "reached"
       ]
     },
     "event": {
@@ -4967,16 +4957,16 @@
       "bizbok_id": "event",
       "standardization_type": "direct",
       "merged_terms": [
-        "interest",
-        "event",
-        "occurrence",
-        "concern",
         "happened",
+        "interest",
+        "one",
+        "event",
+        "concern",
+        "occurrence",
         "importance",
-        "happen",
-        "especially one",
         "especially",
-        "one"
+        "happen",
+        "especially one"
       ]
     },
     "facility": {
@@ -5004,17 +4994,17 @@
       "bizbok_id": "facility",
       "standardization_type": "direct",
       "merged_terms": [
-        "physical",
-        "physical structure",
-        "place where",
-        "where",
-        "given",
+        "where business",
         "place",
-        "structure",
         "business",
         "given place",
+        "physical structure",
+        "place where",
+        "physical",
+        "where",
+        "given",
         "conducted",
-        "where business",
+        "structure",
         "facility"
       ]
     },
@@ -5038,9 +5028,9 @@
       "merged_terms": [
         "aspects",
         "monetary",
+        "finance",
         "monetary aspects",
-        "resources",
-        "finance"
+        "resources"
       ]
     },
     "currency": {
@@ -5063,11 +5053,11 @@
       "bizbok_id": "currency",
       "standardization_type": "direct",
       "merged_terms": [
-        "agreed medium",
         "exchange",
-        "agreed",
-        "medium",
         "currency",
+        "medium",
+        "agreed medium",
+        "agreed",
         "value",
         "value exchange"
       ]
@@ -5107,27 +5097,27 @@
       "bizbok_id": "financial_account",
       "standardization_type": "direct",
       "merged_terms": [
-        "related categories",
-        "income",
-        "equity",
         "financial",
         "monetary",
-        "liabilities",
-        "value transactions",
-        "financial account",
-        "account",
-        "named container",
-        "categories",
-        "assets",
-        "named",
-        "transactions",
         "related",
-        "organized",
+        "assets",
+        "transactions",
         "container",
+        "expense",
+        "account",
+        "categories",
         "monetary value",
+        "named container",
+        "liabilities",
+        "equity",
+        "value transactions",
         "typically organized",
         "typically",
-        "expense",
+        "named",
+        "organized",
+        "income",
+        "financial account",
+        "related categories",
         "value"
       ]
     },
@@ -5153,15 +5143,15 @@
       "bizbok_id": "financial_forecast",
       "standardization_type": "direct",
       "merged_terms": [
-        "aspect",
+        "forecast",
         "future financial",
         "financial",
         "financial aspect",
-        "financial forecast",
         "organization",
+        "aspect",
         "prediction",
-        "future",
-        "forecast"
+        "financial forecast",
+        "future"
       ]
     },
     "financial_transaction": {
@@ -5196,25 +5186,25 @@
       "bizbok_id": "financial_transaction",
       "standardization_type": "direct",
       "merged_terms": [
-        "businesses",
-        "transaction",
-        "accounts",
-        "across",
         "amount",
-        "financial accounts",
-        "instance",
         "exchange",
-        "exchange across",
+        "accounts",
         "financial",
         "monetary",
-        "related exchange",
-        "agreements",
-        "across businesses",
-        "financial transaction",
-        "movement",
         "related",
+        "related exchange",
+        "monetary amount",
+        "transaction",
+        "businesses",
+        "movement",
+        "instance",
+        "agreements",
+        "financial transaction",
+        "across",
+        "exchange across",
         "amount movement",
-        "monetary amount"
+        "across businesses",
+        "financial accounts"
       ]
     },
     "monetary_amount": {
@@ -5239,15 +5229,15 @@
       "bizbok_id": "monetary_amount",
       "standardization_type": "direct",
       "merged_terms": [
-        "expressed",
+        "amount",
         "currency",
+        "monetary amount",
+        "monetary",
+        "representation",
+        "value",
         "given",
         "given currency",
-        "monetary",
-        "monetary amount",
-        "amount",
-        "representation",
-        "value"
+        "expressed"
       ]
     },
     "payment": {
@@ -5276,19 +5266,19 @@
       "bizbok_id": "payment",
       "standardization_type": "direct",
       "merged_terms": [
+        "amount",
         "partner",
         "payment",
-        "remit",
         "receive",
-        "external party",
-        "customer",
-        "external",
-        "monetary",
         "obligation",
         "monetary amount",
+        "monetary",
+        "party",
         "organization",
-        "amount",
-        "party"
+        "external party",
+        "remit",
+        "customer",
+        "external"
       ]
     },
     "tax": {
@@ -5314,15 +5304,15 @@
       "bizbok_id": "tax",
       "standardization_type": "direct",
       "merged_terms": [
-        "tax",
-        "contribution",
-        "compulsory contribution",
         "governing bodies",
-        "bodies",
+        "compulsory contribution",
+        "governing",
+        "tax",
         "compulsory",
+        "contribution",
+        "bodies",
         "monetary",
         "monetary value",
-        "governing",
         "value"
       ]
     },
@@ -5358,25 +5348,25 @@
       "bizbok_id": "human_resource",
       "standardization_type": "direct",
       "merged_terms": [
-        "human resource",
-        "legal agreement",
-        "who",
         "includes",
-        "resource",
-        "temporary",
-        "compensation",
-        "permanent",
-        "human",
+        "legal agreement",
+        "benefits",
         "agreement",
         "permanent basis",
-        "plans",
-        "individual who",
-        "benefits",
-        "legal",
         "includes compensation",
-        "organization",
+        "who",
+        "permanent",
+        "human",
+        "human resource",
+        "compensation",
+        "legal",
+        "plans",
+        "resource",
+        "temporary",
+        "basis",
         "individual",
-        "basis"
+        "organization",
+        "individual who"
       ]
     },
     "incident": {
@@ -5398,12 +5388,12 @@
       "bizbok_id": "incident",
       "standardization_type": "direct",
       "merged_terms": [
-        "unplanned",
+        "disruptive",
         "incident",
         "potentially",
         "potentially disruptive",
         "experience",
-        "disruptive"
+        "unplanned"
       ]
     },
     "initiative": {
@@ -5432,19 +5422,19 @@
       "bizbok_id": "initiative",
       "standardization_type": "direct",
       "merged_terms": [
-        "endeavors undertaken",
-        "outcome",
-        "temporary endeavors",
-        "coordinated collection",
         "create",
-        "unique",
-        "initiative",
-        "endeavors",
-        "undertaken",
-        "coordinated",
+        "coordinated collection",
+        "endeavors undertaken",
         "collection",
+        "coordinated",
+        "temporary endeavors",
+        "unique outcome",
+        "initiative",
+        "unique",
+        "outcome",
         "temporary",
-        "unique outcome"
+        "endeavors",
+        "undertaken"
       ]
     },
     "inquiry": {
@@ -5476,22 +5466,22 @@
       "bizbok_id": "inquiry",
       "standardization_type": "direct",
       "merged_terms": [
+        "feedback",
         "exist",
+        "exist inside",
+        "classified",
         "inside",
+        "identified",
+        "request",
+        "business",
         "disseminated",
-        "inquiry",
-        "harvested",
+        "outside",
+        "comment",
         "tracked",
         "received",
-        "business",
-        "comment",
-        "exist inside",
-        "identified",
-        "classified",
-        "question",
-        "request",
-        "feedback",
-        "outside"
+        "harvested",
+        "inquiry",
+        "question"
       ]
     },
     "intellectual_property_rights": {
@@ -5517,16 +5507,16 @@
       "bizbok_id": "intellectual_property_rights",
       "standardization_type": "direct",
       "merged_terms": [
-        "copyrights",
-        "protections",
-        "trademarks",
-        "legal",
-        "intellectual",
-        "rights",
         "patents",
         "intellectual property rights",
+        "protections",
+        "rights",
         "legal protections",
-        "property"
+        "property",
+        "legal",
+        "copyrights",
+        "trademarks",
+        "intellectual"
       ]
     },
     "interaction": {
@@ -5567,31 +5557,31 @@
       "bizbok_id": "interaction",
       "standardization_type": "direct",
       "merged_terms": [
-        "interaction",
-        "entities",
-        "interviews",
         "subject",
-        "one",
-        "given subject",
-        "using",
+        "using one",
         "about",
+        "contacts",
         "given",
+        "span",
+        "virtual",
+        "time",
+        "contemporaneous",
+        "locations",
+        "interviews",
+        "given subject",
+        "collaborations",
+        "set",
+        "one",
+        "virtual locations",
+        "contacts about",
+        "two",
+        "meetings",
+        "interaction",
         "channels",
         "contemporaneous collaborations",
-        "virtual",
-        "locations",
-        "time",
-        "collaborations",
-        "two",
-        "contacts",
-        "physical",
-        "virtual locations",
-        "contemporaneous",
-        "using one",
-        "span",
-        "set",
-        "meetings",
-        "contacts about"
+        "entities",
+        "using",
+        "physical"
       ]
     },
     "investment_portfolio": {
@@ -5619,18 +5609,18 @@
       "bizbok_id": "investment_portfolio",
       "standardization_type": "direct",
       "merged_terms": [
-        "portfolio",
-        "income",
-        "expected",
-        "provide",
-        "resources expected",
-        "increase",
-        "resources",
-        "provide income",
-        "set",
-        "investment",
         "investment portfolio",
-        "value"
+        "set",
+        "income",
+        "investment",
+        "provide income",
+        "resources expected",
+        "expected",
+        "portfolio",
+        "value",
+        "increase",
+        "provide",
+        "resources"
       ]
     },
     "job": {
@@ -5669,29 +5659,29 @@
       "bizbok_id": "job",
       "standardization_type": "direct",
       "merged_terms": [
-        "human resource",
-        "whether remunerative",
-        "accountabilities",
+        "accountable",
         "accountable business",
         "category",
-        "resource",
-        "specific",
-        "remunerative",
-        "whether",
-        "role",
-        "human",
-        "accountable",
-        "job",
-        "function",
-        "business",
-        "assigned",
-        "duty",
         "non",
-        "named",
-        "associated",
+        "accountabilities",
+        "specific",
+        "whether",
+        "job",
+        "business duty",
+        "business",
+        "remunerative",
+        "human",
+        "human resource",
+        "function",
+        "duty",
+        "whether remunerative",
+        "resource",
         "executed",
+        "associated",
+        "named",
         "named category",
-        "business duty"
+        "role",
+        "assigned"
       ]
     },
     "language": {
@@ -5730,29 +5720,29 @@
       "bizbok_id": "language",
       "standardization_type": "direct",
       "merged_terms": [
-        "language",
-        "way",
-        "gestures",
-        "representation",
         "variant consisting",
-        "meaning",
-        "structured way",
-        "manifestations",
-        "communication",
-        "sounds",
-        "physical manifestations",
-        "units",
-        "words",
-        "symbols",
-        "structured",
-        "physical",
-        "variant",
         "dialect variant",
-        "presented",
-        "numbers",
         "method",
+        "presented",
+        "dialect",
+        "structured",
+        "units",
+        "gestures",
+        "symbols",
         "consisting",
-        "dialect"
+        "language",
+        "manifestations",
+        "structured way",
+        "meaning",
+        "numbers",
+        "variant",
+        "way",
+        "communication",
+        "words",
+        "physical manifestations",
+        "physical",
+        "representation",
+        "sounds"
       ]
     },
     "legal_proceeding": {
@@ -5778,16 +5768,16 @@
       "bizbok_id": "legal_proceeding",
       "standardization_type": "direct",
       "merged_terms": [
-        "enforce",
-        "legal",
-        "tribunal",
-        "law",
-        "invoking",
         "power",
-        "activity",
+        "law",
+        "legal proceeding",
+        "invoking",
+        "enforce",
         "proceeding",
+        "activity",
         "activity invoking",
-        "legal proceeding"
+        "legal",
+        "tribunal"
       ]
     },
     "location": {
@@ -5806,9 +5796,9 @@
       "bizbok_id": "location",
       "standardization_type": "direct",
       "merged_terms": [
-        "location",
         "position",
-        "site"
+        "site",
+        "location"
       ]
     },
     "market": {
@@ -5836,18 +5826,18 @@
       "bizbok_id": "market",
       "standardization_type": "direct",
       "merged_terms": [
-        "existing",
-        "future",
-        "constituting",
-        "organizations",
-        "individuals",
-        "organizations constituting",
-        "products",
-        "demand",
         "market",
-        "future products",
+        "organizations",
+        "organizations constituting",
+        "services",
+        "products",
         "populations",
-        "services"
+        "demand",
+        "constituting",
+        "existing",
+        "future products",
+        "future",
+        "individuals"
       ]
     },
     "message": {
@@ -5889,32 +5879,32 @@
       "bizbok_id": "message",
       "standardization_type": "direct",
       "merged_terms": [
-        "communication about",
-        "missives",
-        "externally targeted",
-        "internally",
-        "notifications",
-        "recorded",
-        "including",
-        "about",
-        "alerts",
-        "message",
-        "communication",
-        "represented",
-        "digitally",
-        "targeted",
         "represented communication",
-        "written",
-        "products",
-        "plans",
-        "verbal",
-        "targeted communication",
-        "organization",
         "mission",
-        "activities",
-        "focal points",
+        "about",
+        "missives",
+        "targeted communication",
+        "alerts",
+        "represented",
+        "verbal",
         "including missives",
-        "externally"
+        "written",
+        "communication about",
+        "externally",
+        "targeted",
+        "externally targeted",
+        "digitally",
+        "message",
+        "activities",
+        "plans",
+        "notifications",
+        "focal points",
+        "including",
+        "products",
+        "communication",
+        "organization",
+        "internally",
+        "recorded"
       ]
     },
     "order": {
@@ -5942,18 +5932,18 @@
       "bizbok_id": "order",
       "standardization_type": "direct",
       "merged_terms": [
-        "one party",
-        "exchange goods",
-        "exchange",
         "sell",
-        "another",
-        "one",
+        "exchange",
         "buy",
-        "request",
-        "goods",
+        "exchange goods",
+        "one party",
         "services",
-        "order",
-        "party"
+        "one",
+        "goods",
+        "request",
+        "party",
+        "another",
+        "order"
       ]
     },
     "partner": {
@@ -5977,13 +5967,13 @@
       "bizbok_id": "partner",
       "standardization_type": "direct",
       "merged_terms": [
-        "legal",
         "degree",
-        "involvement",
-        "entity",
         "organization",
-        "legal entity",
+        "entity",
+        "legal",
         "plans",
+        "involvement",
+        "legal entity",
         "partner"
       ]
     },
@@ -6007,13 +5997,13 @@
       "bizbok_id": "plan",
       "standardization_type": "direct",
       "merged_terms": [
-        "achieve",
-        "result",
+        "set",
         "plan",
-        "related activities",
         "related",
-        "activities",
-        "set"
+        "result",
+        "related activities",
+        "achieve",
+        "activities"
       ]
     },
     "policy": {
@@ -6037,14 +6027,14 @@
       "bizbok_id": "policy",
       "standardization_type": "direct",
       "merged_terms": [
-        "proposed",
         "principle",
-        "policy",
+        "proposed",
         "adopted",
+        "policy",
+        "action",
         "course",
         "organization",
-        "action adopted",
-        "action"
+        "action adopted"
       ]
     },
     "product": {
@@ -6070,16 +6060,16 @@
       "bizbok_id": "product",
       "standardization_type": "direct",
       "merged_terms": [
-        "named combination",
+        "combination",
         "named",
         "part",
-        "whole",
-        "customers",
-        "offered",
-        "product",
-        "combination",
+        "services",
         "goods",
-        "services"
+        "whole",
+        "named combination",
+        "product",
+        "offered",
+        "customers"
       ]
     },
     "research": {
@@ -6102,10 +6092,10 @@
       "standardization_type": "direct",
       "merged_terms": [
         "research",
-        "systematic",
-        "sources",
         "investigation",
         "systematic investigation",
+        "systematic",
+        "sources",
         "materials"
       ]
     },
@@ -6126,8 +6116,8 @@
       "bizbok_id": "schedule",
       "standardization_type": "direct",
       "merged_terms": [
-        "elements",
         "aggregation",
+        "elements",
         "schedule",
         "schedule elements"
       ]
@@ -6166,27 +6156,27 @@
       "bizbok_id": "schedule_element",
       "standardization_type": "direct",
       "merged_terms": [
-        "aligns",
-        "human resource",
-        "event",
-        "payment",
-        "including work",
-        "one",
-        "work item",
         "work",
-        "including",
-        "resource",
-        "objects",
-        "line item",
-        "schedule element",
+        "work item",
         "time",
-        "human",
-        "line",
+        "item",
+        "objects",
+        "including work",
         "aligns time",
         "location",
+        "line item",
+        "human",
         "schedule",
-        "item",
-        "element"
+        "aligns",
+        "human resource",
+        "one",
+        "resource",
+        "payment",
+        "element",
+        "including",
+        "event",
+        "line",
+        "schedule element"
       ]
     },
     "strategy": {
@@ -6217,21 +6207,21 @@
       "bizbok_id": "strategy",
       "standardization_type": "direct",
       "merged_terms": [
-        "aligns",
         "strategy",
-        "whole",
-        "cohesive whole",
-        "action sequences",
-        "cohesive",
         "pattern",
-        "integrated",
-        "sequences",
-        "goals",
-        "perspective",
         "objectives",
+        "aligns",
+        "cohesive",
+        "action",
+        "whole",
+        "perspective",
         "organization",
+        "cohesive whole",
+        "goals",
         "integrated pattern",
-        "action"
+        "sequences",
+        "integrated",
+        "action sequences"
       ]
     },
     "action_item": {
@@ -6256,15 +6246,15 @@
       "bizbok_id": "action_item",
       "standardization_type": "direct",
       "merged_terms": [
-        "achieve",
-        "action item",
-        "specific course",
-        "specific",
-        "course",
         "objective",
+        "specific",
         "item",
+        "specific course",
+        "action",
+        "course",
+        "achieve",
         "taken",
-        "action"
+        "action item"
       ]
     },
     "goal": {
@@ -6286,12 +6276,12 @@
       "bizbok_id": "goal",
       "standardization_type": "direct",
       "merged_terms": [
-        "directed",
-        "goal",
-        "effort",
+        "end toward",
         "toward",
+        "effort",
+        "directed",
         "end",
-        "end toward"
+        "goal"
       ]
     },
     "objective": {
@@ -6315,14 +6305,14 @@
       "bizbok_id": "objective",
       "standardization_type": "direct",
       "merged_terms": [
-        "strategy",
-        "result",
-        "measurable result",
-        "measurable",
         "objective",
+        "strategy",
+        "defines strategy",
+        "measurable result",
         "defines",
-        "quantitative",
-        "defines strategy"
+        "result",
+        "measurable",
+        "quantitative"
       ]
     },
     "vision": {
@@ -6344,12 +6334,12 @@
       "bizbok_id": "vision",
       "standardization_type": "direct",
       "merged_terms": [
-        "vision",
-        "state",
         "future state",
+        "future",
         "imagined",
         "imagined future",
-        "future"
+        "state",
+        "vision"
       ]
     },
     "submission": {
@@ -6377,18 +6367,18 @@
       "bizbok_id": "submission",
       "standardization_type": "direct",
       "merged_terms": [
-        "requests",
         "exchange",
         "used",
-        "container",
-        "exchange one",
-        "submission",
-        "content",
-        "parties",
-        "one",
         "messages",
+        "submission",
+        "one",
+        "exchange one",
+        "content",
+        "inquiries",
+        "requests",
         "notifications",
-        "inquiries"
+        "container",
+        "parties"
       ]
     },
     "time": {
@@ -6410,12 +6400,12 @@
       "bizbok_id": "time",
       "standardization_type": "direct",
       "merged_terms": [
-        "duration",
-        "point",
-        "present",
-        "future",
         "time",
-        "past"
+        "present",
+        "point",
+        "past",
+        "duration",
+        "future"
       ]
     },
     "training_course": {
@@ -6449,24 +6439,24 @@
       "bizbok_id": "training_course",
       "standardization_type": "direct",
       "merged_terms": [
-        "training course",
-        "practical",
-        "theoretical",
-        "consumable",
-        "training",
-        "structured",
-        "matter",
-        "associated",
-        "subject matter",
         "subject",
-        "course",
-        "practical subject",
-        "format",
-        "workshop",
-        "consumable format",
         "seminar",
+        "associated",
+        "practical subject",
+        "matter",
+        "training course",
+        "consumable format",
+        "subject matter",
+        "theoretical",
+        "course",
+        "curriculum",
         "structured theoretical",
-        "curriculum"
+        "consumable",
+        "workshop",
+        "format",
+        "practical",
+        "structured",
+        "training"
       ]
     },
     "work": {
@@ -6488,10 +6478,10 @@
       "standardization_type": "direct",
       "merged_terms": [
         "work",
-        "task queues",
         "queues",
+        "task",
         "tasks",
-        "task"
+        "task queues"
       ]
     },
     "work_item": {
@@ -6520,19 +6510,19 @@
       "bizbok_id": "work_item",
       "standardization_type": "direct",
       "merged_terms": [
-        "asset",
-        "well",
         "work",
         "corresponding",
-        "bounded task",
-        "defined",
-        "bounded",
-        "task",
         "corresponding asset",
+        "bounded task",
         "item",
-        "assigned",
+        "stakeholder",
         "work item",
-        "stakeholder"
+        "defined",
+        "task",
+        "asset",
+        "bounded",
+        "assigned",
+        "well"
       ]
     },
     "work_queue": {
@@ -6560,18 +6550,18 @@
       "bizbok_id": "work_queue",
       "standardization_type": "direct",
       "merged_terms": [
-        "work items",
-        "items",
         "work",
-        "structure",
-        "container",
-        "queue",
-        "work queue",
-        "present",
-        "sequence",
+        "work items",
         "set",
+        "items",
+        "queue",
+        "present",
+        "filter",
         "hold",
-        "filter"
+        "work queue",
+        "container",
+        "sequence",
+        "structure"
       ]
     },
     "geographic_space": {
@@ -6614,33 +6604,33 @@
       "bizbok_id": "geographic_space",
       "standardization_type": "direct",
       "merged_terms": [
-        "needed",
-        "area",
-        "land",
-        "across",
-        "across land",
-        "security",
-        "physical area",
-        "order",
-        "air",
-        "economic",
         "access",
         "meet economic",
-        "water",
-        "meet",
-        "restrict",
+        "enable",
+        "physical area",
+        "provide",
+        "geographic space",
+        "across land",
+        "area across",
+        "land",
+        "geographic",
         "well",
+        "space",
+        "recreational",
         "restrict access",
+        "air",
+        "economic",
         "environmental",
         "health",
-        "geographic",
+        "restrict",
+        "across",
+        "security",
+        "order",
+        "meet",
+        "needed",
         "physical",
-        "enable",
-        "space",
-        "provide",
-        "recreational",
-        "area across",
-        "geographic space"
+        "area",
+        "water"
       ]
     },
     "geographic_border": {
@@ -6669,18 +6659,18 @@
       "bizbok_id": "geographic_border",
       "standardization_type": "direct",
       "merged_terms": [
-        "space",
-        "line",
-        "one geographic",
-        "demarcation around",
-        "border",
-        "another",
-        "geographic",
-        "demarcation",
         "geographic border",
+        "space",
+        "around",
         "one",
         "another geographic",
-        "around",
+        "another",
+        "demarcation",
+        "demarcation around",
+        "line",
+        "one geographic",
+        "geographic",
+        "border",
         "geographic space"
       ]
     },
@@ -6718,26 +6708,26 @@
       "bizbok_id": "geographic_space_cadaster",
       "standardization_type": "direct",
       "merged_terms": [
-        "restrictions",
-        "rights",
-        "area",
-        "responsibilities",
-        "property",
-        "property area",
-        "geometric description",
-        "cadaster",
+        "parcels",
         "responsibilities associated",
+        "rights",
+        "property area",
+        "description",
+        "area parcels",
+        "geometric description",
+        "restrictions",
+        "tenure",
         "geographic space cadaster",
         "geographic",
-        "geometric",
-        "extent",
-        "tenure",
-        "description",
         "space",
-        "area parcels",
-        "associated",
         "ownership",
-        "parcels",
+        "extent",
+        "associated",
+        "geometric",
+        "cadaster",
+        "property",
+        "responsibilities",
+        "area",
         "value"
       ]
     },
@@ -6771,23 +6761,23 @@
       "bizbok_id": "investment",
       "standardization_type": "direct",
       "merged_terms": [
-        "asset",
+        "sold",
         "income",
-        "provide",
-        "idea",
         "asset purchased",
-        "future",
-        "type",
-        "purchased",
         "investment",
-        "higher",
+        "purchased",
         "price",
-        "monetary",
-        "profit",
         "higher price",
+        "higher",
+        "asset",
+        "monetary",
         "provide income",
+        "type",
         "monetary asset",
-        "sold"
+        "profit",
+        "future",
+        "provide",
+        "idea"
       ]
     },
     "conveyor": {
@@ -6830,33 +6820,33 @@
       "bizbok_id": "conveyor",
       "standardization_type": "direct",
       "merged_terms": [
-        "apparatus",
-        "borne craft",
-        "variety",
-        "piloted",
-        "limited",
         "includes",
-        "transport people",
-        "people",
-        "whether human",
-        "automobiles",
-        "whether",
-        "trucks",
-        "transport",
-        "carts",
-        "human",
-        "pulled devices",
-        "based vehicles",
-        "physical items",
-        "animals",
-        "robot",
-        "goods",
-        "physical",
-        "assets",
-        "but",
         "items",
+        "trucks",
+        "people",
+        "physical items",
+        "limited",
+        "whether human",
+        "assets",
+        "animals",
+        "pulled devices",
+        "whether",
+        "piloted",
+        "transport people",
+        "but",
+        "human",
+        "transport",
+        "borne craft",
         "conveyor",
-        "capacity"
+        "variety",
+        "capacity",
+        "carts",
+        "goods",
+        "automobiles",
+        "based vehicles",
+        "physical",
+        "apparatus",
+        "robot"
       ]
     },
     "infrastructure": {
@@ -6887,20 +6877,20 @@
       "bizbok_id": "infrastructure",
       "standardization_type": "direct",
       "merged_terms": [
-        "corridor",
         "infrastructure",
-        "physical",
-        "physical structure",
-        "building",
-        "roadway",
-        "station",
-        "bridge",
-        "rail corridor",
-        "structure",
-        "tunnel",
-        "example",
         "include",
+        "tunnel",
+        "roadway",
+        "corridor",
+        "building",
+        "station",
         "rail",
+        "example",
+        "rail corridor",
+        "physical structure",
+        "physical",
+        "bridge",
+        "structure",
         "facility"
       ]
     },
@@ -6933,18 +6923,18 @@
       "merged_terms": [
         "infrastructure",
         "assets",
-        "physical matter",
-        "physical",
-        "construction",
-        "powering",
-        "matter",
         "used",
-        "physical products",
-        "matter used",
-        "conveyors",
         "material",
+        "maintenance",
+        "construction",
+        "matter",
         "products",
-        "maintenance"
+        "powering",
+        "conveyors",
+        "physical",
+        "matter used",
+        "physical matter",
+        "physical products"
       ]
     },
     "network": {
@@ -6976,20 +6966,20 @@
       "standardization_type": "direct",
       "merged_terms": [
         "infrastructure",
-        "assets",
-        "business objects",
-        "connected",
+        "set",
         "associated",
-        "nodes",
         "objects",
+        "connected",
+        "locations",
+        "business objects",
         "business",
         "routes",
-        "system",
         "connected arcs",
-        "locations",
+        "network",
+        "nodes",
+        "assets",
         "arcs",
-        "set",
-        "network"
+        "system"
       ]
     },
     "network_arc": {
@@ -7011,12 +7001,12 @@
       "bizbok_id": "network_arc",
       "standardization_type": "direct",
       "merged_terms": [
-        "network arc",
-        "nodes",
-        "network",
         "connection",
+        "network",
+        "association",
+        "nodes",
         "arc",
-        "association"
+        "network arc"
       ]
     },
     "network_node": {
@@ -7039,11 +7029,11 @@
       "standardization_type": "direct",
       "merged_terms": [
         "connection point",
-        "node",
-        "point",
-        "network node",
         "connection",
-        "network"
+        "point",
+        "network",
+        "node",
+        "network node"
       ]
     },
     "operation": {
@@ -7084,31 +7074,31 @@
       "bizbok_id": "operation",
       "standardization_type": "direct",
       "merged_terms": [
-        "service",
-        "example",
-        "package",
-        "sorting",
         "work",
-        "centers",
-        "specific",
         "include",
-        "package sorting",
-        "flight turnaround",
-        "time",
         "achieve",
-        "boarding",
-        "objective constrained",
-        "unloading",
-        "operation",
-        "location",
-        "flight",
         "turnaround",
-        "loading",
         "specific objective",
+        "specific",
+        "time",
+        "flight turnaround",
         "orchestration",
-        "objective",
+        "constrained",
+        "loading",
+        "boarding",
+        "location",
+        "package",
+        "unloading",
+        "flight",
+        "example",
         "service centers",
-        "constrained"
+        "service",
+        "operation",
+        "objective",
+        "package sorting",
+        "objective constrained",
+        "sorting",
+        "centers"
       ]
     },
     "route": {
@@ -7139,21 +7129,21 @@
       "bizbok_id": "route",
       "standardization_type": "direct",
       "merged_terms": [
-        "starting point",
-        "include stops",
-        "route",
-        "destination",
+        "starting",
+        "include",
+        "stops along",
         "getting",
         "course taken",
         "point",
-        "stops",
-        "stops along",
-        "way",
+        "starting point",
         "course",
-        "include",
-        "starting",
+        "include stops",
+        "stops",
+        "way",
         "taken",
-        "along"
+        "route",
+        "along",
+        "destination"
       ]
     },
     "shipment": {
@@ -7187,22 +7177,22 @@
       "standardization_type": "direct",
       "merged_terms": [
         "contents",
-        "human",
-        "packages containing",
-        "non",
-        "wide range",
-        "inanimate",
-        "baggage",
-        "cargo",
-        "living contents",
-        "freight",
-        "containing",
-        "packages",
         "range",
-        "living",
+        "inanimate",
+        "non",
+        "freight",
+        "living contents",
+        "baggage",
+        "containing",
+        "cargo",
         "human living",
+        "packages",
+        "living",
+        "wide range",
         "wide",
-        "shipment"
+        "shipment",
+        "human",
+        "packages containing"
       ]
     },
     "shipment_item": {
@@ -7231,19 +7221,19 @@
       "bizbok_id": "shipment_item",
       "standardization_type": "direct",
       "merged_terms": [
-        "unit",
         "part",
-        "overall shipment",
-        "shipment item",
-        "baggage",
-        "cargo",
-        "overall",
-        "freight",
-        "single",
         "item",
         "single unit",
+        "freight",
+        "baggage",
+        "unit",
+        "single",
+        "overall",
+        "cargo",
+        "overall shipment",
         "package",
-        "shipment"
+        "shipment",
+        "shipment item"
       ]
     },
     "trip": {
@@ -7275,22 +7265,22 @@
       "bizbok_id": "trip",
       "standardization_type": "direct",
       "merged_terms": [
-        "starting point",
-        "destination",
-        "final",
+        "starting",
+        "one",
         "point",
+        "starting point",
+        "final",
+        "locations",
+        "journey",
         "targeted locations",
+        "trip",
+        "final destination",
+        "location",
+        "point location",
         "until",
         "targeted",
-        "journey",
-        "location",
         "reached",
-        "locations",
-        "one",
-        "starting",
-        "trip",
-        "point location",
-        "final destination"
+        "destination"
       ]
     },
     "work_event": {
@@ -7311,10 +7301,10 @@
       "bizbok_id": "work_event",
       "standardization_type": "direct",
       "merged_terms": [
+        "work",
         "work event",
         "event",
         "occurrence",
-        "work",
         "situation"
       ]
     },
@@ -7349,23 +7339,23 @@
       "bizbok_id": "meeting",
       "standardization_type": "direct",
       "merged_terms": [
-        "engagements",
-        "virtual engagements",
-        "physical",
-        "gatherings",
-        "determinable",
-        "related",
-        "including",
         "determinable time",
         "persons",
-        "place",
-        "meeting",
-        "virtual",
-        "two",
-        "gathering",
-        "conferences",
         "time",
+        "virtual",
         "related gatherings",
+        "gathering",
+        "gatherings",
+        "including",
+        "virtual engagements",
+        "place",
+        "related",
+        "engagements",
+        "meeting",
+        "two",
+        "physical",
+        "conferences",
+        "determinable",
         "including physical"
       ]
     },
@@ -7399,23 +7389,23 @@
       "bizbok_id": "accreditation",
       "standardization_type": "direct",
       "merged_terms": [
-        "indicates ability",
-        "accreditation",
-        "quality",
         "ability",
-        "duly",
-        "endorsement",
-        "third party",
-        "provenance",
         "duly recognized",
-        "acknowledged third",
-        "knowledge",
-        "third",
         "competence",
-        "recognized",
-        "indicates",
+        "knowledge",
         "acknowledged",
-        "party"
+        "duly",
+        "provenance",
+        "endorsement",
+        "quality",
+        "indicates",
+        "indicates ability",
+        "party",
+        "recognized",
+        "third party",
+        "accreditation",
+        "acknowledged third",
+        "third"
       ]
     },
     "dispute": {
@@ -7442,17 +7432,17 @@
       "bizbok_id": "dispute",
       "standardization_type": "direct",
       "merged_terms": [
-        "argument",
-        "disagreement",
-        "dispute",
-        "among",
+        "interested parties",
         "among interested",
+        "disagreement",
+        "among",
+        "argument",
+        "dispute",
+        "official",
         "official argument",
         "parties",
-        "interested",
         "disagreement among",
-        "official",
-        "interested parties"
+        "interested"
       ]
     },
     "energy": {
@@ -7488,26 +7478,26 @@
       "bizbok_id": "energy",
       "standardization_type": "direct",
       "merged_terms": [
-        "chemical resources",
-        "chemical",
-        "work",
-        "work devices",
-        "limited",
-        "resources",
-        "derived",
-        "provide light",
-        "sources",
-        "energy",
-        "devices",
-        "physical",
-        "heat",
-        "utilization",
-        "but",
-        "provide",
         "machines",
-        "light",
+        "work",
+        "provide light",
+        "especially",
+        "limited",
+        "provide",
+        "but",
+        "resources",
         "power",
-        "especially"
+        "light",
+        "derived",
+        "chemical resources",
+        "utilization",
+        "heat",
+        "work devices",
+        "chemical",
+        "physical",
+        "sources",
+        "devices",
+        "energy"
       ]
     },
     "financial_position": {
@@ -7538,21 +7528,21 @@
       "bizbok_id": "financial_position",
       "standardization_type": "direct",
       "merged_terms": [
-        "financial standing",
-        "actual",
-        "holistic",
+        "financial position",
         "standing",
         "consolidated",
-        "duration",
-        "point",
-        "financial position",
-        "financial",
-        "holistic representation",
-        "actual financial",
-        "activity",
-        "position",
         "time",
-        "representation"
+        "actual financial",
+        "point",
+        "financial",
+        "duration",
+        "holistic",
+        "actual",
+        "activity",
+        "representation",
+        "financial standing",
+        "holistic representation",
+        "position"
       ]
     },
     "order_item": {
@@ -7578,15 +7568,15 @@
       "bizbok_id": "order_item",
       "standardization_type": "direct",
       "merged_terms": [
-        "service",
-        "order item",
-        "good",
-        "order element",
         "specific",
-        "specific good",
-        "refers",
+        "good",
         "item",
         "element",
+        "order element",
+        "refers",
+        "specific good",
+        "service",
+        "order item",
         "order"
       ]
     },
@@ -7613,16 +7603,16 @@
       "bizbok_id": "product_forecast",
       "standardization_type": "direct",
       "merged_terms": [
-        "estimate",
-        "given",
-        "given product",
-        "product",
-        "period",
-        "prediction",
-        "product forecast",
+        "forecast",
         "time",
+        "estimate",
         "projection",
-        "forecast"
+        "given product",
+        "prediction",
+        "product",
+        "product forecast",
+        "given",
+        "period"
       ]
     },
     "course_of_action": {
@@ -7646,14 +7636,14 @@
       "bizbok_id": "course_of_action",
       "standardization_type": "direct",
       "merged_terms": [
-        "achieve",
-        "course of action",
-        "course",
-        "taken",
         "objective",
-        "activities",
         "set",
-        "action"
+        "action",
+        "course",
+        "achieve",
+        "activities",
+        "course of action",
+        "taken"
       ]
     },
     "beneficiary": {
@@ -7681,18 +7671,18 @@
       "bizbok_id": "beneficiary",
       "standardization_type": "direct",
       "merged_terms": [
-        "agreement",
-        "recipient",
-        "legal",
         "beneficiary",
-        "entity",
-        "derives",
-        "organization",
-        "products",
-        "legal entity",
-        "plans",
+        "agreement",
         "services",
-        "advantage"
+        "products",
+        "advantage",
+        "organization",
+        "entity",
+        "legal",
+        "plans",
+        "derives",
+        "legal entity",
+        "recipient"
       ]
     },
     "biological_organism": {
@@ -7735,33 +7725,33 @@
       "bizbok_id": "biological_organism",
       "standardization_type": "direct",
       "merged_terms": [
-        "biological organism",
-        "thrive",
-        "reproduce",
-        "stimuli",
-        "organism",
-        "living things",
-        "grow",
-        "react",
-        "consume natural",
-        "part",
-        "biological",
-        "including",
-        "ecosystem",
-        "natural resources",
-        "resources",
-        "earth",
-        "microorganisms",
-        "human",
         "things",
-        "animals",
-        "living",
         "non",
-        "categories",
+        "stimuli",
+        "animals",
         "natural",
+        "thrive",
+        "ecosystem",
+        "grow",
+        "microorganisms",
+        "resources",
+        "human",
+        "earth",
+        "organism",
+        "part",
+        "reproduce",
+        "categories",
         "human living",
+        "natural resources",
+        "living things",
+        "biological organism",
+        "including",
+        "consume",
+        "react",
+        "biological",
+        "living",
         "plants",
-        "consume"
+        "consume natural"
       ]
     },
     "evidence": {
@@ -7794,23 +7784,23 @@
       "bizbok_id": "evidence",
       "standardization_type": "direct",
       "merged_terms": [
-        "establish",
-        "supported body",
         "accordance",
+        "supported body",
         "truth",
-        "supported",
-        "preservation",
         "falsehood",
-        "evidence",
-        "facts",
         "proof",
-        "rules",
+        "evidence",
         "base proof",
-        "upon",
-        "body",
         "base",
         "establish truth",
-        "privacy"
+        "rules",
+        "establish",
+        "facts",
+        "body",
+        "privacy",
+        "preservation",
+        "upon",
+        "supported"
       ]
     },
     "financial_instrument": {
@@ -7841,21 +7831,21 @@
       "bizbok_id": "financial_instrument",
       "standardization_type": "direct",
       "merged_terms": [
-        "instrument",
-        "asset",
-        "bonds",
-        "options",
-        "cash",
         "exchange",
         "evidence",
-        "financial instrument",
-        "bills",
-        "financial",
-        "tradeable",
+        "cash",
+        "options",
         "stocks",
+        "financial",
+        "instrument",
+        "financial instrument",
+        "tradeable",
+        "asset",
+        "bonds",
+        "tradeable asset",
+        "bills",
         "ownership",
-        "futures",
-        "tradeable asset"
+        "futures"
       ]
     },
     "health_condition": {
@@ -7900,35 +7890,35 @@
       "bizbok_id": "health_condition",
       "standardization_type": "direct",
       "merged_terms": [
-        "biological organisms",
-        "illness",
-        "health condition",
-        "permanently",
-        "living things",
-        "disorder",
-        "state",
-        "including",
-        "medical",
-        "mental",
+        "things",
         "disease",
-        "temporarily",
-        "disabilities",
+        "condition",
+        "injury",
+        "impairment",
+        "biological organisms",
+        "human beings",
+        "state",
+        "permanently",
+        "non",
+        "medical",
+        "including human",
+        "things including",
+        "affect",
         "mental disorder",
         "temporarily affect",
-        "things",
-        "human beings",
-        "health",
-        "living",
-        "non",
-        "physical",
-        "condition",
-        "affect",
-        "things including",
-        "injury",
-        "associated",
-        "including human",
+        "mental",
+        "disorder",
         "medical disabilities",
-        "impairment"
+        "temporarily",
+        "health",
+        "living things",
+        "illness",
+        "disabilities",
+        "associated",
+        "health condition",
+        "including",
+        "living",
+        "physical"
       ]
     },
     "natural_resource": {
@@ -7951,11 +7941,11 @@
       "standardization_type": "direct",
       "merged_terms": [
         "natural",
-        "resource",
         "matter",
         "natural resource",
-        "nature",
-        "occur"
+        "occur",
+        "resource",
+        "nature"
       ]
     },
     "standard": {
@@ -7983,17 +7973,17 @@
       "bizbok_id": "standard",
       "standardization_type": "direct",
       "merged_terms": [
-        "governance",
-        "standard",
-        "defined convention",
         "convention",
-        "confirmed",
+        "recognized governance",
+        "standard",
+        "specification",
+        "defined convention",
         "defined",
-        "measurement",
+        "governance",
+        "confirmed",
         "recognized",
         "governance body",
-        "recognized governance",
-        "specification",
+        "measurement",
         "body"
       ]
     },
@@ -8020,16 +8010,16 @@
       "bizbok_id": "vote",
       "standardization_type": "direct",
       "merged_terms": [
-        "candidate election",
-        "formal",
-        "choice",
-        "formal indication",
-        "referendum",
-        "proposition",
         "vote",
-        "indication",
+        "candidate",
+        "proposition",
+        "candidate election",
+        "formal indication",
+        "choice",
+        "referendum",
         "election",
-        "candidate"
+        "formal",
+        "indication"
       ]
     },
     "claim": {
@@ -8054,15 +8044,15 @@
       "bizbok_id": "claim",
       "standardization_type": "direct",
       "merged_terms": [
-        "provider",
         "agreement",
-        "claim",
-        "customer",
+        "services",
         "indemnify",
-        "terms",
-        "demand",
         "request",
-        "services"
+        "demand",
+        "provider",
+        "claim",
+        "terms",
+        "customer"
       ]
     },
     "device": {
@@ -8094,22 +8084,22 @@
       "bizbok_id": "device",
       "standardization_type": "direct",
       "merged_terms": [
-        "mitigate",
+        "reduce",
         "vitro",
-        "approach",
-        "machine",
-        "cataloged",
-        "outcomes",
-        "claim",
-        "device",
-        "contrivance",
-        "implant",
-        "likelihood",
         "reagent",
         "identifiable",
-        "vitro reagent",
+        "machine",
+        "device",
+        "implant",
+        "contrivance",
+        "claim",
         "recognized",
-        "reduce"
+        "likelihood",
+        "cataloged",
+        "vitro reagent",
+        "approach",
+        "mitigate",
+        "outcomes"
       ]
     },
     "case": {
@@ -8146,27 +8136,27 @@
       "bizbok_id": "case",
       "standardization_type": "direct",
       "merged_terms": [
-        "requires resolution",
-        "ongoing",
+        "case",
         "otherwise",
+        "ongoing healthcare",
+        "claim",
+        "requires",
+        "need",
+        "context",
+        "instance",
         "address",
+        "legal",
+        "ongoing",
+        "act",
+        "report",
+        "otherwise address",
+        "resolution",
+        "requires resolution",
+        "action",
         "demand",
         "plan",
-        "instance",
-        "claim",
         "resolve",
-        "resolution",
-        "action",
-        "healthcare",
-        "report",
-        "ongoing healthcare",
-        "act",
-        "legal",
-        "need",
-        "case",
-        "otherwise address",
-        "requires",
-        "context"
+        "healthcare"
       ]
     },
     "cadaster": {
@@ -8203,26 +8193,26 @@
       "bizbok_id": "geographic_space_cadaster",
       "standardization_type": "direct",
       "merged_terms": [
-        "restrictions",
-        "rights",
-        "area",
-        "responsibilities",
-        "property",
-        "property area",
-        "geometric description",
-        "cadaster",
+        "parcels",
         "responsibilities associated",
+        "rights",
+        "property area",
+        "description",
+        "area parcels",
+        "geometric description",
+        "restrictions",
+        "tenure",
         "geographic space cadaster",
         "geographic",
-        "geometric",
-        "extent",
-        "tenure",
-        "description",
         "space",
-        "area parcels",
-        "associated",
         "ownership",
-        "parcels",
+        "extent",
+        "associated",
+        "geometric",
+        "cadaster",
+        "property",
+        "responsibilities",
+        "area",
         "value"
       ]
     },
@@ -8247,14 +8237,14 @@
       "bizbok_id": "constituent",
       "standardization_type": "direct",
       "merged_terms": [
+        "relative",
         "responsibility",
         "entity relative",
-        "sphere",
-        "organization",
         "individual",
-        "relative",
+        "constituent",
+        "organization",
         "entity",
-        "constituent"
+        "sphere"
       ]
     },
     "government_service": {
@@ -8283,19 +8273,19 @@
       "bizbok_id": "government_service",
       "standardization_type": "direct",
       "merged_terms": [
-        "named",
-        "named combination",
-        "service",
-        "work",
-        "doing",
-        "government",
-        "constituents",
-        "government service",
-        "offered",
         "combination",
-        "others",
+        "work",
+        "named",
+        "government",
         "entitlements",
-        "goods"
+        "goods",
+        "doing",
+        "constituents",
+        "named combination",
+        "offered",
+        "service",
+        "others",
+        "government service"
       ]
     },
     "legislation": {
@@ -8324,19 +8314,19 @@
       "bizbok_id": "legislation",
       "standardization_type": "direct",
       "merged_terms": [
-        "authoritative directives",
-        "statutory",
-        "related",
-        "directives",
-        "include laws",
+        "laws",
         "include",
-        "instruments",
+        "set",
+        "statutory",
+        "authoritative",
         "related statutory",
         "statutory instruments",
-        "laws",
-        "set",
-        "authoritative",
-        "legislation"
+        "directives",
+        "instruments",
+        "related",
+        "legislation",
+        "authoritative directives",
+        "include laws"
       ]
     },
     "license": {
@@ -8378,32 +8368,32 @@
       "bizbok_id": "license",
       "standardization_type": "direct",
       "merged_terms": [
-        "third party",
-        "third",
-        "hazardous materials",
-        "use",
-        "party",
-        "governmental agency",
-        "agency",
-        "duly",
+        "regulated objects",
         "regulated",
-        "license",
-        "objects",
-        "perform",
-        "authorization",
-        "recognized governmental",
-        "awarded",
+        "governmental agency",
+        "activity",
         "governmental",
         "regulated activity",
-        "engage",
-        "fishing",
-        "individual",
-        "duly recognized",
-        "regulated objects",
         "applied",
-        "activity",
+        "engage",
+        "duly recognized",
+        "awarded",
+        "duly",
+        "objects",
+        "recognized governmental",
+        "third party",
+        "authorization",
+        "perform",
+        "recognized",
+        "third",
+        "agency",
+        "individual",
+        "party",
         "organization",
-        "recognized"
+        "license",
+        "hazardous materials",
+        "fishing",
+        "use"
       ]
     },
     "license_term": {
@@ -8434,21 +8424,21 @@
       "bizbok_id": "license_term",
       "standardization_type": "direct",
       "merged_terms": [
-        "enforceable",
+        "forth",
+        "set",
+        "set forth",
+        "legally enforceable",
         "condition",
         "term",
-        "condition set",
+        "enforceable",
         "enforceable condition",
-        "bounds",
-        "forth",
         "forth within",
+        "bounds",
+        "condition set",
         "license",
-        "within",
-        "legally",
-        "legally enforceable",
-        "set",
         "license term",
-        "set forth"
+        "within",
+        "legally"
       ]
     },
     "public_sector_entity": {
@@ -8474,15 +8464,15 @@
       "bizbok_id": "public_sector_entity",
       "standardization_type": "direct",
       "merged_terms": [
-        "public sector entity",
-        "bodies",
         "sector",
-        "governmental body",
-        "governmental",
+        "governmental bodies",
         "collection",
         "public",
+        "bodies",
         "entity",
-        "governmental bodies",
+        "governmental body",
+        "governmental",
+        "public sector entity",
         "body"
       ]
     },
@@ -8511,16 +8501,16 @@
       "standardization_type": "direct",
       "merged_terms": [
         "borrowing",
-        "asset",
         "agreement",
-        "offers",
-        "collateral",
-        "lending",
-        "lending agreement",
-        "customer",
         "customer offers",
+        "asset",
+        "offers",
+        "property",
+        "collateral",
+        "customer",
         "security",
-        "property"
+        "lending",
+        "lending agreement"
       ]
     }
   },
@@ -8547,8 +8537,8 @@
       "finance": 1.0
     },
     "terminology_unification": {
-      "unified_terms": 641,
-      "avg_concepts_per_term": 1.3697347893915757
+      "unified_terms": 636,
+      "avg_concepts_per_term": 1.380503144654088
     },
     "overall_alignment_rate": 100.0
   },

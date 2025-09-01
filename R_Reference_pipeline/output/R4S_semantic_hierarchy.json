@@ -1,0 +1,127 @@
+{
+  "root": "business_concept",
+  "domain_roots": {
+    "telecom_concept": [
+      "meeting"
+    ],
+    "manufacturing_concept": [
+      "energy",
+      "financial_position",
+      "order_item",
+      "product_forecast"
+    ],
+    "common_concept": [
+      "agreement_term",
+      "asset",
+      "brand",
+      "business_entity",
+      "campaign",
+      "competency",
+      "customer",
+      "event",
+      "currency",
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction",
+      "monetary_amount",
+      "payment",
+      "tax",
+      "human_resource",
+      "interaction",
+      "investment_portfolio",
+      "job",
+      "location",
+      "market",
+      "message",
+      "partner",
+      "policy",
+      "schedule_element",
+      "strategy",
+      "submission",
+      "time",
+      "training_course"
+    ],
+    "international development org_concept": [
+      "beneficiary",
+      "biological_organism",
+      "financial_instrument",
+      "natural_resource"
+    ],
+    "transportation_concept": [
+      "geographic_space_cadaster",
+      "investment",
+      "conveyor",
+      "network",
+      "operation",
+      "shipment",
+      "shipment_item",
+      "trip"
+    ],
+    "insurance_concept": [
+      "cadaster"
+    ],
+    "government_concept": [
+      "constituent",
+      "license",
+      "license_term"
+    ]
+  },
+  "levels": {
+    "1": [
+      "telecom_concept",
+      "manufacturing_concept",
+      "common_concept",
+      "international development org_concept",
+      "transportation_concept",
+      "insurance_concept",
+      "government_concept"
+    ],
+    "2": [
+      "order",
+      "occurrence",
+      "container"
+    ],
+    "3": [
+      "order_item",
+      "event",
+      "submission"
+    ]
+  },
+  "graph": {
+    "occurrence": [
+      "event"
+    ],
+    "container": [
+      "submission"
+    ],
+    "order": [
+      "order_item"
+    ],
+    "common_concept": [
+      "order",
+      "occurrence",
+      "container"
+    ]
+  },
+  "reverse_graph": {
+    "event": [
+      "occurrence"
+    ],
+    "submission": [
+      "container"
+    ],
+    "order_item": [
+      "order"
+    ],
+    "order": [
+      "common_concept"
+    ],
+    "occurrence": [
+      "common_concept"
+    ],
+    "container": [
+      "common_concept"
+    ]
+  },
+  "max_depth": 3
+}

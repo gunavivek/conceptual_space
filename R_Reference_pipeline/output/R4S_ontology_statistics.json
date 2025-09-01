@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "version": "2.0_ENHANCED",
+    "created": "2025-08-31T20:39:04.021997",
+    "processing_time": 0.05204272270202637,
+    "enhancement_level": "FULL_R1_INTEGRATION"
+  },
+  "input_sources": {
+    "r1_concepts": 97,
+    "r1_domains": 8,
+    "r1_keywords": 1157
+  },
+  "counts": {
+    "total_concepts": 97,
+    "total_relationships": 120,
+    "semantic_clusters": 7,
+    "relationship_types": 5,
+    "inference_rules_applied": 2
+  },
+  "relationship_distribution": {
+    "PART_OF": 27,
+    "HAS_PROPERTY": 76,
+    "REQUIRES": 13,
+    "IS_A": 3,
+    "CAUSES": 1
+  },
+  "quality_metrics": {
+    "semantic_coverage": 0.5154639175257731,
+    "avg_relationships_per_concept": 1.2371134020618557,
+    "avg_cluster_coherence": 0.26458194524476814,
+    "taxonomy_depth": 3,
+    "domain_integration_score": 0.2242344602126456
+  },
+  "enhancement_metrics": {
+    "keyword_enhanced_extractions": 76,
+    "domain_enhanced_inferences": 0,
+    "cross_domain_relationships": 13
+  },
+  "performance_metrics": {
+    "start_time": 1756690743.9699547,
+    "processing_stages": {
+      "data_loading": 0.0019981861114501953,
+      "enhanced_parsing": 0.0,
+      "enhanced_extraction": 0.03451967239379883,
+      "enhanced_taxonomy": 0.0,
+      "enhanced_reasoning": 0.0,
+      "enhanced_clustering": 0.015524864196777344
+    }
+  }
+}

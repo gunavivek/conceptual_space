@@ -106,7 +106,9 @@ class RPipelineOrchestrator:
             ("R1_bizbok_resource_loader.py", "R1: BIZBOK Resource Loader", 2),
             ("R2_concept_validator.py", "R2: Concept Validator", 3),
             ("R3_reference_alignment.py", "R3: Reference Alignment", 2),
-            ("R4_semantic_ontology_builder.py", "R4: Semantic Ontology Builder", 5)
+            ("R4L_lexical_ontology_builder.py", "R4L: Lexical Ontology Builder", 5)
+            # Optional: Add R4X for tri-semantic integration
+            # ("R4X_cross_pipeline_semantic_integrator.py", "R4X: Cross-Pipeline Semantic Integrator", 5)
         ]
         
         print(f"Pipeline Overview:")
@@ -176,8 +178,8 @@ class RPipelineOrchestrator:
             "R1_KEYWORDS.json",
             "R2_validation_report.json",
             "R3_alignment_mappings.json",
-            "R4_semantic_ontology.json",
-            "R4_integration_api.json"
+            "R4L_lexical_ontology.json",
+            "R4L_integration_api.json"
         ]
         
         for filename in expected_files:
@@ -196,7 +198,7 @@ class RPipelineOrchestrator:
                         concept_count = len(data.get("concepts", {}))
                         output_analysis["data_quality"]["concept_count"] = concept_count
                         
-                    elif filename == "R4_semantic_ontology.json":
+                    elif filename == "R4L_lexical_ontology.json":
                         ontology = data.get("ontology", {})
                         cluster_count = len(ontology.get("clusters", {}))
                         relationship_count = ontology.get("statistics", {}).get("relationships_total", 0)

@@ -1,0 +1,414 @@
+{
+  "metadata": {
+    "created": "2025-08-31T20:39:04.034090",
+    "total_relationships": 120,
+    "enhancement_level": "KEYWORD_AND_DOMAIN_ENHANCED"
+  },
+  "relationships": {
+    "agreement_term": {
+      "PART_OF": [
+        "agreement"
+      ]
+    },
+    "asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "brand": {
+      "PART_OF": [
+        "organization"
+      ],
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "business_entity": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "competency": {
+      "REQUIRES": [
+        "competency"
+      ]
+    },
+    "customer": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "event": {
+      "IS_A": [
+        "occurrence"
+      ]
+    },
+    "currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency"
+      ]
+    },
+    "financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ]
+    },
+    "financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization",
+        "compensation"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "interaction": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "investment_portfolio": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "job": {
+      "HAS_PROPERTY": [
+        "assigned",
+        "role",
+        "competency",
+        "assigned",
+        "category"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "competency"
+      ]
+    },
+    "location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "market": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "message": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "policy": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "schedule_element": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "competency",
+        "amount",
+        "location",
+        "time"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "strategy": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "submission": {
+      "IS_A": [
+        "container"
+      ]
+    },
+    "time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "geographic_space_cadaster": {
+      "HAS_PROPERTY": [
+        "description",
+        "value",
+        "property"
+      ]
+    },
+    "investment": {
+      "HAS_PROPERTY": [
+        "type",
+        "idea"
+      ]
+    },
+    "conveyor": {
+      "HAS_PROPERTY": [
+        "competency",
+        "capacity"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "network": {
+      "HAS_PROPERTY": [
+        "infrastructure",
+        "system"
+      ]
+    },
+    "operation": {
+      "REQUIRES": [
+        "resource"
+      ],
+      "CAUSES": [
+        "result"
+      ],
+      "HAS_PROPERTY": [
+        "location",
+        "time"
+      ]
+    },
+    "shipment": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "shipment_item": {
+      "PART_OF": [
+        "shipment",
+        "organization"
+      ]
+    },
+    "trip": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "meeting": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "energy": {
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "financial_position": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "time"
+      ]
+    },
+    "order_item": {
+      "IS_A": [
+        "order"
+      ]
+    },
+    "product_forecast": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "beneficiary": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "biological_organism": {
+      "PART_OF": [
+        "organization",
+        "earth"
+      ],
+      "HAS_PROPERTY": [
+        "competency"
+      ]
+    },
+    "financial_instrument": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "natural_resource": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "cadaster": {
+      "HAS_PROPERTY": [
+        "description",
+        "value",
+        "property"
+      ]
+    },
+    "constituent": {
+      "HAS_PROPERTY": [
+        "responsibility"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "license": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "license_term": {
+      "PART_OF": [
+        "license",
+        "organization"
+      ]
+    }
+  },
+  "relationship_types": [
+    "IS_A",
+    "CAUSES",
+    "HAS_PROPERTY",
+    "RELATED_TO",
+    "USED_FOR",
+    "REQUIRES",
+    "PART_OF",
+    "CONSTRAINS",
+    "ENABLES",
+    "PRECEDES"
+  ],
+  "applied_inference_rules": [
+    {
+      "rule": "transitivity_PART_OF",
+      "subject": "shipment_item",
+      "object": "organization",
+      "via": "shipment"
+    },
+    {
+      "rule": "transitivity_PART_OF",
+      "subject": "license_term",
+      "object": "organization",
+      "via": "license"
+    }
+  ],
+  "enhancement_sources": {
+    "keyword_enhanced": true,
+    "domain_enhanced": true,
+    "inference_applied": true
+  }
+}

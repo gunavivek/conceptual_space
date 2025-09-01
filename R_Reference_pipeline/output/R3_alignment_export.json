@@ -4,18 +4,18 @@
       "name": "Agreement",
       "definition": "A set of legally binding rights and obligations between two or more legal entities.",
       "terms": [
-        "binding",
-        "obligations",
+        "set",
+        "legally binding",
         "agreement",
-        "entities",
-        "legal",
+        "binding",
         "binding rights",
         "rights",
-        "legally",
-        "legally binding",
+        "entities",
+        "legal entities",
+        "obligations",
         "two",
-        "set",
-        "legal entities"
+        "legal",
+        "legally"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -24,21 +24,21 @@
       "name": "Agreement Term",
       "definition": "Legally enforceable condition set forth within the bounds of an agreement.",
       "terms": [
-        "enforceable",
-        "condition",
-        "term",
-        "agreement",
-        "condition set",
-        "enforceable condition",
-        "bounds",
         "forth",
-        "forth within",
-        "within",
-        "legally",
-        "legally enforceable",
-        "agreement term",
         "set",
-        "set forth"
+        "set forth",
+        "agreement",
+        "condition",
+        "legally enforceable",
+        "term",
+        "enforceable",
+        "enforceable condition",
+        "forth within",
+        "bounds",
+        "condition set",
+        "agreement term",
+        "within",
+        "legally"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -47,11 +47,11 @@
       "name": "Asset",
       "definition": "Tangible or intangible property.",
       "terms": [
+        "tangible",
+        "intangible",
         "asset",
         "property",
-        "tangible",
-        "intangible property",
-        "intangible"
+        "intangible property"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -60,18 +60,18 @@
       "name": "Brand",
       "definition": "A name, symbol, or design that identifies and differentiates products, offerings, or organizational identities.",
       "terms": [
-        "offerings",
-        "design",
-        "differentiates products",
-        "symbol",
-        "organizational identities",
-        "identifies",
-        "differentiates",
-        "identities",
+        "organizational",
         "products",
+        "organizational identities",
+        "offerings",
         "name",
         "brand",
-        "organizational"
+        "differentiates products",
+        "symbol",
+        "identities",
+        "differentiates",
+        "identifies",
+        "design"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -80,17 +80,17 @@
       "name": "Business Entity",
       "definition": "A legal body or bodies that comprises or comprise a single organization.",
       "terms": [
-        "comprises",
         "single organization",
-        "legal",
         "comprise",
-        "single",
+        "comprises",
         "business",
         "bodies",
+        "single",
         "organization",
-        "business entity",
         "entity",
+        "legal",
         "legal body",
+        "business entity",
         "body"
       ],
       "domain": "common",
@@ -100,33 +100,33 @@
       "name": "Campaign",
       "definition": "An outreach activity that targets a specific population, for example, customers, human resources, partners, and patients, to achieve a certain goal, such as marketing awareness, hiring activities, and health awareness.",
       "terms": [
-        "goal",
-        "patients",
-        "specific population",
-        "example",
-        "outreach activity",
         "certain goal",
-        "population",
-        "specific",
         "awareness",
-        "marketing",
-        "outreach",
-        "resources",
-        "achieve",
-        "partners",
-        "human",
-        "campaign",
-        "marketing awareness",
-        "health",
-        "human resources",
         "health awareness",
-        "targets",
-        "customers",
-        "hiring",
-        "hiring activities",
-        "certain",
+        "achieve",
         "activity",
-        "activities"
+        "outreach activity",
+        "hiring",
+        "specific",
+        "targets",
+        "outreach",
+        "hiring activities",
+        "customers",
+        "resources",
+        "human",
+        "certain",
+        "human resources",
+        "marketing awareness",
+        "example",
+        "health",
+        "activities",
+        "campaign",
+        "specific population",
+        "marketing",
+        "population",
+        "patients",
+        "partners",
+        "goal"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -135,29 +135,29 @@
       "name": "Channel",
       "definition": "A digital, analog, or physical conduit through which products, related services, or communications are delivered or received, including the Internet, phone, delivery service, satellite, radio, or physical means.",
       "terms": [
-        "service",
-        "delivery service",
-        "delivery",
-        "received",
-        "conduit",
-        "related services",
         "physical conduit",
+        "related",
+        "digital",
+        "means",
+        "phone",
+        "analog",
+        "internet",
+        "delivered",
+        "radio",
+        "delivery",
+        "satellite",
+        "delivery service",
+        "service",
+        "received",
+        "channel",
+        "related services",
+        "services",
         "including",
         "physical means",
-        "delivered",
-        "phone",
-        "radio",
-        "analog",
-        "channel",
-        "digital",
         "products",
-        "services",
-        "physical",
-        "internet",
-        "related",
-        "means",
         "communications",
-        "satellite"
+        "conduit",
+        "physical"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -166,12 +166,12 @@
       "name": "Competency",
       "definition": "The skills and knowledge necessary to do something.",
       "terms": [
-        "skills",
+        "knowledge necessary",
         "knowledge",
         "necessary",
-        "knowledge necessary",
-        "competency",
-        "something"
+        "something",
+        "skills",
+        "competency"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -180,21 +180,21 @@
       "name": "Content",
       "definition": "A creative work, such as is manifested in audio/visual, still image, textual, experiential, mixed-media, or other forms.",
       "terms": [
-        "visual",
-        "forms",
         "work",
-        "creative work",
-        "mixed",
-        "audio",
-        "image",
-        "still image",
-        "content",
         "creative",
-        "media",
-        "manifested",
-        "textual",
+        "image",
         "still",
-        "experiential"
+        "mixed",
+        "media",
+        "experiential",
+        "content",
+        "audio",
+        "creative work",
+        "manifested",
+        "forms",
+        "still image",
+        "textual",
+        "visual"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -203,12 +203,12 @@
       "name": "Content Impression",
       "definition": "Instance of content consumption.",
       "terms": [
+        "content consumption",
         "content impression",
         "instance",
-        "consumption",
-        "content consumption",
         "content",
-        "impression"
+        "impression",
+        "consumption"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -217,17 +217,17 @@
       "name": "Customer",
       "definition": "A legal entity that has, plans to have, or has had an agreement with the organization, or is a recipient or beneficiary of the organization's products or services.",
       "terms": [
-        "agreement",
-        "recipient",
         "beneficiary",
-        "legal",
-        "entity",
-        "customer",
-        "organization",
+        "agreement",
+        "services",
         "products",
-        "legal entity",
+        "organization",
+        "entity",
+        "legal",
         "plans",
-        "services"
+        "legal entity",
+        "customer",
+        "recipient"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -236,16 +236,16 @@
       "name": "Decision",
       "definition": "A conclusion or resolution reached after considering alternative options.",
       "terms": [
-        "alternative options",
+        "conclusion",
+        "resolution",
         "options",
-        "alternative",
+        "decision",
         "considering alternative",
         "resolution reached",
-        "reached",
         "considering",
-        "decision",
-        "resolution",
-        "conclusion"
+        "alternative",
+        "alternative options",
+        "reached"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -254,16 +254,16 @@
       "name": "Event",
       "definition": "An occurrence that has happened or may happen, especially one of importance, concern, or interest.",
       "terms": [
-        "interest",
-        "event",
-        "occurrence",
-        "concern",
         "happened",
+        "interest",
+        "one",
+        "event",
+        "concern",
+        "occurrence",
         "importance",
-        "happen",
-        "especially one",
         "especially",
-        "one"
+        "happen",
+        "especially one"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -272,17 +272,17 @@
       "name": "Facility",
       "definition": "A physical structure at a given place where business is conducted.",
       "terms": [
-        "physical",
-        "physical structure",
-        "place where",
-        "where",
-        "given",
+        "where business",
         "place",
-        "structure",
         "business",
         "given place",
+        "physical structure",
+        "place where",
+        "physical",
+        "where",
+        "given",
         "conducted",
-        "where business",
+        "structure",
         "facility"
       ],
       "domain": "common",
@@ -294,9 +294,9 @@
       "terms": [
         "aspects",
         "monetary",
+        "finance",
         "monetary aspects",
-        "resources",
-        "finance"
+        "resources"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -305,11 +305,11 @@
       "name": "Currency",
       "definition": "An agreed medium of value exchange.",
       "terms": [
-        "agreed medium",
         "exchange",
-        "agreed",
-        "medium",
         "currency",
+        "medium",
+        "agreed medium",
+        "agreed",
         "value",
         "value exchange"
       ],
@@ -320,27 +320,27 @@
       "name": "Financial Account",
       "definition": "A named container of monetary value transactions that are typically organized into assets, liabilities, income, expense, equity, and other related categories.",
       "terms": [
-        "related categories",
-        "income",
-        "equity",
         "financial",
         "monetary",
-        "liabilities",
-        "value transactions",
-        "financial account",
-        "account",
-        "named container",
-        "categories",
-        "assets",
-        "named",
-        "transactions",
         "related",
-        "organized",
+        "assets",
+        "transactions",
         "container",
+        "expense",
+        "account",
+        "categories",
         "monetary value",
+        "named container",
+        "liabilities",
+        "equity",
+        "value transactions",
         "typically organized",
         "typically",
-        "expense",
+        "named",
+        "organized",
+        "income",
+        "financial account",
+        "related categories",
         "value"
       ],
       "domain": "common",
@@ -350,15 +350,15 @@
       "name": "Financial Forecast",
       "definition": "A prediction of a future financial aspect of the organization.",
       "terms": [
-        "aspect",
+        "forecast",
         "future financial",
         "financial",
         "financial aspect",
-        "financial forecast",
         "organization",
+        "aspect",
         "prediction",
-        "future",
-        "forecast"
+        "financial forecast",
+        "future"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -367,25 +367,25 @@
       "name": "Financial Transaction",
       "definition": "An instance of a monetary amount movement or related exchange across businesses, agreements, or financial accounts.",
       "terms": [
-        "businesses",
-        "transaction",
-        "accounts",
-        "across",
         "amount",
-        "financial accounts",
-        "instance",
         "exchange",
-        "exchange across",
+        "accounts",
         "financial",
         "monetary",
-        "related exchange",
-        "agreements",
-        "across businesses",
-        "financial transaction",
-        "movement",
         "related",
+        "related exchange",
+        "monetary amount",
+        "transaction",
+        "businesses",
+        "movement",
+        "instance",
+        "agreements",
+        "financial transaction",
+        "across",
+        "exchange across",
         "amount movement",
-        "monetary amount"
+        "across businesses",
+        "financial accounts"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -394,15 +394,15 @@
       "name": "Monetary Amount",
       "definition": "A representation of value as expressed in a given currency.",
       "terms": [
-        "expressed",
+        "amount",
         "currency",
+        "monetary amount",
+        "monetary",
+        "representation",
+        "value",
         "given",
         "given currency",
-        "monetary",
-        "monetary amount",
-        "amount",
-        "representation",
-        "value"
+        "expressed"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -411,19 +411,19 @@
       "name": "Payment",
       "definition": "An obligation to remit or receive a monetary amount between an organization and a customer, partner, or other external party.",
       "terms": [
+        "amount",
         "partner",
         "payment",
-        "remit",
         "receive",
-        "external party",
-        "customer",
-        "external",
-        "monetary",
         "obligation",
         "monetary amount",
+        "monetary",
+        "party",
         "organization",
-        "amount",
-        "party"
+        "external party",
+        "remit",
+        "customer",
+        "external"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -432,15 +432,15 @@
       "name": "Tax",
       "definition": "A compulsory contribution of monetary value to governing bodies.",
       "terms": [
-        "tax",
-        "contribution",
-        "compulsory contribution",
         "governing bodies",
-        "bodies",
+        "compulsory contribution",
+        "governing",
+        "tax",
         "compulsory",
+        "contribution",
+        "bodies",
         "monetary",
         "monetary value",
-        "governing",
         "value"
       ],
       "domain": "common",
@@ -450,25 +450,25 @@
       "name": "Human Resource",
       "definition": "An individual who has, plans to have, or has had a legal agreement with the organization, which includes compensation and other benefits, on a temporary or permanent basis.",
       "terms": [
-        "human resource",
-        "legal agreement",
-        "who",
         "includes",
-        "resource",
-        "temporary",
-        "compensation",
-        "permanent",
-        "human",
+        "legal agreement",
+        "benefits",
         "agreement",
         "permanent basis",
-        "plans",
-        "individual who",
-        "benefits",
-        "legal",
         "includes compensation",
-        "organization",
+        "who",
+        "permanent",
+        "human",
+        "human resource",
+        "compensation",
+        "legal",
+        "plans",
+        "resource",
+        "temporary",
+        "basis",
         "individual",
-        "basis"
+        "organization",
+        "individual who"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -477,12 +477,12 @@
       "name": "Incident",
       "definition": "An unplanned, disruptive, or potentially disruptive, experience.",
       "terms": [
-        "unplanned",
+        "disruptive",
         "incident",
         "potentially",
         "potentially disruptive",
         "experience",
-        "disruptive"
+        "unplanned"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -491,19 +491,19 @@
       "name": "Initiative",
       "definition": "A coordinated collection of temporary endeavors undertaken to create a unique outcome.",
       "terms": [
-        "endeavors undertaken",
-        "outcome",
-        "temporary endeavors",
-        "coordinated collection",
         "create",
-        "unique",
-        "initiative",
-        "endeavors",
-        "undertaken",
-        "coordinated",
+        "coordinated collection",
+        "endeavors undertaken",
         "collection",
+        "coordinated",
+        "temporary endeavors",
+        "unique outcome",
+        "initiative",
+        "unique",
+        "outcome",
         "temporary",
-        "unique outcome"
+        "endeavors",
+        "undertaken"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -512,22 +512,22 @@
       "name": "Inquiry",
       "definition": "A question, request, feedback, or comment that may exist inside or outside of the business, which can be received, identified, harvested, disseminated, classified, and tracked.",
       "terms": [
+        "feedback",
         "exist",
+        "exist inside",
+        "classified",
         "inside",
+        "identified",
+        "request",
+        "business",
         "disseminated",
-        "inquiry",
-        "harvested",
+        "outside",
+        "comment",
         "tracked",
         "received",
-        "business",
-        "comment",
-        "exist inside",
-        "identified",
-        "classified",
-        "question",
-        "request",
-        "feedback",
-        "outside"
+        "harvested",
+        "inquiry",
+        "question"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -536,16 +536,16 @@
       "name": "Intellectual Property Rights",
       "definition": "Legal protections, such as patents, trademarks, and copyrights.",
       "terms": [
-        "copyrights",
-        "protections",
-        "trademarks",
-        "legal",
-        "intellectual",
-        "rights",
         "patents",
         "intellectual property rights",
+        "protections",
+        "rights",
         "legal protections",
-        "property"
+        "property",
+        "legal",
+        "copyrights",
+        "trademarks",
+        "intellectual"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -554,31 +554,31 @@
       "name": "Interaction",
       "definition": "A set of contemporaneous collaborations or contacts about a given subject, over a span of time, between two or more entities, using one or more channels, at one or more physical or virtual locations such as meetings, interviews, seminars, or consultations.",
       "terms": [
-        "interaction",
-        "entities",
-        "interviews",
         "subject",
-        "one",
-        "given subject",
-        "using",
+        "using one",
         "about",
+        "contacts",
         "given",
+        "span",
+        "virtual",
+        "time",
+        "contemporaneous",
+        "locations",
+        "interviews",
+        "given subject",
+        "collaborations",
+        "set",
+        "one",
+        "virtual locations",
+        "contacts about",
+        "two",
+        "meetings",
+        "interaction",
         "channels",
         "contemporaneous collaborations",
-        "virtual",
-        "locations",
-        "time",
-        "collaborations",
-        "two",
-        "contacts",
-        "physical",
-        "virtual locations",
-        "contemporaneous",
-        "using one",
-        "span",
-        "set",
-        "meetings",
-        "contacts about"
+        "entities",
+        "using",
+        "physical"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -587,18 +587,18 @@
       "name": "Investment Portfolio",
       "definition": "A set of resources expected to increase in value or provide income.",
       "terms": [
-        "portfolio",
-        "income",
-        "expected",
-        "provide",
-        "resources expected",
-        "increase",
-        "resources",
-        "provide income",
-        "set",
-        "investment",
         "investment portfolio",
-        "value"
+        "set",
+        "income",
+        "investment",
+        "provide income",
+        "resources expected",
+        "expected",
+        "portfolio",
+        "value",
+        "increase",
+        "provide",
+        "resources"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -607,29 +607,29 @@
       "name": "Job",
       "definition": "A named category of accountabilities, whether remunerative or non-remunerative, associated with an assigned, specific, and accountable business duty, role, or function that can be executed by a human or non-human resource.",
       "terms": [
-        "human resource",
-        "whether remunerative",
-        "accountabilities",
+        "accountable",
         "accountable business",
         "category",
-        "resource",
-        "specific",
-        "remunerative",
-        "whether",
-        "role",
-        "human",
-        "accountable",
-        "job",
-        "function",
-        "business",
-        "assigned",
-        "duty",
         "non",
-        "named",
-        "associated",
+        "accountabilities",
+        "specific",
+        "whether",
+        "job",
+        "business duty",
+        "business",
+        "remunerative",
+        "human",
+        "human resource",
+        "function",
+        "duty",
+        "whether remunerative",
+        "resource",
         "executed",
+        "associated",
+        "named",
         "named category",
-        "business duty"
+        "role",
+        "assigned"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -638,29 +638,29 @@
       "name": "Language",
       "definition": "A method of communication or dialect variant consisting of units of representation or meaning, such as numbers, words, symbols, sounds, or other physical manifestations and gestures, presented in a structured way.",
       "terms": [
-        "language",
-        "way",
-        "gestures",
-        "representation",
         "variant consisting",
-        "meaning",
-        "structured way",
-        "manifestations",
-        "communication",
-        "sounds",
-        "physical manifestations",
-        "units",
-        "words",
-        "symbols",
-        "structured",
-        "physical",
-        "variant",
         "dialect variant",
-        "presented",
-        "numbers",
         "method",
+        "presented",
+        "dialect",
+        "structured",
+        "units",
+        "gestures",
+        "symbols",
         "consisting",
-        "dialect"
+        "language",
+        "manifestations",
+        "structured way",
+        "meaning",
+        "numbers",
+        "variant",
+        "way",
+        "communication",
+        "words",
+        "physical manifestations",
+        "physical",
+        "representation",
+        "sounds"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -669,16 +669,16 @@
       "name": "Legal Proceeding",
       "definition": "An activity invoking the power of a tribunal to enforce a law.",
       "terms": [
-        "enforce",
-        "legal",
-        "tribunal",
-        "law",
-        "invoking",
         "power",
-        "activity",
+        "law",
+        "legal proceeding",
+        "invoking",
+        "enforce",
         "proceeding",
+        "activity",
         "activity invoking",
-        "legal proceeding"
+        "legal",
+        "tribunal"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -687,9 +687,9 @@
       "name": "Location",
       "definition": "A position or site.",
       "terms": [
-        "location",
         "position",
-        "site"
+        "site",
+        "location"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -698,18 +698,18 @@
       "name": "Market",
       "definition": "Individuals, populations of individuals, or organizations constituting the demand for existing or future products and services.",
       "terms": [
-        "existing",
-        "future",
-        "constituting",
-        "organizations",
-        "individuals",
-        "organizations constituting",
-        "products",
-        "demand",
         "market",
-        "future products",
+        "organizations",
+        "organizations constituting",
+        "services",
+        "products",
         "populations",
-        "services"
+        "demand",
+        "constituting",
+        "existing",
+        "future products",
+        "future",
+        "individuals"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -718,32 +718,32 @@
       "name": "Message",
       "definition": "A verbal, written, recorded, or digitally-represented communication, including missives, notifications, alerts, and other internally or externally targeted communication about the organization's mission, products, plans, activities, and other focal points.",
       "terms": [
-        "communication about",
-        "missives",
-        "externally targeted",
-        "internally",
-        "notifications",
-        "recorded",
-        "including",
-        "about",
-        "alerts",
-        "message",
-        "communication",
-        "represented",
-        "digitally",
-        "targeted",
         "represented communication",
-        "written",
-        "products",
-        "plans",
-        "verbal",
-        "targeted communication",
-        "organization",
         "mission",
-        "activities",
-        "focal points",
+        "about",
+        "missives",
+        "targeted communication",
+        "alerts",
+        "represented",
+        "verbal",
         "including missives",
-        "externally"
+        "written",
+        "communication about",
+        "externally",
+        "targeted",
+        "externally targeted",
+        "digitally",
+        "message",
+        "activities",
+        "plans",
+        "notifications",
+        "focal points",
+        "including",
+        "products",
+        "communication",
+        "organization",
+        "internally",
+        "recorded"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -752,18 +752,18 @@
       "name": "Order",
       "definition": "A request by one party to another to buy, sell, or exchange goods or services.",
       "terms": [
-        "one party",
-        "exchange goods",
-        "exchange",
         "sell",
-        "another",
-        "one",
+        "exchange",
         "buy",
-        "request",
-        "goods",
+        "exchange goods",
+        "one party",
         "services",
-        "order",
-        "party"
+        "one",
+        "goods",
+        "request",
+        "party",
+        "another",
+        "order"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -772,13 +772,13 @@
       "name": "Partner",
       "definition": "A legal entity that has, plans to have, or has had some degree of involvement with the organization.",
       "terms": [
-        "legal",
         "degree",
-        "involvement",
-        "entity",
         "organization",
-        "legal entity",
+        "entity",
+        "legal",
         "plans",
+        "involvement",
+        "legal entity",
         "partner"
       ],
       "domain": "common",
@@ -788,13 +788,13 @@
       "name": "Plan",
       "definition": "A set of related activities to achieve a result.",
       "terms": [
-        "achieve",
-        "result",
+        "set",
         "plan",
-        "related activities",
         "related",
-        "activities",
-        "set"
+        "result",
+        "related activities",
+        "achieve",
+        "activities"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -803,14 +803,14 @@
       "name": "Policy",
       "definition": "A course or principle of action adopted or proposed by an organization.",
       "terms": [
-        "proposed",
         "principle",
-        "policy",
+        "proposed",
         "adopted",
+        "policy",
+        "action",
         "course",
         "organization",
-        "action adopted",
-        "action"
+        "action adopted"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -819,16 +819,16 @@
       "name": "Product",
       "definition": "A named combination of goods and services that can be offered to customers, in whole or in part.",
       "terms": [
-        "named combination",
+        "combination",
         "named",
         "part",
-        "whole",
-        "customers",
-        "offered",
-        "product",
-        "combination",
+        "services",
         "goods",
-        "services"
+        "whole",
+        "named combination",
+        "product",
+        "offered",
+        "customers"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -838,10 +838,10 @@
       "definition": "A systematic investigation into materials and sources.",
       "terms": [
         "research",
-        "systematic",
-        "sources",
         "investigation",
         "systematic investigation",
+        "systematic",
+        "sources",
         "materials"
       ],
       "domain": "common",
@@ -851,8 +851,8 @@
       "name": "Schedule",
       "definition": "An aggregation of schedule elements.",
       "terms": [
-        "elements",
         "aggregation",
+        "elements",
         "schedule",
         "schedule elements"
       ],
@@ -863,27 +863,27 @@
       "name": "Schedule Element",
       "definition": "A line item that aligns time and one or more other objects, including work item, human resource, payment, event, and location.",
       "terms": [
-        "aligns",
-        "human resource",
-        "event",
-        "payment",
-        "including work",
-        "one",
-        "work item",
         "work",
-        "including",
-        "resource",
-        "objects",
-        "line item",
-        "schedule element",
+        "work item",
         "time",
-        "human",
-        "line",
+        "item",
+        "objects",
+        "including work",
         "aligns time",
         "location",
+        "line item",
+        "human",
         "schedule",
-        "item",
-        "element"
+        "aligns",
+        "human resource",
+        "one",
+        "resource",
+        "payment",
+        "element",
+        "including",
+        "event",
+        "line",
+        "schedule element"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -892,21 +892,21 @@
       "name": "Strategy",
       "definition": "An integrated pattern and perspective that aligns an organization’s goals, objectives, and action sequences into a cohesive whole.",
       "terms": [
-        "aligns",
         "strategy",
-        "whole",
-        "cohesive whole",
-        "action sequences",
-        "cohesive",
         "pattern",
-        "integrated",
-        "sequences",
-        "goals",
-        "perspective",
         "objectives",
+        "aligns",
+        "cohesive",
+        "action",
+        "whole",
+        "perspective",
         "organization",
+        "cohesive whole",
+        "goals",
         "integrated pattern",
-        "action"
+        "sequences",
+        "integrated",
+        "action sequences"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -915,15 +915,15 @@
       "name": "Action Item",
       "definition": "A specific course to be taken to achieve an objective.",
       "terms": [
-        "achieve",
-        "action item",
-        "specific course",
-        "specific",
-        "course",
         "objective",
+        "specific",
         "item",
+        "specific course",
+        "action",
+        "course",
+        "achieve",
         "taken",
-        "action"
+        "action item"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -932,12 +932,12 @@
       "name": "Goal",
       "definition": "An end toward which effort is or should be directed.",
       "terms": [
-        "directed",
-        "goal",
-        "effort",
+        "end toward",
         "toward",
+        "effort",
+        "directed",
         "end",
-        "end toward"
+        "goal"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -946,14 +946,14 @@
       "name": "Objective",
       "definition": "A quantitative, measurable result that defines strategy.",
       "terms": [
-        "strategy",
-        "result",
-        "measurable result",
-        "measurable",
         "objective",
+        "strategy",
+        "defines strategy",
+        "measurable result",
         "defines",
-        "quantitative",
-        "defines strategy"
+        "result",
+        "measurable",
+        "quantitative"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -962,12 +962,12 @@
       "name": "Vision",
       "definition": "An imagined future state of being.",
       "terms": [
-        "vision",
-        "state",
         "future state",
+        "future",
         "imagined",
         "imagined future",
-        "future"
+        "state",
+        "vision"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -976,18 +976,18 @@
       "name": "Submission",
       "definition": "A container that is used to exchange one or more requests, inquiries, messages, notifications, or other content between parties.",
       "terms": [
-        "requests",
         "exchange",
         "used",
-        "container",
-        "exchange one",
-        "submission",
-        "content",
-        "parties",
-        "one",
         "messages",
+        "submission",
+        "one",
+        "exchange one",
+        "content",
+        "inquiries",
+        "requests",
         "notifications",
-        "inquiries"
+        "container",
+        "parties"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -996,12 +996,12 @@
       "name": "Time",
       "definition": "A point or duration in the past, present, or future.",
       "terms": [
-        "duration",
-        "point",
-        "present",
-        "future",
         "time",
-        "past"
+        "present",
+        "point",
+        "past",
+        "duration",
+        "future"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -1010,24 +1010,24 @@
       "name": "Training Course",
       "definition": "The structured theoretical or practical subject matter in a consumable format, associated with a curriculum, workshop, or seminar.",
       "terms": [
-        "training course",
-        "practical",
-        "theoretical",
-        "consumable",
-        "training",
-        "structured",
-        "matter",
-        "associated",
-        "subject matter",
         "subject",
-        "course",
-        "practical subject",
-        "format",
-        "workshop",
-        "consumable format",
         "seminar",
+        "associated",
+        "practical subject",
+        "matter",
+        "training course",
+        "consumable format",
+        "subject matter",
+        "theoretical",
+        "course",
+        "curriculum",
         "structured theoretical",
-        "curriculum"
+        "consumable",
+        "workshop",
+        "format",
+        "practical",
+        "structured",
+        "training"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -1037,10 +1037,10 @@
       "definition": "Tasks and task queues.",
       "terms": [
         "work",
-        "task queues",
         "queues",
+        "task",
         "tasks",
-        "task"
+        "task queues"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -1049,19 +1049,19 @@
       "name": "Work Item",
       "definition": "A defined, well-bounded task that may be assigned to a stakeholder or corresponding asset.",
       "terms": [
-        "asset",
-        "well",
         "work",
         "corresponding",
-        "bounded task",
-        "defined",
-        "bounded",
-        "task",
         "corresponding asset",
+        "bounded task",
         "item",
-        "assigned",
+        "stakeholder",
         "work item",
-        "stakeholder"
+        "defined",
+        "task",
+        "asset",
+        "bounded",
+        "assigned",
+        "well"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -1070,18 +1070,18 @@
       "name": "Work Queue",
       "definition": "A container to hold, sequence, filter, structure, and present a set of work items.",
       "terms": [
-        "work items",
-        "items",
         "work",
-        "structure",
-        "container",
-        "queue",
-        "work queue",
-        "present",
-        "sequence",
+        "work items",
         "set",
+        "items",
+        "queue",
+        "present",
+        "filter",
         "hold",
-        "filter"
+        "work queue",
+        "container",
+        "sequence",
+        "structure"
       ],
       "domain": "common",
       "source": "bizbok_aligned"
@@ -1090,33 +1090,33 @@
       "name": "Geographic Space",
       "definition": "A physical area across land, air, and water, in order to provide for the well-being of, and enable or restrict access to, that space as needed to meet economic, environmental, security, health, recreational, and other needs that arise.",
       "terms": [
-        "needed",
-        "area",
-        "land",
-        "across",
-        "across land",
-        "security",
-        "physical area",
-        "order",
-        "air",
-        "economic",
         "access",
         "meet economic",
-        "water",
-        "meet",
-        "restrict",
+        "enable",
+        "physical area",
+        "provide",
+        "geographic space",
+        "across land",
+        "area across",
+        "land",
+        "geographic",
         "well",
+        "space",
+        "recreational",
         "restrict access",
+        "air",
+        "economic",
         "environmental",
         "health",
-        "geographic",
+        "restrict",
+        "across",
+        "security",
+        "order",
+        "meet",
+        "needed",
         "physical",
-        "enable",
-        "space",
-        "provide",
-        "recreational",
-        "area across",
-        "geographic space"
+        "area",
+        "water"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1125,18 +1125,18 @@
       "name": "Geographic Border",
       "definition": "A line of demarcation around a geographic space or between one geographic space and another geographic space.",
       "terms": [
-        "space",
-        "line",
-        "one geographic",
-        "demarcation around",
-        "border",
-        "another",
-        "geographic",
-        "demarcation",
         "geographic border",
+        "space",
+        "around",
         "one",
         "another geographic",
-        "around",
+        "another",
+        "demarcation",
+        "demarcation around",
+        "line",
+        "one geographic",
+        "geographic",
+        "border",
         "geographic space"
       ],
       "domain": "transportation",
@@ -1146,26 +1146,26 @@
       "name": "Geographic Space Cadaster",
       "definition": "A geometric description of area parcels, extent, value, ownership, tenure, rights, restrictions, and responsibilities associated with a property area or space.",
       "terms": [
-        "restrictions",
-        "rights",
-        "area",
-        "responsibilities",
-        "property",
-        "property area",
-        "geometric description",
-        "cadaster",
+        "parcels",
         "responsibilities associated",
+        "rights",
+        "property area",
+        "description",
+        "area parcels",
+        "geometric description",
+        "restrictions",
+        "tenure",
         "geographic space cadaster",
         "geographic",
-        "geometric",
-        "extent",
-        "tenure",
-        "description",
         "space",
-        "area parcels",
-        "associated",
         "ownership",
-        "parcels",
+        "extent",
+        "associated",
+        "geometric",
+        "cadaster",
+        "property",
+        "responsibilities",
+        "area",
         "value"
       ],
       "domain": "transportation",
@@ -1175,23 +1175,23 @@
       "name": "Investment",
       "definition": "Any type of monetary asset purchased with the idea that the asset will provide income in the future or will be sold at a higher price for a profit.",
       "terms": [
-        "asset",
+        "sold",
         "income",
-        "provide",
-        "idea",
         "asset purchased",
-        "future",
-        "type",
-        "purchased",
         "investment",
-        "higher",
+        "purchased",
         "price",
-        "monetary",
-        "profit",
         "higher price",
+        "higher",
+        "asset",
+        "monetary",
         "provide income",
+        "type",
         "monetary asset",
-        "sold"
+        "profit",
+        "future",
+        "provide",
+        "idea"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1200,33 +1200,33 @@
       "name": "Conveyor",
       "definition": "Any variety of an apparatus, whether human- or robot-piloted, that has the capacity to transport people, animals, goods, assets, or other physical items, and includes, but is not limited to trucks, carts, automobiles, rail-based vehicles and assemblies, air-borne craft, water-borne craft, animal-pulled devices, and animal-assemblies.",
       "terms": [
-        "apparatus",
-        "borne craft",
-        "variety",
-        "piloted",
-        "limited",
         "includes",
-        "transport people",
-        "people",
-        "whether human",
-        "automobiles",
-        "whether",
-        "trucks",
-        "transport",
-        "carts",
-        "human",
-        "pulled devices",
-        "based vehicles",
-        "physical items",
-        "animals",
-        "robot",
-        "goods",
-        "physical",
-        "assets",
-        "but",
         "items",
+        "trucks",
+        "people",
+        "physical items",
+        "limited",
+        "whether human",
+        "assets",
+        "animals",
+        "pulled devices",
+        "whether",
+        "piloted",
+        "transport people",
+        "but",
+        "human",
+        "transport",
+        "borne craft",
         "conveyor",
-        "capacity"
+        "variety",
+        "capacity",
+        "carts",
+        "goods",
+        "automobiles",
+        "based vehicles",
+        "physical",
+        "apparatus",
+        "robot"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1235,20 +1235,20 @@
       "name": "Infrastructure",
       "definition": "A physical structure or facility, which may include, for example, a building, station, bridge, tunnel, rail corridor, or roadway.",
       "terms": [
-        "corridor",
         "infrastructure",
-        "physical",
-        "physical structure",
-        "building",
-        "roadway",
-        "station",
-        "bridge",
-        "rail corridor",
-        "structure",
-        "tunnel",
-        "example",
         "include",
+        "tunnel",
+        "roadway",
+        "corridor",
+        "building",
+        "station",
         "rail",
+        "example",
+        "rail corridor",
+        "physical structure",
+        "physical",
+        "bridge",
+        "structure",
         "facility"
       ],
       "domain": "transportation",
@@ -1260,18 +1260,18 @@
       "terms": [
         "infrastructure",
         "assets",
-        "physical matter",
-        "physical",
-        "construction",
-        "powering",
-        "matter",
         "used",
-        "physical products",
-        "matter used",
-        "conveyors",
         "material",
+        "maintenance",
+        "construction",
+        "matter",
         "products",
-        "maintenance"
+        "powering",
+        "conveyors",
+        "physical",
+        "matter used",
+        "physical matter",
+        "physical products"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1281,20 +1281,20 @@
       "definition": "A set of connected arcs and nodes that may be associated with a system of infrastructure, assets, locations, routes, and other business objects.",
       "terms": [
         "infrastructure",
-        "assets",
-        "business objects",
-        "connected",
+        "set",
         "associated",
-        "nodes",
         "objects",
+        "connected",
+        "locations",
+        "business objects",
         "business",
         "routes",
-        "system",
         "connected arcs",
-        "locations",
+        "network",
+        "nodes",
+        "assets",
         "arcs",
-        "set",
-        "network"
+        "system"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1303,12 +1303,12 @@
       "name": "Network Arc",
       "definition": "A connection or association between nodes in a network.",
       "terms": [
-        "network arc",
-        "nodes",
-        "network",
         "connection",
+        "network",
+        "association",
+        "nodes",
         "arc",
-        "association"
+        "network arc"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1318,11 +1318,11 @@
       "definition": "A connection point in a network.",
       "terms": [
         "connection point",
-        "node",
-        "point",
-        "network node",
         "connection",
-        "network"
+        "point",
+        "network",
+        "node",
+        "network node"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1331,31 +1331,31 @@
       "name": "Operation",
       "definition": "An orchestration of work to achieve a specific objective constrained by time and location that include, for example, flight turnaround, package sorting, loading/unloading, boarding, and service centers.",
       "terms": [
-        "service",
-        "example",
-        "package",
-        "sorting",
         "work",
-        "centers",
-        "specific",
         "include",
-        "package sorting",
-        "flight turnaround",
-        "time",
         "achieve",
-        "boarding",
-        "objective constrained",
-        "unloading",
-        "operation",
-        "location",
-        "flight",
         "turnaround",
-        "loading",
         "specific objective",
+        "specific",
+        "time",
+        "flight turnaround",
         "orchestration",
-        "objective",
+        "constrained",
+        "loading",
+        "boarding",
+        "location",
+        "package",
+        "unloading",
+        "flight",
+        "example",
         "service centers",
-        "constrained"
+        "service",
+        "operation",
+        "objective",
+        "package sorting",
+        "objective constrained",
+        "sorting",
+        "centers"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1364,21 +1364,21 @@
       "name": "Route",
       "definition": "A way or course taken in getting from a starting point to a destination, which may include stops along the way.",
       "terms": [
-        "starting point",
-        "include stops",
-        "route",
-        "destination",
+        "starting",
+        "include",
+        "stops along",
         "getting",
         "course taken",
         "point",
-        "stops",
-        "stops along",
-        "way",
+        "starting point",
         "course",
-        "include",
-        "starting",
+        "include stops",
+        "stops",
+        "way",
         "taken",
-        "along"
+        "route",
+        "along",
+        "destination"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1388,22 +1388,22 @@
       "definition": "Freight, cargo, baggage, or packages containing a wide range of inanimate or non-human living contents.",
       "terms": [
         "contents",
-        "human",
-        "packages containing",
-        "non",
-        "wide range",
-        "inanimate",
-        "baggage",
-        "cargo",
-        "living contents",
-        "freight",
-        "containing",
-        "packages",
         "range",
-        "living",
+        "inanimate",
+        "non",
+        "freight",
+        "living contents",
+        "baggage",
+        "containing",
+        "cargo",
         "human living",
+        "packages",
+        "living",
+        "wide range",
         "wide",
-        "shipment"
+        "shipment",
+        "human",
+        "packages containing"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1412,19 +1412,19 @@
       "name": "Shipment Item",
       "definition": "A single unit of freight, cargo, baggage, or package that is part of an overall shipment.",
       "terms": [
-        "unit",
         "part",
-        "overall shipment",
-        "shipment item",
-        "baggage",
-        "cargo",
-        "overall",
-        "freight",
-        "single",
         "item",
         "single unit",
+        "freight",
+        "baggage",
+        "unit",
+        "single",
+        "overall",
+        "cargo",
+        "overall shipment",
         "package",
-        "shipment"
+        "shipment",
+        "shipment item"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1433,22 +1433,22 @@
       "name": "Trip",
       "definition": "A journey between a starting point location and one or more targeted locations, until a final destination is reached.",
       "terms": [
-        "starting point",
-        "destination",
-        "final",
+        "starting",
+        "one",
         "point",
+        "starting point",
+        "final",
+        "locations",
+        "journey",
         "targeted locations",
+        "trip",
+        "final destination",
+        "location",
+        "point location",
         "until",
         "targeted",
-        "journey",
-        "location",
         "reached",
-        "locations",
-        "one",
-        "starting",
-        "trip",
-        "point location",
-        "final destination"
+        "destination"
       ],
       "domain": "transportation",
       "source": "bizbok_aligned"
@@ -1457,10 +1457,10 @@
       "name": "Work Event",
       "definition": "A situation or an occurrence.",
       "terms": [
+        "work",
         "work event",
         "event",
         "occurrence",
-        "work",
         "situation"
       ],
       "domain": "transportation",
@@ -1470,23 +1470,23 @@
       "name": "Meeting",
       "definition": "A gathering of two or more persons at a determinable time and place, including physical and virtual engagements, conferences, or related gatherings.",
       "terms": [
-        "engagements",
-        "virtual engagements",
-        "physical",
-        "gatherings",
-        "determinable",
-        "related",
-        "including",
         "determinable time",
         "persons",
-        "place",
-        "meeting",
-        "virtual",
-        "two",
-        "gathering",
-        "conferences",
         "time",
+        "virtual",
         "related gatherings",
+        "gathering",
+        "gatherings",
+        "including",
+        "virtual engagements",
+        "place",
+        "related",
+        "engagements",
+        "meeting",
+        "two",
+        "physical",
+        "conferences",
+        "determinable",
         "including physical"
       ],
       "domain": "telecom",
@@ -1496,23 +1496,23 @@
       "name": "Accreditation",
       "definition": "An endorsement by a duly recognized and acknowledged third party that indicates ability, competence, knowledge, provenance, or quality.",
       "terms": [
-        "indicates ability",
-        "accreditation",
-        "quality",
         "ability",
-        "duly",
-        "endorsement",
-        "third party",
-        "provenance",
         "duly recognized",
-        "acknowledged third",
-        "knowledge",
-        "third",
         "competence",
-        "recognized",
-        "indicates",
+        "knowledge",
         "acknowledged",
-        "party"
+        "duly",
+        "provenance",
+        "endorsement",
+        "quality",
+        "indicates",
+        "indicates ability",
+        "party",
+        "recognized",
+        "third party",
+        "accreditation",
+        "acknowledged third",
+        "third"
       ],
       "domain": "manufacturing",
       "source": "bizbok_aligned"
@@ -1521,17 +1521,17 @@
       "name": "Dispute",
       "definition": "An official argument or disagreement among interested parties.",
       "terms": [
-        "argument",
-        "disagreement",
-        "dispute",
-        "among",
+        "interested parties",
         "among interested",
+        "disagreement",
+        "among",
+        "argument",
+        "dispute",
+        "official",
         "official argument",
         "parties",
-        "interested",
         "disagreement among",
-        "official",
-        "interested parties"
+        "interested"
       ],
       "domain": "manufacturing",
       "source": "bizbok_aligned"
@@ -1540,26 +1540,26 @@
       "name": "Energy",
       "definition": "Sources of power, such as but not limited to, those derived from the utilization of physical or chemical resources, especially to provide light and heat and to work devices and machines.",
       "terms": [
-        "chemical resources",
-        "chemical",
-        "work",
-        "work devices",
-        "limited",
-        "resources",
-        "derived",
-        "provide light",
-        "sources",
-        "energy",
-        "devices",
-        "physical",
-        "heat",
-        "utilization",
-        "but",
-        "provide",
         "machines",
-        "light",
+        "work",
+        "provide light",
+        "especially",
+        "limited",
+        "provide",
+        "but",
+        "resources",
         "power",
-        "especially"
+        "light",
+        "derived",
+        "chemical resources",
+        "utilization",
+        "heat",
+        "work devices",
+        "chemical",
+        "physical",
+        "sources",
+        "devices",
+        "energy"
       ],
       "domain": "manufacturing",
       "source": "bizbok_aligned"
@@ -1568,21 +1568,21 @@
       "name": "Financial Position",
       "definition": "A consolidated and holistic representation of actual financial standing or activity for a point in time or duration.",
       "terms": [
-        "financial standing",
-        "actual",
-        "holistic",
+        "financial position",
         "standing",
         "consolidated",
-        "duration",
-        "point",
-        "financial position",
-        "financial",
-        "holistic representation",
-        "actual financial",
-        "activity",
-        "position",
         "time",
-        "representation"
+        "actual financial",
+        "point",
+        "financial",
+        "duration",
+        "holistic",
+        "actual",
+        "activity",
+        "representation",
+        "financial standing",
+        "holistic representation",
+        "position"
       ],
       "domain": "manufacturing",
       "source": "bizbok_aligned"
@@ -1591,15 +1591,15 @@
       "name": "Order Item",
       "definition": "An order element that refers to a specific good or service.",
       "terms": [
-        "service",
-        "order item",
-        "good",
-        "order element",
         "specific",
-        "specific good",
-        "refers",
+        "good",
         "item",
         "element",
+        "order element",
+        "refers",
+        "specific good",
+        "service",
+        "order item",
         "order"
       ],
       "domain": "manufacturing",
@@ -1609,16 +1609,16 @@
       "name": "Product Forecast",
       "definition": "An estimate, prediction, or projection for period of time for a given product.",
       "terms": [
-        "estimate",
-        "given",
-        "given product",
-        "product",
-        "period",
-        "prediction",
-        "product forecast",
+        "forecast",
         "time",
+        "estimate",
         "projection",
-        "forecast"
+        "given product",
+        "prediction",
+        "product",
+        "product forecast",
+        "given",
+        "period"
       ],
       "domain": "manufacturing",
       "source": "bizbok_aligned"
@@ -1627,14 +1627,14 @@
       "name": "Course of Action",
       "definition": "A set of activities to be taken to achieve an objective.",
       "terms": [
-        "achieve",
-        "course of action",
-        "course",
-        "taken",
         "objective",
-        "activities",
         "set",
-        "action"
+        "action",
+        "course",
+        "achieve",
+        "activities",
+        "course of action",
+        "taken"
       ],
       "domain": "manufacturing",
       "source": "bizbok_aligned"
@@ -1643,18 +1643,18 @@
       "name": "Beneficiary",
       "definition": "A legal entity that has, plans to have, or has had an agreement with the organization, or is a recipient of or derives an advantage from the organization's products or services.",
       "terms": [
-        "agreement",
-        "recipient",
-        "legal",
         "beneficiary",
-        "entity",
-        "derives",
-        "organization",
-        "products",
-        "legal entity",
-        "plans",
+        "agreement",
         "services",
-        "advantage"
+        "products",
+        "advantage",
+        "organization",
+        "entity",
+        "legal",
+        "plans",
+        "derives",
+        "legal entity",
+        "recipient"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1663,33 +1663,33 @@
       "name": "Biological Organism",
       "definition": "Non-human living things, including all categories of animals, plants, and microorganisms that are part of the earth's ecosystem, react to stimuli, consume natural resources to grow, thrive, reproduce, and can affect the well-being of beneficiaries.",
       "terms": [
-        "biological organism",
-        "thrive",
-        "reproduce",
-        "stimuli",
-        "organism",
-        "living things",
-        "grow",
-        "react",
-        "consume natural",
-        "part",
-        "biological",
-        "including",
-        "ecosystem",
-        "natural resources",
-        "resources",
-        "earth",
-        "microorganisms",
-        "human",
         "things",
-        "animals",
-        "living",
         "non",
-        "categories",
+        "stimuli",
+        "animals",
         "natural",
+        "thrive",
+        "ecosystem",
+        "grow",
+        "microorganisms",
+        "resources",
+        "human",
+        "earth",
+        "organism",
+        "part",
+        "reproduce",
+        "categories",
         "human living",
+        "natural resources",
+        "living things",
+        "biological organism",
+        "including",
+        "consume",
+        "react",
+        "biological",
+        "living",
         "plants",
-        "consume"
+        "consume natural"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1698,23 +1698,23 @@
       "name": "Evidence",
       "definition": "A supported body of facts, upon which to base proof, or establish truth or falsehood, in accordance with rules, such as for privacy or preservation.",
       "terms": [
-        "establish",
-        "supported body",
         "accordance",
+        "supported body",
         "truth",
-        "supported",
-        "preservation",
         "falsehood",
-        "evidence",
-        "facts",
         "proof",
-        "rules",
+        "evidence",
         "base proof",
-        "upon",
-        "body",
         "base",
         "establish truth",
-        "privacy"
+        "rules",
+        "establish",
+        "facts",
+        "body",
+        "privacy",
+        "preservation",
+        "upon",
+        "supported"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1723,21 +1723,21 @@
       "name": "Financial Instrument",
       "definition": "A tradeable asset, such as stocks, bonds, bills of exchange, futures, options, evidence of ownership, and cash.",
       "terms": [
-        "instrument",
-        "asset",
-        "bonds",
-        "options",
-        "cash",
         "exchange",
         "evidence",
-        "financial instrument",
-        "bills",
-        "financial",
-        "tradeable",
+        "cash",
+        "options",
         "stocks",
+        "financial",
+        "instrument",
+        "financial instrument",
+        "tradeable",
+        "asset",
+        "bonds",
+        "tradeable asset",
+        "bills",
         "ownership",
-        "futures",
-        "tradeable asset"
+        "futures"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1746,35 +1746,35 @@
       "name": "Health Condition",
       "definition": "A physical or mental disorder, disease, illness, injury, impairment, state, medical disabilities, or non-medical disabilities, that may permanently or temporarily affect and can be associated with living things including human beings and other biological organisms.",
       "terms": [
-        "biological organisms",
-        "illness",
-        "health condition",
-        "permanently",
-        "living things",
-        "disorder",
-        "state",
-        "including",
-        "medical",
-        "mental",
+        "things",
         "disease",
-        "temporarily",
-        "disabilities",
+        "condition",
+        "injury",
+        "impairment",
+        "biological organisms",
+        "human beings",
+        "state",
+        "permanently",
+        "non",
+        "medical",
+        "including human",
+        "things including",
+        "affect",
         "mental disorder",
         "temporarily affect",
-        "things",
-        "human beings",
-        "health",
-        "living",
-        "non",
-        "physical",
-        "condition",
-        "affect",
-        "things including",
-        "injury",
-        "associated",
-        "including human",
+        "mental",
+        "disorder",
         "medical disabilities",
-        "impairment"
+        "temporarily",
+        "health",
+        "living things",
+        "illness",
+        "disabilities",
+        "associated",
+        "health condition",
+        "including",
+        "living",
+        "physical"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1784,11 +1784,11 @@
       "definition": "Matter that can occur in nature.",
       "terms": [
         "natural",
-        "resource",
         "matter",
         "natural resource",
-        "nature",
-        "occur"
+        "occur",
+        "resource",
+        "nature"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1797,17 +1797,17 @@
       "name": "Standard",
       "definition": "A defined convention, specification, or measurement, as confirmed by a recognized governance body.",
       "terms": [
-        "governance",
-        "standard",
-        "defined convention",
         "convention",
-        "confirmed",
+        "recognized governance",
+        "standard",
+        "specification",
+        "defined convention",
         "defined",
-        "measurement",
+        "governance",
+        "confirmed",
         "recognized",
         "governance body",
-        "recognized governance",
-        "specification",
+        "measurement",
         "body"
       ],
       "domain": "international development org",
@@ -1817,16 +1817,16 @@
       "name": "Vote",
       "definition": "A formal indication of choice such as for a candidate election, referendum, or proposition.",
       "terms": [
-        "candidate election",
-        "formal",
-        "choice",
-        "formal indication",
-        "referendum",
-        "proposition",
         "vote",
-        "indication",
+        "candidate",
+        "proposition",
+        "candidate election",
+        "formal indication",
+        "choice",
+        "referendum",
         "election",
-        "candidate"
+        "formal",
+        "indication"
       ],
       "domain": "international development org",
       "source": "bizbok_aligned"
@@ -1835,15 +1835,15 @@
       "name": "Claim",
       "definition": "A demand or request to indemnify a customer or the provider of services under the terms of an agreement.",
       "terms": [
-        "provider",
         "agreement",
-        "claim",
-        "customer",
+        "services",
         "indemnify",
-        "terms",
-        "demand",
         "request",
-        "services"
+        "demand",
+        "provider",
+        "claim",
+        "terms",
+        "customer"
       ],
       "domain": "insurance",
       "source": "bizbok_aligned"
@@ -1852,22 +1852,22 @@
       "name": "Device",
       "definition": "A machine, contrivance, implant, or in vitro reagent that is recognized, identifiable, and cataloged as an approach to reduce the likelihood of a claim, or mitigate the outcomes of a claim.",
       "terms": [
-        "mitigate",
+        "reduce",
         "vitro",
-        "approach",
-        "machine",
-        "cataloged",
-        "outcomes",
-        "claim",
-        "device",
-        "contrivance",
-        "implant",
-        "likelihood",
         "reagent",
         "identifiable",
-        "vitro reagent",
+        "machine",
+        "device",
+        "implant",
+        "contrivance",
+        "claim",
         "recognized",
-        "reduce"
+        "likelihood",
+        "cataloged",
+        "vitro reagent",
+        "approach",
+        "mitigate",
+        "outcomes"
       ],
       "domain": "insurance",
       "source": "bizbok_aligned"
@@ -1876,27 +1876,27 @@
       "name": "Case",
       "definition": "A plan of action to, act on, report on, resolve, or otherwise address an instance of a need or demand that requires resolution, such as in the context of legal, ongoing healthcare, or claim.",
       "terms": [
-        "requires resolution",
-        "ongoing",
+        "case",
         "otherwise",
+        "ongoing healthcare",
+        "claim",
+        "requires",
+        "need",
+        "context",
+        "instance",
         "address",
+        "legal",
+        "ongoing",
+        "act",
+        "report",
+        "otherwise address",
+        "resolution",
+        "requires resolution",
+        "action",
         "demand",
         "plan",
-        "instance",
-        "claim",
         "resolve",
-        "resolution",
-        "action",
-        "healthcare",
-        "report",
-        "ongoing healthcare",
-        "act",
-        "legal",
-        "need",
-        "case",
-        "otherwise address",
-        "requires",
-        "context"
+        "healthcare"
       ],
       "domain": "insurance",
       "source": "bizbok_aligned"
@@ -1905,26 +1905,26 @@
       "name": "Geographic Space Cadaster",
       "definition": "A geometric description of area parcels, extent, value, ownership, tenure, rights, restrictions, and responsibilities associated with a property area or space.",
       "terms": [
-        "restrictions",
-        "rights",
-        "area",
-        "responsibilities",
-        "property",
-        "property area",
-        "geometric description",
-        "cadaster",
+        "parcels",
         "responsibilities associated",
+        "rights",
+        "property area",
+        "description",
+        "area parcels",
+        "geometric description",
+        "restrictions",
+        "tenure",
         "geographic space cadaster",
         "geographic",
-        "geometric",
-        "extent",
-        "tenure",
-        "description",
         "space",
-        "area parcels",
-        "associated",
         "ownership",
-        "parcels",
+        "extent",
+        "associated",
+        "geometric",
+        "cadaster",
+        "property",
+        "responsibilities",
+        "area",
         "value"
       ],
       "domain": "transportation",
@@ -1934,14 +1934,14 @@
       "name": "Constituent",
       "definition": "An individual or entity relative to an organization's sphere of responsibility.",
       "terms": [
+        "relative",
         "responsibility",
         "entity relative",
-        "sphere",
-        "organization",
         "individual",
-        "relative",
+        "constituent",
+        "organization",
         "entity",
-        "constituent"
+        "sphere"
       ],
       "domain": "government",
       "source": "bizbok_aligned"
@@ -1950,19 +1950,19 @@
       "name": "Government Service",
       "definition": "A named combination of goods, doing-of-work-for-others, and entitlements that can be offered to constituents.",
       "terms": [
-        "named",
-        "named combination",
-        "service",
-        "work",
-        "doing",
-        "government",
-        "constituents",
-        "government service",
-        "offered",
         "combination",
-        "others",
+        "work",
+        "named",
+        "government",
         "entitlements",
-        "goods"
+        "goods",
+        "doing",
+        "constituents",
+        "named combination",
+        "offered",
+        "service",
+        "others",
+        "government service"
       ],
       "domain": "government",
       "source": "bizbok_aligned"
@@ -1971,19 +1971,19 @@
       "name": "Legislation",
       "definition": "A set of authoritative directives that include laws or related statutory instruments.",
       "terms": [
-        "authoritative directives",
-        "statutory",
-        "related",
-        "directives",
-        "include laws",
+        "laws",
         "include",
-        "instruments",
+        "set",
+        "statutory",
+        "authoritative",
         "related statutory",
         "statutory instruments",
-        "laws",
-        "set",
-        "authoritative",
-        "legislation"
+        "directives",
+        "instruments",
+        "related",
+        "legislation",
+        "authoritative directives",
+        "include laws"
       ],
       "domain": "government",
       "source": "bizbok_aligned"
@@ -1992,32 +1992,32 @@
       "name": "License",
       "definition": "An authorization to perform a regulated activity, awarded by duly recognized governmental agency or third party, applied to an individual or organization, to engage in an activity, such as fishing, or use of regulated objects, such as modes of transportation or hazardous materials.",
       "terms": [
-        "third party",
-        "third",
-        "hazardous materials",
-        "use",
-        "party",
-        "governmental agency",
-        "agency",
-        "duly",
+        "regulated objects",
         "regulated",
-        "license",
-        "objects",
-        "perform",
-        "authorization",
-        "recognized governmental",
-        "awarded",
+        "governmental agency",
+        "activity",
         "governmental",
         "regulated activity",
-        "engage",
-        "fishing",
-        "individual",
-        "duly recognized",
-        "regulated objects",
         "applied",
-        "activity",
+        "engage",
+        "duly recognized",
+        "awarded",
+        "duly",
+        "objects",
+        "recognized governmental",
+        "third party",
+        "authorization",
+        "perform",
+        "recognized",
+        "third",
+        "agency",
+        "individual",
+        "party",
         "organization",
-        "recognized"
+        "license",
+        "hazardous materials",
+        "fishing",
+        "use"
       ],
       "domain": "government",
       "source": "bizbok_aligned"
@@ -2026,21 +2026,21 @@
       "name": "License Term",
       "definition": "A legally enforceable condition set forth within the bounds of a license.",
       "terms": [
-        "enforceable",
+        "forth",
+        "set",
+        "set forth",
+        "legally enforceable",
         "condition",
         "term",
-        "condition set",
+        "enforceable",
         "enforceable condition",
-        "bounds",
-        "forth",
         "forth within",
+        "bounds",
+        "condition set",
         "license",
-        "within",
-        "legally",
-        "legally enforceable",
-        "set",
         "license term",
-        "set forth"
+        "within",
+        "legally"
       ],
       "domain": "government",
       "source": "bizbok_aligned"
@@ -2049,15 +2049,15 @@
       "name": "Public Sector Entity",
       "definition": "A governmental body or collection of governmental bodies.",
       "terms": [
-        "public sector entity",
-        "bodies",
         "sector",
-        "governmental body",
-        "governmental",
+        "governmental bodies",
         "collection",
         "public",
+        "bodies",
         "entity",
-        "governmental bodies",
+        "governmental body",
+        "governmental",
+        "public sector entity",
         "body"
       ],
       "domain": "government",
@@ -2068,105 +2068,104 @@
       "definition": "Property or other asset that a customer offers as security to a borrowing or lending agreement.",
       "terms": [
         "borrowing",
-        "asset",
         "agreement",
-        "offers",
-        "collateral",
-        "lending",
-        "lending agreement",
-        "customer",
         "customer offers",
+        "asset",
+        "offers",
+        "property",
+        "collateral",
+        "customer",
         "security",
-        "property"
+        "lending",
+        "lending agreement"
       ],
       "domain": "finance",
       "source": "bizbok_aligned"
     }
   },
   "term_mappings": {
-    "legally binding": [
+    "legal entities": [
       "agreement"
     ],
     "binding rights": [
       "agreement"
     ],
-    "entities": [
+    "binding": [
       "agreement"
     ],
     "legal": [
-      "human_resource",
-      "agreement",
-      "legal_proceeding",
       "beneficiary",
-      "case",
-      "customer",
+      "legal_proceeding",
       "intellectual_property_rights",
+      "agreement",
       "business_entity",
+      "customer",
       "partner"
     ],
-    "legal entities": [
-      "agreement"
-    ],
-    "obligations": [
-      "agreement"
-    ],
-    "two": [
-      "interaction",
-      "agreement"
-    ],
-    "agreement": [
-      "human_resource",
-      "agreement",
-      "agreement_term",
-      "beneficiary",
-      "collateral",
-      "claim",
-      "customer"
-    ],
     "set": [
-      "course_of_action",
+      "agreement_term",
       "interaction",
-      "plan",
-      "agreement",
+      "course_of_action",
       "investment_portfolio",
+      "agreement",
+      "license_term",
+      "plan",
+      "network",
+      "legislation",
       "work_queue"
     ],
-    "rights": [
-      "intellectual_property_rights",
+    "entities": [
+      "agreement",
+      "interaction"
+    ],
+    "legally binding": [
       "agreement"
     ],
-    "legally enforceable": [
-      "license_term",
+    "rights": [
+      "agreement",
+      "intellectual_property_rights"
+    ],
+    "legally": [
+      "agreement",
       "agreement_term"
     ],
-    "agreement term": [
-      "agreement_term"
-    ],
-    "enforceable": [
-      "license_term",
-      "agreement_term"
-    ],
-    "forth within": [
-      "license_term",
-      "agreement_term"
-    ],
-    "term": [
-      "license_term",
-      "agreement_term"
-    ],
-    "set forth": [
-      "license_term",
-      "agreement_term"
-    ],
-    "condition set": [
-      "license_term",
-      "agreement_term"
-    ],
-    "forth": [
-      "license_term",
-      "agreement_term"
+    "agreement": [
+      "beneficiary",
+      "agreement",
+      "human_resource",
+      "claim",
+      "customer",
+      "collateral"
     ],
     "bounds": [
+      "agreement_term",
+      "license_term"
+    ],
+    "enforceable": [
+      "agreement_term",
+      "license_term"
+    ],
+    "enforceable condition": [
+      "agreement_term",
+      "license_term"
+    ],
+    "term": [
+      "agreement_term",
+      "license_term"
+    ],
+    "legally enforceable": [
+      "agreement_term",
+      "license_term"
+    ],
+    "condition set": [
+      "agreement_term",
+      "license_term"
+    ],
+    "within": [
+      "agreement_term",
+      "license_term"
+    ],
+    "set forth": [
       "agreement_term"
     ],
     "intangible": [
@@ -2175,25 +2174,28 @@
     "intangible property": [
       "asset"
     ],
-    "asset": [
-      "asset",
-      "collateral",
-      "work_item",
-      "financial_instrument",
-      "investment"
+    "tangible": [
+      "asset"
     ],
     "property": [
       "asset",
-      "geographic_space_cadaster",
       "collateral",
-      "intellectual_property_rights",
-      "cadaster"
+      "intellectual_property_rights"
     ],
-    "tangible": [
+    "asset": [
       "asset"
     ],
     "design": [
       "brand"
+    ],
+    "products": [
+      "beneficiary",
+      "market",
+      "material",
+      "brand",
+      "message",
+      "customer",
+      "channel"
     ],
     "name": [
       "brand"
@@ -2201,221 +2203,197 @@
     "organizational identities": [
       "brand"
     ],
-    "organizational": [
-      "brand"
-    ],
-    "offerings": [
-      "brand"
-    ],
-    "symbol": [
+    "identities": [
       "brand"
     ],
     "identifies": [
       "brand"
     ],
-    "identities": [
+    "organizational": [
       "brand"
     ],
-    "products": [
-      "customer",
-      "brand",
-      "market",
-      "beneficiary"
+    "brand": [
+      "brand"
     ],
-    "differentiates": [
+    "symbol": [
+      "brand"
+    ],
+    "differentiates products": [
       "brand"
     ],
     "business entity": [
       "business_entity"
     ],
-    "single": [
+    "entity": [
+      "beneficiary",
+      "public_sector_entity",
+      "constituent",
       "business_entity",
-      "shipment_item"
+      "customer",
+      "partner"
+    ],
+    "legal body": [
+      "business_entity"
+    ],
+    "business": [
+      "job",
+      "network",
+      "business_entity",
+      "inquiry",
+      "facility"
+    ],
+    "comprise": [
+      "business_entity"
+    ],
+    "single organization": [
+      "business_entity"
+    ],
+    "body": [
+      "public_sector_entity",
+      "business_entity",
+      "standard",
+      "evidence"
+    ],
+    "single": [
+      "shipment_item",
+      "business_entity"
     ],
     "bodies": [
       "tax",
       "business_entity",
       "public_sector_entity"
     ],
-    "body": [
-      "standard",
-      "evidence",
-      "business_entity",
-      "public_sector_entity"
-    ],
-    "business": [
-      "inquiry",
-      "job",
-      "facility",
-      "business_entity",
-      "network"
-    ],
-    "legal body": [
-      "business_entity"
-    ],
-    "comprises": [
-      "business_entity"
-    ],
-    "organization": [
-      "strategy",
-      "payment",
-      "constituent",
-      "beneficiary",
-      "policy",
-      "customer",
-      "financial_forecast",
-      "business_entity",
-      "partner"
-    ],
-    "entity": [
-      "partner",
-      "beneficiary",
-      "customer",
-      "public_sector_entity",
-      "business_entity",
-      "constituent"
-    ],
-    "resources": [
-      "biological_organism",
+    "activities": [
       "campaign",
-      "investment_portfolio",
-      "energy",
-      "finance"
+      "course_of_action",
+      "message",
+      "plan"
     ],
-    "marketing": [
+    "outreach": [
       "campaign"
     ],
     "goal": [
       "campaign",
       "goal"
     ],
-    "activity": [
-      "legal_proceeding",
-      "license",
+    "hiring": [
       "campaign"
-    ],
-    "targets": [
-      "campaign"
-    ],
-    "specific": [
-      "action_item",
-      "campaign",
-      "job",
-      "operation",
-      "order_item"
     ],
     "campaign": [
       "campaign"
     ],
-    "awareness": [
+    "specific population": [
       "campaign"
     ],
-    "partners": [
+    "marketing awareness": [
       "campaign"
     ],
-    "customers": [
-      "product",
+    "achieve": [
+      "course_of_action",
+      "plan",
+      "action_item",
+      "campaign",
+      "operation"
+    ],
+    "example": [
+      "campaign",
+      "infrastructure",
+      "operation"
+    ],
+    "certain": [
       "campaign"
     ],
-    "radio": [
-      "channel"
-    ],
-    "physical": [
-      "geographic_space",
-      "interaction",
-      "channel",
+    "including": [
       "health_condition",
-      "language",
-      "energy",
-      "conveyor",
-      "facility"
+      "meeting",
+      "message",
+      "biological_organism",
+      "channel",
+      "schedule_element"
     ],
-    "service": [
-      "order_item",
-      "operation",
-      "channel"
-    ],
-    "channel": [
-      "channel"
-    ],
-    "physical means": [
-      "channel"
-    ],
-    "means": [
+    "satellite": [
       "channel"
     ],
     "related services": [
       "channel"
     ],
+    "phone": [
+      "channel"
+    ],
+    "related": [
+      "financial_transaction",
+      "plan",
+      "financial_account",
+      "legislation",
+      "channel"
+    ],
+    "delivered": [
+      "channel"
+    ],
     "analog": [
       "channel"
     ],
-    "digital": [
+    "radio": [
       "channel"
     ],
-    "services": [
-      "product",
-      "channel",
-      "claim"
-    ],
-    "necessary": [
-      "competency"
+    "physical conduit": [
+      "channel"
     ],
     "knowledge": [
       "accreditation",
       "competency"
     ],
-    "knowledge necessary": [
-      "competency"
-    ],
     "competency": [
-      "competency"
-    ],
-    "something": [
       "competency"
     ],
     "skills": [
       "competency"
     ],
-    "visual": [
-      "content"
+    "necessary": [
+      "competency"
     ],
-    "creative work": [
-      "content"
+    "something": [
+      "competency"
     ],
-    "textual": [
-      "content"
-    ],
-    "media": [
-      "content"
+    "knowledge necessary": [
+      "competency"
     ],
     "content": [
       "content",
       "content_impression",
       "submission"
     ],
-    "mixed": [
+    "forms": [
+      "content"
+    ],
+    "textual": [
+      "content"
+    ],
+    "audio": [
+      "content"
+    ],
+    "creative work": [
+      "content"
+    ],
+    "image": [
       "content"
     ],
     "still image": [
       "content"
     ],
-    "creative": [
+    "still": [
       "content"
     ],
-    "forms": [
+    "manifested": [
       "content"
     ],
-    "experiential": [
+    "visual": [
       "content"
-    ],
-    "content consumption": [
-      "content_impression"
     ],
     "content impression": [
       "content_impression"
     ],
-    "impression": [
+    "content consumption": [
       "content_impression"
     ],
     "consumption": [
@@ -2424,44 +2402,55 @@
     "instance": [
       "content_impression"
     ],
-    "legal entity": [
-      "customer",
-      "beneficiary",
-      "partner"
+    "impression": [
+      "content_impression"
     ],
     "customer": [
-      "customer",
-      "payment",
       "claim",
-      "collateral"
+      "customer",
+      "collateral",
+      "payment"
+    ],
+    "beneficiary": [
+      "beneficiary",
+      "customer"
     ],
     "plans": [
-      "customer",
       "beneficiary",
+      "customer",
+      "partner"
+    ],
+    "legal entity": [
+      "beneficiary",
+      "customer",
       "partner"
     ],
     "recipient": [
-      "customer",
-      "beneficiary"
-    ],
-    "beneficiary": [
+      "beneficiary",
       "customer"
     ],
+    "organization": [
+      "financial_forecast",
+      "policy",
+      "constituent",
+      "customer",
+      "partner"
+    ],
     "considering": [
-      "decision"
-    ],
-    "options": [
-      "financial_instrument",
-      "decision"
-    ],
-    "conclusion": [
       "decision"
     ],
     "alternative": [
       "decision"
     ],
-    "decision": [
+    "alternative options": [
       "decision"
+    ],
+    "conclusion": [
+      "decision"
+    ],
+    "reached": [
+      "decision",
+      "trip"
     ],
     "resolution": [
       "decision"
@@ -2469,80 +2458,91 @@
     "resolution reached": [
       "decision"
     ],
-    "alternative options": [
-      "decision"
+    "options": [
+      "decision",
+      "financial_instrument"
     ],
     "considering alternative": [
       "decision"
     ],
-    "reached": [
+    "decision": [
       "decision"
     ],
     "interest": [
       "event"
     ],
-    "one": [
+    "event": [
       "event",
+      "work_event"
+    ],
+    "one": [
       "geographic_border",
       "submission",
       "trip",
+      "event",
       "order"
     ],
-    "event": [
+    "occurrence": [
       "event",
       "work_event"
     ],
     "happen": [
       "event"
     ],
-    "occurrence": [
+    "especially": [
       "event",
-      "work_event"
+      "energy"
     ],
     "concern": [
-      "event"
-    ],
-    "importance": [
       "event"
     ],
     "especially one": [
       "event"
     ],
-    "especially": [
+    "importance": [
       "event"
     ],
     "happened": [
       "event"
     ],
-    "where": [
-      "facility"
-    ],
     "place": [
       "meeting",
       "facility"
     ],
-    "where business": [
+    "where": [
       "facility"
     ],
-    "given": [
-      "monetary_amount",
-      "interaction",
-      "product_forecast",
+    "facility": [
+      "infrastructure",
       "facility"
     ],
     "place where": [
       "facility"
     ],
-    "structure": [
+    "physical": [
       "infrastructure",
-      "work_queue",
+      "meeting",
+      "material",
       "facility"
     ],
-    "facility": [
+    "given": [
+      "monetary_amount",
+      "product_forecast",
+      "facility"
+    ],
+    "physical structure": [
+      "infrastructure",
       "facility"
     ],
     "conducted": [
       "facility"
+    ],
+    "where business": [
+      "facility"
+    ],
+    "resources": [
+      "investment_portfolio",
+      "finance"
     ],
     "monetary aspects": [
       "finance"
@@ -2550,18 +2550,13 @@
     "aspects": [
       "finance"
     ],
-    "monetary": [
-      "tax",
-      "financial_transaction",
-      "financial_account",
-      "finance",
-      "monetary_amount"
-    ],
     "finance": [
       "finance"
     ],
-    "agreed": [
-      "currency"
+    "monetary": [
+      "monetary_amount",
+      "tax",
+      "finance"
     ],
     "medium": [
       "currency"
@@ -2569,112 +2564,115 @@
     "value exchange": [
       "currency"
     ],
-    "value": [
-      "geographic_space_cadaster",
-      "tax",
-      "financial_account",
-      "investment_portfolio",
-      "cadaster",
-      "currency",
-      "monetary_amount"
-    ],
     "agreed medium": [
       "currency"
     ],
     "currency": [
-      "currency",
-      "monetary_amount"
+      "monetary_amount",
+      "currency"
     ],
     "exchange": [
-      "submission",
-      "financial_transaction",
       "currency",
+      "submission",
+      "financial_instrument",
+      "financial_transaction",
       "order"
     ],
-    "related categories": [
+    "value": [
+      "monetary_amount",
+      "tax",
+      "currency",
+      "investment_portfolio"
+    ],
+    "agreed": [
+      "currency"
+    ],
+    "typically": [
       "financial_account"
     ],
     "expense": [
       "financial_account"
     ],
-    "value transactions": [
-      "financial_account"
+    "financial": [
+      "financial_account",
+      "financial_forecast",
+      "financial_transaction"
     ],
-    "financial account": [
-      "financial_account"
+    "categories": [
+      "financial_account",
+      "biological_organism"
     ],
-    "typically": [
+    "transactions": [
       "financial_account"
     ],
     "account": [
       "financial_account"
     ],
-    "transactions": [
+    "organized": [
+      "financial_account"
+    ],
+    "typically organized": [
       "financial_account"
     ],
     "liabilities": [
       "financial_account"
     ],
-    "prediction": [
-      "financial_forecast",
-      "product_forecast"
-    ],
-    "future financial": [
+    "financial forecast": [
       "financial_forecast"
     ],
-    "financial": [
-      "financial_forecast",
-      "financial_position",
-      "financial_instrument"
+    "financial aspect": [
+      "financial_forecast"
     ],
     "future": [
-      "vision",
       "financial_forecast",
-      "investment",
       "time",
-      "market"
+      "market",
+      "vision",
+      "investment"
     ],
-    "financial aspect": [
+    "prediction": [
+      "product_forecast",
+      "financial_forecast"
+    ],
+    "forecast": [
+      "product_forecast",
+      "financial_forecast"
+    ],
+    "future financial": [
       "financial_forecast"
     ],
     "aspect": [
       "financial_forecast"
     ],
-    "forecast": [
-      "financial_forecast",
-      "product_forecast"
-    ],
-    "financial forecast": [
-      "financial_forecast"
-    ],
-    "amount movement": [
-      "financial_transaction"
-    ],
-    "financial transaction": [
-      "financial_transaction"
-    ],
-    "movement": [
+    "financial accounts": [
       "financial_transaction"
     ],
     "businesses": [
       "financial_transaction"
     ],
-    "amount": [
-      "financial_transaction",
-      "payment",
-      "monetary_amount"
-    ],
-    "exchange across": [
-      "financial_transaction"
-    ],
     "across": [
+      "geographic_space",
       "financial_transaction"
     ],
-    "related": [
-      "meeting",
-      "financial_transaction",
-      "plan",
-      "legislation"
+    "across businesses": [
+      "financial_transaction"
+    ],
+    "amount": [
+      "monetary_amount",
+      "payment",
+      "financial_transaction"
+    ],
+    "monetary amount": [
+      "monetary_amount",
+      "financial_transaction"
+    ],
+    "related exchange": [
+      "financial_transaction"
+    ],
+    "representation": [
+      "monetary_amount",
+      "language",
+      "financial_position"
     ],
     "given currency": [
       "monetary_amount"
@@ -2682,38 +2680,34 @@
     "expressed": [
       "monetary_amount"
     ],
-    "representation": [
-      "financial_position",
-      "monetary_amount"
+    "obligation": [
+      "payment"
     ],
-    "monetary amount": [
+    "external party": [
+      "payment"
+    ],
+    "partner": [
       "payment",
-      "monetary_amount"
+      "partner"
     ],
-    "payment": [
+    "party": [
+      "license",
+      "order",
       "payment"
     ],
     "receive": [
       "payment"
     ],
+    "remit": [
+      "payment"
+    ],
+    "payment": [
+      "payment"
+    ],
     "external": [
       "payment"
     ],
-    "obligation": [
-      "payment"
-    ],
-    "party": [
-      "accreditation",
-      "payment",
-      "order"
-    ],
-    "external party": [
-      "payment"
-    ],
-    "compulsory": [
-      "tax"
-    ],
-    "contribution": [
+    "monetary value": [
       "tax"
     ],
     "governing bodies": [
@@ -2725,44 +2719,51 @@
     "governing": [
       "tax"
     ],
+    "compulsory": [
+      "tax"
+    ],
+    "contribution": [
+      "tax"
+    ],
     "tax": [
       "tax"
     ],
-    "monetary value": [
-      "tax"
-    ],
-    "includes": [
-      "conveyor",
-      "human_resource"
-    ],
-    "individual who": [
-      "human_resource"
-    ],
-    "permanent basis": [
-      "human_resource"
-    ],
     "includes compensation": [
-      "human_resource"
-    ],
-    "who": [
-      "human_resource"
-    ],
-    "legal agreement": [
-      "human_resource"
-    ],
-    "basis": [
       "human_resource"
     ],
     "benefits": [
       "human_resource"
     ],
-    "incident": [
-      "incident"
+    "resource": [
+      "job",
+      "human_resource",
+      "natural_resource",
+      "schedule_element"
+    ],
+    "permanent basis": [
+      "human_resource"
+    ],
+    "temporary": [
+      "human_resource"
+    ],
+    "individual": [
+      "human_resource",
+      "license",
+      "constituent"
+    ],
+    "basis": [
+      "human_resource"
+    ],
+    "permanent": [
+      "human_resource"
+    ],
+    "includes": [
+      "human_resource"
     ],
     "disruptive": [
       "incident"
     ],
-    "experience": [
+    "potentially": [
       "incident"
     ],
     "unplanned": [
@@ -2771,10 +2772,20 @@
     "potentially disruptive": [
       "incident"
     ],
-    "potentially": [
+    "incident": [
       "incident"
     ],
-    "temporary endeavors": [
+    "experience": [
+      "incident"
+    ],
+    "endeavors": [
+      "initiative"
+    ],
+    "collection": [
+      "initiative",
+      "public_sector_entity"
+    ],
+    "coordinated": [
       "initiative"
     ],
     "outcome": [
@@ -2783,28 +2794,25 @@
     "initiative": [
       "initiative"
     ],
-    "create": [
-      "initiative"
-    ],
-    "undertaken": [
-      "initiative"
-    ],
-    "unique": [
-      "initiative"
-    ],
-    "coordinated": [
-      "initiative"
-    ],
-    "endeavors undertaken": [
+    "temporary endeavors": [
       "initiative"
     ],
     "unique outcome": [
       "initiative"
     ],
+    "endeavors undertaken": [
+      "initiative"
+    ],
+    "create": [
+      "initiative"
+    ],
     "coordinated collection": [
       "initiative"
     ],
-    "exist inside": [
+    "exist": [
+      "inquiry"
+    ],
+    "harvested": [
       "inquiry"
     ],
     "feedback": [
@@ -2813,78 +2821,70 @@
     "outside": [
       "inquiry"
     ],
-    "inquiry": [
-      "inquiry"
-    ],
-    "question": [
-      "inquiry"
-    ],
-    "harvested": [
+    "inside": [
       "inquiry"
     ],
     "identified": [
       "inquiry"
     ],
-    "request": [
-      "claim",
-      "inquiry",
-      "order"
-    ],
     "received": [
       "inquiry"
     ],
-    "trademarks": [
-      "intellectual_property_rights"
+    "classified": [
+      "inquiry"
     ],
-    "protections": [
-      "intellectual_property_rights"
-    ],
-    "intellectual property rights": [
-      "intellectual_property_rights"
+    "inquiry": [
+      "inquiry"
     ],
     "intellectual": [
-      "intellectual_property_rights"
-    ],
-    "copyrights": [
-      "intellectual_property_rights"
-    ],
-    "patents": [
       "intellectual_property_rights"
     ],
     "legal protections": [
       "intellectual_property_rights"
     ],
-    "collaborations": [
+    "trademarks": [
+      "intellectual_property_rights"
+    ],
+    "intellectual property rights": [
+      "intellectual_property_rights"
+    ],
+    "patents": [
+      "intellectual_property_rights"
+    ],
+    "copyrights": [
+      "intellectual_property_rights"
+    ],
+    "protections": [
+      "intellectual_property_rights"
+    ],
+    "contemporaneous": [
       "interaction"
     ],
-    "time": [
-      "schedule_element",
+    "virtual": [
       "interaction",
-      "operation",
-      "product_forecast",
-      "meeting",
-      "time",
-      "financial_position"
+      "meeting"
     ],
-    "interviews": [
+    "using one": [
       "interaction"
     ],
-    "virtual locations": [
-      "interaction"
+    "about": [
+      "interaction",
+      "message"
     ],
     "interaction": [
       "interaction"
     ],
-    "meetings": [
+    "contacts": [
       "interaction"
     ],
-    "expected": [
-      "investment_portfolio"
+    "subject": [
+      "interaction",
+      "training_course"
     ],
-    "portfolio": [
-      "investment_portfolio"
+    "given subject": [
+      "interaction"
     ],
-    "income": [
+    "investment": [
       "investment",
       "investment_portfolio"
     ],
@@ -2892,7 +2892,11 @@
       "investment",
       "investment_portfolio"
     ],
-    "investment portfolio": [
+    "income": [
+      "investment",
+      "investment_portfolio"
+    ],
+    "portfolio": [
       "investment_portfolio"
     ],
     "provide": [
@@ -2903,137 +2907,128 @@
     "resources expected": [
       "investment_portfolio"
     ],
-    "associated": [
-      "geographic_space_cadaster",
-      "job",
-      "health_condition",
-      "training_course",
-      "cadaster",
-      "network"
+    "investment portfolio": [
+      "investment_portfolio"
     ],
-    "function": [
+    "remunerative": [
       "job"
     ],
-    "named category": [
-      "job"
-    ],
-    "accountable business": [
-      "job"
-    ],
-    "business duty": [
+    "whether remunerative": [
       "job"
     ],
     "role": [
       "job"
     ],
-    "whether": [
+    "accountable business": [
       "job"
     ],
     "executed": [
       "job"
     ],
-    "variant consisting": [
-      "language"
+    "job": [
+      "job"
     ],
-    "meaning": [
+    "accountable": [
+      "job"
+    ],
+    "accountabilities": [
+      "job"
+    ],
+    "physical manifestations": [
       "language"
     ],
     "manifestations": [
       "language"
     ],
-    "dialect": [
+    "gestures": [
+      "language"
+    ],
+    "method": [
+      "language"
+    ],
+    "language": [
+      "language"
+    ],
+    "sounds": [
+      "language"
+    ],
+    "communication": [
+      "language"
+    ],
+    "numbers": [
       "language"
     ],
     "presented": [
       "language"
     ],
-    "units": [
-      "language"
-    ],
-    "way": [
-      "route",
-      "language"
-    ],
-    "structured": [
-      "language"
-    ],
-    "variant": [
-      "language"
-    ],
-    "law": [
-      "legal_proceeding"
-    ],
-    "tribunal": [
+    "legal proceeding": [
       "legal_proceeding"
     ],
     "proceeding": [
       "legal_proceeding"
     ],
+    "invoking": [
+      "legal_proceeding"
+    ],
+    "tribunal": [
+      "legal_proceeding"
+    ],
     "enforce": [
-      "legal_proceeding"
-    ],
-    "power": [
-      "energy",
-      "legal_proceeding"
-    ],
-    "legal proceeding": [
       "legal_proceeding"
     ],
     "activity invoking": [
       "legal_proceeding"
     ],
-    "invoking": [
+    "power": [
+      "legal_proceeding",
+      "energy"
+    ],
+    "activity": [
       "legal_proceeding"
+    ],
+    "law": [
+      "legal_proceeding"
+    ],
+    "position": [
+      "location",
+      "financial_position"
     ],
     "site": [
       "location"
     ],
-    "position": [
-      "location"
-    ],
     "location": [
-      "schedule_element",
-      "location"
+      "trip",
+      "location",
+      "operation",
+      "schedule_element"
     ],
-    "organizations constituting": [
+    "populations": [
       "market"
     ],
-    "demand": [
-      "market",
-      "claim"
-    ],
-    "future products": [
+    "services": [
+      "product",
+      "claim",
       "market"
     ],
-    "organizations": [
-      "market"
-    ],
-    "market": [
+    "constituting": [
       "market"
     ],
     "individuals": [
       "market"
     ],
-    "populations": [
+    "future products": [
+      "market"
+    ],
+    "market": [
       "market"
     ],
     "existing": [
       "market"
     ],
-    "communication about": [
-      "message"
+    "organizations": [
+      "market"
     ],
-    "targeted": [
-      "message",
-      "trip"
-    ],
-    "internally": [
-      "message"
-    ],
-    "focal points": [
-      "message"
-    ],
-    "alerts": [
+    "represented": [
       "message"
     ],
     "externally": [
@@ -3042,84 +3037,78 @@
     "mission": [
       "message"
     ],
-    "activities": [
-      "message",
-      "plan",
-      "course_of_action"
-    ],
-    "represented communication": [
+    "written": [
       "message"
     ],
-    "including missives": [
+    "externally targeted": [
+      "message"
+    ],
+    "focal points": [
       "message"
     ],
     "another": [
       "geographic_border",
       "order"
     ],
-    "exchange goods": [
+    "goods": [
+      "product",
+      "order",
+      "government_service"
+    ],
+    "one party": [
       "order"
     ],
     "sell": [
       "order"
     ],
-    "buy": [
-      "order"
-    ],
-    "goods": [
-      "conveyor",
-      "government_service",
-      "product",
+    "request": [
+      "claim",
       "order"
     ],
     "order": [
       "order_item",
       "order"
     ],
-    "involvement": [
-      "partner"
+    "exchange goods": [
+      "order"
     ],
-    "partner": [
+    "involvement": [
       "partner"
     ],
     "degree": [
       "partner"
     ],
     "result": [
-      "plan",
-      "objective"
+      "objective",
+      "plan"
     ],
     "plan": [
+      "case",
       "plan"
     ],
     "related activities": [
       "plan"
     ],
-    "achieve": [
-      "course_of_action",
-      "action_item",
-      "plan"
-    ],
     "action": [
       "strategy",
-      "action_item",
-      "policy",
-      "course_of_action"
-    ],
-    "course": [
       "course_of_action",
-      "action_item",
-      "route",
       "policy",
-      "training_course"
-    ],
-    "adopted": [
-      "policy"
+      "action_item"
     ],
     "action adopted": [
       "policy"
     ],
+    "course": [
+      "course_of_action",
+      "policy",
+      "training_course",
+      "action_item",
+      "route"
+    ],
     "proposed": [
+      "policy"
+    ],
+    "adopted": [
       "policy"
     ],
     "policy": [
@@ -3128,40 +3117,39 @@
     "principle": [
       "policy"
     ],
-    "offered": [
-      "product",
-      "government_service"
-    ],
-    "part": [
-      "product",
-      "shipment_item"
+    "customers": [
+      "product"
     ],
     "combination": [
       "product",
       "government_service"
+    ],
+    "offered": [
+      "product",
+      "government_service"
+    ],
+    "named": [
+      "product",
+      "government_service"
+    ],
+    "part": [
+      "biological_organism",
+      "shipment_item",
+      "product"
+    ],
+    "whole": [
+      "strategy",
+      "product"
     ],
     "named combination": [
       "product",
       "government_service"
     ],
     "product": [
-      "product",
-      "product_forecast"
-    ],
-    "whole": [
+      "product_forecast",
       "product"
     ],
-    "named": [
-      "product",
-      "government_service"
-    ],
     "systematic investigation": [
-      "research"
-    ],
-    "research": [
-      "research"
-    ],
-    "systematic": [
       "research"
     ],
     "materials": [
@@ -3170,93 +3158,107 @@
     "investigation": [
       "research"
     ],
-    "sources": [
+    "research": [
       "research"
     ],
+    "systematic": [
+      "research"
+    ],
+    "sources": [
+      "research",
+      "energy"
+    ],
     "aggregation": [
-      "schedule"
-    ],
-    "elements": [
-      "schedule"
-    ],
-    "schedule": [
-      "schedule_element",
       "schedule"
     ],
     "schedule elements": [
       "schedule"
     ],
-    "line": [
-      "schedule_element",
-      "geographic_border"
+    "schedule": [
+      "schedule",
+      "schedule_element"
+    ],
+    "elements": [
+      "schedule"
+    ],
+    "element": [
+      "order_item",
+      "schedule_element"
+    ],
+    "time": [
+      "time",
+      "product_forecast",
+      "meeting",
+      "financial_position",
+      "operation",
+      "schedule_element"
+    ],
+    "work item": [
+      "work_item",
+      "schedule_element"
+    ],
+    "objects": [
+      "schedule_element"
     ],
     "line item": [
       "schedule_element"
     ],
-    "aligns time": [
-      "schedule_element"
-    ],
-    "work item": [
-      "schedule_element"
-    ],
-    "work": [
-      "schedule_element",
-      "work",
-      "work_item",
-      "operation",
-      "government_service",
-      "energy",
-      "work_event"
-    ],
     "item": [
-      "schedule_element",
-      "action_item",
       "shipment_item",
+      "order_item",
+      "action_item",
       "work_item",
-      "order_item"
-    ],
-    "schedule element": [
       "schedule_element"
     ],
-    "aligns": [
-      "strategy"
-    ],
-    "objectives": [
+    "integrated": [
       "strategy"
     ],
     "integrated pattern": [
       "strategy"
     ],
-    "cohesive whole": [
+    "aligns": [
       "strategy"
     ],
     "pattern": [
       "strategy"
     ],
-    "action sequences": [
+    "objectives": [
       "strategy"
     ],
-    "sequences": [
+    "perspective": [
       "strategy"
     ],
     "cohesive": [
       "strategy"
     ],
+    "sequences": [
+      "strategy"
+    ],
     "objective": [
+      "objective",
       "course_of_action",
-      "action_item",
-      "objective"
+      "action_item"
+    ],
+    "specific course": [
+      "action_item"
     ],
     "taken": [
       "course_of_action",
       "action_item",
       "route"
     ],
+    "specific": [
+      "order_item",
+      "action_item"
+    ],
     "action item": [
       "action_item"
     ],
-    "specific course": [
-      "action_item"
+    "end": [
+      "goal"
+    ],
+    "directed": [
+      "goal"
     ],
     "toward": [
       "goal"
@@ -3267,31 +3269,31 @@
     "effort": [
       "goal"
     ],
-    "directed": [
-      "goal"
-    ],
-    "end": [
-      "goal"
-    ],
-    "defines strategy": [
-      "objective"
-    ],
     "measurable result": [
       "objective"
     ],
-    "quantitative": [
+    "defines strategy": [
       "objective"
     ],
     "measurable": [
       "objective"
     ],
-    "strategy": [
-      "objective"
-    ],
     "defines": [
       "objective"
     ],
+    "strategy": [
+      "objective"
+    ],
+    "quantitative": [
+      "objective"
+    ],
+    "future state": [
+      "vision"
+    ],
     "imagined": [
+      "vision"
+    ],
+    "vision": [
       "vision"
     ],
     "state": [
@@ -3300,97 +3302,88 @@
     "imagined future": [
       "vision"
     ],
-    "vision": [
-      "vision"
-    ],
-    "future state": [
-      "vision"
-    ],
     "inquiries": [
-      "submission"
-    ],
-    "requests": [
       "submission"
     ],
     "used": [
       "submission",
       "material"
     ],
+    "container": [
+      "submission",
+      "work_queue"
+    ],
     "messages": [
       "submission"
     ],
-    "submission": [
-      "submission"
-    ],
-    "container": [
-      "work_queue",
+    "exchange one": [
       "submission"
     ],
     "notifications": [
       "submission"
     ],
-    "present": [
-      "work_queue",
-      "time"
+    "submission": [
+      "submission"
     ],
-    "past": [
-      "time"
+    "present": [
+      "time",
+      "work_queue"
     ],
     "point": [
+      "trip",
       "time",
-      "financial_position",
       "network_node"
     ],
     "duration": [
       "time"
     ],
-    "format": [
-      "training_course"
-    ],
-    "matter": [
-      "natural_resource",
-      "material",
-      "training_course"
-    ],
-    "curriculum": [
-      "training_course"
+    "past": [
+      "time"
     ],
     "practical": [
       "training_course"
     ],
-    "subject matter": [
-      "training_course"
-    ],
-    "workshop": [
+    "structured": [
       "training_course"
     ],
     "consumable format": [
       "training_course"
     ],
-    "seminar": [
+    "theoretical": [
       "training_course"
     ],
-    "queues": [
-      "work"
+    "training": [
+      "training_course"
     ],
-    "task": [
-      "work_item",
-      "work"
+    "structured theoretical": [
+      "training_course"
+    ],
+    "consumable": [
+      "training_course"
+    ],
+    "associated": [
+      "network",
+      "training_course"
     ],
     "tasks": [
       "work"
     ],
+    "task": [
+      "work",
+      "work_item"
+    ],
     "task queues": [
       "work"
     ],
-    "defined": [
-      "standard",
-      "work_item"
+    "work": [
+      "work",
+      "work_event",
+      "work_queue"
     ],
-    "stakeholder": [
-      "work_item"
+    "queues": [
+      "work"
     ],
-    "bounded task": [
+    "bounded": [
       "work_item"
     ],
     "well": [
@@ -3399,84 +3392,87 @@
     "corresponding": [
       "work_item"
     ],
+    "defined": [
+      "work_item",
+      "standard"
+    ],
+    "stakeholder": [
+      "work_item"
+    ],
+    "bounded task": [
+      "work_item"
+    ],
     "corresponding asset": [
       "work_item"
     ],
-    "queue": [
+    "structure": [
+      "work_queue"
+    ],
+    "items": [
+      "conveyor",
       "work_queue"
     ],
     "work queue": [
       "work_queue"
     ],
-    "work items": [
+    "sequence": [
       "work_queue"
     ],
-    "items": [
+    "queue": [
       "work_queue"
     ],
     "hold": [
       "work_queue"
     ],
-    "filter": [
-      "work_queue"
-    ],
-    "water": [
+    "economic": [
       "geographic_space"
     ],
-    "area across": [
-      "geographic_space"
-    ],
-    "enable": [
-      "geographic_space"
-    ],
-    "environmental": [
-      "geographic_space"
-    ],
-    "across land": [
-      "geographic_space"
-    ],
-    "area": [
-      "geographic_space",
-      "cadaster",
-      "geographic_space_cadaster"
-    ],
-    "air": [
+    "land": [
       "geographic_space"
     ],
     "meet": [
       "geographic_space"
     ],
+    "geographic": [
+      "geographic_space",
+      "geographic_space_cadaster"
+    ],
+    "security": [
+      "geographic_space",
+      "collateral"
+    ],
+    "area across": [
+      "geographic_space"
+    ],
+    "across land": [
+      "geographic_space"
+    ],
+    "access": [
+      "geographic_space"
+    ],
+    "geographic space": [
+      "geographic_border"
+    ],
+    "line": [
+      "geographic_border"
+    ],
     "one geographic": [
       "geographic_border"
     ],
-    "border": [
+    "around": [
       "geographic_border"
     ],
     "demarcation": [
       "geographic_border"
     ],
+    "border": [
+      "geographic_border"
+    ],
+    "another geographic": [
+      "geographic_border"
+    ],
     "geographic border": [
       "geographic_border"
-    ],
-    "demarcation around": [
-      "geographic_border"
-    ],
-    "geographic": [
-      "geographic_border"
-    ],
-    "geographic space": [
-      "geographic_border"
-    ],
-    "extent": [
-      "cadaster",
-      "geographic_space_cadaster"
-    ],
-    "geographic space cadaster": [
-      "geographic_space_cadaster"
-    ],
-    "parcels": [
-      "cadaster",
-      "geographic_space_cadaster"
     ],
     "geometric description": [
       "cadaster",
@@ -3486,93 +3482,101 @@
       "cadaster",
       "geographic_space_cadaster"
     ],
+    "parcels": [
+      "cadaster",
+      "geographic_space_cadaster"
+    ],
+    "description": [
+      "cadaster",
+      "geographic_space_cadaster"
+    ],
+    "tenure": [
+      "cadaster",
+      "geographic_space_cadaster"
+    ],
+    "ownership": [
+      "financial_instrument",
+      "cadaster",
+      "geographic_space_cadaster"
+    ],
     "geometric": [
       "cadaster",
       "geographic_space_cadaster"
     ],
-    "asset purchased": [
-      "investment"
+    "cadaster": [
+      "cadaster",
+      "geographic_space_cadaster"
     ],
-    "profit": [
-      "investment"
+    "area": [
+      "cadaster",
+      "geographic_space_cadaster"
     ],
     "price": [
-      "investment"
-    ],
-    "idea": [
       "investment"
     ],
     "purchased": [
       "investment"
     ],
+    "sold": [
+      "investment"
+    ],
+    "monetary asset": [
+      "investment"
+    ],
+    "profit": [
+      "investment"
+    ],
     "type": [
       "investment"
     ],
-    "automobiles": [
+    "based vehicles": [
+      "conveyor"
+    ],
+    "trucks": [
+      "conveyor"
+    ],
+    "borne craft": [
+      "conveyor"
+    ],
+    "people": [
       "conveyor"
     ],
     "transport people": [
       "conveyor"
     ],
-    "physical items": [
+    "pulled devices": [
+      "conveyor"
+    ],
+    "capacity": [
+      "conveyor"
+    ],
+    "apparatus": [
       "conveyor"
     ],
     "but": [
       "conveyor",
       "energy"
     ],
-    "transport": [
-      "conveyor"
-    ],
-    "capacity": [
-      "conveyor"
-    ],
-    "variety": [
-      "conveyor"
-    ],
     "building": [
       "infrastructure"
     ],
-    "station": [
+    "bridge": [
       "infrastructure"
     ],
     "tunnel": [
       "infrastructure"
     ],
-    "rail corridor": [
-      "infrastructure"
+    "include": [
+      "infrastructure",
+      "legislation",
+      "route"
     ],
-    "roadway": [
-      "infrastructure"
-    ],
-    "rail": [
+    "station": [
       "infrastructure"
     ],
     "infrastructure": [
+      "network",
       "infrastructure",
-      "network",
-      "material"
-    ],
-    "physical structure": [
-      "infrastructure"
-    ],
-    "corridor": [
-      "infrastructure"
-    ],
-    "assets": [
-      "network",
-      "material"
-    ],
-    "conveyors": [
-      "material"
-    ],
-    "physical matter": [
-      "material"
-    ],
-    "material": [
-      "material"
-    ],
-    "matter used": [
       "material"
     ],
     "physical products": [
@@ -3581,29 +3585,45 @@
     "powering": [
       "material"
     ],
+    "assets": [
+      "network",
+      "material"
+    ],
+    "material": [
+      "material"
+    ],
+    "conveyors": [
+      "material"
+    ],
+    "physical matter": [
+      "material"
+    ],
     "routes": [
-      "network"
-    ],
-    "business objects": [
-      "network"
-    ],
-    "network": [
-      "network_arc",
-      "network_node",
       "network"
     ],
     "system": [
       "network"
     ],
+    "arcs": [
+      "network"
+    ],
+    "network": [
+      "network",
+      "network_arc",
+      "network_node"
+    ],
     "connected arcs": [
       "network"
     ],
-    "objects": [
-      "network"
+    "association": [
+      "network_arc"
     ],
     "connection": [
       "network_arc",
       "network_node"
+    ],
+    "nodes": [
+      "network_arc"
     ],
     "network arc": [
       "network_arc"
@@ -3611,78 +3631,69 @@
     "arc": [
       "network_arc"
     ],
-    "nodes": [
-      "network_arc"
-    ],
-    "association": [
-      "network_arc"
-    ],
-    "network node": [
+    "node": [
       "network_node"
     ],
-    "node": [
+    "network node": [
       "network_node"
     ],
     "connection point": [
       "network_node"
     ],
-    "turnaround": [
+    "objective constrained": [
       "operation"
     ],
-    "sorting": [
+    "service centers": [
       "operation"
     ],
-    "specific objective": [
+    "boarding": [
       "operation"
     ],
-    "flight turnaround": [
+    "flight": [
       "operation"
     ],
-    "constrained": [
+    "centers": [
       "operation"
     ],
-    "orchestration": [
+    "unloading": [
       "operation"
+    ],
+    "starting point": [
+      "trip",
+      "route"
     ],
     "along": [
+      "route"
+    ],
+    "route": [
       "route"
     ],
     "stops": [
       "route"
     ],
-    "include": [
-      "route"
-    ],
     "starting": [
-      "route",
-      "trip"
-    ],
-    "include stops": [
+      "trip",
       "route"
     ],
     "stops along": [
       "route"
     ],
-    "course taken": [
+    "getting": [
       "route"
     ],
-    "range": [
-      "shipment"
+    "baggage": [
+      "shipment",
+      "shipment_item"
     ],
-    "living": [
-      "biological_organism",
-      "health_condition",
-      "shipment"
-    ],
-    "packages containing": [
-      "shipment"
-    ],
-    "packages": [
+    "non": [
       "shipment"
     ],
     "shipment": [
       "shipment",
       "shipment_item"
+    ],
+    "packages containing": [
+      "shipment"
     ],
     "cargo": [
       "shipment",
@@ -3691,45 +3702,40 @@
     "wide range": [
       "shipment"
     ],
-    "baggage": [
-      "shipment",
-      "shipment_item"
-    ],
-    "freight": [
-      "shipment",
-      "shipment_item"
-    ],
-    "inanimate": [
+    "wide": [
       "shipment"
     ],
-    "shipment item": [
+    "containing": [
+      "shipment"
+    ],
+    "human": [
+      "shipment"
+    ],
+    "range": [
+      "shipment"
+    ],
+    "unit": [
       "shipment_item"
     ],
-    "single unit": [
+    "overall shipment": [
       "shipment_item"
     ],
     "overall": [
       "shipment_item"
     ],
-    "final destination": [
-      "trip"
+    "shipment item": [
+      "shipment_item"
     ],
-    "destination": [
-      "trip"
-    ],
-    "trip": [
-      "trip"
-    ],
-    "until": [
-      "trip"
-    ],
-    "point location": [
+    "targeted": [
       "trip"
     ],
     "journey": [
       "trip"
     ],
-    "locations": [
+    "final": [
+      "trip"
+    ],
+    "point location": [
       "trip"
     ],
     "work event": [
@@ -3738,132 +3744,137 @@
     "situation": [
       "work_event"
     ],
+    "determinable": [
+      "meeting"
+    ],
     "gathering": [
       "meeting"
     ],
-    "conferences": [
+    "meeting": [
       "meeting"
     ],
     "determinable time": [
       "meeting"
     ],
-    "engagements": [
+    "conferences": [
       "meeting"
     ],
-    "persons": [
-      "meeting"
-    ],
-    "related gatherings": [
-      "meeting"
-    ],
-    "including": [
-      "meeting"
-    ],
-    "third": [
-      "accreditation"
-    ],
-    "acknowledged": [
-      "accreditation"
-    ],
-    "third party": [
-      "accreditation"
-    ],
-    "provenance": [
-      "accreditation"
-    ],
-    "ability": [
-      "accreditation"
+    "recognized": [
+      "device",
+      "accreditation",
+      "license",
+      "standard"
     ],
     "duly recognized": [
-      "license",
+      "accreditation",
+      "license"
+    ],
+    "quality": [
+      "accreditation"
+    ],
+    "accreditation": [
+      "accreditation"
+    ],
+    "third": [
+      "accreditation",
+      "license"
+    ],
+    "indicates ability": [
+      "accreditation"
+    ],
+    "acknowledged third": [
       "accreditation"
     ],
     "competence": [
       "accreditation"
     ],
-    "endorsement": [
+    "acknowledged": [
       "accreditation"
     ],
-    "among": [
-      "dispute"
-    ],
-    "official argument": [
-      "dispute"
-    ],
-    "disagreement": [
+    "interested parties": [
       "dispute"
     ],
     "argument": [
       "dispute"
     ],
-    "disagreement among": [
+    "among": [
       "dispute"
     ],
-    "parties": [
+    "official": [
       "dispute"
     ],
-    "interested parties": [
-      "dispute"
-    ],
-    "interested": [
-      "dispute"
-    ],
-    "dispute": [
+    "official argument": [
       "dispute"
     ],
     "among interested": [
       "dispute"
     ],
-    "chemical resources": [
+    "disagreement among": [
+      "dispute"
+    ],
+    "disagreement": [
+      "dispute"
+    ],
+    "interested": [
+      "dispute"
+    ],
+    "parties": [
+      "dispute"
+    ],
+    "devices": [
       "energy"
     ],
-    "work devices": [
+    "machines": [
       "energy"
     ],
     "heat": [
       "energy"
     ],
-    "provide light": [
+    "work devices": [
       "energy"
     ],
-    "holistic representation": [
+    "derived": [
+      "energy"
+    ],
+    "actual financial": [
       "financial_position"
     ],
-    "actual": [
+    "standing": [
       "financial_position"
     ],
     "financial position": [
       "financial_position"
     ],
-    "actual financial": [
+    "actual": [
       "financial_position"
     ],
-    "holistic": [
+    "consolidated": [
       "financial_position"
     ],
     "financial standing": [
       "financial_position"
     ],
-    "order item": [
-      "order_item"
-    ],
-    "element": [
-      "order_item"
-    ],
-    "refers": [
-      "order_item"
+    "holistic representation": [
+      "financial_position"
     ],
     "order element": [
-      "order_item"
-    ],
-    "specific good": [
       "order_item"
     ],
     "good": [
       "order_item"
     ],
-    "period": [
-      "product_forecast"
+    "service": [
+      "order_item",
+      "government_service"
+    ],
+    "refers": [
+      "order_item"
+    ],
+    "specific good": [
+      "order_item"
+    ],
+    "order item": [
+      "order_item"
     ],
     "projection": [
       "product_forecast"
@@ -3871,124 +3882,141 @@
     "estimate": [
       "product_forecast"
     ],
+    "product forecast": [
+      "product_forecast"
+    ],
     "given product": [
       "product_forecast"
     ],
-    "product forecast": [
+    "period": [
       "product_forecast"
     ],
     "course of action": [
       "course_of_action"
     ],
-    "derives": [
-      "beneficiary"
-    ],
     "advantage": [
       "beneficiary"
     ],
-    "ecosystem": [
-      "biological_organism"
+    "derives": [
+      "beneficiary"
     ],
-    "reproduce": [
-      "biological_organism"
-    ],
-    "biological organism": [
-      "biological_organism"
-    ],
-    "stimuli": [
-      "biological_organism"
-    ],
-    "react": [
-      "biological_organism"
-    ],
-    "human living": [
-      "biological_organism"
-    ],
-    "natural": [
-      "natural_resource",
+    "consume": [
       "biological_organism"
     ],
     "things": [
       "biological_organism",
       "health_condition"
     ],
-    "base proof": [
-      "evidence"
+    "grow": [
+      "biological_organism"
     ],
-    "evidence": [
-      "evidence",
-      "financial_instrument"
+    "plants": [
+      "biological_organism"
     ],
-    "rules": [
-      "evidence"
+    "living": [
+      "biological_organism",
+      "health_condition"
     ],
-    "accordance": [
-      "evidence"
+    "consume natural": [
+      "biological_organism"
     ],
-    "facts": [
-      "evidence"
+    "organism": [
+      "biological_organism"
     ],
-    "establish truth": [
-      "evidence"
-    ],
-    "falsehood": [
-      "evidence"
-    ],
-    "base": [
+    "supported": [
       "evidence"
     ],
     "truth": [
       "evidence"
     ],
+    "establish truth": [
+      "evidence"
+    ],
+    "proof": [
+      "evidence"
+    ],
+    "base proof": [
+      "evidence"
+    ],
+    "establish": [
+      "evidence"
+    ],
+    "preservation": [
+      "evidence"
+    ],
+    "falsehood": [
+      "evidence"
+    ],
+    "supported body": [
+      "evidence"
+    ],
+    "futures": [
+      "financial_instrument"
+    ],
     "financial instrument": [
+      "financial_instrument"
+    ],
+    "bonds": [
       "financial_instrument"
     ],
     "tradeable asset": [
       "financial_instrument"
     ],
-    "ownership": [
+    "instrument": [
       "financial_instrument"
     ],
     "stocks": [
       "financial_instrument"
     ],
-    "cash": [
+    "bills": [
       "financial_instrument"
-    ],
-    "futures": [
-      "financial_instrument"
-    ],
-    "medical": [
-      "health_condition"
-    ],
-    "affect": [
-      "health_condition"
-    ],
-    "temporarily affect": [
-      "health_condition"
     ],
     "illness": [
+      "health_condition"
+    ],
+    "temporarily": [
+      "health_condition"
+    ],
+    "things including": [
+      "health_condition"
+    ],
+    "condition": [
       "health_condition"
     ],
     "disorder": [
       "health_condition"
     ],
-    "biological organisms": [
+    "human beings": [
       "health_condition"
     ],
-    "nature": [
-      "natural_resource"
+    "injury": [
+      "health_condition"
     ],
     "natural resource": [
+      "natural_resource"
+    ],
+    "natural": [
       "natural_resource"
     ],
     "occur": [
       "natural_resource"
     ],
-    "resource": [
+    "matter": [
       "natural_resource"
     ],
-    "confirmed": [
+    "nature": [
+      "natural_resource"
+    ],
+    "recognized governance": [
+      "standard"
+    ],
+    "specification": [
+      "standard"
+    ],
+    "measurement": [
+      "standard"
+    ],
+    "convention": [
       "standard"
     ],
     "governance": [
@@ -3997,79 +4025,59 @@
     "governance body": [
       "standard"
     ],
-    "measurement": [
+    "standard": [
       "standard"
-    ],
-    "recognized governance": [
-      "standard"
-    ],
-    "convention": [
-      "standard"
-    ],
-    "specification": [
-      "standard"
-    ],
-    "recognized": [
-      "standard"
-    ],
-    "election": [
-      "vote"
-    ],
-    "choice": [
-      "vote"
     ],
     "candidate": [
-      "vote"
-    ],
-    "candidate election": [
-      "vote"
-    ],
-    "formal": [
-      "vote"
-    ],
-    "referendum": [
-      "vote"
-    ],
-    "proposition": [
-      "vote"
-    ],
-    "indication": [
-      "vote"
-    ],
-    "formal indication": [
       "vote"
     ],
     "vote": [
       "vote"
     ],
-    "provider": [
-      "claim"
+    "proposition": [
+      "vote"
     ],
-    "indemnify": [
-      "claim"
+    "formal indication": [
+      "vote"
+    ],
+    "indication": [
+      "vote"
+    ],
+    "election": [
+      "vote"
+    ],
+    "referendum": [
+      "vote"
+    ],
+    "formal": [
+      "vote"
+    ],
+    "candidate election": [
+      "vote"
+    ],
+    "choice": [
+      "vote"
     ],
     "terms": [
       "claim"
     ],
     "claim": [
+      "device",
       "claim"
     ],
-    "outcomes": [
+    "indemnify": [
+      "claim"
+    ],
+    "demand": [
+      "claim"
+    ],
+    "provider": [
+      "claim"
+    ],
+    "mitigate": [
       "device"
     ],
-    "identifiable": [
-      "device"
-    ],
-    "vitro reagent": [
-      "device"
-    ],
-    "approach": [
-      "device"
-    ],
-    "contrivance": [
-      "device"
-    ],
-    "machine": [
+    "vitro": [
       "device"
     ],
     "cataloged": [
@@ -4078,31 +4086,19 @@
     "likelihood": [
       "device"
     ],
-    "mitigate": [
+    "approach": [
       "device"
     ],
-    "device": [
+    "implant": [
       "device"
     ],
-    "case": [
-      "case"
+    "identifiable": [
+      "device"
     ],
-    "address": [
-      "case"
+    "vitro reagent": [
+      "device"
     ],
-    "need": [
-      "case"
-    ],
-    "requires resolution": [
-      "case"
-    ],
-    "report": [
-      "case"
-    ],
-    "otherwise address": [
-      "case"
-    ],
-    "context": [
+    "ongoing": [
       "case"
     ],
     "ongoing healthcare": [
@@ -4111,32 +4107,44 @@
     "requires": [
       "case"
     ],
-    "tenure": [
+    "otherwise address": [
+      "case"
+    ],
+    "case": [
+      "case"
+    ],
+    "requires resolution": [
+      "case"
+    ],
+    "report": [
+      "case"
+    ],
+    "act": [
+      "case"
+    ],
+    "need": [
+      "case"
+    ],
+    "property area": [
       "cadaster",
       "geographic_space_cadaster"
     ],
     "constituent": [
       "constituent"
     ],
-    "relative": [
+    "sphere": [
       "constituent"
     ],
     "responsibility": [
       "constituent"
     ],
-    "individual": [
-      "constituent"
-    ],
     "entity relative": [
       "constituent"
     ],
-    "sphere": [
+    "relative": [
       "constituent"
     ],
     "government": [
-      "government_service"
-    ],
-    "entitlements": [
       "government_service"
     ],
     "government service": [
@@ -4145,25 +4153,10 @@
     "constituents": [
       "government_service"
     ],
-    "authoritative": [
-      "legislation"
-    ],
-    "statutory": [
-      "legislation"
-    ],
-    "directives": [
-      "legislation"
+    "doing": [
+      "government_service"
     ],
     "laws": [
-      "legislation"
-    ],
-    "statutory instruments": [
-      "legislation"
-    ],
-    "related statutory": [
-      "legislation"
-    ],
-    "authoritative directives": [
       "legislation"
     ],
     "include laws": [
@@ -4172,59 +4165,62 @@
     "legislation": [
       "legislation"
     ],
+    "authoritative": [
+      "legislation"
+    ],
+    "instruments": [
+      "legislation"
+    ],
+    "statutory": [
+      "legislation"
+    ],
+    "authoritative directives": [
+      "legislation"
+    ],
     "hazardous materials": [
       "license"
     ],
-    "governmental agency": [
+    "fishing": [
       "license"
     ],
-    "awarded": [
+    "regulated activity": [
       "license"
     ],
-    "perform": [
+    "recognized governmental": [
       "license"
     ],
-    "regulated": [
-      "license"
-    ],
-    "agency": [
-      "license"
-    ],
-    "applied": [
-      "license"
-    ],
-    "regulated objects": [
+    "engage": [
       "license"
     ],
     "license term": [
       "license_term"
     ],
-    "enforceable condition": [
+    "license": [
       "license_term"
-    ],
-    "within": [
-      "license_term"
-    ],
-    "public": [
-      "public_sector_entity"
     ],
     "governmental": [
       "public_sector_entity"
     ],
-    "governmental bodies": [
+    "public": [
       "public_sector_entity"
     ],
     "public sector entity": [
       "public_sector_entity"
     ],
-    "governmental body": [
-      "public_sector_entity"
-    ],
     "sector": [
       "public_sector_entity"
     ],
-    "collection": [
+    "governmental bodies": [
       "public_sector_entity"
+    ],
+    "governmental body": [
+      "public_sector_entity"
+    ],
+    "lending agreement": [
+      "collateral"
+    ],
+    "customer offers": [
+      "collateral"
     ],
     "lending": [
       "collateral"
@@ -4232,16 +4228,10 @@
     "offers": [
       "collateral"
     ],
-    "borrowing": [
-      "collateral"
-    ],
-    "customer offers": [
-      "collateral"
-    ],
     "collateral": [
       "collateral"
     ],
-    "lending agreement": [
+    "borrowing": [
       "collateral"
     ]
   },
