@@ -209,7 +209,7 @@ def main():
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Saved to {output_path}")
+        print(f"[OK] Saved to {output_path}")
         print("\nA2.5.1 Semantic Similarity Expansion completed successfully!")
         
     except Exception as e:

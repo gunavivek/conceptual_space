@@ -166,20 +166,20 @@ class IInterSpacePipelineOrchestrator:
         print(f"End Time: {self.execution_results['end_time']}")
         
         print(f"\nExecution Results:")
-        print(f"  ✓ Successful: {self.execution_results['success_count']}")
-        print(f"  ✗ Failed: {self.execution_results['failure_count']}")
-        print(f"  📊 Total Scripts: {self.execution_results['total_scripts']}")
+        print(f"  [OK] Successful: {self.execution_results['success_count']}")
+        print(f"  [FAIL] Failed: {self.execution_results['failure_count']}")
+        print(f"  [TOTAL] Total Scripts: {self.execution_results['total_scripts']}")
         
         if self.execution_results["overall_success"]:
-            print(f"\n🎉 OVERALL STATUS: SUCCESS")
+            print(f"\n[SUCCESS] OVERALL STATUS: SUCCESS")
             print("Inter-space semantic integration pipeline completed successfully!")
         else:
-            print(f"\n⚠️  OVERALL STATUS: PARTIAL SUCCESS OR FAILURE")
+            print(f"\n[WARNING] OVERALL STATUS: PARTIAL SUCCESS OR FAILURE")
             print("Some components failed. Check individual script results.")
         
         print(f"\nScript Details:")
         for script in self.execution_results["scripts_executed"]:
-            status = "✓" if script["success"] else "✗"
+            status = "[OK]" if script["success"] else "[FAIL]"
             print(f"  {status} {script['script']}: {script['execution_time']:.2f}s")
         
         print("="*80)

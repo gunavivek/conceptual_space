@@ -332,7 +332,7 @@ def save_output(validation_results):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(validation_results, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved validation report to {output_path}")
+    print(f"[OK] Saved validation report to {output_path}")
     
     # Save optimized centroids registry
     if validation_results["concept_qualities"]:
@@ -353,7 +353,7 @@ def save_output(validation_results):
         with open(registry_path, 'w', encoding='utf-8') as f:
             json.dump(centroids_registry, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Saved optimized centroids to {registry_path}")
+        print(f"[OK] Saved optimized centroids to {registry_path}")
 
 def main():
     """Main execution"""

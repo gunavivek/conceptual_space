@@ -94,8 +94,13 @@ class BIZBOKResourceLoader:
         
         return sorted(list(keywords))
     
-    def parse_related_concepts(self, related_str):
-        """Parse related concepts from Excel string"""
+    def parse_related_concepts(self, related_str, current_domain=None):
+        """Parse related concepts from Excel string
+        
+        Args:
+            related_str: String containing related concepts
+            current_domain: Current domain for creating domain-specific references
+        """
         if pd.isna(related_str) or str(related_str).strip() == '' or str(related_str) == 'nan':
             return []
         
@@ -114,11 +119,12 @@ class BIZBOKResourceLoader:
         for concept in temp_concepts:
             concept_clean = concept.strip()
             if concept_clean and len(concept_clean) > 1:
-                # Convert to concept ID format
-                concept_id = concept_clean.lower().replace(' ', '_').replace('-', '_')
-                concept_id = re.sub(r'[^\w_]', '', concept_id)  # Remove special chars
-                if concept_id:
-                    related_concepts.append(concept_id)
+                # Convert to base concept ID format
+                base_concept_id = concept_clean.lower().replace(' ', '_').replace('-', '_')
+                base_concept_id = re.sub(r'[^\w_]', '', base_concept_id)  # Remove special chars
+                if base_concept_id:
+                    # For now, store base concept (will be resolved to domain-specific later)
+                    related_concepts.append(base_concept_id)
         
         return list(set(related_concepts))  # Remove duplicates
     
@@ -158,32 +164,34 @@ class BIZBOKResourceLoader:
                 skipped_rows += 1
                 continue
             
-            # Create concept ID
-            concept_id = concept_name.lower().replace(' ', '_').replace('-', '_')
-            concept_id = re.sub(r'[^\w_]', '', concept_id)
+            # Create domain-specific concept ID to preserve semantic context
+            base_concept_id = concept_name.lower().replace(' ', '_').replace('-', '_')
+            base_concept_id = re.sub(r'[^\w_]', '', base_concept_id)
+            
+            # Use domain-namespaced ID to preserve domain-specific semantics
+            concept_id = f"{domain}.{base_concept_id}"  # e.g., "finance.agreement"
             
             # Extract keywords
             keywords = self.extract_keywords(concept_name, definition)
             
-            # Parse related concepts
-            related_concepts = self.parse_related_concepts(related_str)
+            # Parse related concepts (domain will be resolved later)
+            related_concepts = self.parse_related_concepts(related_str, domain)
             
-            # Store concept (preserve first occurrence of duplicates)
-            if concept_id not in self.concepts:
-                self.concepts[concept_id] = {
-                    "concept_id": concept_id,
-                    "name": concept_name,
-                    "definition": definition if definition != 'nan' else f"Concept: {concept_name}",
-                    "domain": domain,
-                    "related_concepts": related_concepts.copy(),  # Original relationships from Excel
-                    "original_relationships": related_concepts.copy(),  # Preserve original for reference
-                    "keywords": keywords,
-                    "source_row": idx + 2  # Excel row number (1-indexed + header)
-                }
-            else:
-                # Track duplicate for reporting
-                skipped_rows += 1
-                print(f"   [INFO] Skipped duplicate concept '{concept_name}' at row {idx + 2} (keeping first occurrence at row {self.concepts[concept_id]['source_row']})")
+            # Store domain-specific concept (no deduplication across domains)
+            # Each domain gets its own version of the concept with domain-specific semantics
+            self.concepts[concept_id] = {
+                "concept_id": concept_id,
+                "base_concept": base_concept_id,  # Original concept without domain prefix
+                "name": concept_name,
+                "definition": definition if definition != 'nan' else f"Concept: {concept_name}",
+                "domain": domain,
+                "related_concepts": related_concepts.copy(),  # Original relationships from Excel
+                "original_relationships": related_concepts.copy(),  # Preserve original for reference
+                "keywords": keywords,
+                "source_row": idx + 2,  # Excel row number (1-indexed + header)
+                "domain_specific": True  # Flag to indicate this preserves domain context
+            }
+            valid_concepts += 1
             
             # Update domain
             if domain not in self.domains:
@@ -196,11 +204,9 @@ class BIZBOKResourceLoader:
                 }
             self.domains[domain]["concepts"].append(concept_id)
             
-            # Update keyword index
+            # Update keyword index with domain-specific concept
             for keyword in keywords:
                 self.keyword_index[keyword].append(concept_id)
-            
-            valid_concepts += 1
         
         # Update domain counts
         for domain in self.domains:
@@ -219,45 +225,92 @@ class BIZBOKResourceLoader:
         print(f"   [OK] Extracted {len(self.keyword_index)} unique keywords")
     
     def validate_relationships(self):
-        """Validate and fix relationship references"""
-        print("\n[VALIDATE] Validating relationships...")
+        """Validate and fix relationship references with cross-domain support"""
+        print("\n[VALIDATE] Validating relationships with cross-domain support...")
         
         valid_relationships = 0
         invalid_relationships = []
         bidirectional_added = 0
+        same_domain_links = 0
+        cross_domain_links = 0
+        missing_concepts = set()
+        
+        # Build index of base concepts to domain mappings for cross-domain lookup
+        base_to_domains = {}
+        for concept_id in self.concepts.keys():
+            if '.' in concept_id:
+                domain, base_concept = concept_id.split('.', 1)
+                if base_concept not in base_to_domains:
+                    base_to_domains[base_concept] = []
+                base_to_domains[base_concept].append(concept_id)
         
         for concept_id, concept_data in self.concepts.items():
             valid_related = []
+            current_domain = concept_data["domain"]
             
-            for related_id in concept_data["related_concepts"]:
-                if related_id in self.concepts:
-                    valid_related.append(related_id)
+            for related_base_id in concept_data["related_concepts"]:
+                relationship_found = False
+                
+                # Priority 1: Try same domain first (preferred)
+                domain_specific_id = f"{current_domain}.{related_base_id}"
+                if domain_specific_id in self.concepts:
+                    valid_related.append(domain_specific_id)
                     valid_relationships += 1
-                    
-                    # Add bidirectional relationship (optional - can be disabled)
-                    # Note: This can create many relationships for highly-connected concepts
-                    if self.add_bidirectional and concept_id not in self.concepts[related_id]["related_concepts"]:
-                        self.concepts[related_id]["related_concepts"].append(concept_id)
-                        bidirectional_added += 1
-                else:
+                    same_domain_links += 1
+                    relationship_found = True
+                
+                # Priority 2: Try common domain
+                elif f"common.{related_base_id}" in self.concepts:
+                    common_id = f"common.{related_base_id}"
+                    valid_related.append(common_id)
+                    valid_relationships += 1
+                    cross_domain_links += 1
+                    relationship_found = True
+                
+                # Priority 3: Cross-domain lookup (find concept in any domain)
+                elif related_base_id in base_to_domains:
+                    # Use the first available domain where this concept exists
+                    cross_domain_id = base_to_domains[related_base_id][0]
+                    valid_related.append(cross_domain_id)
+                    valid_relationships += 1
+                    cross_domain_links += 1
+                    relationship_found = True
+                
+                # Priority 4: Not found anywhere - track as missing
+                if not relationship_found:
+                    missing_concepts.add(related_base_id)
                     invalid_relationships.append({
                         "from": concept_id,
-                        "to": related_id,
-                        "reason": "Target concept not found"
+                        "to": related_base_id,
+                        "reason": f"Concept '{related_base_id}' not found in any domain"
                     })
+                
+                # Add bidirectional relationship if enabled and relationship found
+                if relationship_found and self.add_bidirectional:
+                    target_concept_id = valid_related[-1]  # The concept we just added
+                    if concept_data["base_concept"] not in self.concepts[target_concept_id]["related_concepts"]:
+                        self.concepts[target_concept_id]["related_concepts"].append(concept_data["base_concept"])
+                        bidirectional_added += 1
             
             # Update with valid relationships only
             concept_data["related_concepts"] = valid_related
         
         print(f"   [OK] Validated {valid_relationships} relationships")
+        print(f"   [OK] Same-domain links: {same_domain_links}")
+        print(f"   [OK] Cross-domain links: {cross_domain_links}")
         print(f"   [OK] Added {bidirectional_added} bidirectional relationships")
+        if missing_concepts:
+            print(f"   [WARNING] Found {len(missing_concepts)} missing concepts: {sorted(list(missing_concepts))[:10]}...")
         if invalid_relationships:
             print(f"   [WARNING] Found {len(invalid_relationships)} invalid references")
         
         return {
             "valid_relationships": valid_relationships,
+            "same_domain_links": same_domain_links,
+            "cross_domain_links": cross_domain_links,
             "invalid_relationships": invalid_relationships[:10],  # Limit to first 10
-            "bidirectional_added": bidirectional_added
+            "bidirectional_added": bidirectional_added,
+            "missing_concepts": sorted(list(missing_concepts))[:20]  # Top 20 missing concepts
         }
     
     def generate_statistics(self):

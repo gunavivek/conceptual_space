@@ -320,11 +320,11 @@ def main():
             concept = exp["original_concept"]
             metrics = exp["expansion_metrics"]
             print(f"  {i}. {concept['theme_name']} ({concept['domain']})")
-            print(f"     Expansion: {metrics['original_terms']} → {metrics['expanded_terms']} terms")
+            print(f"     Expansion: {metrics['original_terms']} -> {metrics['expanded_terms']} terms")
             print(f"     Context richness: {metrics['context_richness']:.3f}")
             if exp["contextual_expansions"]:
                 sample_exp = exp["contextual_expansions"][0]
-                print(f"     Example: '{sample_exp['original_term']}' → '{sample_exp['similar_term']}' ({sample_exp['similarity_score']:.3f})")
+                print(f"     Example: '{sample_exp['original_term']}' -> '{sample_exp['similar_term']}' ({sample_exp['similarity_score']:.3f})")
         
         # Save results for A2.5 orchestrator
         output_data = {
@@ -339,7 +339,7 @@ def main():
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Saved to {output_path}")
+        print(f"[OK] Saved to {output_path}")
         print("\nA2.5.5 Contextual Embedding Expansion completed successfully!")
         
     except Exception as e:

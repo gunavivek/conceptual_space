@@ -479,7 +479,7 @@ def save_output(inspection_results):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(inspection_results, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved chunk inspection report to {output_path}")
+    print(f"[OK] Saved chunk inspection report to {output_path}")
     
     # Save summary text file
     summary_path = output_path.with_suffix('.txt').with_name(output_path.stem + '_summary.txt')

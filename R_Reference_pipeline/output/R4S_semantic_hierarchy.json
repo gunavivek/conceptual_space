@@ -1,125 +1,338 @@
 {
   "root": "business_concept",
   "domain_roots": {
-    "telecom_concept": [
-      "meeting"
-    ],
-    "manufacturing_concept": [
-      "energy",
-      "financial_position",
-      "order_item",
-      "product_forecast"
-    ],
-    "common_concept": [
-      "agreement_term",
-      "asset",
-      "brand",
-      "business_entity",
-      "campaign",
-      "competency",
-      "customer",
-      "event",
-      "currency",
-      "financial_account",
-      "financial_forecast",
-      "financial_transaction",
-      "monetary_amount",
-      "payment",
-      "tax",
-      "human_resource",
-      "interaction",
-      "investment_portfolio",
-      "job",
-      "location",
-      "market",
-      "message",
-      "partner",
-      "policy",
-      "schedule_element",
-      "strategy",
-      "submission",
-      "time",
-      "training_course"
-    ],
-    "international development org_concept": [
-      "beneficiary",
-      "biological_organism",
-      "financial_instrument",
-      "natural_resource"
-    ],
     "transportation_concept": [
-      "geographic_space_cadaster",
-      "investment",
-      "conveyor",
-      "network",
-      "operation",
-      "shipment",
-      "shipment_item",
-      "trip"
-    ],
-    "insurance_concept": [
-      "cadaster"
+      "transportation.brand",
+      "transportation.campaign",
+      "transportation.geographic_space_cadaster",
+      "transportation.investment",
+      "transportation.policy",
+      "transportation.research",
+      "transportation.objective",
+      "transportation.asset",
+      "transportation.conveyor",
+      "transportation.customer",
+      "transportation.network",
+      "transportation.operation",
+      "transportation.partner",
+      "transportation.shipment",
+      "transportation.trip",
+      "transportation.event",
+      "transportation.finance",
+      "transportation.financial_account",
+      "transportation.financial_forecast",
+      "transportation.financial_transaction",
+      "transportation.currency",
+      "transportation.monetary_amount",
+      "transportation.payment",
+      "transportation.tax",
+      "transportation.human_resource",
+      "transportation.initiative",
+      "transportation.job",
+      "transportation.location",
+      "transportation.training_course",
+      "transportation.time"
     ],
     "government_concept": [
-      "constituent",
-      "license",
-      "license_term"
+      "government.asset",
+      "government.biological_organism",
+      "government.brand",
+      "government.campaign",
+      "government.competency",
+      "government.constituent",
+      "government.conveyor",
+      "government.event",
+      "government.currency",
+      "government.financial_account",
+      "government.financial_forecast",
+      "government.financial_position",
+      "government.financial_transaction",
+      "government.monetary_amount",
+      "government.payment",
+      "government.tax",
+      "government.financial_instrument",
+      "government.health_condition",
+      "government.human_resource",
+      "government.inquiry",
+      "government.interaction",
+      "government.investment_portfolio",
+      "government.job",
+      "government.license",
+      "government.location",
+      "government.market",
+      "government.message",
+      "government.natural_resource",
+      "government.operation",
+      "government.partner",
+      "government.schedule_element",
+      "government.submission",
+      "government.time",
+      "government.training_course",
+      "government.trip"
+    ],
+    "manufacturing_concept": [
+      "manufacturing.asset",
+      "manufacturing.brand",
+      "manufacturing.business_entity",
+      "manufacturing.campaign",
+      "manufacturing.conveyor",
+      "manufacturing.customer",
+      "manufacturing.energy",
+      "manufacturing.event",
+      "manufacturing.finance",
+      "manufacturing.currency",
+      "manufacturing.financial_account",
+      "manufacturing.financial_forecast",
+      "manufacturing.financial_position",
+      "manufacturing.financial_transaction",
+      "manufacturing.monetary_amount",
+      "manufacturing.payment",
+      "manufacturing.tax",
+      "manufacturing.human_resource",
+      "manufacturing.initiative",
+      "manufacturing.interaction",
+      "manufacturing.investment_portfolio",
+      "manufacturing.job",
+      "manufacturing.location",
+      "manufacturing.network",
+      "manufacturing.network_node",
+      "manufacturing.operation",
+      "manufacturing.partner",
+      "manufacturing.plan",
+      "manufacturing.product_forecast",
+      "manufacturing.schedule_element",
+      "manufacturing.shipment",
+      "manufacturing.objective",
+      "manufacturing.submission",
+      "manufacturing.time",
+      "manufacturing.training_course",
+      "manufacturing.trip"
+    ],
+    "international development org_concept": [
+      "international development org.asset",
+      "international development org.beneficiary",
+      "international development org.biological_organism",
+      "international development org.brand",
+      "international development org.business_entity",
+      "international development org.competency",
+      "international development org.event",
+      "international development org.currency",
+      "international development org.financial_account",
+      "international development org.financial_forecast",
+      "international development org.financial_position",
+      "international development org.financial_transaction",
+      "international development org.monetary_amount",
+      "international development org.payment",
+      "international development org.tax",
+      "international development org.financial_instrument",
+      "international development org.human_resource",
+      "international development org.inquiry",
+      "international development org.interaction",
+      "international development org.investment_portfolio",
+      "international development org.job",
+      "international development org.location",
+      "international development org.market",
+      "international development org.message",
+      "international development org.natural_resource",
+      "international development org.operation",
+      "international development org.partner",
+      "international development org.policy",
+      "international development org.schedule_element",
+      "international development org.submission",
+      "international development org.time",
+      "international development org.training_course",
+      "international development org.trip"
+    ],
+    "common_concept": [
+      "common.asset",
+      "common.brand",
+      "common.business_entity",
+      "common.campaign",
+      "common.competency",
+      "common.customer",
+      "common.event",
+      "common.currency",
+      "common.financial_account",
+      "common.financial_forecast",
+      "common.financial_transaction",
+      "common.monetary_amount",
+      "common.payment",
+      "common.tax",
+      "common.human_resource",
+      "common.interaction",
+      "common.investment_portfolio",
+      "common.job",
+      "common.location",
+      "common.market",
+      "common.message",
+      "common.partner",
+      "common.policy",
+      "common.schedule_element",
+      "common.strategy",
+      "common.submission",
+      "common.time",
+      "common.training_course"
+    ],
+    "finance_concept": [
+      "finance.brand",
+      "finance.campaign",
+      "finance.customer",
+      "finance.partner",
+      "finance.financial_instrument",
+      "finance.order",
+      "finance.investment_portfolio",
+      "finance.currency",
+      "finance.financial_account",
+      "finance.financial_forecast",
+      "finance.financial_transaction",
+      "finance.monetary_amount",
+      "finance.payment",
+      "finance.tax",
+      "finance.asset",
+      "finance.meeting",
+      "finance.human_resource",
+      "finance.incident",
+      "finance.job",
+      "finance.location",
+      "finance.training_course",
+      "finance.time"
+    ],
+    "insurance_concept": [
+      "insurance.brand",
+      "insurance.campaign",
+      "insurance.investment",
+      "insurance.customer",
+      "insurance.partner",
+      "insurance.order",
+      "insurance.network",
+      "insurance.asset",
+      "insurance.meeting",
+      "insurance.currency",
+      "insurance.financial_account",
+      "insurance.financial_forecast",
+      "insurance.financial_transaction",
+      "insurance.monetary_amount",
+      "insurance.payment",
+      "insurance.tax",
+      "insurance.human_resource",
+      "insurance.job",
+      "insurance.location",
+      "insurance.training_course",
+      "insurance.cadaster",
+      "insurance.time"
+    ],
+    "telecom_concept": [
+      "telecom.brand",
+      "telecom.campaign",
+      "telecom.network",
+      "telecom.network_node",
+      "telecom.operation",
+      "telecom.investment",
+      "telecom.policy",
+      "telecom.research",
+      "telecom.objective",
+      "telecom.customer",
+      "telecom.partner",
+      "telecom.shipment",
+      "telecom.order",
+      "telecom.conveyor",
+      "telecom.asset",
+      "telecom.meeting",
+      "telecom.finance",
+      "telecom.financial_account",
+      "telecom.financial_forecast",
+      "telecom.currency",
+      "telecom.tax",
+      "telecom.payment",
+      "telecom.financial_transaction",
+      "telecom.monetary_amount",
+      "telecom.human_resource",
+      "telecom.job",
+      "telecom.location",
+      "telecom.trip",
+      "telecom.initiative",
+      "telecom.training_course",
+      "telecom.time"
     ]
   },
   "levels": {
     "1": [
-      "telecom_concept",
-      "manufacturing_concept",
-      "common_concept",
-      "international development org_concept",
       "transportation_concept",
+      "government_concept",
+      "manufacturing_concept",
+      "international development org_concept",
+      "common_concept",
+      "finance_concept",
       "insurance_concept",
-      "government_concept"
+      "telecom_concept"
     ],
     "2": [
-      "order",
-      "occurrence",
-      "container"
+      "container",
+      "occurrence"
     ],
     "3": [
-      "order_item",
-      "event",
-      "submission"
+      "common.submission",
+      "manufacturing.submission",
+      "international development org.submission",
+      "government.submission",
+      "common.event",
+      "manufacturing.event",
+      "international development org.event",
+      "government.event",
+      "finance.incident"
     ]
   },
   "graph": {
     "occurrence": [
-      "event"
+      "common.event",
+      "manufacturing.event",
+      "international development org.event",
+      "government.event",
+      "finance.incident"
     ],
     "container": [
-      "submission"
-    ],
-    "order": [
-      "order_item"
+      "common.submission",
+      "manufacturing.submission",
+      "international development org.submission",
+      "government.submission"
     ],
     "common_concept": [
-      "order",
-      "occurrence",
-      "container"
+      "container",
+      "occurrence"
     ]
   },
   "reverse_graph": {
-    "event": [
+    "common.event": [
       "occurrence"
     ],
-    "submission": [
+    "common.submission": [
       "container"
     ],
-    "order_item": [
-      "order"
+    "manufacturing.event": [
+      "occurrence"
     ],
-    "order": [
+    "manufacturing.submission": [
+      "container"
+    ],
+    "international development org.event": [
+      "occurrence"
+    ],
+    "international development org.submission": [
+      "container"
+    ],
+    "government.event": [
+      "occurrence"
+    ],
+    "government.submission": [
+      "container"
+    ],
+    "finance.incident": [
+      "occurrence"
+    ],
+    "container": [
       "common_concept"
     ],
     "occurrence": [
-      "common_concept"
-    ],
-    "container": [
       "common_concept"
     ]
   },

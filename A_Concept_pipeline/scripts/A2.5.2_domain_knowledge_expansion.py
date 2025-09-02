@@ -243,7 +243,7 @@ def main():
             concept = exp["original_concept"]
             metrics = exp["expansion_metrics"]
             print(f"  {i}. {concept['theme_name']} ({concept['domain']})")
-            print(f"     Expansion: {metrics['original_terms']} → {metrics['expanded_terms']} terms")
+            print(f"     Expansion: {metrics['original_terms']} -> {metrics['expanded_terms']} terms")
             print(f"     Domain Coverage: {metrics['domain_coverage']:.2f}")
         
         # Show cross-domain connections
@@ -266,7 +266,7 @@ def main():
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Saved to {output_path}")
+        print(f"[OK] Saved to {output_path}")
         print("\nA2.5.2 Domain Knowledge Expansion completed successfully!")
         
     except Exception as e:

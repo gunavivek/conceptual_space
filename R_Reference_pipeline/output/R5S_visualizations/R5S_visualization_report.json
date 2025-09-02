@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "created": "2025-08-31T21:07:24.418309",
-    "processing_time": 4.2273194789886475,
+    "created": "2025-09-01T15:57:47.767237",
+    "processing_time": 3.8693487644195557,
     "visualization_tool": "R5S_Semantic_Visualizer_v2.0"
   },
   "input_data_summary": {
-    "concepts_visualized": 97,
-    "relationships_visualized": 120,
+    "concepts_visualized": 516,
+    "relationships_visualized": 612,
     "semantic_clusters": 7,
     "hierarchy_depth": 3
   },
@@ -26,15 +26,15 @@
   "key_insights": {
     "semantic_domains_identified": 7,
     "relationship_types_visualized": 5,
-    "most_connected_domain": "organizational_structure",
+    "most_connected_domain": "financial_management",
     "visualization_quality_score": 0.925
   },
   "performance_metrics": {
-    "start_time": 1756692440.19099,
+    "start_time": 1756760263.8978891,
     "visualization_stages": {
-      "data_loading": 0.003996610641479492,
-      "interactive_viz": 0.5924193859100342,
-      "static_viz": 3.630903482437134
+      "data_loading": 0.008997917175292969,
+      "interactive_viz": 0.6037886142730713,
+      "static_viz": 3.2565622329711914
     }
   }
 }

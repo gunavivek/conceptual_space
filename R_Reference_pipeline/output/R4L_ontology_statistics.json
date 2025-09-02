@@ -1,34 +1,34 @@
 {
   "statistics": {
-    "total_concepts": 97,
-    "total_clusters": 33,
-    "total_hierarchy_nodes": 131,
+    "total_concepts": 516,
+    "total_clusters": 78,
+    "total_hierarchy_nodes": 550,
     "hierarchy_max_depth": 3,
-    "hierarchy_avg_depth": 2.045801526717557,
-    "cluster_avg_size": 2.9393939393939394,
-    "cluster_avg_coherence": 0.6723167053303672,
-    "relationships_total": 547,
+    "hierarchy_avg_depth": 2.1436363636363636,
+    "cluster_avg_size": 6.615384615384615,
+    "cluster_avg_coherence": 0.6394150535564496,
+    "relationships_total": 4938,
     "relationships_by_type": {
-      "lexical": 535,
+      "lexical": 4823,
       "causal": 0,
-      "compositional": 12,
+      "compositional": 115,
       "temporal": 0
     },
-    "avg_connectivity_score": 0.5618556701030928,
-    "avg_relationships_per_concept": 5.639175257731959
+    "avg_connectivity_score": 0.9352713178294574,
+    "avg_relationships_per_concept": 9.569767441860465
   },
   "performance_metrics": {
-    "start_time": 1756688664.1522808,
+    "start_time": 1756759156.1735938,
     "end_time": null,
     "processing_stages": {
-      "data_loading": 0.015906333923339844,
-      "clustering": 0.06035280227661133,
-      "hierarchy": 0.008003473281860352,
-      "relationships": 0.4409019947052002,
-      "enhancement": 0.0020058155059814453,
+      "data_loading": 0.0234224796295166,
+      "clustering": 0.7770912647247314,
+      "hierarchy": 0.0037233829498291016,
+      "relationships": 10.735920906066895,
+      "enhancement": 0.00611567497253418,
       "statistics": 0.0,
-      "api_creation": 0.0
+      "api_creation": 0.0018923282623291016
     }
   },
-  "timestamp": "2025-08-31T20:04:24.708849"
+  "timestamp": "2025-09-01T15:39:27.921818"
 }

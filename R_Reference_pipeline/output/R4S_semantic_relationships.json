@@ -1,21 +1,16 @@
 {
   "metadata": {
-    "created": "2025-08-31T20:39:04.034090",
-    "total_relationships": 120,
+    "created": "2025-09-01T15:39:43.299510",
+    "total_relationships": 612,
     "enhancement_level": "KEYWORD_AND_DOMAIN_ENHANCED"
   },
   "relationships": {
-    "agreement_term": {
-      "PART_OF": [
-        "agreement"
-      ]
-    },
-    "asset": {
+    "common.asset": {
       "HAS_PROPERTY": [
         "intangible"
       ]
     },
-    "brand": {
+    "common.brand": {
       "PART_OF": [
         "organization"
       ],
@@ -23,12 +18,12 @@
         "name"
       ]
     },
-    "business_entity": {
+    "common.business_entity": {
       "PART_OF": [
         "organization"
       ]
     },
-    "campaign": {
+    "common.campaign": {
       "HAS_PROPERTY": [
         "competency"
       ],
@@ -36,12 +31,12 @@
         "organization"
       ]
     },
-    "competency": {
+    "common.competency": {
       "REQUIRES": [
         "competency"
       ]
     },
-    "customer": {
+    "common.customer": {
       "HAS_PROPERTY": [
         "organization",
         "organization"
@@ -50,23 +45,23 @@
         "organization"
       ]
     },
-    "event": {
+    "common.event": {
       "IS_A": [
         "occurrence"
       ]
     },
-    "currency": {
+    "common.currency": {
       "REQUIRES": [
         "authorization"
       ],
       "HAS_PROPERTY": [
         "currency",
         "amount",
-        "value",
-        "currency"
+        "currency",
+        "value"
       ]
     },
-    "financial_account": {
+    "common.financial_account": {
       "REQUIRES": [
         "authorization"
       ],
@@ -76,7 +71,7 @@
         "value"
       ]
     },
-    "financial_forecast": {
+    "common.financial_forecast": {
       "REQUIRES": [
         "authorization"
       ],
@@ -88,7 +83,7 @@
         "organization"
       ]
     },
-    "financial_transaction": {
+    "common.financial_transaction": {
       "REQUIRES": [
         "authorization"
       ],
@@ -98,7 +93,7 @@
         "amount"
       ]
     },
-    "monetary_amount": {
+    "common.monetary_amount": {
       "REQUIRES": [
         "authorization"
       ],
@@ -110,7 +105,7 @@
         "amount"
       ]
     },
-    "payment": {
+    "common.payment": {
       "REQUIRES": [
         "authorization"
       ],
@@ -123,12 +118,12 @@
         "organization"
       ]
     },
-    "tax": {
+    "common.tax": {
       "HAS_PROPERTY": [
         "value"
       ]
     },
-    "human_resource": {
+    "common.human_resource": {
       "HAS_PROPERTY": [
         "organization",
         "competency",
@@ -139,23 +134,23 @@
         "organization"
       ]
     },
-    "interaction": {
+    "common.interaction": {
       "HAS_PROPERTY": [
         "time"
       ]
     },
-    "investment_portfolio": {
+    "common.investment_portfolio": {
       "HAS_PROPERTY": [
         "value"
       ]
     },
-    "job": {
+    "common.job": {
       "HAS_PROPERTY": [
-        "assigned",
-        "role",
         "competency",
+        "role",
         "assigned",
-        "category"
+        "category",
+        "assigned"
       ],
       "PART_OF": [
         "organization"
@@ -164,22 +159,22 @@
         "competency"
       ]
     },
-    "location": {
+    "common.location": {
       "HAS_PROPERTY": [
         "location"
       ]
     },
-    "market": {
+    "common.market": {
       "PART_OF": [
         "organization"
       ]
     },
-    "message": {
+    "common.message": {
       "PART_OF": [
         "organization"
       ]
     },
-    "partner": {
+    "common.partner": {
       "HAS_PROPERTY": [
         "organization",
         "organization"
@@ -188,18 +183,18 @@
         "organization"
       ]
     },
-    "policy": {
+    "common.policy": {
       "PART_OF": [
         "organization"
       ]
     },
-    "schedule_element": {
+    "common.schedule_element": {
       "REQUIRES": [
         "authorization"
       ],
       "HAS_PROPERTY": [
-        "currency",
         "competency",
+        "currency",
         "amount",
         "location",
         "time"
@@ -208,41 +203,77 @@
         "organization"
       ]
     },
-    "strategy": {
+    "common.strategy": {
       "PART_OF": [
         "organization"
       ]
     },
-    "submission": {
+    "common.submission": {
       "IS_A": [
         "container"
       ]
     },
-    "time": {
+    "common.time": {
       "HAS_PROPERTY": [
         "time"
       ]
     },
-    "training_course": {
+    "common.training_course": {
       "HAS_PROPERTY": [
         "curriculum",
         "curriculum"
       ]
     },
-    "geographic_space_cadaster": {
+    "transportation.brand": {
       "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "transportation.campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "transportation.geographic_space_cadaster": {
+      "HAS_PROPERTY": [
+        "property",
         "description",
-        "value",
-        "property"
+        "value"
       ]
     },
-    "investment": {
+    "transportation.investment": {
       "HAS_PROPERTY": [
-        "type",
-        "idea"
+        "idea",
+        "type"
       ]
     },
-    "conveyor": {
+    "transportation.policy": {
+      "PART_OF": [
+        "procedure"
+      ]
+    },
+    "transportation.research": {
+      "CAUSES": [
+        "result"
+      ]
+    },
+    "transportation.objective": {
+      "CAUSES": [
+        "result"
+      ]
+    },
+    "transportation.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "transportation.conveyor": {
       "HAS_PROPERTY": [
         "competency",
         "capacity"
@@ -251,13 +282,18 @@
         "organization"
       ]
     },
-    "network": {
+    "transportation.customer": {
       "HAS_PROPERTY": [
-        "infrastructure",
+        "organization",
+        "organization"
+      ]
+    },
+    "transportation.network": {
+      "HAS_PROPERTY": [
         "system"
       ]
     },
-    "operation": {
+    "transportation.operation": {
       "REQUIRES": [
         "resource"
       ],
@@ -269,7 +305,13 @@
         "time"
       ]
     },
-    "shipment": {
+    "transportation.partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "transportation.shipment": {
       "HAS_PROPERTY": [
         "competency"
       ],
@@ -277,28 +319,459 @@
         "organization"
       ]
     },
-    "shipment_item": {
-      "PART_OF": [
-        "shipment",
-        "organization"
-      ]
-    },
-    "trip": {
+    "transportation.trip": {
       "HAS_PROPERTY": [
         "location"
       ]
     },
-    "meeting": {
+    "transportation.event": {
       "HAS_PROPERTY": [
         "time"
       ]
     },
-    "energy": {
+    "transportation.finance": {
       "REQUIRES": [
         "resource"
       ]
     },
-    "financial_position": {
+    "transportation.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ]
+    },
+    "transportation.financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "transportation.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "transportation.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "transportation.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "transportation.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "transportation.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "transportation.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization",
+        "compensation"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "transportation.initiative": {
+      "CAUSES": [
+        "outcome"
+      ]
+    },
+    "transportation.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "transportation.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "transportation.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "transportation.time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "telecom.brand": {
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "telecom.campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "telecom.network": {
+      "HAS_PROPERTY": [
+        "system"
+      ]
+    },
+    "telecom.network_node": {
+      "PART_OF": [
+        "network"
+      ]
+    },
+    "telecom.operation": {
+      "REQUIRES": [
+        "resource"
+      ],
+      "CAUSES": [
+        "result"
+      ],
+      "HAS_PROPERTY": [
+        "location",
+        "time"
+      ]
+    },
+    "telecom.investment": {
+      "HAS_PROPERTY": [
+        "idea",
+        "type"
+      ]
+    },
+    "telecom.policy": {
+      "PART_OF": [
+        "procedure"
+      ]
+    },
+    "telecom.research": {
+      "CAUSES": [
+        "result"
+      ]
+    },
+    "telecom.objective": {
+      "CAUSES": [
+        "result"
+      ]
+    },
+    "telecom.customer": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "telecom.partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "telecom.shipment": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "telecom.order": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "telecom.conveyor": {
+      "HAS_PROPERTY": [
+        "competency",
+        "but",
+        "capacity"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "telecom.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "telecom.meeting": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "telecom.finance": {
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "telecom.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ]
+    },
+    "telecom.financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "telecom.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "telecom.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "telecom.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "telecom.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "telecom.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "telecom.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization",
+        "compensation"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "telecom.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "telecom.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "telecom.trip": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "telecom.initiative": {
+      "CAUSES": [
+        "outcome"
+      ]
+    },
+    "telecom.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "telecom.time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "manufacturing.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "manufacturing.brand": {
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "manufacturing.business_entity": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "manufacturing.campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "manufacturing.conveyor": {
+      "HAS_PROPERTY": [
+        "competency",
+        "but",
+        "capacity"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "manufacturing.customer": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "manufacturing.energy": {
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "manufacturing.event": {
+      "IS_A": [
+        "occurrence"
+      ]
+    },
+    "manufacturing.finance": {
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "manufacturing.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "manufacturing.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ]
+    },
+    "manufacturing.financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "manufacturing.financial_position": {
       "REQUIRES": [
         "authorization"
       ],
@@ -308,17 +781,186 @@
         "time"
       ]
     },
-    "order_item": {
-      "IS_A": [
-        "order"
+    "manufacturing.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
       ]
     },
-    "product_forecast": {
+    "manufacturing.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "manufacturing.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "manufacturing.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "manufacturing.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "manufacturing.initiative": {
+      "CAUSES": [
+        "outcome"
+      ]
+    },
+    "manufacturing.interaction": {
       "HAS_PROPERTY": [
         "time"
       ]
     },
-    "beneficiary": {
+    "manufacturing.investment_portfolio": {
+      "REQUIRES": [
+        "resource"
+      ],
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "manufacturing.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "resource"
+      ]
+    },
+    "manufacturing.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "manufacturing.network": {
+      "HAS_PROPERTY": [
+        "system"
+      ]
+    },
+    "manufacturing.network_node": {
+      "PART_OF": [
+        "network"
+      ]
+    },
+    "manufacturing.operation": {
+      "REQUIRES": [
+        "resource"
+      ],
+      "CAUSES": [
+        "result"
+      ],
+      "HAS_PROPERTY": [
+        "location",
+        "time"
+      ]
+    },
+    "manufacturing.partner": {
+      "HAS_PROPERTY": [
+        "organization"
+      ]
+    },
+    "manufacturing.plan": {
+      "CAUSES": [
+        "result"
+      ]
+    },
+    "manufacturing.product_forecast": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "manufacturing.schedule_element": {
+      "REQUIRES": [
+        "resource",
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "competency",
+        "currency",
+        "amount",
+        "location",
+        "time"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "manufacturing.shipment": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "manufacturing.objective": {
+      "CAUSES": [
+        "result"
+      ]
+    },
+    "manufacturing.submission": {
+      "IS_A": [
+        "container"
+      ]
+    },
+    "manufacturing.time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "manufacturing.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "manufacturing.trip": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "international development org.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "international development org.beneficiary": {
       "HAS_PROPERTY": [
         "organization",
         "organization"
@@ -327,7 +969,7 @@
         "organization"
       ]
     },
-    "biological_organism": {
+    "international development org.biological_organism": {
       "PART_OF": [
         "organization",
         "earth"
@@ -336,7 +978,51 @@
         "competency"
       ]
     },
-    "financial_instrument": {
+    "international development org.brand": {
+      "PART_OF": [
+        "organization"
+      ],
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "international development org.business_entity": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.competency": {
+      "REQUIRES": [
+        "competency"
+      ]
+    },
+    "international development org.event": {
+      "IS_A": [
+        "occurrence"
+      ]
+    },
+    "international development org.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "international development org.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ]
+    },
+    "international development org.financial_forecast": {
       "REQUIRES": [
         "authorization"
       ],
@@ -345,7 +1031,118 @@
         "amount"
       ]
     },
-    "natural_resource": {
+    "international development org.financial_position": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "time"
+      ]
+    },
+    "international development org.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "international development org.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "international development org.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "international development org.financial_instrument": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "international development org.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.inquiry": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.interaction": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "international development org.investment_portfolio": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "international development org.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "role",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "international development org.market": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.message": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.natural_resource": {
       "HAS_PROPERTY": [
         "competency"
       ],
@@ -353,14 +1150,279 @@
         "organization"
       ]
     },
-    "cadaster": {
+    "international development org.operation": {
+      "REQUIRES": [
+        "resource"
+      ],
+      "CAUSES": [
+        "result"
+      ],
       "HAS_PROPERTY": [
-        "description",
-        "value",
-        "property"
+        "location",
+        "time"
       ]
     },
-    "constituent": {
+    "international development org.partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.policy": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.schedule_element": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "competency",
+        "currency",
+        "amount",
+        "location",
+        "time"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "international development org.submission": {
+      "IS_A": [
+        "container"
+      ]
+    },
+    "international development org.time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "international development org.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "international development org.trip": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "insurance.brand": {
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "insurance.campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "insurance.investment": {
+      "HAS_PROPERTY": [
+        "idea",
+        "type"
+      ]
+    },
+    "insurance.customer": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "insurance.partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "insurance.order": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "insurance.network": {
+      "HAS_PROPERTY": [
+        "provision"
+      ]
+    },
+    "insurance.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "insurance.meeting": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "insurance.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "insurance.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ],
+      "CAUSES": [
+        "transaction"
+      ]
+    },
+    "insurance.financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "insurance.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
+      "CAUSES": [
+        "transaction"
+      ]
+    },
+    "insurance.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "insurance.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
+      "CAUSES": [
+        "payment"
+      ]
+    },
+    "insurance.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "insurance.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization",
+        "compensation"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "insurance.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "insurance.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "insurance.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "insurance.cadaster": {
+      "HAS_PROPERTY": [
+        "property",
+        "description",
+        "value"
+      ]
+    },
+    "insurance.time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "government.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "government.biological_organism": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.brand": {
+      "PART_OF": [
+        "organization"
+      ],
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "government.campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.competency": {
+      "REQUIRES": [
+        "competency"
+      ]
+    },
+    "government.constituent": {
       "HAS_PROPERTY": [
         "responsibility"
       ],
@@ -368,42 +1430,441 @@
         "organization"
       ]
     },
-    "license": {
+    "government.conveyor": {
+      "HAS_PROPERTY": [
+        "competency",
+        "capacity"
+      ],
       "PART_OF": [
         "organization"
       ]
     },
-    "license_term": {
+    "government.event": {
+      "IS_A": [
+        "occurrence"
+      ]
+    },
+    "government.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "government.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value"
+      ]
+    },
+    "government.financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "government.financial_position": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "time"
+      ]
+    },
+    "government.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ]
+    },
+    "government.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "government.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
       "PART_OF": [
-        "license",
         "organization"
+      ]
+    },
+    "government.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "government.financial_instrument": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "government.health_condition": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.inquiry": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.interaction": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "government.investment_portfolio": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "government.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "role",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ],
+      "REQUIRES": [
+        "competency"
+      ]
+    },
+    "government.license": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "government.market": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.message": {
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.natural_resource": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.operation": {
+      "REQUIRES": [
+        "resource"
+      ],
+      "CAUSES": [
+        "result"
+      ],
+      "HAS_PROPERTY": [
+        "location",
+        "time"
+      ]
+    },
+    "government.partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.schedule_element": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "competency",
+        "currency",
+        "amount",
+        "location",
+        "time"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "government.submission": {
+      "IS_A": [
+        "container"
+      ]
+    },
+    "government.time": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "government.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "government.trip": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "finance.brand": {
+      "HAS_PROPERTY": [
+        "name"
+      ]
+    },
+    "finance.campaign": {
+      "HAS_PROPERTY": [
+        "competency"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "finance.customer": {
+      "HAS_PROPERTY": [
+        "organization",
+        "organization"
+      ]
+    },
+    "finance.partner": {
+      "HAS_PROPERTY": [
+        "organization",
+        "value",
+        "intent"
+      ]
+    },
+    "finance.financial_instrument": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "finance.order": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "finance.investment_portfolio": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "finance.currency": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "currency",
+        "value"
+      ]
+    },
+    "finance.financial_account": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "balance",
+        "owner"
+      ],
+      "CAUSES": [
+        "transaction"
+      ]
+    },
+    "finance.financial_forecast": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount"
+      ]
+    },
+    "finance.financial_transaction": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
+      "CAUSES": [
+        "transaction",
+        "balance_change"
+      ]
+    },
+    "finance.monetary_amount": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "value",
+        "currency",
+        "amount"
+      ]
+    },
+    "finance.payment": {
+      "REQUIRES": [
+        "authorization"
+      ],
+      "HAS_PROPERTY": [
+        "currency",
+        "amount",
+        "amount"
+      ],
+      "CAUSES": [
+        "payment"
+      ]
+    },
+    "finance.tax": {
+      "HAS_PROPERTY": [
+        "value"
+      ]
+    },
+    "finance.asset": {
+      "HAS_PROPERTY": [
+        "intangible"
+      ]
+    },
+    "finance.meeting": {
+      "HAS_PROPERTY": [
+        "time"
+      ]
+    },
+    "finance.human_resource": {
+      "HAS_PROPERTY": [
+        "organization",
+        "competency",
+        "organization",
+        "compensation"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "finance.incident": {
+      "IS_A": [
+        "occurrence"
+      ]
+    },
+    "finance.job": {
+      "HAS_PROPERTY": [
+        "competency",
+        "assigned",
+        "category",
+        "assigned"
+      ],
+      "PART_OF": [
+        "organization"
+      ]
+    },
+    "finance.location": {
+      "HAS_PROPERTY": [
+        "location"
+      ]
+    },
+    "finance.training_course": {
+      "HAS_PROPERTY": [
+        "curriculum",
+        "curriculum"
+      ]
+    },
+    "finance.time": {
+      "HAS_PROPERTY": [
+        "time"
       ]
     }
   },
   "relationship_types": [
+    "PRECEDES",
+    "REQUIRES",
+    "USED_FOR",
     "IS_A",
     "CAUSES",
-    "HAS_PROPERTY",
-    "RELATED_TO",
-    "USED_FOR",
-    "REQUIRES",
-    "PART_OF",
     "CONSTRAINS",
     "ENABLES",
-    "PRECEDES"
+    "HAS_PROPERTY",
+    "PART_OF",
+    "RELATED_TO"
   ],
   "applied_inference_rules": [
     {
-      "rule": "transitivity_PART_OF",
-      "subject": "shipment_item",
-      "object": "organization",
-      "via": "shipment"
-    },
-    {
-      "rule": "transitivity_PART_OF",
-      "subject": "license_term",
-      "object": "organization",
-      "via": "license"
+      "rule": "transaction_causes_change",
+      "subject": "finance.financial_transaction",
+      "object": "balance_change"
     }
   ],
   "enhancement_sources": {

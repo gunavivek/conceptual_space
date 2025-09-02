@@ -1,0 +1,41 @@
+{
+  "ontology_document": {},
+  "ontology_question": {},
+  "document_question": {
+    "Agreement": {
+      "bridge_type": "reality_to_intent",
+      "document_evidence": [
+        "finqa_test_617",
+        "rec_006"
+      ],
+      "user_questions": [
+        "What are the terms of this agreement?",
+        "When does the agreement expire?",
+        "Who are the parties in this agreement?",
+        "What are the obligations under this agreement?"
+      ],
+      "predictive_power": 0.0,
+      "bridge_strength": 0.0,
+      "confidence": 0.44999999999999996
+    },
+    "Tax": {
+      "bridge_type": "reality_to_intent",
+      "document_evidence": [
+        "finqa_test_1017",
+        "finqa_test_686",
+        "rec_009",
+        "rec_010"
+      ],
+      "user_questions": [
+        "What is our tax liability?",
+        "How much tax do we owe?",
+        "What are the tax deductions?",
+        "When is the tax payment due?"
+      ],
+      "predictive_power": 0.2744,
+      "bridge_strength": 0.2744,
+      "confidence": 0.55
+    }
+  },
+  "tri_space_consensus": {}
+}

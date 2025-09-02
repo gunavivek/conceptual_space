@@ -101,7 +101,7 @@ class SemanticGraphBuilder:
                 'level': 1
             })
         
-        # Create edges with relationship type styling
+        # Create edges with relationship type styling and smart target matching
         edge_id = 0
         relationship_colors = {
             'IS_A': '#4169E1',           # Blue - hierarchical
@@ -111,16 +111,50 @@ class SemanticGraphBuilder:
             'USED_FOR': '#9966FF'        # Purple - functional
         }
         
+        # Build target lookup for smart matching (target -> concept_id mapping)
+        target_to_concept = {}
+        for concept_id in concepts.keys():
+            if '.' in concept_id:
+                # Extract base concept name (e.g., "common.asset" -> "asset")
+                base_name = concept_id.split('.', 1)[1]
+                if base_name not in target_to_concept:
+                    target_to_concept[base_name] = []
+                target_to_concept[base_name].append(concept_id)
+            else:
+                # Handle legacy non-namespaced concepts
+                if concept_id not in target_to_concept:
+                    target_to_concept[concept_id] = []
+                target_to_concept[concept_id].append(concept_id)
+        
         for concept_name, concept_data in concepts.items():
             relationships = concept_data.get('relationships', {})
             for rel_type, targets in relationships.items():
                 for target in targets:
+                    # Try multiple matching strategies
+                    matched_concepts = []
+                    
+                    # Strategy 1: Direct match (for exact IDs)
                     if target in concepts:
+                        matched_concepts.append(target)
+                    
+                    # Strategy 2: Base name match (e.g., "asset" matches "common.asset", "finance.asset")
+                    elif target in target_to_concept:
+                        matched_concepts.extend(target_to_concept[target])
+                    
+                    # Strategy 3: Partial match (e.g., "organization" might match concepts containing "organization")
+                    else:
+                        for concept_id in concepts.keys():
+                            if target.lower() in concept_id.lower():
+                                matched_concepts.append(concept_id)
+                                break  # Take first match to avoid duplicates
+                    
+                    # Create edges for all matched concepts
+                    for matched_concept in matched_concepts[:1]:  # Limit to first match to avoid clutter
                         edges.append({
                             'from': concept_name,
-                            'to': target,
+                            'to': matched_concept,
                             'color': {'color': relationship_colors.get(rel_type, '#808080'), 'opacity': 0.6},
-                            'title': f'{rel_type}: {concept_name} → {target}',
+                            'title': f'{rel_type}: {concept_name} → {matched_concept}',
                             'width': 2
                         })
                         edge_id += 1

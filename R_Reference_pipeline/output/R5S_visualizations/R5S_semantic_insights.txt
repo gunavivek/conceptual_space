@@ -1,13 +1,13 @@
 
 R5S SEMANTIC ONTOLOGY VISUALIZATION INSIGHTS
 ============================================
-Generated: 2025-08-31T21:07:24.418309
-Processing Time: 4.23 seconds
+Generated: 2025-09-01T15:57:47.767237
+Processing Time: 3.87 seconds
 
 SEMANTIC STRUCTURE ANALYSIS:
 ----------------------------
-• Total Concepts Visualized: 97
-• Semantic Relationships: 120
+• Total Concepts Visualized: 516
+• Semantic Relationships: 612
 • Semantic Domains: 7
 • Taxonomy Depth: 3 levels
 
@@ -26,7 +26,7 @@ Static Publication Figures:
 
 KEY SEMANTIC INSIGHTS:
 ---------------------
-• Most Connected Domain: organizational_structure
+• Most Connected Domain: financial_management
 • Relationship Types: 5
 • Visualization Quality: 0.93/1.0
 

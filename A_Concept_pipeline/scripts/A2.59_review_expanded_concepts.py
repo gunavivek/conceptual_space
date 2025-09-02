@@ -265,7 +265,7 @@ def save_output(review_data, output_path="outputs/A2.59_concept_review_report.js
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(review_data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved concept review report to {full_path}")
+    print(f"[OK] Saved concept review report to {full_path}")
     
     # Save a summary text file for easy reading
     summary_path = full_path.with_suffix('.txt').with_name(full_path.stem + '_summary.txt')

@@ -48,9 +48,9 @@ def load_strategy_results():
                 with open(full_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                     strategy_results[strategy_name] = data
-                    print(f"  ✓ Loaded {strategy_name}")
+                    print(f"  [OK] Loaded {strategy_name}")
             except Exception as e:
-                print(f"  ✗ Failed to load {strategy_name}: {e}")
+                print(f"  [FAIL] Failed to load {strategy_name}: {e}")
                 strategy_results[strategy_name] = None
         else:
             print(f"  ⚠ {strategy_name} results not found, running strategy...")
@@ -294,7 +294,7 @@ def save_output(combined_expansions, summary):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved orchestrated results to {output_path}")
+    print(f"[OK] Saved orchestrated results to {output_path}")
     
     # Save summary separately
     summary_path = script_dir / "outputs/A2.5_expansion_summary.json"
@@ -319,7 +319,7 @@ def main():
         
         print(f"\nValid strategies loaded: {len(valid_strategies)}")
         for strategy in valid_strategies:
-            print(f"  ✓ {strategy}")
+            print(f"  [OK] {strategy}")
         
         # Combine expansion results
         print(f"\nCombining expansion results...")
@@ -350,7 +350,7 @@ def main():
             scores = concept_data["expansion_scores"]
             print(f"  {i}. {concept['theme_name']}")
             print(f"     Quality: {scores['overall_quality']:.3f}")
-            print(f"     Expansion: {len(concept['primary_keywords'])} → {len(concept_data['all_expanded_terms'])} terms")
+            print(f"     Expansion: {len(concept['primary_keywords'])} -> {len(concept_data['all_expanded_terms'])} terms")
             print(f"     Strategies: {len(concept_data['strategy_contributions'])}")
         
         # Save results

@@ -66,7 +66,7 @@ def identify_core_concepts(groups, total_docs, top_k=10):
             "primary_keywords": group["representative_keywords"][:5],
             "domain": group.get("dominant_domain", "general"),
             "related_documents": group["documents"],
-            "keyword_frequencies": dict(group["common_keywords"].most_common(10))
+            "keyword_frequencies": dict(sorted(group["common_keywords"].items(), key=lambda x: x[1], reverse=True)[:10])
         }
         
         core_concepts.append(core_concept)
@@ -198,7 +198,7 @@ def save_output(data, output_path="outputs/A2.4_core_concepts.json"):
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved core concepts to {full_path}")
+    print(f"[OK] Saved core concepts to {full_path}")
     
     # Save domain mappings separately
     domain_path = full_path.with_name("A2.4_domain_mappings.json")

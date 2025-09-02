@@ -299,7 +299,7 @@ def main():
             concept = exp["original_concept"]
             metrics = exp["expansion_metrics"]
             print(f"  {i}. {concept['theme_name']}")
-            print(f"     Expansion: {metrics['original_terms']} → {metrics['expanded_terms']} terms")
+            print(f"     Expansion: {metrics['original_terms']} -> {metrics['expanded_terms']} terms")
             print(f"     High-freq: {metrics['high_freq_terms']}, Co-occurrence: {metrics['cooccurrence_terms']}")
         
         # Save results for A2.5 orchestrator
@@ -315,7 +315,7 @@ def main():
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Saved to {output_path}")
+        print(f"[OK] Saved to {output_path}")
         print("\nA2.5.4 Frequency-Based Expansion completed successfully!")
         
     except Exception as e:

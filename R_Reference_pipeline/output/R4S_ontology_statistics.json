@@ -1,50 +1,50 @@
 {
   "metadata": {
     "version": "2.0_ENHANCED",
-    "created": "2025-08-31T20:39:04.021997",
-    "processing_time": 0.05204272270202637,
+    "created": "2025-09-01T15:39:43.255876",
+    "processing_time": 0.2635841369628906,
     "enhancement_level": "FULL_R1_INTEGRATION"
   },
   "input_sources": {
-    "r1_concepts": 97,
+    "r1_concepts": 516,
     "r1_domains": 8,
     "r1_keywords": 1157
   },
   "counts": {
-    "total_concepts": 97,
-    "total_relationships": 120,
+    "total_concepts": 516,
+    "total_relationships": 612,
     "semantic_clusters": 7,
     "relationship_types": 5,
-    "inference_rules_applied": 2
+    "inference_rules_applied": 1
   },
   "relationship_distribution": {
-    "PART_OF": 27,
-    "HAS_PROPERTY": 76,
-    "REQUIRES": 13,
-    "IS_A": 3,
-    "CAUSES": 1
+    "HAS_PROPERTY": 424,
+    "PART_OF": 72,
+    "REQUIRES": 86,
+    "IS_A": 9,
+    "CAUSES": 21
   },
   "quality_metrics": {
-    "semantic_coverage": 0.5154639175257731,
-    "avg_relationships_per_concept": 1.2371134020618557,
-    "avg_cluster_coherence": 0.26458194524476814,
+    "semantic_coverage": 0.45930232558139533,
+    "avg_relationships_per_concept": 1.186046511627907,
+    "avg_cluster_coherence": 0.31284692388515756,
     "taxonomy_depth": 3,
-    "domain_integration_score": 0.2242344602126456
+    "domain_integration_score": 0.31284692388515756
   },
   "enhancement_metrics": {
-    "keyword_enhanced_extractions": 76,
+    "keyword_enhanced_extractions": 424,
     "domain_enhanced_inferences": 0,
-    "cross_domain_relationships": 13
+    "cross_domain_relationships": 0
   },
   "performance_metrics": {
-    "start_time": 1756690743.9699547,
+    "start_time": 1756759182.992292,
     "processing_stages": {
-      "data_loading": 0.0019981861114501953,
+      "data_loading": 0.012670278549194336,
       "enhanced_parsing": 0.0,
-      "enhanced_extraction": 0.03451967239379883,
+      "enhanced_extraction": 0.12040567398071289,
       "enhanced_taxonomy": 0.0,
-      "enhanced_reasoning": 0.0,
-      "enhanced_clustering": 0.015524864196777344
+      "enhanced_reasoning": 0.0009987354278564453,
+      "enhanced_clustering": 0.12950944900512695
     }
   }
 }

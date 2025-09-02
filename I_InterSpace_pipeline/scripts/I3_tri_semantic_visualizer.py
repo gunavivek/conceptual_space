@@ -47,7 +47,7 @@ class I3_TriSemanticVisualizer:
         if I1_CrossPipelineSemanticIntegrator:
             try:
                 self.i1_integrator = I1_CrossPipelineSemanticIntegrator()
-                print("✓ I1 Cross-Pipeline Semantic Integrator initialized")
+                print("[OK] I1 Cross-Pipeline Semantic Integrator initialized")
             except Exception as e:
                 print(f"[WARNING]  I1 initialization warning: {e}")
         
@@ -898,7 +898,7 @@ class I3_TriSemanticVisualizer:
         with open(html_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
         
-        print(f"✓ I3 Tri-Semantic Visualization created: {html_file}")
+        print(f"[OK] I3 Tri-Semantic Visualization created: {html_file}")
         
         return str(html_file)
     
@@ -937,7 +937,7 @@ class I3_TriSemanticVisualizer:
                 
                 try:
                     webbrowser.open(visualization_url)
-                    print("✓ Browser opened successfully")
+                    print("[OK] Browser opened successfully")
                     
                     print("\\n" + "="*70)
                     print("I3 TRI-SEMANTIC VISUALIZER ACTIVE")
@@ -957,7 +957,7 @@ class I3_TriSemanticVisualizer:
                             import time
                             time.sleep(1)
                     except KeyboardInterrupt:
-                        print("\\n\\n✓ I3 Visualizer stopped")
+                        print("\\n\\n[OK] I3 Visualizer stopped")
                         
                 finally:
                     os.chdir(original_dir)
