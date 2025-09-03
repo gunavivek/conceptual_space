@@ -164,14 +164,27 @@ def convert_table_to_text(table_info: Dict[str, Any], context: str = "") -> str:
         elif context and row_label.lower() in ['total', 'subtotal']:
             row_label = f"{row_label} {context}"
             
-        # Generate natural language
+        # Generate natural language with proper formatting
+        # Format monetary values correctly (e.g., "$53.2 million" not "53.2 $ million")
+        def format_value(val, unit):
+            unit = unit.strip()
+            val = val.strip()
+            if '$' in unit:
+                # Move $ to the beginning of the value
+                unit = unit.replace('$', '').strip()
+                return f"${val} {unit}" if unit else f"${val}"
+            return f"{val} {unit}" if unit else val
+        
         if len(years) >= 2 and len(values) >= 2:
-            text_parts.append(f"{row_label} for {years[0]} is {values[0]} {units} and for {years[1]} is {values[1]} {units}")
+            val1 = format_value(values[0], units)
+            val2 = format_value(values[1], units)
+            text_parts.append(f"{row_label} for {years[0]} is {val1} and for {years[1]} is {val2}")
         elif len(values) == 1:
+            val = format_value(values[0], units)
             if years:
-                text_parts.append(f"{row_label} for {years[0]} is {values[0]} {units}")
+                text_parts.append(f"{row_label} for {years[0]} is {val}")
             else:
-                text_parts.append(f"{row_label} is {values[0]} {units}")
+                text_parts.append(f"{row_label} is {val}")
     
     return ". ".join(text_parts) + "." if text_parts else ""
 
@@ -350,6 +363,9 @@ def enrich_document_concepts(doc, r4s_ontology, r1_domains):
     doc_id = doc.get("doc_id", "")
     text = doc.get("text", "")
     
+    # Convert tables to readable text before concept analysis
+    text_with_tables_converted = convert_tables_to_text(text)
+    
     # Stage 2: Domain-Specific Concept Filtering
     domain_concepts = get_domain_concepts(domain, r4s_ontology, r1_domains)
     
@@ -367,8 +383,8 @@ def enrich_document_concepts(doc, r4s_ontology, r1_domains):
             "concept_analysis_performed": False
         }
     
-    # Stage 3: Enhanced Semantic Analysis  
-    concept_matches = enhanced_concept_analysis(text, domain_concepts)
+    # Stage 3: Enhanced Semantic Analysis (using converted text)
+    concept_matches = enhanced_concept_analysis(text_with_tables_converted, domain_concepts)
     
     # Stage 4: Concept Enrichment Generation
     matched_concepts = list(concept_matches.keys())
@@ -381,6 +397,8 @@ def enrich_document_concepts(doc, r4s_ontology, r1_domains):
     # Stage 5: Cross-Pipeline Intelligence Integration
     enriched_doc = {
         **doc,  # Preserve all original A1.1 data including metadata
+        "text": text_with_tables_converted,  # Use converted text for downstream
+        "original_text": text,  # Preserve original for reference
         "matched_concepts": matched_concepts,
         "concept_definitions": concept_definitions,
         "matched_keywords": matched_keywords,
@@ -390,7 +408,8 @@ def enrich_document_concepts(doc, r4s_ontology, r1_domains):
         "domain_source": "a11_inheritance", 
         "concept_source": "r4s_semantic_analysis",
         "concept_analysis_performed": True,
-        "available_domain_concepts": len(domain_concepts)
+        "available_domain_concepts": len(domain_concepts),
+        "tables_converted": text != text_with_tables_converted  # Track if conversion happened
     }
     
     return enriched_doc

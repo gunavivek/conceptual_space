@@ -246,13 +246,13 @@ def calculate_domain_relevance_multiplier(keyword, concept_keywords, matched_key
     return multiplier
 
 def load_input(preprocessed_path="outputs/A2.1_preprocessed_documents.json", 
-               domain_path="outputs/A1.2_domain_detection_output.json"):
+               domain_path="outputs/A1.2_concept_enriched_documents.json"):
     """
-    Load both preprocessed documents and domain detection data for enhanced keyword extraction
+    Load both preprocessed documents and concept enrichment data for enhanced keyword extraction
     
     Args:
         preprocessed_path: Path to A2.1 preprocessed documents
-        domain_path: Path to A1.2 domain detection output with BIZBOK concepts
+        domain_path: Path to A1.2 concept enriched documents with BIZBOK concepts
         
     Returns:
         dict: Combined data with preprocessed documents and domain intelligence
@@ -267,11 +267,11 @@ def load_input(preprocessed_path="outputs/A2.1_preprocessed_documents.json",
     with open(preprocessed_file, 'r', encoding='utf-8') as f:
         preprocessed_data = json.load(f)
     
-    # Load A1.2 domain detection (secondary input for BIZBOK concept intelligence)
+    # Load A1.2 concept enrichment (secondary input for BIZBOK concept intelligence)
     domain_file = script_dir / domain_path
     if not domain_file.exists():
-        print(f"Warning: Domain detection file not found: {domain_file}")
-        print("Proceeding with basic keyword extraction without domain enhancement...")
+        print(f"Warning: Concept enrichment file not found: {domain_file}")
+        print("Proceeding with basic keyword extraction without concept enhancement...")
         return {
             "documents": preprocessed_data["documents"],
             "domain_enhanced": False,

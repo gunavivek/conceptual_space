@@ -459,9 +459,13 @@ def clean_text(text, concept_intelligence: Dict[str, Any] = None):
     for placeholder, original_term in protected_terms.items():
         text = text.replace(placeholder, original_term)
     
-    # Normalize spaces around punctuation
-    text = re.sub(r'\s+([.,;!?])', r'\1', text)
-    text = re.sub(r'([.,;!?])\s*', r'\1 ', text)
+    # Normalize spaces around punctuation (but preserve decimal numbers)
+    # Remove spaces before punctuation
+    text = re.sub(r'\s+([,;!?])', r'\1', text)
+    # Don't add spaces after periods between numbers (decimals)
+    text = re.sub(r'(?<!\d)\.(?!\d)\s*', '. ', text)
+    # Add space after other punctuation
+    text = re.sub(r'([,;!?])\s*', r'\1 ', text)
     
     # Remove extra spaces
     text = re.sub(r'\s+', ' ', text)
@@ -472,8 +476,8 @@ def extract_sentences(text):
     """
     Stage 3: Document Structure Extraction - Sentence Boundaries
     
-    Identifies sentence boundaries using regex splitting on sentence terminators (., !, ?)
-    applied to table-converted text. Filters minimum content requirements (>3 words).
+    Identifies sentence boundaries using intelligent regex that preserves decimal numbers
+    and monetary values. Splits on sentence terminators (., !, ?) but not within numbers.
     
     Args:
         text: Cleaned text from Stage 2
@@ -481,8 +485,12 @@ def extract_sentences(text):
     Returns:
         list: List of sentences meeting minimum word requirements
     """
-    # Simple sentence splitting
-    sentences = re.split(r'[.!?]+', text)
+    # Smart sentence splitting that preserves decimals and monetary values
+    # Don't split on periods that are:
+    # 1. Between digits (e.g., 53.2)
+    # 2. After currency symbols followed by digits (e.g., $53.2)
+    # Use negative lookbehind and lookahead to preserve decimal numbers
+    sentences = re.split(r'(?<!\d)\.(?!\d)|[!?]+', text)
     
     # Clean and filter sentences
     sentences = [s.strip() for s in sentences if s.strip()]
