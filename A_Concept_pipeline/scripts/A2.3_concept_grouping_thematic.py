@@ -94,6 +94,11 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
     keywords = doc_data.get('keywords', [])
     doc_text = doc_data.get('text', '')
     
+    # Add keyword_id to each keyword if not present
+    for i, kw in enumerate(keywords):
+        if 'keyword_id' not in kw:
+            kw['keyword_id'] = f"{doc_id}_kw_{i}"
+    
     if not keywords:
         return {
             'doc_id': doc_id,
@@ -130,6 +135,7 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
             'theme_name': '',
             'keywords': [kw_data],
             'keyword_indices': [i],
+            'keyword_ids': [kw_data['keyword_id']],  # Add keyword_id tracking
             'avg_tfidf_score': kw_data['score'],
             'cluster_coherence': 1.0
         }
@@ -144,6 +150,7 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
             if similarity > similarity_threshold:
                 cluster['keywords'].append(keywords[j])
                 cluster['keyword_indices'].append(j)
+                cluster['keyword_ids'].append(keywords[j]['keyword_id'])  # Track keyword_id
                 used_keywords.add(j)
                 print(f"    Clustered '{kw_data['term']}' with '{keywords[j]['term']}' (sim: {similarity:.3f})")
         
@@ -169,13 +176,27 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
         clusters.append(cluster)
         print(f"  Created cluster '{cluster['theme_name']}' with {len(cluster['keywords'])} keywords")
     
+    # Create explicit mapping structure
+    doc_cluster_keyword_mapping = {
+        'doc_id': doc_id,
+        'mappings': []
+    }
+    
+    for cluster in clusters:
+        doc_cluster_keyword_mapping['mappings'].append({
+            'cluster_id': cluster['cluster_id'],
+            'theme': cluster['theme_name'],
+            'keyword_ids': cluster['keyword_ids']
+        })
+    
     return {
         'doc_id': doc_id,
         'keyword_clusters': clusters,
         'cluster_count': len(clusters),
         'keywords_clustered': sum(len(c['keywords']) for c in clusters),
         'keywords_total': len(keywords),
-        'clustering_effectiveness': len(clusters) / len(keywords) if keywords else 0
+        'clustering_effectiveness': len(clusters) / len(keywords) if keywords else 0,
+        'doc_cluster_keyword_mapping': doc_cluster_keyword_mapping  # Add explicit mapping
     }
 
 def load_input(input_path="outputs/A2.2_keyword_extractions.json"):

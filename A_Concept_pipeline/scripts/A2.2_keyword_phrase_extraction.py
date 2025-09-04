@@ -1,395 +1,471 @@
 #!/usr/bin/env python3
 """
-A2.2: Keyword and Phrase Extraction
-Extract important terms and phrases from preprocessed documents
+A2.2: Ensemble Keyword Extraction (ENHANCED)
+
+Multi-method keyword extraction using KeyBERT, YAKE, Direct extraction, and Lemma reconstruction
+for domain-agnostic, business-relevant, meaningful term identification.
+
+Processing Methods:
+    Method 1: KeyBERT - Semantic keyword extraction using BERT embeddings
+    Method 2: YAKE - Statistical and linguistic keyword extraction
+    Method 3: Direct Extraction - Rule-based business term identification
+    Method 4: Lemma Reconstruction - Rebuilding terms from normalized lemmas
+    Method 5: Ensemble Fusion - Combining and scoring results
+
+Input: outputs/A2.1_preprocessed_documents.json
+Output: outputs/A2.2_keyword_extractions.json
 """
 
 import json
+import re
+import warnings
 from pathlib import Path
 from datetime import datetime
-from collections import Counter
-import re
+from collections import Counter, defaultdict
+from typing import List, Dict, Any, Tuple, Set
 import math
 
-def calculate_tf(text):
-    """
-    Calculate term frequency for words in text
-    
-    Args:
-        text: Input text
-        
-    Returns:
-        dict: Term frequency scores
-    """
-    words = text.lower().split()
-    word_count = len(words)
-    
-    if word_count == 0:
-        return {}
-    
-    # Count word frequencies
-    word_freq = Counter(words)
-    
-    # Calculate TF scores
-    tf_scores = {}
-    for word, freq in word_freq.items():
-        tf_scores[word] = freq / word_count
-    
-    return tf_scores
+# Try to import optional libraries for ensemble extraction
+try:
+    from keybert import KeyBERT
+    KEYBERT_AVAILABLE = True
+except ImportError:
+    KEYBERT_AVAILABLE = False
+    warnings.warn("KeyBERT not available. Install with: pip install keybert")
 
-def calculate_idf(documents):
-    """
-    Calculate inverse document frequency across all documents
-    
-    Args:
-        documents: List of document texts
-        
-    Returns:
-        dict: IDF scores
-    """
-    num_docs = len(documents)
-    if num_docs == 0:
-        return {}
-    
-    # Count document frequency for each word
-    word_doc_freq = {}
-    
-    for doc in documents:
-        words_in_doc = set(doc.lower().split())
-        for word in words_in_doc:
-            word_doc_freq[word] = word_doc_freq.get(word, 0) + 1
-    
-    # Calculate IDF scores
-    idf_scores = {}
-    for word, doc_freq in word_doc_freq.items():
-        idf_scores[word] = math.log(num_docs / doc_freq)
-    
-    return idf_scores
+try:
+    import yake
+    YAKE_AVAILABLE = True
+except ImportError:
+    YAKE_AVAILABLE = False
+    warnings.warn("YAKE not available. Install with: pip install yake")
 
-def calculate_tfidf(tf_scores, idf_scores):
+def get_business_term_dictionary() -> Dict[str, Set[str]]:
     """
-    Calculate TF-IDF scores
+    Get comprehensive business term dictionary for filtering and validation
     
-    Args:
-        tf_scores: Term frequency scores
-        idf_scores: Inverse document frequency scores
-        
     Returns:
-        dict: TF-IDF scores
+        Dict: Categories of business terms for domain-agnostic extraction
     """
-    tfidf_scores = {}
-    
-    for word, tf in tf_scores.items():
-        if word in idf_scores:
-            tfidf_scores[word] = tf * idf_scores[word]
-    
-    return tfidf_scores
-
-def extract_phrases(text, max_words=3):
-    """
-    Extract multi-word phrases from text
-    
-    Args:
-        text: Input text
-        max_words: Maximum words in a phrase
-        
-    Returns:
-        list: Extracted phrases
-    """
-    # Clean text for phrase extraction
-    text = re.sub(r'[^\w\s]', ' ', text.lower())
-    words = text.split()
-    
-    phrases = []
-    
-    # Extract n-grams
-    for n in range(2, min(max_words + 1, len(words) + 1)):
-        for i in range(len(words) - n + 1):
-            phrase = ' '.join(words[i:i+n])
-            
-            # Filter out phrases with stop words at beginning/end
-            stop_words = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for'}
-            first_word = words[i]
-            last_word = words[i+n-1]
-            
-            if first_word not in stop_words and last_word not in stop_words:
-                phrases.append(phrase)
-    
-    return phrases
-
-def filter_keywords(tfidf_scores, min_length=2, top_k=50):
-    """
-    Filter and select top keywords
-    
-    Args:
-        tfidf_scores: TF-IDF scores for words
-        min_length: Minimum word length
-        top_k: Number of top keywords to select
-        
-    Returns:
-        list: Top keywords with scores
-    """
-    # Filter by length and common words
-    stop_words = {
-        'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have',
-        'i', 'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you',
-        'do', 'at', 'this', 'but', 'his', 'by', 'from', 'is', 'was'
-    }
-    
-    filtered_scores = {
-        word: score for word, score in tfidf_scores.items()
-        if len(word) >= min_length and word not in stop_words
-    }
-    
-    # Sort by score and get top k
-    sorted_keywords = sorted(filtered_scores.items(), key=lambda x: x[1], reverse=True)
-    
-    return sorted_keywords[:top_k]
-
-def extract_concept_keywords(concept_definitions):
-    """
-    Extract seed keywords from BIZBOK concept definitions for domain-aware weighting
-    
-    Args:
-        concept_definitions: Dict of concept_id -> definition text
-        
-    Returns:
-        set: Set of domain-relevant seed keywords
-    """
-    concept_keywords = set()
-    
-    for concept_id, definition in concept_definitions.items():
-        if not definition:
-            continue
-            
-        # Extract meaningful words from definition (excluding stop words)
-        words = re.findall(r'\b[a-z]{3,}\b', definition.lower())
-        
-        # Filter common stop words and focus on business terms
-        stop_words = {'the', 'and', 'for', 'are', 'that', 'with', 'such', 'this', 'can', 'may'}
-        meaningful_words = [w for w in words if w not in stop_words and len(w) > 3]
-        
-        concept_keywords.update(meaningful_words[:5])  # Top 5 words per concept
-        
-        # Also extract the base concept name (e.g., "financial_account" -> ["financial", "account"])
-        base_concept = concept_id.split('.')[-1]
-        concept_keywords.update(base_concept.replace('_', ' ').split())
-    
-    return concept_keywords
-
-def get_domain_specific_terms(domain):
-    """
-    Get domain-specific terminology for targeted boosting
-    
-    Args:
-        domain: BIZBOK domain classification (e.g., 'finance', 'insurance', 'manufacturing')
-        
-    Returns:
-        set: Domain-specific terms that should receive relevance boosts
-    """
-    domain_terms = {
-        'finance': {'income', 'revenue', 'payment', 'transaction', 'account', 'asset', 'liability', 
-                   'deferred', 'current', 'million', 'thousand', 'balance', 'financial', 'monetary'},
-        
-        'insurance': {'claim', 'policy', 'premium', 'coverage', 'benefit', 'deductible', 'risk', 
-                     'underwriting', 'actuarial', 'insured', 'insurer', 'policyholder'},
-        
-        'manufacturing': {'production', 'assembly', 'quality', 'process', 'material', 'inventory', 
-                         'supply', 'manufacturing', 'operation', 'equipment', 'facility'},
-        
-        'government': {'regulation', 'compliance', 'policy', 'public', 'citizen', 'service', 
-                      'administration', 'governance', 'authority', 'jurisdiction'},
-        
-        'transportation': {'logistics', 'shipping', 'delivery', 'route', 'vehicle', 'freight', 
-                          'carrier', 'transit', 'cargo', 'transportation'},
-        
-        'telecom': {'network', 'service', 'infrastructure', 'communication', 'bandwidth', 
-                   'connectivity', 'subscriber', 'telecommunication'},
-        
-        'international development org': {'development', 'program', 'project', 'community', 
-                                        'beneficiary', 'intervention', 'capacity', 'sustainability'}
-    }
-    
-    return domain_terms.get(domain.lower(), set())
-
-def calculate_domain_relevance_multiplier(keyword, concept_keywords, matched_keywords, document_domain=None):
-    """
-    Calculate relevance multiplier for domain-specific terms based on document's actual domain
-    
-    Args:
-        keyword: Term to evaluate
-        concept_keywords: Set of domain concept keywords
-        matched_keywords: Dict of concept -> matched keywords from R4S
-        document_domain: BIZBOK domain classification for this specific document
-        
-    Returns:
-        float: Relevance multiplier (1.0 = no boost, >1.0 = boosted)
-    """
-    multiplier = 1.0
-    
-    # Boost if keyword appears in concept vocabulary
-    if keyword.lower() in concept_keywords:
-        multiplier *= 2.0
-    
-    # Additional boost if keyword was matched by R4S semantic analysis
-    for concept_matches in matched_keywords.values():
-        if keyword.lower() in [kw.lower() for kw in concept_matches]:
-            multiplier *= 1.5
-            break
-    
-    # Domain-specific boosts based on document's actual domain
-    if document_domain:
-        domain_terms = get_domain_specific_terms(document_domain)
-        if keyword.lower() in domain_terms:
-            multiplier *= 1.3
-    
-    return multiplier
-
-def load_input(preprocessed_path="outputs/A2.1_preprocessed_documents.json", 
-               domain_path="outputs/A1.2_concept_enriched_documents.json"):
-    """
-    Load both preprocessed documents and concept enrichment data for enhanced keyword extraction
-    
-    Args:
-        preprocessed_path: Path to A2.1 preprocessed documents
-        domain_path: Path to A1.2 concept enriched documents with BIZBOK concepts
-        
-    Returns:
-        dict: Combined data with preprocessed documents and domain intelligence
-    """
-    script_dir = Path(__file__).parent.parent
-    
-    # Load A2.1 preprocessed documents (primary input for cleaned text)
-    preprocessed_file = script_dir / preprocessed_path
-    if not preprocessed_file.exists():
-        raise FileNotFoundError(f"Preprocessed documents not found: {preprocessed_file}")
-    
-    with open(preprocessed_file, 'r', encoding='utf-8') as f:
-        preprocessed_data = json.load(f)
-    
-    # Load A1.2 concept enrichment (secondary input for BIZBOK concept intelligence)
-    domain_file = script_dir / domain_path
-    if not domain_file.exists():
-        print(f"Warning: Concept enrichment file not found: {domain_file}")
-        print("Proceeding with basic keyword extraction without concept enhancement...")
-        return {
-            "documents": preprocessed_data["documents"],
-            "domain_enhanced": False,
-            "preprocessing_stats": {k: v for k, v in preprocessed_data.items() if k != "documents"}
-        }
-    
-    with open(domain_file, 'r', encoding='utf-8') as f:
-        domain_data = json.load(f)
-    
-    # Build concept definitions lookup for domain-aware keyword extraction
-    concept_definitions = {}
-    matched_keywords_lookup = {}
-    
-    for doc in domain_data["documents"]:
-        doc_id = doc["doc_id"]
-        if "concept_definitions" in doc:
-            concept_definitions[doc_id] = doc["concept_definitions"]
-        if "matched_keywords" in doc:
-            matched_keywords_lookup[doc_id] = doc["matched_keywords"]
-    
     return {
-        "documents": preprocessed_data["documents"],
-        "domain_enhanced": True,
-        "concept_definitions": concept_definitions,
-        "matched_keywords": matched_keywords_lookup,
-        "preprocessing_stats": {k: v for k, v in preprocessed_data.items() if k != "documents"}
-    }
-
-def process_documents(data):
-    """
-    Extract keywords and phrases from documents with BIZBOK domain intelligence
-    
-    Args:
-        data: Combined data with preprocessed documents and domain concepts
-        
-    Returns:
-        dict: Documents with domain-enhanced keyword extractions
-    """
-    documents = data.get("documents", [])
-    domain_enhanced = data.get("domain_enhanced", False)
-    
-    # Collect all document texts for IDF calculation  
-    all_texts = [doc.get("cleaned_text", "") for doc in documents]
-    idf_scores = calculate_idf(all_texts)
-    
-    all_keywords = []
-    all_phrases = []
-    concept_keyword_stats = {"total_concepts": 0, "boosted_terms": 0}
-    
-    for doc in documents:
-        doc_id = doc.get("doc_id", "")
-        text = doc.get("cleaned_text", "")
-        
-        # Calculate base TF-IDF scores
-        tf_scores = calculate_tf(text)
-        tfidf_scores = calculate_tfidf(tf_scores, idf_scores)
-        
-        # Apply domain-aware enhancement if available
-        if domain_enhanced and doc_id in data.get("concept_definitions", {}):
-            concept_defs = data["concept_definitions"][doc_id]
-            matched_kws = data.get("matched_keywords", {}).get(doc_id, {})
-            document_domain = doc.get("bizbok_domain") or doc.get("domain")  # Get document's actual domain
-            
-            # Extract concept keywords for this document's domain
-            concept_keywords = extract_concept_keywords(concept_defs)
-            concept_keyword_stats["total_concepts"] += len(concept_defs)
-            
-            # Apply domain relevance multipliers to TF-IDF scores with document's specific domain
-            enhanced_scores = {}
-            for term, score in tfidf_scores.items():
-                multiplier = calculate_domain_relevance_multiplier(term, concept_keywords, matched_kws, document_domain)
-                enhanced_scores[term] = score * multiplier
-                if multiplier > 1.0:
-                    concept_keyword_stats["boosted_terms"] += 1
-                    
-            tfidf_scores = enhanced_scores
-            doc["domain_enhanced"] = True
-            doc["document_domain"] = document_domain  # Track which domain was used for boosting
-            doc["concept_boost_applied"] = len([k for k, v in enhanced_scores.items() 
-                                              if calculate_domain_relevance_multiplier(k, concept_keywords, matched_kws, document_domain) > 1.0])
-        else:
-            doc["domain_enhanced"] = False
-            doc["concept_boost_applied"] = 0
-        
-        # Extract top keywords with domain-aware scoring
-        keywords = filter_keywords(tfidf_scores, top_k=30)
-        doc["keywords"] = [{"term": word, "score": score} for word, score in keywords]
-        all_keywords.extend([word for word, _ in keywords])
-        
-        # Extract phrases
-        phrases = extract_phrases(text)
-        phrase_freq = Counter(phrases)
-        top_phrases = phrase_freq.most_common(20)
-        doc["phrases"] = [{"phrase": phrase, "count": count} for phrase, count in top_phrases]
-        all_phrases.extend([phrase for phrase, _ in top_phrases])
-    
-    # Calculate corpus-level statistics
-    keyword_freq = Counter(all_keywords)
-    phrase_freq = Counter(all_phrases)
-    
-    return {
-        "documents": documents,
-        "count": len(documents),
-        "total_unique_keywords": len(set(all_keywords)),
-        "total_unique_phrases": len(set(all_phrases)),
-        "top_keywords": keyword_freq.most_common(20),
-        "top_phrases": phrase_freq.most_common(20),
-        "domain_enhancement": {
-            "enabled": domain_enhanced,
-            "total_concepts_processed": concept_keyword_stats["total_concepts"],
-            "terms_boosted": concept_keyword_stats["boosted_terms"],
-            "documents_enhanced": sum(1 for doc in documents if doc.get("domain_enhanced", False))
+        'financial': {
+            'revenue', 'income', 'expense', 'cost', 'profit', 'loss', 'asset', 'liability',
+            'equity', 'balance', 'payment', 'transaction', 'account', 'deferred', 'accrued',
+            'depreciation', 'amortization', 'interest', 'dividend', 'capital', 'cash', 'debt'
         },
-        "processing_timestamp": datetime.now().isoformat()
+        'business_operations': {
+            'contract', 'customer', 'client', 'service', 'product', 'operation', 'business',
+            'company', 'organization', 'management', 'strategy', 'process', 'procedure',
+            'policy', 'compliance', 'regulation', 'audit', 'control', 'governance'
+        },
+        'temporal': {
+            'quarter', 'annual', 'monthly', 'period', 'year', 'fiscal', 'reporting',
+            'current', 'non-current', 'long-term', 'short-term', 'maturity'
+        },
+        'quantitative': {
+            'amount', 'total', 'sum', 'average', 'percentage', 'rate', 'ratio', 'margin',
+            'volume', 'quantity', 'measure', 'metric', 'indicator', 'benchmark'
+        },
+        'legal_regulatory': {
+            'agreement', 'clause', 'provision', 'requirement', 'standard', 'framework',
+            'guideline', 'principle', 'rule', 'law', 'statute', 'regulation'
+        }
     }
+
+def is_valid_business_term(term: str, business_dict: Dict[str, Set[str]]) -> bool:
+    """
+    Check if term is a valid business term using comprehensive filtering
+    
+    Args:
+        term: Term to validate
+        business_dict: Business term dictionary
+        
+    Returns:
+        bool: Whether term is valid business term
+    """
+    term_lower = term.lower().strip()
+    
+    # Filter out invalid patterns
+    if not term_lower or len(term_lower) < 2:
+        return False
+    
+    # Filter out pure numbers and currency amounts
+    if re.match(r'^[\d,\.\$€£¥]+$', term_lower):
+        return False
+    
+    # Filter out single characters and punctuation
+    if len(term_lower) <= 1 or re.match(r'^[^\w\s]+$', term_lower):
+        return False
+    
+    # Filter out terms ending with punctuation
+    if re.match(r'.*[\.,:;!?\)\]\}]$', term_lower):
+        return False
+    
+    # Filter out years (4-digit numbers)
+    if re.match(r'^(19|20)\d{2}$', term_lower):
+        return False
+    
+    # Check if term contains business keywords
+    for category, terms in business_dict.items():
+        if any(business_term in term_lower for business_term in terms):
+            return True
+    
+    # Check if it's a compound noun that looks business-relevant
+    words = term_lower.split()
+    if len(words) >= 2:
+        # Multi-word terms are more likely to be business concepts
+        return True
+    
+    # Single words need to be substantive (not too common)
+    common_words = {
+        'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with',
+        'by', 'from', 'up', 'about', 'into', 'over', 'after', 'under', 'again',
+        'above', 'below', 'between', 'through', 'during', 'before', 'after'
+    }
+    
+    return term_lower not in common_words and len(term_lower) >= 3
+
+def extract_keybert_keywords(text: str, max_keywords: int = 30) -> List[Tuple[str, float]]:
+    """
+    Extract keywords using KeyBERT semantic extraction
+    
+    Args:
+        text: Input text
+        max_keywords: Maximum number of keywords to extract
+        
+    Returns:
+        List of (keyword, score) tuples
+    """
+    if not KEYBERT_AVAILABLE or not text.strip():
+        return []
+    
+    try:
+        kw_model = KeyBERT()
+        keywords = kw_model.extract_keywords(
+            text,
+            keyphrase_ngram_range=(1, 3),  # 1-3 word phrases
+            stop_words='english',
+            use_mmr=True,  # Use Maximal Marginal Relevance for diversity
+            diversity=0.5,
+            top_k=max_keywords
+        )
+        
+        # Filter for business relevance
+        business_dict = get_business_term_dictionary()
+        filtered_keywords = []
+        
+        for keyword, score in keywords:
+            if is_valid_business_term(keyword, business_dict):
+                filtered_keywords.append((keyword, score))
+        
+        return filtered_keywords[:max_keywords//2]  # Take top half after filtering
+        
+    except Exception as e:
+        print(f"[WARNING] KeyBERT extraction failed: {str(e)}")
+        return []
+
+def extract_yake_keywords(text: str, max_keywords: int = 30) -> List[Tuple[str, float]]:
+    """
+    Extract keywords using YAKE statistical extraction
+    
+    Args:
+        text: Input text
+        max_keywords: Maximum number of keywords to extract
+        
+    Returns:
+        List of (keyword, score) tuples (note: YAKE uses inverse scoring - lower is better)
+    """
+    if not YAKE_AVAILABLE or not text.strip():
+        return []
+    
+    try:
+        kw_extractor = yake.KeywordExtractor(
+            lan="en",
+            n=3,  # max n-gram size
+            dedupLim=0.7,  # deduplication threshold
+            top=max_keywords * 2  # Extract more to filter
+        )
+        
+        keywords = kw_extractor.extract_keywords(text)
+        
+        # Filter for business relevance and convert YAKE scores (invert for consistency)
+        business_dict = get_business_term_dictionary()
+        filtered_keywords = []
+        
+        for keyword, yake_score in keywords:
+            if is_valid_business_term(keyword, business_dict):
+                # Convert YAKE score (lower=better) to standard score (higher=better)
+                normalized_score = max(0, 1 - (yake_score / 10))
+                filtered_keywords.append((keyword, normalized_score))
+        
+        # Sort by converted score (descending)
+        filtered_keywords.sort(key=lambda x: x[1], reverse=True)
+        return filtered_keywords[:max_keywords//2]
+        
+    except Exception as e:
+        print(f"[WARNING] YAKE extraction failed: {str(e)}")
+        return []
+
+def extract_direct_terms(pos_tags: List[Dict], noun_phrases: List[Dict], business_terms: List[str]) -> List[Tuple[str, float]]:
+    """
+    Extract terms using direct rule-based patterns
+    
+    Args:
+        pos_tags: POS tag data from A2.1
+        noun_phrases: Noun phrase data from A2.1
+        business_terms: Pre-extracted business terms from A2.1
+        
+    Returns:
+        List of (term, score) tuples
+    """
+    direct_terms = []
+    business_dict = get_business_term_dictionary()
+    
+    # Method 1: Use pre-extracted business terms from A2.1 (highest confidence)
+    for term in business_terms:
+        if is_valid_business_term(term, business_dict):
+            direct_terms.append((term, 0.9))  # High confidence score
+    
+    # Method 2: Extract compound nouns from POS tags
+    for i in range(len(pos_tags) - 1):
+        if (pos_tags[i]['pos'] == 'NOUN' and 
+            pos_tags[i+1]['pos'] == 'NOUN' and
+            not pos_tags[i]['is_stop'] and 
+            not pos_tags[i+1]['is_stop']):
+            
+            compound = f"{pos_tags[i]['token']} {pos_tags[i+1]['token']}"
+            if is_valid_business_term(compound, business_dict):
+                direct_terms.append((compound, 0.7))
+    
+    # Method 3: Extract adjective-noun patterns
+    for i in range(len(pos_tags) - 1):
+        if (pos_tags[i]['pos'] in ['ADJ', 'ADJECTIVE'] and 
+            pos_tags[i+1]['pos'] == 'NOUN' and
+            not pos_tags[i]['is_stop']):
+            
+            adj_noun = f"{pos_tags[i]['token']} {pos_tags[i+1]['token']}"
+            if is_valid_business_term(adj_noun, business_dict):
+                direct_terms.append((adj_noun, 0.6))
+    
+    # Method 4: Extract relevant noun phrases
+    for np in noun_phrases:
+        phrase = np['text']
+        if is_valid_business_term(phrase, business_dict) and len(phrase.split()) <= 4:
+            direct_terms.append((phrase, 0.8))
+    
+    # Deduplicate and return
+    unique_terms = {}
+    for term, score in direct_terms:
+        if term not in unique_terms or unique_terms[term] < score:
+            unique_terms[term] = score
+    
+    return [(term, score) for term, score in unique_terms.items()]
+
+def reconstruct_from_lemmas(lemmatized_tokens: List[str], token_mapping: Dict[str, str], text: str) -> List[Tuple[str, float]]:
+    """
+    Reconstruct meaningful terms from lemmatized tokens
+    
+    Args:
+        lemmatized_tokens: List of lemmatized tokens
+        token_mapping: Original to lemma mapping
+        text: Original text for context
+        
+    Returns:
+        List of (term, score) tuples
+    """
+    if not lemmatized_tokens:
+        return []
+    
+    reconstructed_terms = []
+    business_dict = get_business_term_dictionary()
+    
+    # Method 1: Find business lemmas and map back to original forms
+    for original, lemma in token_mapping.items():
+        if any(business_term == lemma for category in business_dict.values() for business_term in category):
+            # This lemma is a business term - prefer original form if different
+            term = original if original != lemma else lemma
+            if is_valid_business_term(term, business_dict):
+                reconstructed_terms.append((term, 0.6))
+    
+    # Method 2: Look for adjacent business lemmas to reconstruct compound terms
+    for i in range(len(lemmatized_tokens) - 1):
+        lemma1, lemma2 = lemmatized_tokens[i], lemmatized_tokens[i+1]
+        
+        # Check if both lemmas relate to business
+        if (any(business_term == lemma1 for category in business_dict.values() for business_term in category) or
+            any(business_term == lemma2 for category in business_dict.values() for business_term in category)):
+            
+            compound_lemma = f"{lemma1} {lemma2}"
+            if is_valid_business_term(compound_lemma, business_dict):
+                reconstructed_terms.append((compound_lemma, 0.5))
+    
+    # Method 3: Count business lemma frequencies
+    lemma_counts = Counter(lemmatized_tokens)
+    for lemma, count in lemma_counts.most_common(20):
+        if any(business_term == lemma for category in business_dict.values() for business_term in category):
+            if is_valid_business_term(lemma, business_dict):
+                # Score based on frequency
+                score = min(0.8, 0.3 + (count * 0.1))
+                reconstructed_terms.append((lemma, score))
+    
+    return reconstructed_terms
+
+def ensemble_merge_keywords(keybert_kw: List[Tuple], yake_kw: List[Tuple], 
+                          direct_kw: List[Tuple], reconstructed_kw: List[Tuple]) -> List[Dict]:
+    """
+    Merge keywords from all methods using ensemble scoring
+    
+    Args:
+        keybert_kw: KeyBERT keywords
+        yake_kw: YAKE keywords  
+        direct_kw: Direct extraction keywords
+        reconstructed_kw: Reconstructed keywords
+        
+    Returns:
+        List of keyword dictionaries with ensemble scores
+    """
+    # Combine all keywords with method attribution
+    all_keywords = defaultdict(lambda: {'scores': [], 'methods': []})
+    
+    # Add KeyBERT results (weight: 0.3)
+    for term, score in keybert_kw:
+        all_keywords[term.lower()]['scores'].append(score * 0.3)
+        all_keywords[term.lower()]['methods'].append('keybert')
+        all_keywords[term.lower()]['term'] = term  # Preserve original case
+    
+    # Add YAKE results (weight: 0.25)
+    for term, score in yake_kw:
+        all_keywords[term.lower()]['scores'].append(score * 0.25)
+        all_keywords[term.lower()]['methods'].append('yake')
+        if 'term' not in all_keywords[term.lower()]:
+            all_keywords[term.lower()]['term'] = term
+    
+    # Add Direct results (weight: 0.3)
+    for term, score in direct_kw:
+        all_keywords[term.lower()]['scores'].append(score * 0.3)
+        all_keywords[term.lower()]['methods'].append('direct')
+        if 'term' not in all_keywords[term.lower()]:
+            all_keywords[term.lower()]['term'] = term
+    
+    # Add Reconstructed results (weight: 0.15)
+    for term, score in reconstructed_kw:
+        all_keywords[term.lower()]['scores'].append(score * 0.15)
+        all_keywords[term.lower()]['methods'].append('reconstructed')
+        if 'term' not in all_keywords[term.lower()]:
+            all_keywords[term.lower()]['term'] = term
+    
+    # Calculate ensemble scores
+    final_keywords = []
+    for term_key, data in all_keywords.items():
+        if 'term' in data:
+            # Ensemble score = sum of weighted scores + method diversity bonus
+            base_score = sum(data['scores'])
+            method_diversity = len(set(data['methods'])) * 0.05  # Bonus for multiple methods
+            ensemble_score = base_score + method_diversity
+            
+            final_keywords.append({
+                'term': data['term'],
+                'score': min(1.0, ensemble_score),  # Cap at 1.0
+                'methods': data['methods'],
+                'method_count': len(data['methods'])
+            })
+    
+    # Sort by ensemble score and return top keywords
+    final_keywords.sort(key=lambda x: x['score'], reverse=True)
+    return final_keywords[:50]  # Top 50 keywords
+
+def process_document(doc: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Process a single document using ensemble keyword extraction
+    
+    Args:
+        doc: Document data from A2.1
+        
+    Returns:
+        Document with extracted keywords
+    """
+    doc_id = doc.get('doc_id', '')
+    text = doc.get('cleaned_text', '')
+    
+    # Get linguistic data from A2.1
+    lemmatization = doc.get('lemmatization', {})
+    pos_tags = doc.get('pos_tags', [])
+    noun_phrases = doc.get('noun_phrases', [])
+    business_terms = doc.get('extracted_business_terms', [])
+    
+    lemmatized_tokens = lemmatization.get('lemmatized_tokens', [])
+    token_mapping = lemmatization.get('token_mapping', {})
+    
+    print(f"\\nProcessing document: {doc_id}")
+    print(f"  Text length: {len(text)} chars")
+    print(f"  Lemmatized tokens: {len(lemmatized_tokens)}")
+    print(f"  POS tags: {len(pos_tags)}")
+    print(f"  Noun phrases: {len(noun_phrases)}")
+    print(f"  Pre-extracted business terms: {len(business_terms)}")
+    
+    # Method 1: KeyBERT extraction
+    keybert_keywords = extract_keybert_keywords(text)
+    print(f"  KeyBERT keywords: {len(keybert_keywords)}")
+    
+    # Method 2: YAKE extraction  
+    yake_keywords = extract_yake_keywords(text)
+    print(f"  YAKE keywords: {len(yake_keywords)}")
+    
+    # Method 3: Direct extraction
+    direct_keywords = extract_direct_terms(pos_tags, noun_phrases, business_terms)
+    print(f"  Direct keywords: {len(direct_keywords)}")
+    
+    # Method 4: Lemma reconstruction
+    reconstructed_keywords = reconstruct_from_lemmas(lemmatized_tokens, token_mapping, text)
+    print(f"  Reconstructed keywords: {len(reconstructed_keywords)}")
+    
+    # Method 5: Ensemble fusion
+    final_keywords = ensemble_merge_keywords(
+        keybert_keywords, yake_keywords, direct_keywords, reconstructed_keywords
+    )
+    print(f"  Final ensemble keywords: {len(final_keywords)}")
+    
+    # Convert to A2.3-compatible format (simplified for clustering)
+    keywords_for_clustering = []
+    for kw in final_keywords[:30]:  # Top 30 for clustering
+        keywords_for_clustering.append({
+            'term': kw['term'],
+            'score': kw['score']
+        })
+    
+    # Add extraction metadata
+    doc['keywords'] = keywords_for_clustering
+    doc['keyword_extraction'] = {
+        'method': 'ensemble',
+        'methods_used': ['keybert', 'yake', 'direct', 'reconstructed'],
+        'keybert_available': KEYBERT_AVAILABLE,
+        'yake_available': YAKE_AVAILABLE,
+        'total_extracted': len(final_keywords),
+        'selected_for_clustering': len(keywords_for_clustering)
+    }
+    
+    # Show sample results
+    if keywords_for_clustering:
+        sample = [kw['term'] for kw in keywords_for_clustering[:5]]
+        print(f"  Sample keywords: {sample}")
+    
+    return doc
+
+def load_input(input_path="outputs/A2.1_preprocessed_documents.json"):
+    """Load preprocessed documents from A2.1"""
+    script_dir = Path(__file__).parent.parent
+    full_path = script_dir / input_path
+    
+    if not full_path.exists():
+        raise FileNotFoundError(f"Input file not found: {full_path}")
+    
+    with open(full_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    return data.get("documents", [])
 
 def save_output(data, output_path="outputs/A2.2_keyword_extractions.json"):
-    """Save keyword extraction results"""
+    """Save ensemble keyword extraction results"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
     
@@ -398,71 +474,58 @@ def save_output(data, output_path="outputs/A2.2_keyword_extractions.json"):
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"[OK] Saved keyword extractions to {full_path}")
-    
-    # Save metadata
-    meta_path = full_path.with_suffix('.meta.json')
-    metadata = {
-        "script": "A2.2_keyword_phrase_extraction.py",
-        "timestamp": data["processing_timestamp"],
-        "document_count": data["count"],
-        "unique_keywords": data["total_unique_keywords"],
-        "unique_phrases": data["total_unique_phrases"],
-        "output_file": str(full_path)
-    }
-    
-    with open(meta_path, 'w') as f:
-        json.dump(metadata, f, indent=2)
+    print(f"[OK] Saved ensemble keyword extractions to {full_path}")
 
 def main():
-    """Main execution - BIZBOK Domain-Enhanced Keyword Extraction"""
-    print("="*70)
-    print("A2.2: Keyword and Phrase Extraction (BIZBOK DOMAIN-ENHANCED)")
-    print("="*70)
+    """Main execution function"""
+    print("=" * 80)
+    print("A2.2: Ensemble Keyword Extraction (ENHANCED)")
+    print("=" * 80)
+    print("Loading preprocessed documents from A2.1...")
     
-    try:
-        # Load both preprocessed documents and domain intelligence
-        print("Loading preprocessed documents and BIZBOK domain intelligence...")
-        input_data = load_input()
-        
-        # Extract keywords with domain enhancement
-        print(f"Extracting keywords from {len(input_data['documents'])} documents...")
-        if input_data.get("domain_enhanced"):
-            print("[OK] BIZBOK domain enhancement: ENABLED")
-        else:
-            print("[WARNING] BIZBOK domain enhancement: DISABLED (A1.2 not found)")
-            
-        output_data = process_documents(input_data)
-        
-        # Display domain enhancement results
-        domain_stats = output_data.get("domain_enhancement", {})
-        if domain_stats.get("enabled"):
-            print(f"\nBIZBOK Domain Enhancement Results:")
-            print(f"  Concepts processed: {domain_stats.get('total_concepts_processed', 0)}")
-            print(f"  Terms boosted: {domain_stats.get('terms_boosted', 0)}")
-            print(f"  Documents enhanced: {domain_stats.get('documents_enhanced', 0)}/{output_data['count']}")
-        
-        # Display extraction results  
-        print(f"\nKeyword Extraction Statistics:")
-        print(f"  Unique Keywords: {output_data['total_unique_keywords']}")
-        print(f"  Unique Phrases: {output_data['total_unique_phrases']}")
-        
-        print(f"\nTop 10 Domain-Enhanced Keywords:")
-        for keyword, count in output_data["top_keywords"][:10]:
-            print(f"  - {keyword}: {count}")
-        
-        print(f"\nTop 10 Extracted Phrases:")
-        for phrase, count in output_data["top_phrases"][:10]:
-            print(f"  - {phrase}: {count}")
-        
-        # Save output
-        save_output(output_data)
-        
-        print("\nA2.2 Keyword Extraction completed successfully!")
-        
-    except Exception as e:
-        print(f"Error in A2.2 Keyword Extraction: {str(e)}")
-        raise
+    # Check method availability
+    print(f"KeyBERT available: {KEYBERT_AVAILABLE}")
+    print(f"YAKE available: {YAKE_AVAILABLE}")
+    
+    if not KEYBERT_AVAILABLE and not YAKE_AVAILABLE:
+        print("[WARNING] Neither KeyBERT nor YAKE available - using direct extraction only")
+    
+    # Load documents
+    documents = load_input()
+    print(f"Processing {len(documents)} documents with ensemble extraction...")
+    
+    # Process all documents
+    for doc in documents:
+        process_document(doc)
+    
+    # Create output structure
+    results = {
+        "documents": documents,
+        "count": len(documents),
+        "extraction_method": "ensemble",
+        "methods_available": {
+            "keybert": KEYBERT_AVAILABLE,
+            "yake": YAKE_AVAILABLE,
+            "direct": True,
+            "reconstructed": True
+        },
+        "processing_timestamp": datetime.now().isoformat()
+    }
+    
+    # Save results
+    save_output(results)
+    
+    # Print summary
+    total_keywords = sum(len(doc.get('keywords', [])) for doc in documents)
+    avg_keywords = total_keywords / len(documents) if documents else 0
+    
+    print(f"\\nEnsemble Extraction Summary:")
+    print(f"  Documents processed: {len(documents)}")
+    print(f"  Total keywords extracted: {total_keywords}")
+    print(f"  Average keywords per document: {avg_keywords:.1f}")
+    print(f"  Methods used: KeyBERT={KEYBERT_AVAILABLE}, YAKE={YAKE_AVAILABLE}, Direct=True, Reconstructed=True")
+    
+    print(f"\\nA2.2 Ensemble Keyword Extraction completed successfully!")
 
 if __name__ == "__main__":
     main()

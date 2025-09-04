@@ -24,7 +24,125 @@ from pathlib import Path
 from datetime import datetime
 import unicodedata
 import ast
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
+import warnings
+
+# Try to import spacy for lemmatization
+try:
+    import spacy
+    nlp = spacy.load("en_core_web_sm")
+    SPACY_AVAILABLE = True
+except (ImportError, OSError):
+    SPACY_AVAILABLE = False
+    warnings.warn("SpaCy not available. Lemmatization will be skipped. Install with: pip install spacy && python -m spacy download en_core_web_sm")
+
+def perform_lemmatization(text: str) -> Dict[str, Any]:
+    """
+    Perform lemmatization and POS tagging on text using spaCy
+    
+    Args:
+        text: Cleaned text to lemmatize
+        
+    Returns:
+        Dict containing lemmatized tokens, POS tags, and mappings
+    """
+    if not SPACY_AVAILABLE:
+        return {
+            'lemmatization_performed': False,
+            'lemmatized_tokens': [],
+            'pos_tags': [],
+            'token_mapping': {},
+            'noun_phrases': []
+        }
+    
+    try:
+        # Process text with spaCy
+        doc = nlp(text)
+        
+        lemmatized_tokens = []
+        pos_tags = []
+        token_mapping = {}
+        noun_phrases = []
+        
+        # Extract tokens, lemmas, and POS tags
+        for token in doc:
+            # Skip punctuation and whitespace
+            if not token.is_punct and not token.is_space:
+                lemmatized_tokens.append(token.lemma_.lower())
+                pos_tags.append({
+                    'token': token.text,
+                    'lemma': token.lemma_.lower(),
+                    'pos': token.pos_,
+                    'tag': token.tag_,
+                    'is_stop': token.is_stop
+                })
+                # Map original to lemma (for reconstruction)
+                if token.text.lower() != token.lemma_.lower():
+                    token_mapping[token.text.lower()] = token.lemma_.lower()
+        
+        # Extract noun phrases (important for business terms)
+        for chunk in doc.noun_chunks:
+            noun_phrases.append({
+                'text': chunk.text,
+                'lemmatized': ' '.join([token.lemma_.lower() for token in chunk]),
+                'root': chunk.root.text,
+                'root_lemma': chunk.root.lemma_.lower()
+            })
+        
+        return {
+            'lemmatization_performed': True,
+            'lemmatized_tokens': lemmatized_tokens,
+            'pos_tags': pos_tags,
+            'token_mapping': token_mapping,
+            'noun_phrases': noun_phrases,
+            'unique_lemmas': list(set(lemmatized_tokens)),
+            'lemma_count': len(lemmatized_tokens),
+            'unique_lemma_count': len(set(lemmatized_tokens))
+        }
+        
+    except Exception as e:
+        print(f"[WARNING] Lemmatization failed: {str(e)}")
+        return {
+            'lemmatization_performed': False,
+            'error': str(e),
+            'lemmatized_tokens': [],
+            'pos_tags': [],
+            'token_mapping': {},
+            'noun_phrases': []
+        }
+
+def extract_business_terms(pos_tags: List[Dict], noun_phrases: List[Dict]) -> List[str]:
+    """
+    Extract potential business terms from POS tags and noun phrases
+    
+    Args:
+        pos_tags: List of POS tag dictionaries
+        noun_phrases: List of noun phrase dictionaries
+        
+    Returns:
+        List of potential business terms
+    """
+    business_terms = []
+    
+    # Extract noun phrases that look like business terms
+    for np in noun_phrases:
+        # Filter out very short or very long phrases
+        if 2 <= len(np['text'].split()) <= 4:
+            # Check if it contains business-related words
+            if any(word in np['text'].lower() for word in 
+                   ['revenue', 'income', 'asset', 'liability', 'contract', 
+                    'payment', 'cost', 'expense', 'balance', 'account']):
+                business_terms.append(np['text'])
+    
+    # Look for compound nouns (NN + NN patterns)
+    for i in range(len(pos_tags) - 1):
+        if (pos_tags[i]['pos'] == 'NOUN' and 
+            pos_tags[i+1]['pos'] == 'NOUN' and 
+            not pos_tags[i]['is_stop']):
+            compound = f"{pos_tags[i]['token']} {pos_tags[i+1]['token']}"
+            business_terms.append(compound)
+    
+    return list(set(business_terms))  # Remove duplicates
 
 def extract_concept_intelligence(doc: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -708,6 +826,25 @@ def process_documents(data):
         # Step 3: Domain-aware text cleaning with concept preservation
         cleaned_text = clean_text(text_with_tables_converted, concept_intelligence)
         doc["cleaned_text"] = cleaned_text
+        
+        # Step 4: NEW - Lemmatization and POS tagging
+        lemma_data = perform_lemmatization(cleaned_text)
+        doc["lemmatization"] = {
+            "performed": lemma_data['lemmatization_performed'],
+            "lemmatized_tokens": lemma_data['lemmatized_tokens'],
+            "unique_lemmas": lemma_data.get('unique_lemmas', []),
+            "lemma_count": lemma_data.get('lemma_count', 0),
+            "unique_lemma_count": lemma_data.get('unique_lemma_count', 0),
+            "token_mapping": lemma_data['token_mapping']
+        }
+        
+        # Step 5: NEW - Extract POS tags and noun phrases
+        doc["pos_tags"] = lemma_data['pos_tags']
+        doc["noun_phrases"] = lemma_data['noun_phrases']
+        
+        # Step 6: NEW - Extract potential business terms
+        business_terms = extract_business_terms(lemma_data['pos_tags'], lemma_data['noun_phrases'])
+        doc["extracted_business_terms"] = business_terms
         
         # Extract sentences
         sentences = extract_sentences(cleaned_text)

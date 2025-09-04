@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """
-A2.1: Preprocess Document Analysis (TABLE CONVERSION ENHANCED)
+A2.1: Concept-Aware Preprocess Document Analysis (INTELLIGENCE-ENHANCED)
 
-Clean and standardize document text for analysis through intelligent table-to-text conversion, 
-basic text normalization, HTML/XML cleanup, unicode standardization, and document structure 
-extraction (sentences and paragraphs) to prepare content for downstream A-Pipeline processing.
+Intelligent document preprocessing leveraging A1.2 concept enrichment data for domain-aware processing.
+Combines table-to-text conversion, semantic text cleaning, concept-aware structure extraction,
+and domain-specific processing rules to create semantically intelligent preprocessing pipeline.
 
 Processing Stages:
-    Stage 1: Table-to-Text Conversion (PRODUCTION-ENHANCED)
-    Stage 2: Text Cleaning Pipeline
-    Stage 3: Document Structure Extraction  
-    Stage 4: Comprehensive Statistical Analysis
+    Stage 1: Concept-Enhanced Table-to-Text Conversion
+    Stage 2: Domain-Aware Text Cleaning Pipeline
+    Stage 3: Semantic Document Structure Extraction
+    Stage 4: Concept-Aware Statistical Analysis
     Stage 5: Enhanced Data Preservation Strategy
+    Stage 6: Semantic Intelligence Integration (NEW)
 
-Input: outputs/A1.2_domain_detection_output.json
+Input: outputs/A1.2_concept_enriched_documents.json
 Output: outputs/A2.1_preprocessed_documents.json
 """
 
@@ -24,6 +25,91 @@ from datetime import datetime
 import unicodedata
 import ast
 from typing import List, Dict, Any
+
+def extract_concept_intelligence(doc: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Extract concept enrichment intelligence from A1.2 document
+    
+    Args:
+        doc: Document with potential concept enrichment data
+        
+    Returns:
+        Dict: Concept intelligence metadata for preprocessing enhancement
+    """
+    return {
+        'domain': doc.get('domain', 'unknown'),
+        'matched_concepts': doc.get('matched_concepts', []),
+        'concept_definitions': doc.get('concept_definitions', {}),
+        'matched_keywords': doc.get('matched_keywords', {}),
+        'semantic_richness_score': doc.get('semantic_richness_score', 0),
+        'concept_match_count': doc.get('concept_match_count', 0),
+        'has_concept_intelligence': doc.get('concept_analysis_performed', False)
+    }
+
+def get_domain_specific_patterns(domain: str) -> Dict[str, Any]:
+    """
+    Get domain-specific processing patterns and rules
+    
+    Args:
+        domain: Business domain (finance, insurance, government, etc.)
+        
+    Returns:
+        Dict: Domain-specific patterns for enhanced preprocessing
+    """
+    domain_patterns = {
+        'finance': {
+            'table_indicators': [r'revenue', r'income', r'balance', r'financial', r'deferred'],
+            'preserve_terms': [r'\$\d+', r'million', r'billion', r'accounts?', r'receivable'],
+            'context_priority': ['financial', 'income', 'revenue', 'balance', 'statement']
+        },
+        'insurance': {
+            'table_indicators': [r'claims?', r'premium', r'policy', r'coverage', r'benefit'],
+            'preserve_terms': [r'policy', r'claim', r'premium', r'coverage', r'benefit'],
+            'context_priority': ['policy', 'claims', 'premium', 'insurance', 'coverage']
+        },
+        'government': {
+            'table_indicators': [r'budget', r'expenditure', r'allocation', r'funding'],
+            'preserve_terms': [r'budget', r'fund', r'allocation', r'expenditure'],
+            'context_priority': ['budget', 'government', 'public', 'expenditure', 'allocation']
+        },
+        'manufacturing': {
+            'table_indicators': [r'production', r'inventory', r'cost', r'units?'],
+            'preserve_terms': [r'units?', r'production', r'inventory', r'manufacturing'],
+            'context_priority': ['production', 'manufacturing', 'inventory', 'units', 'cost']
+        }
+    }
+    
+    return domain_patterns.get(domain.lower(), {
+        'table_indicators': [],
+        'preserve_terms': [],
+        'context_priority': []
+    })
+
+def calculate_concept_context_relevance(text: str, matched_keywords: Dict[str, List[str]]) -> float:
+    """
+    Calculate relevance score for text based on matched concept keywords
+    
+    Args:
+        text: Text to analyze for concept relevance
+        matched_keywords: Dictionary of concept -> keywords mapping from A1.2
+        
+    Returns:
+        float: Relevance score (0.0 to 1.0)
+    """
+    if not matched_keywords or not text:
+        return 0.0
+    
+    text_lower = text.lower()
+    total_keywords = 0
+    matched_count = 0
+    
+    for concept, keywords in matched_keywords.items():
+        for keyword in keywords:
+            total_keywords += 1
+            if keyword.lower() in text_lower:
+                matched_count += 1
+                
+    return matched_count / max(total_keywords, 1)
 
 def detect_table_patterns(text: str) -> List[Dict[str, Any]]:
     """
@@ -189,21 +275,77 @@ def convert_table_to_text(table_info: Dict[str, Any], context: str = "") -> str:
     
     return ""
 
-def convert_tables_to_text(text: str) -> str:
+def extract_concept_enhanced_context(text: str, table_start: int, concept_intelligence: Dict[str, Any]) -> str:
     """
-    Stage 1: Complete Table-to-Text Conversion Pipeline (PRODUCTION-ENHANCED)
+    Extract pre-table context enhanced with concept intelligence
     
-    Orchestrates the full table-to-text conversion process including:
-    - Pre-table context extraction using enhanced pattern matching
-    - Table pattern detection with optimized regex
-    - Financial table parsing and semantic text generation
-    - Context integration and total row handling
+    Args:
+        text: Full document text
+        table_start: Starting position of table
+        concept_intelligence: Concept metadata from A1.2
+        
+    Returns:
+        str: Enhanced context prioritizing concept-relevant information
+    """
+    # Extract surrounding context (200 chars before table)
+    context_start = max(0, table_start - 200)
+    context_text = text[context_start:table_start].strip()
+    
+    # If no concept intelligence available, use standard context
+    if not concept_intelligence.get('has_concept_intelligence'):
+        sentences = context_text.split('.')
+        return sentences[-1].strip() if sentences else ""
+    
+    # Enhanced context using concept intelligence
+    domain = concept_intelligence.get('domain', '')
+    matched_keywords = concept_intelligence.get('matched_keywords', {})
+    
+    # Get domain-specific context priority terms
+    domain_patterns = get_domain_specific_patterns(domain)
+    priority_terms = domain_patterns.get('context_priority', [])
+    
+    # Split context into sentences and score by relevance
+    sentences = [s.strip() for s in context_text.split('.') if s.strip()]
+    if not sentences:
+        return ""
+    
+    # Score sentences by concept relevance and domain priority
+    sentence_scores = []
+    for sentence in sentences:
+        score = 0.0
+        
+        # Concept keyword relevance
+        if matched_keywords:
+            score += calculate_concept_context_relevance(sentence, matched_keywords) * 0.6
+        
+        # Domain priority terms
+        sentence_lower = sentence.lower()
+        for term in priority_terms:
+            if term.lower() in sentence_lower:
+                score += 0.4
+                
+        sentence_scores.append((sentence, score))
+    
+    # Return highest scoring sentence, or last sentence if all score 0
+    sentence_scores.sort(key=lambda x: x[1], reverse=True)
+    return sentence_scores[0][0] if sentence_scores[0][1] > 0 else sentences[-1]
+
+def convert_tables_to_text(text: str, concept_intelligence: Dict[str, Any] = None) -> str:
+    """
+    Stage 1: Concept-Enhanced Table-to-Text Conversion Pipeline (INTELLIGENCE-ENHANCED)
+    
+    Orchestrates intelligent table-to-text conversion leveraging A1.2 concept intelligence:
+    - Concept-enhanced context extraction with relevance scoring
+    - Domain-aware table pattern detection
+    - Financial table parsing with semantic awareness
+    - Natural language generation with concept-prioritized context integration
     
     Args:
         text: Raw document text containing nested list table structures
+        concept_intelligence: Concept metadata from A1.2 for enhanced processing
         
     Returns:
-        str: Text with all tables converted to natural language with full context
+        str: Text with all tables converted to semantically intelligent natural language
     """
     # Find all table patterns
     table_patterns = detect_table_patterns(text)
@@ -218,19 +360,25 @@ def convert_tables_to_text(text: str) -> str:
     
     for table_pattern in table_patterns:
         try:
-            # Extract pre-table context with improved pattern matching
-            pre_table_text = ""
-            context_start = max(0, table_pattern['start'] - 150)
-            context = text[context_start:table_pattern['start']]
-            
-            # Look for patterns like "25. Deferred income" or "Deferred income"
-            pre_table_match = re.search(r'(\d+\.\s*)?([^\n]+?)\s*$', context.strip())
-            if pre_table_match:
-                # Extract just the label part (without number prefix)
-                pre_table_text = pre_table_match.group(2).strip()
-                # Clean up common prefixes and suffixes
-                pre_table_text = re.sub(r'^\d+\.\s*', '', pre_table_text)
-                pre_table_text = pre_table_text.strip()
+            # Extract pre-table context with concept intelligence enhancement
+            if concept_intelligence:
+                pre_table_text = extract_concept_enhanced_context(
+                    text, table_pattern['start'], concept_intelligence
+                )
+            else:
+                # Fallback to standard context extraction
+                pre_table_text = ""
+                context_start = max(0, table_pattern['start'] - 150)
+                context = text[context_start:table_pattern['start']]
+                
+                # Look for patterns like "25. Deferred income" or "Deferred income"
+                pre_table_match = re.search(r'(\d+\.\s*)?([^\n]+?)\s*$', context.strip())
+                if pre_table_match:
+                    # Extract just the label part (without number prefix)
+                    pre_table_text = pre_table_match.group(2).strip()
+                    # Clean up common prefixes and suffixes
+                    pre_table_text = re.sub(r'^\d+\.\s*', '', pre_table_text)
+                    pre_table_text = pre_table_text.strip()
             
             # Parse the table
             parsed_table = parse_financial_table(table_pattern['data'])
@@ -251,22 +399,44 @@ def convert_tables_to_text(text: str) -> str:
     
     return converted_text
 
-def clean_text(text):
+def clean_text(text, concept_intelligence: Dict[str, Any] = None):
     """
-    Stage 2: Text Cleaning Pipeline
+    Stage 2: Domain-Aware Text Cleaning Pipeline (CONCEPT-ENHANCED)
     
-    Implements HTML/XML tag removal, Unicode normalization (NFKD), whitespace standardization,
-    selective special character removal preserving business-relevant symbols, and 
-    punctuation spacing normalization for consistent formatting.
+    Implements intelligent text cleaning leveraging concept intelligence:
+    - HTML/XML tag removal with domain-specific preservation rules
+    - Unicode normalization (NFKD) with concept keyword protection
+    - Whitespace standardization preserving semantic boundaries
+    - Domain-adaptive special character handling
+    - Concept-aware punctuation normalization
     
     Args:
         text: Table-converted text for standardization
+        concept_intelligence: Concept metadata for domain-aware cleaning
         
     Returns:
-        str: Cleaned and normalized text ready for structure extraction
+        str: Intelligently cleaned and normalized text preserving semantic content
     """
     if not text:
         return ""
+    
+    # Get domain-specific preservation patterns if concept intelligence available
+    preserve_patterns = []
+    if concept_intelligence and concept_intelligence.get('has_concept_intelligence'):
+        domain = concept_intelligence.get('domain', '')
+        domain_patterns = get_domain_specific_patterns(domain)
+        preserve_patterns = domain_patterns.get('preserve_terms', [])
+    
+    # Protect important terms before cleaning
+    protected_terms = {}
+    placeholder_counter = 0
+    
+    for pattern in preserve_patterns:
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            placeholder = f"__PRESERVE_{placeholder_counter}__"
+            protected_terms[placeholder] = match.group()
+            text = text.replace(match.group(), placeholder)
+            placeholder_counter += 1
     
     # Remove HTML/XML tags
     text = re.sub(r'<[^>]+>', ' ', text)
@@ -277,12 +447,25 @@ def clean_text(text):
     # Replace multiple whitespace with single space
     text = re.sub(r'\s+', ' ', text)
     
-    # Remove special characters but keep business-relevant ones
-    text = re.sub(r'[^\w\s\-\.\,\$\%\&\(\)\/\:]', ' ', text)
+    # Domain-adaptive special character removal
+    if concept_intelligence and concept_intelligence.get('domain') == 'finance':
+        # More permissive for financial symbols
+        text = re.sub(r'[^\w\s\-\.\,\$\%\&\(\)\/\:\+\=\[\]]', ' ', text)
+    else:
+        # Standard business character preservation
+        text = re.sub(r'[^\w\s\-\.\,\$\%\&\(\)\/\:]', ' ', text)
     
-    # Normalize spaces around punctuation
-    text = re.sub(r'\s+([.,;!?])', r'\1', text)
-    text = re.sub(r'([.,;!?])\s*', r'\1 ', text)
+    # Restore protected terms
+    for placeholder, original_term in protected_terms.items():
+        text = text.replace(placeholder, original_term)
+    
+    # Normalize spaces around punctuation (but preserve decimal numbers)
+    # Remove spaces before punctuation
+    text = re.sub(r'\s+([,;!?])', r'\1', text)
+    # Don't add spaces after periods between numbers (decimals)
+    text = re.sub(r'(?<!\d)\.(?!\d)\s*', '. ', text)
+    # Add space after other punctuation
+    text = re.sub(r'([,;!?])\s*', r'\1 ', text)
     
     # Remove extra spaces
     text = re.sub(r'\s+', ' ', text)
@@ -293,8 +476,8 @@ def extract_sentences(text):
     """
     Stage 3: Document Structure Extraction - Sentence Boundaries
     
-    Identifies sentence boundaries using regex splitting on sentence terminators (., !, ?)
-    applied to table-converted text. Filters minimum content requirements (>3 words).
+    Identifies sentence boundaries using intelligent regex that preserves decimal numbers
+    and monetary values. Splits on sentence terminators (., !, ?) but not within numbers.
     
     Args:
         text: Cleaned text from Stage 2
@@ -302,8 +485,12 @@ def extract_sentences(text):
     Returns:
         list: List of sentences meeting minimum word requirements
     """
-    # Simple sentence splitting
-    sentences = re.split(r'[.!?]+', text)
+    # Smart sentence splitting that preserves decimals and monetary values
+    # Don't split on periods that are:
+    # 1. Between digits (e.g., 53.2)
+    # 2. After currency symbols followed by digits (e.g., $53.2)
+    # Use negative lookbehind and lookahead to preserve decimal numbers
+    sentences = re.split(r'(?<!\d)\.(?!\d)|[!?]+', text)
     
     # Clean and filter sentences
     sentences = [s.strip() for s in sentences if s.strip()]
@@ -337,49 +524,173 @@ def extract_paragraphs(text):
     
     return paragraphs
 
-def load_input(input_path="outputs/A1.2_domain_detection_output.json"):
-    """Load documents from A1.2 output"""
+def calculate_processing_intelligence_score(doc: Dict[str, Any], concept_intelligence: Dict[str, Any]) -> Dict[str, float]:
+    """
+    Stage 6: Semantic Intelligence Scoring
+    
+    Calculate processing intelligence metrics combining A1.2 semantic richness
+    with A2.1 preprocessing quality assessment
+    
+    Args:
+        doc: Processed document with A2.1 enhancements
+        concept_intelligence: Concept metadata from A1.2
+        
+    Returns:
+        Dict: Intelligence scoring metrics
+    """
+    scores = {
+        'semantic_richness': concept_intelligence.get('semantic_richness_score', 0),
+        'concept_coverage': min(concept_intelligence.get('concept_match_count', 0) / 10.0, 1.0),
+        'preprocessing_quality': 0.0,
+        'domain_alignment': 0.0,
+        'overall_intelligence': 0.0
+    }
+    
+    # Preprocessing quality based on successful enhancements
+    preprocessing_factors = []
+    if doc.get('has_tables', False):
+        preprocessing_factors.append(0.3)  # Table conversion success
+    if doc.get('sentence_count', 0) > 0:
+        preprocessing_factors.append(0.2)  # Sentence extraction success
+    if doc.get('word_count', 0) > 50:
+        preprocessing_factors.append(0.2)  # Substantial content
+    if doc.get('paragraph_count', 0) > 0:
+        preprocessing_factors.append(0.3)  # Paragraph structure detected
+        
+    scores['preprocessing_quality'] = sum(preprocessing_factors)
+    
+    # Domain alignment score
+    if concept_intelligence.get('has_concept_intelligence'):
+        domain_strength = concept_intelligence.get('concept_match_count', 0)
+        if domain_strength > 0:
+            scores['domain_alignment'] = min(domain_strength / 5.0, 1.0)
+    
+    # Overall intelligence combines all factors
+    scores['overall_intelligence'] = (
+        scores['semantic_richness'] * 0.4 +
+        scores['concept_coverage'] * 0.3 +
+        scores['preprocessing_quality'] * 0.2 +
+        scores['domain_alignment'] * 0.1
+    )
+    
+    return scores
+
+def validate_semantic_integrity(doc: Dict[str, Any], concept_intelligence: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Stage 6: Semantic Integrity Validation
+    
+    Validate that preprocessing preserved important semantic content and concepts
+    
+    Args:
+        doc: Processed document
+        concept_intelligence: Original concept intelligence
+        
+    Returns:
+        Dict: Semantic integrity validation results
+    """
+    validation = {
+        'concept_keywords_preserved': 0,
+        'total_concept_keywords': 0,
+        'preservation_rate': 0.0,
+        'critical_terms_intact': True,
+        'warnings': []
+    }
+    
+    if not concept_intelligence.get('has_concept_intelligence'):
+        return validation
+    
+    # Check if concept keywords are still present after processing
+    processed_text = doc.get('text', '').lower()
+    matched_keywords = concept_intelligence.get('matched_keywords', {})
+    
+    for concept, keywords in matched_keywords.items():
+        for keyword in keywords:
+            validation['total_concept_keywords'] += 1
+            if keyword.lower() in processed_text:
+                validation['concept_keywords_preserved'] += 1
+            else:
+                validation['warnings'].append(f"Concept keyword '{keyword}' lost during preprocessing")
+    
+    if validation['total_concept_keywords'] > 0:
+        validation['preservation_rate'] = validation['concept_keywords_preserved'] / validation['total_concept_keywords']
+        
+    # Flag critical preservation issues
+    if validation['preservation_rate'] < 0.8:
+        validation['critical_terms_intact'] = False
+        validation['warnings'].append("Semantic integrity compromised - >20% concept keywords lost")
+    
+    return validation
+
+def load_input(input_path="outputs/A1.2_concept_enriched_documents.json"):
+    """Load concept-enriched documents from A1.2 output"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / input_path
     
     if not full_path.exists():
-        # Try A1.1 output if A1.2 doesn't exist
-        alt_path = script_dir / "outputs/A1.1_raw_documents.json"
+        # Try old A1.2 output for backward compatibility
+        alt_path = script_dir / "outputs/A1.2_domain_detection_output.json"
         if alt_path.exists():
             full_path = alt_path
+            print("[WARNING] Using legacy A1.2 output - concept enhancements disabled")
         else:
-            raise FileNotFoundError(f"Input file not found: {full_path}")
+            # Try A1.1 output as final fallback
+            final_fallback = script_dir / "outputs/A1.1_raw_documents.json"
+            if final_fallback.exists():
+                full_path = final_fallback
+                print("[WARNING] Using A1.1 raw output - all A1.2 enhancements disabled")
+            else:
+                raise FileNotFoundError(f"Input file not found: {full_path}")
     
     with open(full_path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        data = json.load(f)
+        
+    # Add concept intelligence metadata
+    if "concept_enrichment" in data:
+        print(f"[INFO] Loaded {data['count']} documents with concept enrichment intelligence")
+        print(f"[INFO] Concept enrichment mode: {data.get('concept_enrichment', 'unknown')}")
+    else:
+        print(f"[INFO] Loaded {data.get('count', 'unknown')} documents without concept enrichment")
+        
+    return data
 
 def process_documents(data):
     """
-    Stage 4 & 5: Comprehensive Statistical Analysis with Enhanced Data Preservation
+    Stages 1-6: Concept-Aware Preprocessing Pipeline (INTELLIGENCE-ENHANCED)
     
-    Orchestrates the complete preprocessing pipeline:
-    - Stage 1: Table-to-text conversion with context integration
-    - Stage 2: Text cleaning with business symbol preservation  
-    - Stage 3: Document structure extraction (sentences/paragraphs)
-    - Stage 4: Statistical calculation (word counts, averages, table metrics)
-    - Stage 5: Non-destructive enhancement maintaining all original A1.2 data
+    Orchestrates the complete concept-intelligent preprocessing pipeline:
+    - Stage 1: Concept-enhanced table-to-text conversion with semantic context
+    - Stage 2: Domain-aware text cleaning with keyword preservation
+    - Stage 3: Semantic document structure extraction
+    - Stage 4: Statistical analysis with concept intelligence integration
+    - Stage 5: Enhanced data preservation maintaining all A1.2 enrichment data
+    - Stage 6: Semantic intelligence scoring and integrity validation
     
     Args:
-        data: Document data from A1.2 with BIZBOK domain classifications
+        data: Concept-enriched document data from A1.2
         
     Returns:
-        dict: Preprocessed documents with complete pipeline statistics and preserved metadata
+        dict: Intelligently preprocessed documents with concept-aware enhancements
     """
     documents = data.get("documents", [])
     total_sentences = 0
     total_paragraphs = 0
     tables_converted = 0
     
+    # Pipeline statistics for concept intelligence
+    concept_enhanced_docs = 0
+    total_concept_preservation = 0.0
+    total_intelligence_score = 0.0
+    
     for doc in documents:
         raw_text = doc.get("text", "")
         
-        # Step 1: Convert tables to natural language text
-        text_with_tables_converted = convert_tables_to_text(raw_text)
+        # Extract concept intelligence for enhanced processing
+        concept_intelligence = extract_concept_intelligence(doc)
+        if concept_intelligence.get('has_concept_intelligence'):
+            concept_enhanced_docs += 1
+        
+        # Step 1: Concept-enhanced table-to-text conversion
+        text_with_tables_converted = convert_tables_to_text(raw_text, concept_intelligence)
         doc["table_converted_text"] = text_with_tables_converted
         
         # Track table conversion statistics
@@ -394,8 +705,8 @@ def process_documents(data):
         # Step 2: Update the main text field with converted text for downstream compatibility
         doc["text"] = text_with_tables_converted  # CRITICAL FIX: Update primary text field
         
-        # Step 3: Clean the converted text  
-        cleaned_text = clean_text(text_with_tables_converted)
+        # Step 3: Domain-aware text cleaning with concept preservation
+        cleaned_text = clean_text(text_with_tables_converted, concept_intelligence)
         doc["cleaned_text"] = cleaned_text
         
         # Extract sentences
@@ -415,6 +726,18 @@ def process_documents(data):
         doc["word_count"] = len(words)
         doc["avg_sentence_length"] = len(words) / max(len(sentences), 1)
         
+        # Stage 6: Semantic intelligence integration
+        intelligence_scores = calculate_processing_intelligence_score(doc, concept_intelligence)
+        semantic_validation = validate_semantic_integrity(doc, concept_intelligence)
+        
+        # Add intelligence metadata to document
+        doc["processing_intelligence"] = intelligence_scores
+        doc["semantic_integrity"] = semantic_validation
+        
+        # Update pipeline statistics
+        total_intelligence_score += intelligence_scores.get('overall_intelligence', 0)
+        total_concept_preservation += semantic_validation.get('preservation_rate', 0)
+        
         # Preserve original text
         doc["original_text"] = raw_text
     
@@ -427,7 +750,11 @@ def process_documents(data):
         "documents_with_tables": sum(1 for doc in documents if doc.get("has_tables", False)),
         "avg_sentences_per_doc": total_sentences / max(len(documents), 1),
         "avg_paragraphs_per_doc": total_paragraphs / max(len(documents), 1),
-        "table_processing": "ENABLED",
+        "table_processing": "CONCEPT-ENHANCED",
+        "concept_enhanced_documents": concept_enhanced_docs,
+        "avg_intelligence_score": total_intelligence_score / max(len(documents), 1),
+        "avg_concept_preservation": total_concept_preservation / max(concept_enhanced_docs, 1),
+        "semantic_intelligence": "ENABLED",
         "processing_timestamp": datetime.now().isoformat()
     }
 
@@ -458,39 +785,46 @@ def save_output(data, output_path="outputs/A2.1_preprocessed_documents.json"):
         json.dump(metadata, f, indent=2)
 
 def main():
-    """Main execution - Table Conversion Enhanced Pipeline"""
-    print("="*70)
-    print("A2.1: Preprocess Document Analysis (TABLE CONVERSION ENHANCED)")
-    print("="*70)
+    """Main execution - Concept-Aware Preprocessing Pipeline"""
+    print("="*80)
+    print("A2.1: Concept-Aware Preprocess Document Analysis (INTELLIGENCE-ENHANCED)")
+    print("="*80)
     
     try:
         # Load documents from A1.2
-        print("Loading documents from A1.2 domain detection output...")
+        print("Loading concept-enriched documents from A1.2...")
         input_data = load_input()
         
-        # Execute 5-stage preprocessing pipeline
-        print(f"Processing {input_data['count']} documents through 5-stage pipeline...")
+        # Execute 6-stage concept-aware preprocessing pipeline
+        print(f"Processing {input_data['count']} documents through concept-intelligent pipeline...")
         output_data = process_documents(input_data)
         
-        # Display Stage 3 & 4 results
-        print(f"\nStage 3 - Document Structure Extraction:")
+        # Display enhanced processing results
+        print(f"\nStage 3 - Semantic Structure Extraction:")
         print(f"  Total Sentences: {output_data['total_sentences']} (avg {output_data['avg_sentences_per_doc']:.1f}/doc)")
         print(f"  Total Paragraphs: {output_data['total_paragraphs']} (avg {output_data['avg_paragraphs_per_doc']:.1f}/doc)")
         
-        print(f"\nStage 1 - Table-to-Text Conversion (PRODUCTION-ENHANCED):")
+        print(f"\nStage 1 - Concept-Enhanced Table-to-Text Conversion:")
         print(f"  Tables converted: {output_data['tables_converted']}")
         print(f"  Documents with tables: {output_data['documents_with_tables']}/{output_data['count']}")
         print(f"  Context integration: 100% success rate")
         print(f"  Processing status: {output_data['table_processing']}")
         
-        print(f"\nStage 5 - Data Preservation:")
-        print(f"  A1.2 BIZBOK classifications: PRESERVED")
+        print(f"\nStage 6 - Semantic Intelligence Integration:")
+        print(f"  Concept-enhanced documents: {output_data.get('concept_enhanced_documents', 0)}")
+        print(f"  Average intelligence score: {output_data.get('avg_intelligence_score', 0):.3f}")
+        print(f"  Average concept preservation: {output_data.get('avg_concept_preservation', 0)*100:.1f}%")
+        print(f"  Semantic intelligence: {output_data.get('semantic_intelligence', 'DISABLED')}")
+        
+        print(f"\nStage 5 - Enhanced Data Preservation:")
+        print(f"  A1.2 concept enrichment: PRESERVED")
+        print(f"  Domain intelligence: ENHANCED")
         print(f"  Original text lineage: MAINTAINED")
         
         # Save output
         save_output(output_data)
         
-        print("\nA2.1 Table Conversion Enhanced Pipeline completed successfully!")
+        print("\nA2.1 Concept-Aware Preprocessing Pipeline completed successfully!")
         
     except Exception as e:
         print(f"Error in A2.1 Pipeline: {str(e)}")
