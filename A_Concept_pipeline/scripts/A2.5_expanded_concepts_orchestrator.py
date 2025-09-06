@@ -53,7 +53,7 @@ def load_strategy_results():
                 print(f"  [FAIL] Failed to load {strategy_name}: {e}")
                 strategy_results[strategy_name] = None
         else:
-            print(f"  ⚠ {strategy_name} results not found, running strategy...")
+            print(f"  [WARNING] {strategy_name} results not found, running strategy...")
             # Try to run the strategy
             strategy_results[strategy_name] = run_strategy(strategy_name, script_dir)
     
@@ -314,7 +314,7 @@ def main():
         # Check if we have any valid results
         valid_strategies = [name for name, data in strategy_results.items() if data is not None]
         if not valid_strategies:
-            print("❌ No valid strategy results found. Run individual A2.5.x scripts first.")
+            print("[WARNING] No valid strategy results found. Run individual A2.5.x scripts first.")
             return
         
         print(f"\nValid strategies loaded: {len(valid_strategies)}")
@@ -348,7 +348,7 @@ def main():
         for i, concept_data in enumerate(sorted_concepts[:5], 1):
             concept = concept_data["original_concept"]
             scores = concept_data["expansion_scores"]
-            print(f"  {i}. {concept['theme_name']}")
+            print(f"  {i}. {concept.get('canonical_name', concept.get('concept_id', 'Unknown'))}")
             print(f"     Quality: {scores['overall_quality']:.3f}")
             print(f"     Expansion: {len(concept['primary_keywords'])} -> {len(concept_data['all_expanded_terms'])} terms")
             print(f"     Strategies: {len(concept_data['strategy_contributions'])}")

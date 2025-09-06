@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-A2.5.2: Domain Knowledge Expansion Strategy
-Expands concepts using domain-specific knowledge and ontologies
+A2.5.2: Domain Knowledge Concept Generation Strategy
+Generates NEW concept entities using domain-specific ontologies and knowledge patterns
 """
 
 import json
@@ -12,191 +12,194 @@ from collections import defaultdict
 # Domain-specific concept relationships
 DOMAIN_ONTOLOGIES = {
     "finance": {
-        "revenue": ["income", "sales", "earnings", "turnover"],
-        "cost": ["expense", "expenditure", "outflow", "spending"],
-        "profit": ["earnings", "income", "margin", "return"],
-        "assets": ["holdings", "resources", "capital", "property"],
-        "liability": ["debt", "obligation", "payable", "owing"],
-        "equity": ["ownership", "capital", "shares", "stock"],
-        "cash": ["money", "liquidity", "funds", "currency"],
-        "investment": ["portfolio", "securities", "bonds", "stocks"]
+        "revenue": ["income", "sales", "earnings", "turnover", "receipts"],
+        "cost": ["expense", "expenditure", "outflow", "spending", "charges"],
+        "profit": ["earnings", "income", "margin", "return", "gain"],
+        "assets": ["holdings", "resources", "capital", "property", "investments"],
+        "liability": ["debt", "obligation", "payable", "owing", "commitments"],
+        "equity": ["ownership", "capital", "shares", "stock", "net_worth"],
+        "cash": ["money", "liquidity", "funds", "currency", "cash_flow"],
+        "investment": ["portfolio", "securities", "bonds", "stocks", "mutual_funds"],
+        "balance": ["equilibrium", "statement", "account", "ledger", "books"],
+        "contract": ["agreement", "deal", "terms", "obligations", "provisions"]
     },
-    "healthcare": {
-        "patient": ["individual", "person", "subject", "case"],
-        "treatment": ["therapy", "intervention", "care", "procedure"],
-        "diagnosis": ["condition", "disease", "disorder", "illness"],
-        "medication": ["drug", "pharmaceutical", "prescription", "medicine"],
-        "symptom": ["sign", "indication", "manifestation", "feature"],
-        "outcome": ["result", "effect", "consequence", "prognosis"]
+    "operations": {
+        "process": ["workflow", "procedure", "method", "operation", "system"],
+        "management": ["administration", "control", "oversight", "leadership", "governance"],
+        "efficiency": ["productivity", "optimization", "performance", "effectiveness", "throughput"],
+        "quality": ["standards", "excellence", "control", "assurance", "improvement"],
+        "inventory": ["stock", "supplies", "materials", "goods", "products"],
+        "discontinued": ["terminated", "ended", "ceased", "stopped", "abandoned"],
+        "valuation": ["assessment", "appraisal", "evaluation", "pricing", "worth"]
     },
-    "technology": {
-        "system": ["platform", "framework", "infrastructure", "architecture"],
-        "data": ["information", "dataset", "records", "content"],
-        "process": ["workflow", "procedure", "method", "operation"],
-        "interface": ["ui", "api", "connection", "interaction"],
-        "security": ["protection", "safety", "privacy", "encryption"],
-        "performance": ["speed", "efficiency", "optimization", "throughput"]
+    "accounting": {
+        "depreciation": ["amortization", "write_down", "allocation", "expense", "reduction"],
+        "receivable": ["outstanding", "due", "collectible", "accounts", "invoiced"],
+        "deferred": ["postponed", "delayed", "accrued", "unearned", "prepaid"],
+        "tax": ["levy", "duty", "assessment", "obligation", "liability"],
+        "audit": ["examination", "review", "verification", "inspection", "compliance"],
+        "journal": ["record", "entry", "transaction", "posting", "documentation"]
     },
     "general": {
-        "change": ["modification", "alteration", "adjustment", "variation"],
-        "increase": ["growth", "rise", "expansion", "improvement"],
-        "decrease": ["reduction", "decline", "fall", "drop"],
-        "analysis": ["study", "examination", "review", "assessment"],
-        "report": ["document", "summary", "statement", "account"]
+        "change": ["modification", "alteration", "adjustment", "variation", "shift"],
+        "increase": ["growth", "rise", "expansion", "improvement", "enhancement"],
+        "decrease": ["reduction", "decline", "fall", "drop", "contraction"],
+        "analysis": ["study", "examination", "review", "assessment", "evaluation"],
+        "report": ["document", "summary", "statement", "account", "disclosure"]
     }
 }
 
-def get_domain_expansions(keyword, domain):
+def generate_domain_specific_concepts(seed_concept, expansion_id_base):
     """
-    Get domain-specific expansions for a keyword
+    Generate domain-specific concept entities from seed concept
     
     Args:
-        keyword: Keyword to expand
-        domain: Domain context
+        seed_concept: Seed concept to expand from
+        expansion_id_base: Base ID for new concepts
         
     Returns:
-        list: Related terms from domain ontology
+        list: List of newly generated domain-specific concepts
     """
-    domain_dict = DOMAIN_ONTOLOGIES.get(domain.lower(), {})
+    new_concepts = []
+    seed_domain = seed_concept.get("domain", "general")
+    seed_keywords = set(seed_concept.get("primary_keywords", []))
     
-    # Direct lookup
-    if keyword.lower() in domain_dict:
-        return domain_dict[keyword.lower()]
+    # Strategy 1: Generate specialized domain subconcepts
+    domain_ontology = DOMAIN_ONTOLOGIES.get(seed_domain, DOMAIN_ONTOLOGIES["general"])
     
-    # Fuzzy matching - check if keyword is in any value list
-    expansions = []
-    for key, values in domain_dict.items():
-        if keyword.lower() in values or any(keyword.lower() in v for v in values):
-            expansions.extend(values)
-            expansions.append(key)
+    for ontology_key, ontology_terms in domain_ontology.items():
+        # Check if seed keywords relate to this ontology concept
+        keyword_overlap = any(keyword.lower() in ontology_key or ontology_key in keyword.lower() 
+                            for keyword in seed_keywords)
+        term_overlap = any(term in " ".join(seed_keywords).lower() for term in ontology_terms)
+        
+        if keyword_overlap or term_overlap:
+            # Create specialized domain concept
+            specialized_concept = {
+                "concept_id": f"{expansion_id_base}_domain_{ontology_key}",
+                "canonical_name": f"{seed_concept.get('canonical_name', 'Unknown')}_{ontology_key.title()}",
+                "primary_keywords": ontology_terms,
+                "domain": f"{seed_domain}_specialized",
+                "related_documents": seed_concept.get("related_documents", []),
+                "generation_method": "domain_specialization",
+                "seed_concept_id": seed_concept.get("concept_id"),
+                "ontology_source": ontology_key,
+                "domain_depth": "specialized"
+            }
+            new_concepts.append(specialized_concept)
     
-    # Fallback to general domain if specific domain has no matches
-    if not expansions and domain != "general":
-        return get_domain_expansions(keyword, "general")
+    # Strategy 2: Generate cross-domain bridge concepts
+    for other_domain, other_ontology in DOMAIN_ONTOLOGIES.items():
+        if other_domain == seed_domain:
+            continue
+            
+        # Find conceptual bridges between domains
+        bridge_terms = []
+        bridge_connections = []
+        
+        for seed_keyword in seed_keywords:
+            for ontology_key, ontology_terms in other_ontology.items():
+                # Check for conceptual similarity
+                if (seed_keyword.lower() in ontology_key or 
+                    any(term in seed_keyword.lower() for term in ontology_terms)):
+                    bridge_terms.extend(ontology_terms[:3])  # Top 3 terms
+                    bridge_connections.append(f"{seed_keyword}→{ontology_key}")
+        
+        if len(bridge_terms) >= 3:  # Sufficient bridge content
+            bridge_concept = {
+                "concept_id": f"{expansion_id_base}_bridge_{other_domain}",
+                "canonical_name": f"{seed_concept.get('canonical_name', 'Unknown')}_Bridge_{other_domain.title()}",
+                "primary_keywords": list(set(bridge_terms)),
+                "domain": "cross_domain",
+                "related_documents": seed_concept.get("related_documents", []),
+                "generation_method": "cross_domain_bridge",
+                "seed_concept_id": seed_concept.get("concept_id"),
+                "source_domain": seed_domain,
+                "target_domain": other_domain,
+                "bridge_connections": bridge_connections
+            }
+            new_concepts.append(bridge_concept)
     
-    return list(set(expansions))
+    # Strategy 3: Generate hierarchical subconcepts
+    # Create more granular concepts from seed terms
+    if len(seed_keywords) >= 3:
+        for i, keyword in enumerate(list(seed_keywords)[:3]):
+            # Find domain expansions for this specific keyword
+            related_terms = []
+            for ontology_key, ontology_terms in domain_ontology.items():
+                if keyword.lower() in ontology_key or ontology_key in keyword.lower():
+                    related_terms.extend(ontology_terms)
+            
+            if len(related_terms) >= 2:
+                hierarchical_concept = {
+                    "concept_id": f"{expansion_id_base}_hier_{i+1}",
+                    "canonical_name": f"{keyword.title()}_Specialized",
+                    "primary_keywords": list(set(related_terms)),
+                    "domain": seed_domain,
+                    "related_documents": seed_concept.get("related_documents", []),
+                    "generation_method": "hierarchical_specialization",
+                    "seed_concept_id": seed_concept.get("concept_id"),
+                    "parent_keyword": keyword,
+                    "hierarchy_level": "subconcept"
+                }
+                new_concepts.append(hierarchical_concept)
+    
+    return new_concepts
 
-def expand_concept_domain_knowledge(concept):
+def process_domain_concept_generation(core_concepts):
     """
-    Expand a concept using domain knowledge
+    Generate new concept entities using domain knowledge from all seed concepts
     
     Args:
-        concept: Concept to expand
+        core_concepts: List of A2.4 seed concepts
         
     Returns:
-        dict: Domain-expanded concept
+        dict: Domain concept generation results
     """
-    domain = concept.get("domain", "general")
-    primary_keywords = concept.get("primary_keywords", [])
+    all_new_concepts = []
+    generation_log = []
     
-    domain_expansions = {}
-    all_expanded_terms = set(primary_keywords)
-    
-    for keyword in primary_keywords:
-        expansions = get_domain_expansions(keyword, domain)
-        if expansions:
-            domain_expansions[keyword] = expansions
-            all_expanded_terms.update(expansions)
-    
-    # Calculate expansion metrics
-    original_count = len(primary_keywords)
-    expanded_count = len(all_expanded_terms)
-    expansion_ratio = expanded_count / max(original_count, 1)
-    
-    # Determine expansion quality
-    domain_coverage = len([k for k in primary_keywords if k.lower() in DOMAIN_ONTOLOGIES.get(domain, {})])
-    coverage_ratio = domain_coverage / max(len(primary_keywords), 1)
-    
-    return {
-        "original_concept": concept,
-        "domain_expansions": domain_expansions,
-        "expanded_terms": list(all_expanded_terms),
-        "expansion_metrics": {
-            "original_terms": original_count,
-            "expanded_terms": expanded_count,
-            "expansion_ratio": expansion_ratio,
-            "domain_coverage": coverage_ratio,
-            "expansion_strength": len(domain_expansions)
-        }
-    }
-
-def identify_cross_domain_connections(concepts):
-    """
-    Identify connections between concepts across domains
-    
-    Args:
-        concepts: List of concepts
+    # Generate new concepts from each seed concept
+    for i, seed_concept in enumerate(core_concepts):
+        seed_id = seed_concept.get("concept_id", f"seed_{i}")
+        expansion_id_base = f"a252_{seed_id}"
         
-    Returns:
-        dict: Cross-domain connections
-    """
-    domain_groups = defaultdict(list)
-    
-    # Group concepts by domain
-    for concept in concepts:
-        domain = concept.get("domain", "general")
-        domain_groups[domain].append(concept)
-    
-    connections = []
-    
-    # Find cross-domain keyword overlaps
-    for domain1, concepts1 in domain_groups.items():
-        for domain2, concepts2 in domain_groups.items():
-            if domain1 >= domain2:  # Avoid duplicates
-                continue
-                
-            for c1 in concepts1:
-                for c2 in concepts2:
-                    kw1 = set(c1.get("primary_keywords", []))
-                    kw2 = set(c2.get("primary_keywords", []))
-                    overlap = kw1 & kw2
-                    
-                    if len(overlap) > 0:
-                        connections.append({
-                            "concept1": c1["concept_id"],
-                            "concept2": c2["concept_id"],
-                            "domain1": domain1,
-                            "domain2": domain2,
-                            "shared_keywords": list(overlap),
-                            "connection_strength": len(overlap)
-                        })
-    
-    return connections
-
-def process_domain_knowledge_expansion(core_concepts):
-    """
-    Process domain knowledge expansion for all concepts
-    
-    Args:
-        core_concepts: List of core concepts
+        new_concepts = generate_domain_specific_concepts(seed_concept, expansion_id_base)
+        all_new_concepts.extend(new_concepts)
         
-    Returns:
-        dict: Domain expansion results
-    """
-    expansions = []
-    
-    for concept in core_concepts:
-        expansion = expand_concept_domain_knowledge(concept)
-        expansions.append(expansion)
-    
-    # Find cross-domain connections
-    cross_connections = identify_cross_domain_connections(core_concepts)
+        generation_log.append({
+            "seed_concept_id": seed_id,
+            "seed_canonical_name": seed_concept.get("canonical_name", "Unknown"),
+            "seed_domain": seed_concept.get("domain", "general"),
+            "concepts_generated": len(new_concepts),
+            "generation_methods": list(set(c["generation_method"] for c in new_concepts))
+        })
     
     # Calculate strategy statistics
-    total_expanded_terms = sum(exp["expansion_metrics"]["expanded_terms"] for exp in expansions)
-    total_original_terms = sum(exp["expansion_metrics"]["original_terms"] for exp in expansions)
+    total_generated = len(all_new_concepts)
+    avg_per_seed = total_generated / len(core_concepts) if core_concepts else 0
+    
+    # Analyze generation methods and domains
+    method_counts = {}
+    domain_counts = {}
+    for concept in all_new_concepts:
+        method = concept["generation_method"]
+        method_counts[method] = method_counts.get(method, 0) + 1
+        
+        domain = concept.get("domain", "unknown")
+        domain_counts[domain] = domain_counts.get(domain, 0) + 1
     
     return {
-        "strategy": "domain_knowledge",
-        "expansions": expansions,
-        "cross_domain_connections": cross_connections,
+        "strategy": "domain_knowledge_generation",
+        "generated_concepts": all_new_concepts,
+        "generation_log": generation_log,
         "statistics": {
-            "concepts_processed": len(expansions),
-            "total_original_terms": total_original_terms,
-            "total_expanded_terms": total_expanded_terms,
-            "average_expansion_ratio": total_expanded_terms / max(total_original_terms, 1),
-            "cross_connections_found": len(cross_connections),
-            "high_expansion_concepts": len([e for e in expansions if e["expansion_metrics"]["expansion_ratio"] > 2.0])
+            "seed_concepts_processed": len(core_concepts),
+            "total_concepts_generated": total_generated,
+            "average_concepts_per_seed": avg_per_seed,
+            "generation_methods": method_counts,
+            "domain_distribution": domain_counts,
+            "cross_domain_bridges": len([c for c in all_new_concepts if c["generation_method"] == "cross_domain_bridge"])
         }
     }
 
@@ -214,7 +217,7 @@ def load_input(input_path="outputs/A2.4_core_concepts.json"):
 def main():
     """Main execution"""
     print("="*60)
-    print("A2.5.2: Domain Knowledge Expansion Strategy")
+    print("A2.5.2: Domain Knowledge Concept Generation Strategy")
     print("="*60)
     
     try:
@@ -223,40 +226,38 @@ def main():
         input_data = load_input()
         core_concepts = input_data.get("core_concepts", [])
         
-        # Process domain expansion
-        print(f"Processing domain knowledge expansion for {len(core_concepts)} concepts...")
-        expansion_results = process_domain_knowledge_expansion(core_concepts)
+        # Generate new concepts using domain knowledge
+        print(f"Generating domain-specific concepts from {len(core_concepts)} seed concepts...")
+        generation_results = process_domain_concept_generation(core_concepts)
         
         # Display results
-        stats = expansion_results["statistics"]
-        print(f"\nDomain Knowledge Expansion Results:")
-        print(f"  Concepts Processed: {stats['concepts_processed']}")
-        print(f"  Original Terms: {stats['total_original_terms']}")
-        print(f"  Expanded Terms: {stats['total_expanded_terms']}")
-        print(f"  Average Expansion Ratio: {stats['average_expansion_ratio']:.2f}")
-        print(f"  Cross-Domain Connections: {stats['cross_connections_found']}")
-        print(f"  High Expansion Concepts: {stats['high_expansion_concepts']}")
+        stats = generation_results["statistics"]
+        print(f"\nDomain Knowledge Concept Generation Results:")
+        print(f"  Seed Concepts: {stats['seed_concepts_processed']}")
+        print(f"  New Concepts Generated: {stats['total_concepts_generated']}")
+        print(f"  Average per Seed: {stats['average_concepts_per_seed']:.1f}")
+        print(f"  Cross-Domain Bridges: {stats['cross_domain_bridges']}")
         
-        # Show sample expansions
-        print(f"\nSample Domain Expansions:")
-        for i, exp in enumerate(expansion_results["expansions"][:3], 1):
-            concept = exp["original_concept"]
-            metrics = exp["expansion_metrics"]
-            print(f"  {i}. {concept['theme_name']} ({concept['domain']})")
-            print(f"     Expansion: {metrics['original_terms']} -> {metrics['expanded_terms']} terms")
-            print(f"     Domain Coverage: {metrics['domain_coverage']:.2f}")
+        print(f"\nGeneration Methods:")
+        for method, count in stats["generation_methods"].items():
+            print(f"  {method}: {count} concepts")
         
-        # Show cross-domain connections
-        if expansion_results["cross_domain_connections"]:
-            print(f"\nCross-Domain Connections:")
-            for i, conn in enumerate(expansion_results["cross_domain_connections"][:3], 1):
-                print(f"  {i}. {conn['domain1']} ↔ {conn['domain2']}")
-                print(f"     Shared: {', '.join(conn['shared_keywords'])}")
+        print(f"\nDomain Distribution:")
+        for domain, count in stats["domain_distribution"].items():
+            print(f"  {domain}: {count} concepts")
+        
+        # Show sample generated concepts
+        print(f"\nSample Generated Concepts:")
+        for i, concept in enumerate(generation_results["generated_concepts"][:5], 1):
+            print(f"  {i}. {concept['canonical_name']} ({concept['concept_id']})")
+            print(f"     Method: {concept['generation_method']}")
+            print(f"     Keywords: {len(concept['primary_keywords'])}")
+            print(f"     Domain: {concept.get('domain', 'unknown')}")
         
         # Save results for A2.5 orchestrator
         output_data = {
-            "strategy_name": "domain_knowledge",
-            "results": expansion_results,
+            "strategy_name": "domain_knowledge_generation",
+            "results": generation_results,
             "processing_timestamp": datetime.now().isoformat()
         }
         
@@ -267,7 +268,7 @@ def main():
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
         print(f"[OK] Saved to {output_path}")
-        print("\nA2.5.2 Domain Knowledge Expansion completed successfully!")
+        print("\nA2.5.2 Domain Knowledge Concept Generation completed successfully!")
         
     except Exception as e:
         print(f"Error in A2.5.2: {str(e)}")

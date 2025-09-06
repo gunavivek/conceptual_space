@@ -1,305 +1,184 @@
 #!/usr/bin/env python3
 """
-A2.5.3: Hierarchical Clustering Expansion Strategy
-Expands concepts using hierarchical clustering to find concept relationships at different levels
+A2.5.3: Hierarchical Clustering Concept Generation Strategy
+Generates NEW concept entities using hierarchical clustering of term relationships
 """
 
 import json
-import numpy as np
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict, Counter
 import math
 
-def calculate_concept_distance(concept1, concept2):
+def generate_hierarchical_concepts(seed_concept, all_concepts, expansion_id_base):
     """
-    Calculate distance between two concepts for clustering
+    Generate hierarchical concept entities from clustering patterns
     
     Args:
-        concept1: First concept
-        concept2: Second concept
+        seed_concept: Seed concept to expand from
+        all_concepts: All seed concepts for clustering analysis
+        expansion_id_base: Base ID for new concepts
         
     Returns:
-        float: Distance (lower = more similar)
+        list: List of newly generated hierarchical concepts
     """
-    # Extract features for distance calculation
-    kw1 = set(concept1.get("primary_keywords", []))
-    kw2 = set(concept2.get("primary_keywords", []))
+    new_concepts = []
+    seed_keywords = set(seed_concept.get("primary_keywords", []))
     
-    # Jaccard distance (1 - similarity)
-    if not kw1 or not kw2:
-        jaccard_dist = 1.0
-    else:
-        intersection = len(kw1 & kw2)
-        union = len(kw1 | kw2)
-        jaccard_dist = 1 - (intersection / union)
+    # Strategy 1: Create parent-level concepts by clustering with similar concepts
+    similar_concepts = []
+    for other_concept in all_concepts:
+        if other_concept.get("concept_id") == seed_concept.get("concept_id"):
+            continue
+        
+        other_keywords = set(other_concept.get("primary_keywords", []))
+        intersection = seed_keywords & other_keywords
+        union = seed_keywords | other_keywords
+        
+        if len(intersection) > 0 and len(union) > 0:
+            jaccard_sim = len(intersection) / len(union)
+            if jaccard_sim > 0.2:  # Minimum similarity
+                similar_concepts.append({
+                    "concept": other_concept,
+                    "similarity": jaccard_sim,
+                    "shared_terms": list(intersection)
+                })
     
-    # Domain distance
-    domain1 = concept1.get("domain", "general")
-    domain2 = concept2.get("domain", "general")
-    domain_dist = 0.0 if domain1 == domain2 else 0.3
+    # Create parent concept from high-level clusters
+    if len(similar_concepts) >= 2:
+        # Find most common keywords across similar concepts
+        all_keywords = list(seed_keywords)
+        for sim_data in similar_concepts[:3]:  # Top 3 similar
+            all_keywords.extend(sim_data["concept"].get("primary_keywords", []))
+        
+        keyword_freq = Counter(all_keywords)
+        common_keywords = [kw for kw, freq in keyword_freq.items() if freq >= 2]
+        
+        if len(common_keywords) >= 3:
+            parent_concept = {
+                "concept_id": f"{expansion_id_base}_parent_cluster",
+                "canonical_name": f"{seed_concept.get('canonical_name', 'Unknown')}_Parent_Cluster",
+                "primary_keywords": common_keywords,
+                "domain": seed_concept.get("domain", "general"),
+                "related_documents": seed_concept.get("related_documents", []),
+                "generation_method": "hierarchical_parent",
+                "seed_concept_id": seed_concept.get("concept_id"),
+                "cluster_size": len(similar_concepts) + 1,
+                "hierarchy_level": "parent"
+            }
+            new_concepts.append(parent_concept)
     
-    # Importance distance
-    imp1 = concept1.get("importance_score", 0.5)
-    imp2 = concept2.get("importance_score", 0.5)
-    imp_dist = abs(imp1 - imp2) * 0.2
+    # Strategy 2: Create child concepts from keyword subclusters
+    if len(seed_keywords) >= 4:
+        # Group keywords by first letter/semantic similarity (simplified)
+        keyword_groups = defaultdict(list)
+        for keyword in seed_keywords:
+            if keyword:
+                # Simple grouping by first character and length
+                group_key = f"{keyword[0].lower()}_{len(keyword)//3}"
+                keyword_groups[group_key].append(keyword)
+        
+        # Create child concepts from groups with multiple keywords
+        child_index = 1
+        for group_key, group_keywords in keyword_groups.items():
+            if len(group_keywords) >= 2:
+                child_concept = {
+                    "concept_id": f"{expansion_id_base}_child_{child_index}",
+                    "canonical_name": f"{seed_concept.get('canonical_name', 'Unknown')}_Child_{child_index}",
+                    "primary_keywords": group_keywords,
+                    "domain": seed_concept.get("domain", "general"),
+                    "related_documents": seed_concept.get("related_documents", []),
+                    "generation_method": "hierarchical_child",
+                    "seed_concept_id": seed_concept.get("concept_id"),
+                    "parent_concept": seed_concept.get("canonical_name", "Unknown"),
+                    "hierarchy_level": "child"
+                }
+                new_concepts.append(child_concept)
+                child_index += 1
     
-    # Document coverage distance
-    docs1 = set(concept1.get("related_documents", []))
-    docs2 = set(concept2.get("related_documents", []))
-    if docs1 or docs2:
-        doc_overlap = len(docs1 & docs2) / len(docs1 | docs2) if docs1 | docs2 else 0
-        doc_dist = (1 - doc_overlap) * 0.3
-    else:
-        doc_dist = 0.5
+    # Strategy 3: Create sibling concepts from related domains
+    seed_domain = seed_concept.get("domain", "general")
+    related_concepts = [c for c in all_concepts 
+                       if c.get("domain") == seed_domain 
+                       and c.get("concept_id") != seed_concept.get("concept_id")]
     
-    return jaccard_dist * 0.4 + domain_dist + imp_dist + doc_dist
+    if len(related_concepts) >= 1:
+        # Create sibling by combining characteristics
+        sibling_keywords = []
+        for related in related_concepts[:2]:  # Max 2 related concepts
+            related_kw = related.get("primary_keywords", [])
+            # Take keywords not in seed concept
+            unique_kw = [kw for kw in related_kw if kw not in seed_keywords]
+            sibling_keywords.extend(unique_kw[:3])  # Max 3 from each
+        
+        if len(sibling_keywords) >= 2:
+            sibling_concept = {
+                "concept_id": f"{expansion_id_base}_sibling",
+                "canonical_name": f"{seed_concept.get('canonical_name', 'Unknown')}_Sibling",
+                "primary_keywords": list(set(sibling_keywords)),
+                "domain": seed_domain,
+                "related_documents": seed_concept.get("related_documents", []),
+                "generation_method": "hierarchical_sibling",
+                "seed_concept_id": seed_concept.get("concept_id"),
+                "sibling_source": [c.get("concept_id") for c in related_concepts[:2]],
+                "hierarchy_level": "sibling"
+            }
+            new_concepts.append(sibling_concept)
+    
+    return new_concepts
 
-def build_distance_matrix(concepts):
+def process_hierarchical_concept_generation(core_concepts):
     """
-    Build distance matrix for hierarchical clustering
+    Generate new concept entities using hierarchical clustering from all seed concepts
     
     Args:
-        concepts: List of concepts
+        core_concepts: List of A2.4 seed concepts
         
     Returns:
-        numpy.ndarray: Distance matrix
+        dict: Hierarchical concept generation results
     """
-    n = len(concepts)
-    distance_matrix = np.zeros((n, n))
+    all_new_concepts = []
+    generation_log = []
     
-    for i in range(n):
-        for j in range(i + 1, n):
-            dist = calculate_concept_distance(concepts[i], concepts[j])
-            distance_matrix[i][j] = dist
-            distance_matrix[j][i] = dist
-    
-    return distance_matrix
-
-def hierarchical_clustering(concepts, distance_matrix, max_clusters=5):
-    """
-    Perform hierarchical clustering on concepts
-    
-    Args:
-        concepts: List of concepts
-        distance_matrix: Distance matrix
-        max_clusters: Maximum number of clusters
+    # Generate new concepts from each seed concept
+    for i, seed_concept in enumerate(core_concepts):
+        seed_id = seed_concept.get("concept_id", f"seed_{i}")
+        expansion_id_base = f"a253_{seed_id}"
         
-    Returns:
-        dict: Clustering results
-    """
-    n = len(concepts)
-    clusters = [{i} for i in range(n)]  # Start with each concept as its own cluster
-    cluster_history = []
-    
-    # Agglomerative clustering
-    while len(clusters) > max_clusters:
-        # Find closest pair of clusters
-        min_dist = float('inf')
-        merge_i, merge_j = -1, -1
+        new_concepts = generate_hierarchical_concepts(seed_concept, core_concepts, expansion_id_base)
+        all_new_concepts.extend(new_concepts)
         
-        for i in range(len(clusters)):
-            for j in range(i + 1, len(clusters)):
-                # Calculate average linkage distance
-                total_dist = 0
-                count = 0
-                for ci in clusters[i]:
-                    for cj in clusters[j]:
-                        total_dist += distance_matrix[ci][cj]
-                        count += 1
-                
-                avg_dist = total_dist / count if count > 0 else float('inf')
-                
-                if avg_dist < min_dist:
-                    min_dist = avg_dist
-                    merge_i, merge_j = i, j
-        
-        # Merge clusters
-        if merge_i != -1 and merge_j != -1:
-            merged_cluster = clusters[merge_i] | clusters[merge_j]
-            cluster_history.append({
-                "merged_clusters": [merge_i, merge_j],
-                "distance": min_dist,
-                "cluster_size": len(merged_cluster)
-            })
-            
-            # Remove old clusters and add merged one
-            new_clusters = []
-            for i, cluster in enumerate(clusters):
-                if i != merge_i and i != merge_j:
-                    new_clusters.append(cluster)
-            new_clusters.append(merged_cluster)
-            clusters = new_clusters
-        else:
-            break
-    
-    return {
-        "final_clusters": clusters,
-        "merge_history": cluster_history,
-        "num_clusters": len(clusters)
-    }
-
-def extract_cluster_characteristics(cluster_indices, concepts):
-    """
-    Extract characteristics of a cluster
-    
-    Args:
-        cluster_indices: Indices of concepts in cluster
-        concepts: All concepts
-        
-    Returns:
-        dict: Cluster characteristics
-    """
-    cluster_concepts = [concepts[i] for i in cluster_indices]
-    
-    # Aggregate keywords
-    all_keywords = []
-    for concept in cluster_concepts:
-        all_keywords.extend(concept.get("primary_keywords", []))
-    
-    keyword_freq = Counter(all_keywords)
-    representative_keywords = [kw for kw, count in keyword_freq.most_common(8)]
-    
-    # Aggregate domains
-    domains = [concept.get("domain", "general") for concept in cluster_concepts]
-    dominant_domain = Counter(domains).most_common(1)[0][0]
-    
-    # Aggregate documents
-    all_docs = set()
-    for concept in cluster_concepts:
-        all_docs.update(concept.get("related_documents", []))
-    
-    # Calculate importance
-    avg_importance = sum(c.get("importance_score", 0) for c in cluster_concepts) / len(cluster_concepts)
-    
-    return {
-        "concept_ids": [concepts[i].get("concept_id") for i in cluster_indices],
-        "concept_count": len(cluster_concepts),
-        "representative_keywords": representative_keywords,
-        "dominant_domain": dominant_domain,
-        "document_coverage": len(all_docs),
-        "average_importance": avg_importance,
-        "cluster_coherence": len(set(representative_keywords)) / max(len(all_keywords), 1)
-    }
-
-def expand_concept_hierarchically(concept, clustering_results, concepts):
-    """
-    Expand a concept using hierarchical clustering results
-    
-    Args:
-        concept: Target concept
-        clustering_results: Clustering results
-        concepts: All concepts
-        
-    Returns:
-        dict: Hierarchical expansion
-    """
-    concept_id = concept.get("concept_id")
-    concept_idx = None
-    
-    # Find concept index
-    for i, c in enumerate(concepts):
-        if c.get("concept_id") == concept_id:
-            concept_idx = i
-            break
-    
-    if concept_idx is None:
-        return {"error": "Concept not found"}
-    
-    # Find which cluster this concept belongs to
-    target_cluster = None
-    for cluster in clustering_results["final_clusters"]:
-        if concept_idx in cluster:
-            target_cluster = cluster
-            break
-    
-    if not target_cluster:
-        return {"error": "Concept not in any cluster"}
-    
-    # Get cluster characteristics
-    cluster_char = extract_cluster_characteristics(target_cluster, concepts)
-    
-    # Find related concepts in same cluster
-    related_concepts = []
-    for idx in target_cluster:
-        if idx != concept_idx:
-            related_concepts.append({
-                "concept": concepts[idx],
-                "relationship": "same_cluster",
-                "cluster_position": "peer"
-            })
-    
-    # Calculate expansion strength
-    original_keywords = set(concept.get("primary_keywords", []))
-    expanded_keywords = set(cluster_char["representative_keywords"])
-    expansion_ratio = len(expanded_keywords) / max(len(original_keywords), 1)
-    
-    return {
-        "original_concept": concept,
-        "cluster_info": cluster_char,
-        "related_concepts": related_concepts,
-        "expanded_keywords": list(expanded_keywords),
-        "expansion_metrics": {
-            "cluster_size": len(target_cluster),
-            "expansion_ratio": expansion_ratio,
-            "cluster_coherence": cluster_char["cluster_coherence"],
-            "hierarchical_level": "peer"  # All concepts at same level in this cluster
-        }
-    }
-
-def process_hierarchical_expansion(core_concepts):
-    """
-    Process hierarchical clustering expansion
-    
-    Args:
-        core_concepts: List of core concepts
-        
-    Returns:
-        dict: Hierarchical expansion results
-    """
-    if len(core_concepts) < 2:
-        return {
-            "strategy": "hierarchical_clustering",
-            "error": "Need at least 2 concepts for clustering",
-            "statistics": {"concepts_processed": 0}
-        }
-    
-    # Build distance matrix
-    distance_matrix = build_distance_matrix(core_concepts)
-    
-    # Perform hierarchical clustering
-    clustering_results = hierarchical_clustering(core_concepts, distance_matrix)
-    
-    # Expand each concept
-    expansions = []
-    for concept in core_concepts:
-        expansion = expand_concept_hierarchically(concept, clustering_results, core_concepts)
-        if "error" not in expansion:
-            expansions.append(expansion)
-    
-    # Extract cluster summaries
-    cluster_summaries = []
-    for i, cluster in enumerate(clustering_results["final_clusters"]):
-        cluster_char = extract_cluster_characteristics(cluster, core_concepts)
-        cluster_summaries.append({
-            "cluster_id": f"cluster_{i+1}",
-            **cluster_char
+        generation_log.append({
+            "seed_concept_id": seed_id,
+            "seed_canonical_name": seed_concept.get("canonical_name", "Unknown"),
+            "concepts_generated": len(new_concepts),
+            "generation_methods": list(set(c["generation_method"] for c in new_concepts))
         })
     
-    # Calculate statistics
-    avg_cluster_size = sum(len(cluster) for cluster in clustering_results["final_clusters"]) / max(len(clustering_results["final_clusters"]), 1)
+    # Calculate strategy statistics
+    total_generated = len(all_new_concepts)
+    avg_per_seed = total_generated / len(core_concepts) if core_concepts else 0
+    
+    # Analyze hierarchy levels and methods
+    method_counts = {}
+    hierarchy_counts = {}
+    for concept in all_new_concepts:
+        method = concept["generation_method"]
+        method_counts[method] = method_counts.get(method, 0) + 1
+        
+        hierarchy = concept.get("hierarchy_level", "unknown")
+        hierarchy_counts[hierarchy] = hierarchy_counts.get(hierarchy, 0) + 1
     
     return {
-        "strategy": "hierarchical_clustering",
-        "clustering_results": clustering_results,
-        "cluster_summaries": cluster_summaries,
-        "expansions": expansions,
+        "strategy": "hierarchical_clustering_generation",
+        "generated_concepts": all_new_concepts,
+        "generation_log": generation_log,
         "statistics": {
-            "concepts_processed": len(expansions),
-            "num_clusters": clustering_results["num_clusters"],
-            "average_cluster_size": avg_cluster_size,
-            "merge_steps": len(clustering_results["merge_history"]),
-            "high_coherence_clusters": len([c for c in cluster_summaries if c["cluster_coherence"] > 0.6])
+            "seed_concepts_processed": len(core_concepts),
+            "total_concepts_generated": total_generated,
+            "average_concepts_per_seed": avg_per_seed,
+            "generation_methods": method_counts,
+            "hierarchy_levels": hierarchy_counts
         }
     }
 
@@ -317,7 +196,7 @@ def load_input(input_path="outputs/A2.4_core_concepts.json"):
 def main():
     """Main execution"""
     print("="*60)
-    print("A2.5.3: Hierarchical Clustering Expansion Strategy")
+    print("A2.5.3: Hierarchical Clustering Concept Generation Strategy")
     print("="*60)
     
     try:
@@ -326,35 +205,37 @@ def main():
         input_data = load_input()
         core_concepts = input_data.get("core_concepts", [])
         
-        # Process hierarchical expansion
-        print(f"Processing hierarchical clustering for {len(core_concepts)} concepts...")
-        expansion_results = process_hierarchical_expansion(core_concepts)
-        
-        if "error" in expansion_results:
-            print(f"Error: {expansion_results['error']}")
-            return
+        # Generate new concepts using hierarchical clustering
+        print(f"Generating hierarchical concepts from {len(core_concepts)} seed concepts...")
+        generation_results = process_hierarchical_concept_generation(core_concepts)
         
         # Display results
-        stats = expansion_results["statistics"]
-        print(f"\nHierarchical Clustering Results:")
-        print(f"  Concepts Processed: {stats['concepts_processed']}")
-        print(f"  Number of Clusters: {stats['num_clusters']}")
-        print(f"  Average Cluster Size: {stats['average_cluster_size']:.1f}")
-        print(f"  Merge Steps: {stats['merge_steps']}")
-        print(f"  High Coherence Clusters: {stats['high_coherence_clusters']}")
+        stats = generation_results["statistics"]
+        print(f"\nHierarchical Clustering Concept Generation Results:")
+        print(f"  Seed Concepts: {stats['seed_concepts_processed']}")
+        print(f"  New Concepts Generated: {stats['total_concepts_generated']}")
+        print(f"  Average per Seed: {stats['average_concepts_per_seed']:.1f}")
         
-        # Show cluster summaries
-        print(f"\nCluster Summaries:")
-        for cluster in expansion_results["cluster_summaries"]:
-            print(f"  {cluster['cluster_id']}: {cluster['concept_count']} concepts")
-            print(f"    Domain: {cluster['dominant_domain']}")
-            print(f"    Keywords: {', '.join(cluster['representative_keywords'][:5])}")
-            print(f"    Coherence: {cluster['cluster_coherence']:.3f}")
+        print(f"\nGeneration Methods:")
+        for method, count in stats["generation_methods"].items():
+            print(f"  {method}: {count} concepts")
+        
+        print(f"\nHierarchy Levels:")
+        for level, count in stats["hierarchy_levels"].items():
+            print(f"  {level}: {count} concepts")
+        
+        # Show sample generated concepts
+        print(f"\nSample Generated Concepts:")
+        for i, concept in enumerate(generation_results["generated_concepts"][:5], 1):
+            print(f"  {i}. {concept['canonical_name']} ({concept['concept_id']})")
+            print(f"     Method: {concept['generation_method']}")
+            print(f"     Keywords: {len(concept['primary_keywords'])}")
+            print(f"     Level: {concept.get('hierarchy_level', 'unknown')}")
         
         # Save results for A2.5 orchestrator
         output_data = {
-            "strategy_name": "hierarchical_clustering",
-            "results": expansion_results,
+            "strategy_name": "hierarchical_clustering_generation",
+            "results": generation_results,
             "processing_timestamp": datetime.now().isoformat()
         }
         
@@ -365,7 +246,7 @@ def main():
             json.dump(output_data, f, indent=2, ensure_ascii=False)
         
         print(f"[OK] Saved to {output_path}")
-        print("\nA2.5.3 Hierarchical Clustering Expansion completed successfully!")
+        print("\nA2.5.3 Hierarchical Clustering Concept Generation completed successfully!")
         
     except Exception as e:
         print(f"Error in A2.5.3: {str(e)}")

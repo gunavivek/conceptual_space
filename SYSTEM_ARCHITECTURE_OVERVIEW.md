@@ -26,14 +26,11 @@ graph TB
         A21["A2.1_concept_extractor.py<br/>Extract Raw Concepts"]:::apipeline
         A22["A2.2_concept_validator.py<br/>Validate Concepts"]:::apipeline
         A23["A2.3_concept_alignment.py<br/>Align with BIZBOK"]:::apipeline
-        A24["A2.4_core_concepts.py<br/>Identify Core Concepts"]:::apipeline
-        A25["A2.5_expansion_orchestrator.py<br/>Expand Concepts"]:::apipeline
-        A26["A2.6_relationship_builder.py<br/>Build Relationships"]:::apipeline
-        A27["A2.7_cross_validator.py<br/>Cross-Validate"]:::apipeline
-        A28["A2.8_semantic_chunking.py<br/>Semantic Chunking"]:::apipeline
-        A29["A2.9_r4x_semantic_enhancement.py<br/>⭐ R4X Enhancement"]:::enhanced
+        A24["A2.4_core_concepts.py<br/>Identify 10 Core Concepts"]:::apipeline
+        A25["A2.5_expansion_orchestrator.py<br/>Generate 16+ New Concepts"]:::apipeline
+        A3["A3_concept_based_chunking.py<br/>Multi-Layered Chunking<br/>(26 Concepts)"]:::apipeline
         
-        A1 --> A21 --> A22 --> A23 --> A24 --> A25 --> A26 --> A27 --> A28 --> A29
+        A1 --> A21 --> A22 --> A23 --> A24 --> A25 --> A3
     end
 
     %% B-Pipeline: Question Processing
@@ -83,7 +80,7 @@ graph TB
     ONTOLOGY --> R1
 
     %% R4X Integration Connections (Bidirectional)
-    A29 <--> R4X
+    A3 <--> R4X
     B34 <--> R4X
     B41 <--> R4X
     B51 <--> R4X
@@ -91,7 +88,7 @@ graph TB
 
     %% Semantic Space Connections
     R4X -.->|"Ontology Space"| R4L
-    R4X -.->|"Document Space"| A29
+    R4X -.->|"Document Space"| A3
     R4X -.->|"Question Space"| B51
 
     %% Output Generation
