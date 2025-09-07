@@ -319,7 +319,7 @@ def main():
         for i, exp in enumerate(expansion_results["expansions"][:3], 1):
             concept = exp["original_concept"]
             metrics = exp["expansion_metrics"]
-            print(f"  {i}. {concept['theme_name']} ({concept['domain']})")
+            print(f"  {i}. {concept.get('canonical_name', concept.get('concept_id', 'Unknown'))} ({concept.get('domain', 'General')})")
             print(f"     Expansion: {metrics['original_terms']} -> {metrics['expanded_terms']} terms")
             print(f"     Context richness: {metrics['context_richness']:.3f}")
             if exp["contextual_expansions"]:

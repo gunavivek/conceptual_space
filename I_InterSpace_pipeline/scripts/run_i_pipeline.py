@@ -27,7 +27,7 @@ class IInterSpacePipelineOrchestrator:
             "scripts_executed": [],
             "success_count": 0,
             "failure_count": 0,
-            "total_scripts": 3,
+            "total_scripts": 4,
             "overall_success": False,
             "performance_summary": {}
         }
@@ -103,6 +103,7 @@ class IInterSpacePipelineOrchestrator:
         # I-pipeline script sequence (proper execution order)
         i_scripts = [
             ("I1_cross_pipeline_semantic_integrator.py", "I1: Cross-Pipeline Semantic Integrator", 10),
+            ("I1_evidence_intent_orchestrator.py", "I1: Evidence-Intent Orchestrator", 12),
             ("I2_system_validation.py", "I2: System Validation", 5),
             ("I3_tri_semantic_visualizer.py", "I3: Tri-Semantic Visualizer", 8)
         ]

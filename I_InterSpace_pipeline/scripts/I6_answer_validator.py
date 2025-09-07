@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-B6: Answer Comparison
-Compare generated answer with ground truth
+I6: Answer Validator (Evidence-Intent Quality Assessment)
+Validate generated answers against Evidence Space constraints and ground truth
+Formerly B6 - moved to I-Pipeline for proper Evidence-Intent coordination
 """
 
 import json
@@ -139,14 +140,14 @@ def load_inputs():
     """Load generated answer and ground truth"""
     script_dir = Path(__file__).parent.parent
     
-    # Load generated answer from B5
-    b5_path = script_dir / "outputs/B5_generated_answer.json"
-    if b5_path.exists():
-        with open(b5_path, 'r', encoding='utf-8') as f:
-            b5_data = json.load(f)
+    # Load generated answer from I5
+    i5_path = script_dir / "outputs/I5_generated_answer.json"
+    if i5_path.exists():
+        with open(i5_path, 'r', encoding='utf-8') as f:
+            i5_data = json.load(f)
     else:
-        # Mock data if B5 output doesn't exist
-        b5_data = {
+        # Mock data if I5 output doesn't exist
+        i5_data = {
             "question": "What was the change in Current deferred income?",
             "generated_answer": "The deferred income for 2019 is 66.8 million",
             "model_used": "mock",
@@ -162,7 +163,7 @@ def load_inputs():
     else:
         ground_truth = "66.8"
     
-    return b5_data, ground_truth
+    return i5_data, ground_truth
 
 def process_comparison(generated_data, ground_truth):
     """
@@ -190,7 +191,7 @@ def process_comparison(generated_data, ground_truth):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/B6_answer_comparison.json"):
+def save_output(data, output_path="outputs/I6_answer_validation.json"):
     """Save comparison results"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -205,7 +206,7 @@ def save_output(data, output_path="outputs/B6_answer_comparison.json"):
 def main():
     """Main execution"""
     print("="*60)
-    print("B6: Answer Comparison")
+    print("I6: Answer Validator (Evidence-Intent Quality Assessment)")
     print("="*60)
     
     try:
@@ -238,10 +239,10 @@ def main():
         # Save output
         save_output(output_data)
         
-        print("\nB6 Answer Comparison completed successfully!")
+        print("\nI6 Answer Validation completed successfully!")
         
     except Exception as e:
-        print(f"Error in B6 Answer Comparison: {str(e)}")
+        print(f"Error in I6 Answer Validation: {str(e)}")
         raise
 
 if __name__ == "__main__":

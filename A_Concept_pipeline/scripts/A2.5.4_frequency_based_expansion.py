@@ -298,7 +298,7 @@ def main():
         for i, exp in enumerate(expansion_results["expansions"][:3], 1):
             concept = exp["original_concept"]
             metrics = exp["expansion_metrics"]
-            print(f"  {i}. {concept['theme_name']}")
+            print(f"  {i}. {concept.get('canonical_name', concept.get('concept_id', 'Unknown'))}")
             print(f"     Expansion: {metrics['original_terms']} -> {metrics['expanded_terms']} terms")
             print(f"     High-freq: {metrics['high_freq_terms']}, Co-occurrence: {metrics['cooccurrence_terms']}")
         

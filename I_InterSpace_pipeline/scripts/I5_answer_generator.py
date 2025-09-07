@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-B5: Concept to Answer Generator
-Generate answers using identified concepts and OpenAI integration
+I5: Answer Generator (Evidence-Intent Coordination)
+Generate answers using B-Pipeline intent analysis coordinated with A-Pipeline evidence
+Formerly B5 - moved to I-Pipeline for proper Evidence-Intent coordination
 """
 
 import json
@@ -146,7 +147,7 @@ def process_answer_generation(data):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/B5_generated_answer.json"):
+def save_output(data, output_path="outputs/I5_generated_answer.json"):
     """Save generated answer"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -161,7 +162,7 @@ def save_output(data, output_path="outputs/B5_generated_answer.json"):
 def main():
     """Main execution"""
     print("="*60)
-    print("B5: Concept to Answer Generator")
+    print("I5: Answer Generator (Evidence-Intent Coordination)")
     print("="*60)
     
     try:
@@ -185,10 +186,10 @@ def main():
         # Save output
         save_output(output_data)
         
-        print("\nB5 Answer Generation completed successfully!")
+        print("\nI5 Answer Generation completed successfully!")
         
     except Exception as e:
-        print(f"Error in B5 Answer Generation: {str(e)}")
+        print(f"Error in I5 Answer Generation: {str(e)}")
         raise
 
 if __name__ == "__main__":
