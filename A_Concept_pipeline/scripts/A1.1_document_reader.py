@@ -10,6 +10,7 @@ import pandas as pd
 import json
 import os
 import re
+import sys
 from pathlib import Path
 from datetime import datetime
 
@@ -191,10 +192,17 @@ def main():
     print("A1.1: Document Reader with RAGBench Domain Authority (ENHANCED)")
     print("="*70)
     
+    # Check for command line argument for data path
+    import sys
+    data_path = "data/test_mode_5_records.parquet"  # default
+    if len(sys.argv) > 1:
+        data_path = sys.argv[1]
+        print(f"Using data file: {data_path}")
+    
     try:
         # Load documents with RAGBench domain integration
         print("Loading documents and determining domains from RAGBench metadata...")
-        documents = load_documents()
+        documents = load_documents(data_path)
         
         print(f"Processed {documents['count']} documents with domain classification")
         

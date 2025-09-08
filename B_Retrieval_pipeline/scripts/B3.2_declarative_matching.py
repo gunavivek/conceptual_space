@@ -395,5 +395,55 @@ def main():
         print(f"Error in B3.2 Declarative Matching: {str(e)}")
         raise
 
+def match_declarative_patterns(chunks, declarative_transformation):
+    """
+    Interface function for orchestrator to match chunks by declarative patterns
+    
+    Args:
+        chunks: List of chunks from A-Pipeline
+        declarative_transformation: Declarative transformations from B2.2
+        
+    Returns:
+        dict: Declarative matching results with ranked chunks
+    """
+    # Convert chunks to concept dictionary format for processing
+    concepts = {}
+    for chunk in chunks:
+        chunk_id = chunk.get("chunk_id", "")
+        concepts[chunk_id] = {
+            "theme_name": chunk_id,
+            "domain": chunk.get("metadata", {}).get("doc_type", "general"),
+            "keywords": chunk.get("content", "").split()[:20],  # Use first 20 words as keywords
+            "declarative_forms": chunk.get("content", "").split()[:10],  # Use content for declarative matching
+            "chunk_data": chunk  # Store original chunk data
+        }
+    
+    # Create question data structure with declarative forms
+    question_data = {
+        "declarative_forms": [{"declarative": d, "quality_score": 0.8} for d in declarative_transformation] if isinstance(declarative_transformation, list) else []
+    }
+    
+    # Process declarative matching
+    matches = match_declarative_to_concepts(question_data, concepts)
+    
+    # Convert matches back to chunk format
+    ranked_chunks = []
+    for match in matches:
+        chunk_data = match["concept"]["chunk_data"]
+        ranked_chunks.append({
+            "chunk_id": chunk_data.get("chunk_id", ""),
+            "content": chunk_data.get("content", ""),
+            "similarity_score": match["similarity_score"],
+            "match_strategy": "declarative_based",
+            "match_details": match["match_details"]
+        })
+    
+    return {
+        "strategy": "declarative_matching",
+        "ranked_chunks": ranked_chunks,
+        "total_matches": len(ranked_chunks),
+        "processing_timestamp": datetime.now().isoformat()
+    }
+
 if __name__ == "__main__":
     main()

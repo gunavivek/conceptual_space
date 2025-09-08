@@ -310,8 +310,110 @@ def reconstruct_from_lemmas(lemmatized_tokens: List[str], token_mapping: Dict[st
     
     return reconstructed_terms
 
+def extract_compound_terms(text: str, pos_tags: List[Dict]) -> List[Tuple[str, float]]:
+    """
+    Extract compound business terms like 'multi-year agreement', 'long-term assets'
+    ADDITIVE FUNCTION - enhances existing extraction without replacing anything
+    
+    Args:
+        text: Original document text
+        pos_tags: Part-of-speech tagged tokens
+        
+    Returns:
+        List[Tuple[str, float]]: Compound terms with confidence scores
+    """
+    compound_terms = []
+    
+    # Define compound term patterns (business-focused)
+    compound_patterns = [
+        # Financial/temporal compounds
+        (r'multi-year\s+(?:agreement|contract|license|deal|plan)s?', 0.8),
+        (r'long-term\s+(?:asset|account|liability|debt|contract|plan)s?', 0.75),
+        (r'short-term\s+(?:asset|account|liability|debt|investment)s?', 0.7),
+        
+        # Revenue/accounting compounds  
+        (r'revenue\s+recognition', 0.8),
+        (r'deferred\s+(?:income|revenue|tax)', 0.75),
+        (r'unearned\s+revenue', 0.7),
+        (r'contract\s+balance|balance\s+sheet', 0.7),
+        
+        # Coverage/period compounds
+        (r'annual\s+coverage\s+period', 0.8),
+        (r'coverage\s+period', 0.6),
+        (r'billing\s+period', 0.6),
+        (r'payment\s+period', 0.6),
+        
+        # Business process compounds
+        (r'invoice\s+(?:customer|client)s?', 0.7),
+        (r'(?:customer|client)\s+invoice', 0.7),
+        (r'accounts?\s+(?:receivable|payable)', 0.8),
+        (r'doubtful\s+accounts?', 0.7),
+        (r'allowance\s+for\s+doubtful\s+accounts?', 0.8),
+        
+        # Financial statement compounds
+        (r'balance\s+sheet', 0.7),
+        (r'income\s+statement', 0.7),
+        (r'cash\s+flow', 0.7),
+        (r'consolidated\s+(?:balance|statement)', 0.75),
+    ]
+    
+    # Method 1: Pattern matching for specific compound terms
+    text_lower = text.lower()
+    for pattern, base_score in compound_patterns:
+        matches = re.finditer(pattern, text_lower, re.IGNORECASE)
+        for match in matches:
+            compound = match.group(0)
+            # Restore original case from text
+            start, end = match.span()
+            original_compound = text[start:end]
+            compound_terms.append((original_compound, base_score))
+    
+    # Method 2: Sequential noun compound detection
+    business_dict = get_business_term_dictionary()
+    for i in range(len(pos_tags) - 2):
+        # Look for patterns like: ADJ-NOUN-NOUN or NOUN-NOUN-NOUN
+        tokens = pos_tags[i:i+3]
+        if all(not token['is_stop'] for token in tokens):
+            # Pattern 1: adjective + noun + noun (e.g., "long term asset")
+            if (tokens[0]['pos'] in ['ADJ', 'ADJECTIVE'] and 
+                tokens[1]['pos'] == 'NOUN' and 
+                tokens[2]['pos'] == 'NOUN'):
+                compound = f"{tokens[0]['token']} {tokens[1]['token']} {tokens[2]['token']}"
+                if is_valid_business_term(compound, business_dict):
+                    compound_terms.append((compound, 0.6))
+            
+            # Pattern 2: noun + noun + noun (e.g., "contract balance sheet")
+            elif all(token['pos'] == 'NOUN' for token in tokens):
+                compound = f"{tokens[0]['token']} {tokens[1]['token']} {tokens[2]['token']}"
+                if is_valid_business_term(compound, business_dict):
+                    compound_terms.append((compound, 0.5))
+    
+    # Method 3: Two-word compounds with business relevance
+    for i in range(len(pos_tags) - 1):
+        token1, token2 = pos_tags[i], pos_tags[i+1]
+        if (not token1['is_stop'] and not token2['is_stop'] and
+            token1['pos'] in ['NOUN', 'ADJ', 'ADJECTIVE'] and
+            token2['pos'] == 'NOUN'):
+            compound = f"{token1['token']} {token2['token']}"
+            
+            # Higher score for hyphenated compounds
+            if '-' in compound:
+                compound_terms.append((compound, 0.7))
+            elif is_valid_business_term(compound, business_dict):
+                compound_terms.append((compound, 0.4))
+    
+    # Deduplicate and return
+    unique_compounds = {}
+    for term, score in compound_terms:
+        # Keep highest score for duplicate terms
+        if term not in unique_compounds or unique_compounds[term] < score:
+            unique_compounds[term] = score
+    
+    return [(term, score) for term, score in unique_compounds.items()]
+
 def ensemble_merge_keywords(keybert_kw: List[Tuple], yake_kw: List[Tuple], 
-                          direct_kw: List[Tuple], reconstructed_kw: List[Tuple]) -> List[Dict]:
+                          direct_kw: List[Tuple], reconstructed_kw: List[Tuple],
+                          compound_kw: List[Tuple]) -> List[Dict]:
     """
     Merge keywords from all methods using ensemble scoring
     
@@ -320,6 +422,7 @@ def ensemble_merge_keywords(keybert_kw: List[Tuple], yake_kw: List[Tuple],
         yake_kw: YAKE keywords  
         direct_kw: Direct extraction keywords
         reconstructed_kw: Reconstructed keywords
+        compound_kw: Compound term keywords
         
     Returns:
         List of keyword dictionaries with ensemble scores
@@ -351,6 +454,13 @@ def ensemble_merge_keywords(keybert_kw: List[Tuple], yake_kw: List[Tuple],
     for term, score in reconstructed_kw:
         all_keywords[term.lower()]['scores'].append(score * 0.15)
         all_keywords[term.lower()]['methods'].append('reconstructed')
+        if 'term' not in all_keywords[term.lower()]:
+            all_keywords[term.lower()]['term'] = term
+    
+    # Add Compound results (weight: 0.35 - high weight for business terms)
+    for term, score in compound_kw:
+        all_keywords[term.lower()]['scores'].append(score * 0.35)
+        all_keywords[term.lower()]['methods'].append('compound')
         if 'term' not in all_keywords[term.lower()]:
             all_keywords[term.lower()]['term'] = term
     
@@ -419,9 +529,13 @@ def process_document(doc: Dict[str, Any]) -> Dict[str, Any]:
     reconstructed_keywords = reconstruct_from_lemmas(lemmatized_tokens, token_mapping, text)
     print(f"  Reconstructed keywords: {len(reconstructed_keywords)}")
     
-    # Method 5: Ensemble fusion
+    # Method 5: Compound term extraction
+    compound_keywords = extract_compound_terms(text, pos_tags)
+    print(f"  Compound keywords: {len(compound_keywords)}")
+    
+    # Method 6: Ensemble fusion
     final_keywords = ensemble_merge_keywords(
-        keybert_keywords, yake_keywords, direct_keywords, reconstructed_keywords
+        keybert_keywords, yake_keywords, direct_keywords, reconstructed_keywords, compound_keywords
     )
     print(f"  Final ensemble keywords: {len(final_keywords)}")
     
@@ -437,7 +551,7 @@ def process_document(doc: Dict[str, Any]) -> Dict[str, Any]:
     doc['keywords'] = keywords_for_clustering
     doc['keyword_extraction'] = {
         'method': 'ensemble',
-        'methods_used': ['keybert', 'yake', 'direct', 'reconstructed'],
+        'methods_used': ['keybert', 'yake', 'direct', 'reconstructed', 'compound'],
         'keybert_available': KEYBERT_AVAILABLE,
         'yake_available': YAKE_AVAILABLE,
         'total_extracted': len(final_keywords),

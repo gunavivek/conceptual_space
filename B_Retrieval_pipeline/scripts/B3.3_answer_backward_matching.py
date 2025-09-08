@@ -402,5 +402,57 @@ def main():
         print(f"Error in B3.3 Answer-Backward Matching: {str(e)}")
         raise
 
+def match_by_answer_expectations(chunks, answer_expectation):
+    """
+    Interface function for orchestrator to match chunks by answer expectations
+    
+    Args:
+        chunks: List of chunks from A-Pipeline
+        answer_expectation: Answer expectations from B2.3
+        
+    Returns:
+        dict: Answer-backward matching results with ranked chunks
+    """
+    # Convert chunks to concept dictionary format for processing
+    concepts = {}
+    for chunk in chunks:
+        chunk_id = chunk.get("chunk_id", "")
+        concepts[chunk_id] = {
+            "theme_name": chunk_id,
+            "domain": chunk.get("metadata", {}).get("doc_type", "general"),
+            "keywords": chunk.get("content", "").split()[:20],  # Use first 20 words as keywords
+            "content": chunk.get("content", ""),
+            "chunk_data": chunk  # Store original chunk data
+        }
+    
+    # Create question data structure with answer expectations
+    question_data = {
+        "answer_prediction": answer_expectation.get("answer_prediction", {}),
+        "validation_criteria": answer_expectation.get("validation_criteria", {}),
+        "format_specification": answer_expectation.get("format_specification", {})
+    }
+    
+    # Process answer-backward matching
+    matches = match_answer_backward_to_concepts(question_data, concepts)
+    
+    # Convert matches back to chunk format
+    ranked_chunks = []
+    for match in matches:
+        chunk_data = match["concept"]["chunk_data"]
+        ranked_chunks.append({
+            "chunk_id": chunk_data.get("chunk_id", ""),
+            "content": chunk_data.get("content", ""),
+            "similarity_score": match["similarity_score"],
+            "match_strategy": "answer_backward",
+            "match_details": match["match_details"]
+        })
+    
+    return {
+        "strategy": "answer_backward_matching",
+        "ranked_chunks": ranked_chunks,
+        "total_matches": len(ranked_chunks),
+        "processing_timestamp": datetime.now().isoformat()
+    }
+
 if __name__ == "__main__":
     main()

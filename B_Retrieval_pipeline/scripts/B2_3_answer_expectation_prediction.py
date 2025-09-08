@@ -125,7 +125,7 @@ def predict_answer_format(question, answer_type):
                 format_spec["units"] = "thousand"
         
         if any(word in question_lower for word in ['dollar', '$', 'cost', 'price', 'revenue', 'income']):
-            format_spec["units"] = format_spec.get("units", "") + " dollars"
+            format_spec["units"] = (format_spec.get("units") or "") + " dollars"
             format_spec["precision"] = 2
         
         if any(word in question_lower for word in ['percentage', 'percent', '%', 'rate']):

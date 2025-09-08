@@ -248,5 +248,80 @@ def main():
         print(f"Error in B4 Weighted Strategy Combination: {str(e)}")
         raise
 
+def combine_strategy_results(b3_results):
+    """
+    Interface function for orchestrator to combine B3 strategy results
+    
+    Args:
+        b3_results: Dictionary containing results from B3.1, B3.2, B3.3
+        
+    Returns:
+        dict: Combined weighted ranking results
+    """
+    # Extract strategy results and build content mapping
+    matching_results = {}
+    chunk_content_map = {}  # Store content for each chunk ID
+    
+    # Intent matching results - convert to expected dict format
+    if "intent_matching" in b3_results and "ranked_chunks" in b3_results["intent_matching"]:
+        matching_results["intent"] = {}
+        for chunk in b3_results["intent_matching"]["ranked_chunks"]:
+            concept_id = chunk.get("chunk_id", "")
+            matching_results["intent"][concept_id] = chunk.get("similarity_score", 0.0)
+            chunk_content_map[concept_id] = chunk.get("content", "")
+    
+    # Declarative matching results - convert to expected dict format
+    if "declarative_matching" in b3_results and "ranked_chunks" in b3_results["declarative_matching"]:
+        matching_results["declarative"] = {}
+        for chunk in b3_results["declarative_matching"]["ranked_chunks"]:
+            concept_id = chunk.get("chunk_id", "")
+            matching_results["declarative"][concept_id] = chunk.get("similarity_score", 0.0)
+            chunk_content_map[concept_id] = chunk.get("content", "")
+    
+    # Answer-backward matching results - convert to expected dict format
+    if "answer_backward" in b3_results and "ranked_chunks" in b3_results["answer_backward"]:
+        matching_results["answer_backward"] = {}
+        for chunk in b3_results["answer_backward"]["ranked_chunks"]:
+            concept_id = chunk.get("chunk_id", "")
+            matching_results["answer_backward"][concept_id] = chunk.get("similarity_score", 0.0)
+            chunk_content_map[concept_id] = chunk.get("content", "")
+    
+    # Calculate weighted scores using architecture-specified weights
+    weights = {
+        "intent": 0.538,        # 53.8%
+        "declarative": 0.362,   # 36.2%  
+        "answer_backward": 0.10  # 10%
+    }
+    
+    combined_scores = calculate_weighted_scores(matching_results, weights)
+    
+    # Rank concepts
+    ranked_concepts = rank_concepts(combined_scores, top_k=10)
+    
+    # Calculate confidence
+    confidence = calculate_confidence(ranked_concepts)
+    
+    # Convert to chunk format for consistency
+    ranked_chunks = []
+    for concept_id, combined_score in ranked_concepts:
+        content = chunk_content_map.get(concept_id, "")
+        
+        ranked_chunks.append({
+            "chunk_id": concept_id,
+            "content": content,
+            "combined_score": combined_score,
+            "strategy_contributions": {},  # TODO: Could be enhanced to show which strategies contributed
+            "match_strategy": "weighted_combination"
+        })
+    
+    return {
+        "strategy": "weighted_combination", 
+        "ranked_chunks": ranked_chunks,
+        "total_strategies_used": len([k for k in matching_results.keys() if matching_results[k]]),
+        "confidence": confidence,
+        "weights_used": weights,
+        "processing_timestamp": datetime.now().isoformat()
+    }
+
 if __name__ == "__main__":
     main()

@@ -1,729 +1,499 @@
 #!/usr/bin/env python3
 """
-A3: Concept-Based Chunking System
-Multi-layered document chunking using concept centroids with overlapping membership
+A3: Concept-Based Chunking Orchestrator
+Multi-strategy document chunking system with hybrid architecture
 
-Design Philosophy:
-- Takes A2.4 (core concepts) + A2.5 (expanded concepts) as dual inputs
-- Creates concept centroids from both core and expanded terms
-- Implements multi-layered chunking where sentences can belong to multiple concept centroids
-- Each chunk has membership within one or more convex balls defined by concept centroids
-- Supports document-specific processing based on concept-document relationships
+This orchestrator coordinates multiple chunking strategies to create
+multi-layered chunks with overlapping concept memberships. Each strategy
+is implemented as a separate module for modularity and maintainability.
 
 Architecture:
-Input: A2.4 core concepts + A2.5 expanded concepts + raw documents
-Process: Concept centroid creation → Multi-layered chunking → Convex ball membership
-Output: A3 concept chunks with overlapping memberships and centroid distances
+- Orchestrator (this file): Coordinates strategies and aggregates results
+- Strategy modules: Individual chunking implementations in chunking_strategies/
+- Base strategy: Common interface and utilities for all strategies
+
+Strategies available:
+1. Semantic Sentence: Sentence-level concept alignment
+2. Paragraph Aware: Natural paragraph boundaries
+3. Document Structure: Respects headings and sections
+4. Adaptive: Dynamic sizing based on content density
+5. Concept Aware: Guided by concept centroids
+6. Contextual Overlap: Maintains context across boundaries
+7. Quality Based: Optimized for retrieval quality
 """
 
 import json
 import numpy as np
-import pandas as pd
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict, Counter
-from typing import Dict, List, Any, Optional, Tuple, Set
-import re
-import math
-from dataclasses import dataclass
+from typing import Dict, List, Any, Optional, Set
+import time
+
+# Import all chunking strategies
+from chunking_strategies import (
+    get_strategy,
+    list_strategies,
+    ConceptChunk,
+    STRATEGIES
+)
 
 
-@dataclass
-class ConceptCentroid:
-    """Represents a concept centroid with core and expanded terms"""
-    concept_id: str
-    canonical_name: str
-    core_terms: List[str]
-    expanded_terms: List[str]
-    all_terms: List[str]
-    importance_score: float
-    related_documents: List[str]
-    domain: str
-    centroid_vector: np.ndarray = None
-    radius: float = 1.0
-
-
-@dataclass 
-class ConceptChunk:
-    """Represents a chunk with concept centroid memberships"""
-    chunk_id: str
-    doc_id: str
-    text: str
-    sentences: List[str]
-    word_count: int
-    concept_memberships: Dict[str, float]  # concept_id -> membership_score
-    centroid_distances: Dict[str, float]   # concept_id -> distance
-    convex_ball_memberships: Dict[str, bool]  # concept_id -> inside_ball
-    primary_centroid: str
-    chunk_type: str  # 'single_concept', 'multi_concept', 'overlap_zone'
-
-
-class A3ConceptBasedChunker:
+class A3ConceptChunkingOrchestrator:
     """
-    Advanced concept-based chunking system with overlapping membership support
+    Orchestrates multiple chunking strategies to create comprehensive
+    multi-layered chunks for the conceptual space system
     """
     
     def __init__(self):
         self.script_dir = Path(__file__).parent.parent
-        self.outputs_dir = self.script_dir / "outputs"
-        self.outputs_dir.mkdir(exist_ok=True)
+        self.input_dir = self.script_dir / "outputs"
+        self.output_dir = self.script_dir / "outputs"
         
-        # Load inputs
-        self.a24_concepts = self._load_a24_concepts()
-        self.a25_concepts = self._load_a25_concepts() 
-        self.documents = self._load_documents()
+        # Strategy configuration
+        self.enabled_strategies = list_strategies()  # All strategies by default
+        self.strategy_weights = self._get_default_weights()
         
-        # Create concept centroids
-        self.concept_centroids = self._create_concept_centroids()
+        # Deduplication and merging configuration
+        self.dedup_threshold = 0.85  # Similarity threshold for deduplication
+        self.merge_overlapping = True
         
-        # Chunking parameters
-        self.min_chunk_size = 50    # Minimum words per chunk
-        self.max_chunk_size = 500   # Maximum words per chunk
-        self.overlap_threshold = 0.05  # Minimum score for overlapping membership (lowered for better detection)
-        self.convex_ball_radius_multiplier = 1.2  # Radius multiplier for convex balls
+        # Statistics tracking
+        self.stats = defaultdict(dict)
         
-        # Results storage
-        self.document_chunks = {}
-        self.chunking_statistics = {
-            'total_documents': 0,
-            'total_chunks': 0,
-            'single_concept_chunks': 0,
-            'multi_concept_chunks': 0,
-            'overlap_zones': 0,
-            'average_memberships_per_chunk': 0.0,
-            'concept_utilization': {}
+    def _get_default_weights(self) -> Dict[str, float]:
+        """Get default weights for each strategy"""
+        return {
+            'semantic_sentence': 1.0,
+            'paragraph_aware': 1.0,
+            'document_structure': 1.2,  # Slightly favor structure
+            'adaptive': 1.0,
+            'concept_aware': 1.3,  # Favor concept-driven chunking
+            'contextual_overlap': 0.9,
+            'quality_based': 1.4  # Highest weight for quality-optimized
         }
-        
-    def _load_a24_concepts(self) -> Dict[str, Any]:
-        """Load A2.4 core concepts"""
-        a24_path = self.outputs_dir / "A2.4_core_concepts.json"
-        with open(a24_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        return {concept['concept_id']: concept for concept in data['core_concepts']}
     
-    def _load_a25_concepts(self) -> Dict[str, Any]:
-        """Load A2.5 generated concept entities from individual strategy files"""
-        a25_concepts = {}
+    def load_concepts(self) -> Dict[str, Any]:
+        """Load core and expanded concepts"""
+        concepts = {}
         
-        # Strategy files that generate new concept entities
-        strategy_files = {
-            "semantic_similarity": "A2.5.1_semantic_expansion.json",
-            "domain_knowledge": "A2.5.2_domain_expansion.json", 
-            "hierarchical_clustering": "A2.5.3_hierarchical_expansion.json"
-        }
+        # Load core concepts (A2.4)
+        core_path = self.input_dir / "A2.4_core_concepts.json"
+        if core_path.exists():
+            with open(core_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                # Extract the core_concepts list and adapt to expected format
+                core_concepts = data.get('core_concepts', [])
+                # Convert primary_keywords to terms for compatibility
+                for concept in core_concepts:
+                    if 'primary_keywords' in concept and 'terms' not in concept:
+                        concept['terms'] = concept['primary_keywords']
+                concepts['core'] = {'concepts': core_concepts}
+                print(f"Loaded {len(core_concepts)} core concepts")
         
-        for strategy_name, filename in strategy_files.items():
-            strategy_path = self.outputs_dir / filename
-            if strategy_path.exists():
-                try:
-                    with open(strategy_path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                    
-                    # Extract generated concepts from strategy results
-                    if "results" in data and "generated_concepts" in data["results"]:
-                        generated_concepts = data["results"]["generated_concepts"]
-                        for concept in generated_concepts:
-                            concept_id = concept["concept_id"]
-                            a25_concepts[concept_id] = concept
-                            print(f"Loaded new concept: {concept_id} from {strategy_name}")
-                except Exception as e:
-                    print(f"[WARNING] Failed to load {strategy_name}: {e}")
+        # Load expanded concepts (A2.5)
+        expanded_path = self.input_dir / "A2.5_expanded_concepts.json"
+        if expanded_path.exists():
+            with open(expanded_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                # Extract and convert expanded_concepts dict to list
+                expanded_dict = data.get('expanded_concepts', {})
+                expanded_list = []
+                for concept_id, concept_data in expanded_dict.items():
+                    # Create unified concept structure
+                    expanded_concept = {
+                        'concept_id': concept_id,
+                        'expanded_terms': []
+                    }
+                    # Collect terms from all strategies
+                    if 'strategy_contributions' in concept_data:
+                        for strategy, contrib in concept_data['strategy_contributions'].items():
+                            if 'terms' in contrib:
+                                expanded_concept['expanded_terms'].extend(contrib['terms'])
+                    # Remove duplicates
+                    expanded_concept['expanded_terms'] = list(set(expanded_concept['expanded_terms']))
+                    expanded_list.append(expanded_concept)
+                concepts['expanded'] = {'expanded_concepts': expanded_list}
+                print(f"Loaded {len(expanded_list)} expanded concepts")
+        
+        return concepts
+    
+    def load_documents(self) -> List[Dict[str, Any]]:
+        """Load documents from A1.1 (fresh) or A2.1 (preprocessed) with fallback"""
+        # Priority: Fresh A1.1 raw documents first, then A2.1 preprocessed documents
+        a11_path = self.input_dir / "A1.1_raw_documents.json"
+        a21_path = self.input_dir / "A2.1_preprocessed_documents.json"
+        
+        doc_path = None
+        use_a11 = False
+        
+        # Check A1.1 first (fresh data from batch processing)
+        if a11_path.exists():
+            # Check if A1.1 is newer than A2.1 to detect fresh data
+            a11_mtime = a11_path.stat().st_mtime if a11_path.exists() else 0
+            a21_mtime = a21_path.stat().st_mtime if a21_path.exists() else 0
+            
+            if a11_mtime > a21_mtime or not a21_path.exists():
+                doc_path = a11_path
+                use_a11 = True
+                print(f"Loading FRESH documents from: {doc_path.name}")
             else:
-                print(f"[WARNING] Strategy file not found: {filename}")
+                doc_path = a21_path
+                print(f"Loading preprocessed documents from: {doc_path.name}")
+        elif a21_path.exists():
+            doc_path = a21_path
+            print(f"Loading preprocessed documents from: {doc_path.name}")
+        else:
+            print("ERROR: No document files found!")
+            print("Please run A1.1 or A2.1 first.")
+            return []
         
-        print(f"Loaded {len(a25_concepts)} new concept entities from A2.5 strategies")
-        return a25_concepts
+        with open(doc_path, 'r', encoding='utf-8') as f:
+            doc_data = json.load(f)
+            documents = doc_data.get('documents', [])
+            
+            # Normalize document structure - strategies expect 'content' field
+            for doc in documents:
+                if use_a11:
+                    # A1.1 provides 'text' field
+                    if 'text' in doc and 'content' not in doc:
+                        doc['content'] = doc['text']
+                else:
+                    # A2.1 provides multiple text fields, prioritize in this order:
+                    # 1. cleaned_text (fully processed)
+                    # 2. table_converted_text (if tables were converted) 
+                    # 3. text (basic text)
+                    if 'cleaned_text' in doc:
+                        doc['content'] = doc['cleaned_text']
+                    elif 'table_converted_text' in doc:
+                        doc['content'] = doc['table_converted_text']
+                    elif 'text' in doc and 'content' not in doc:
+                        doc['content'] = doc['text']
+                    
+            print(f"  - Loaded {len(documents)} documents with tables converted to text")
+            
+            return documents
     
-    def _load_documents(self) -> Dict[str, str]:
-        """Load raw documents - using sample data for demonstration"""
-        # In a real implementation, this would load from A1.1 or document store
-        sample_documents = {
-            'finqa_test_96': """
-            Contract Balances and Revenue Recognition
+    def run_strategy(self, 
+                    strategy_name: str,
+                    documents: List[Dict[str, Any]],
+                    concepts: Dict[str, Any],
+                    config: Optional[Dict[str, Any]] = None) -> List[ConceptChunk]:
+        """
+        Run a single chunking strategy on all documents
+        
+        Args:
+            strategy_name: Name of the strategy to run
+            documents: List of documents to chunk
+            concepts: Concept dictionary
+            config: Optional strategy-specific configuration
             
-            Our contract balances consist of receivable balance and consolidated balance items.
-            Revenue recognition principles apply to deferred income and unearned revenue.
-            
-            Contract balances represent the difference between revenue recognized and cash received.
-            The receivable balance reflects amounts due from customers under long-term agreements.
-            Revenue recognition occurs when performance obligations are satisfied.
-            
-            Unearned revenue represents cash received in advance of performance.
-            These contract balances require careful monitoring for revenue recognition compliance.
-            """,
-            
-            'finqa_test_1017': """
-            Discontinued Operations Analysis
-            
-            The Company completed discontinued operations during the reporting period.
-            Operations were discontinued due to strategic restructuring initiatives.
-            
-            Discontinued operations resulted in significant impact on financial statements.
-            The discontinuation process involved multiple operational considerations.
-            Tax implications of discontinued operations were carefully evaluated.
-            
-            Operations that were discontinued included several business segments.
-            Financial impact of these discontinued operations continues to be monitored.
-            """,
-            
-            'finqa_test_199': """
-            Inventory Valuation and Operations
-            
-            The Company maintains comprehensive inventory valuation processes.
-            Inventories are valued using standard accounting methods and procedures.
-            
-            Inventory valuation considers market conditions and operational factors.
-            Operations of the Company include inventory management and valuation.
-            Market-based inventory valuations are updated quarterly.
-            
-            The Company's operations integrate inventory management with financial reporting.
-            Inventory valuation methodologies ensure accurate financial statement presentation.
-            """,
-            
-            'finqa_test_617': """
-            Deferred Income and Tax Assets
-            
-            Deferred income represents revenue received in advance of service delivery.
-            The Company recognizes deferred income according to accounting standards.
-            
-            Current deferred income is expected to be recognized within twelve months.
-            Non-current deferred income extends beyond the next operating cycle.
-            Total deferred income balances are monitored for compliance purposes.
-            """,
-            
-            'finqa_test_686': """
-            Tax Assets and Net Book Values
-            
-            NBV (Net Book Value) calculations consider depreciation and impairment.
-            TWDV (Tax Written Down Value) represents the tax basis of assets.
-            
-            NBV Net calculations provide book value information for financial reporting.
-            TWDV Tax written values are used for tax compliance and planning.
-            The difference between NBV Net and TWDV Tax creates timing differences.
-            
-            Tax calculations incorporate both current and deferred tax implications.
-            Net book value assessments are performed annually for accuracy.
-            """
+        Returns:
+            List of chunks created by the strategy
+        """
+        print(f"\n  Running {strategy_name} strategy...")
+        start_time = time.time()
+        
+        # Get strategy instance
+        strategy = get_strategy(strategy_name, **(config or {}))
+        
+        # Process all documents
+        all_chunks = []
+        for document in documents:
+            chunks = strategy.chunk_document(document, concepts)
+            all_chunks.extend(chunks)
+        
+        elapsed = time.time() - start_time
+        
+        # Store statistics
+        self.stats[strategy_name] = {
+            'chunks_created': len(all_chunks),
+            'processing_time': elapsed,
+            'config': strategy.get_strategy_config()
         }
-        return sample_documents
+        
+        print(f"    Created {len(all_chunks)} chunks in {elapsed:.2f}s")
+        
+        return all_chunks
     
-    def _create_concept_centroids(self) -> Dict[str, ConceptCentroid]:
-        """Create concept centroids from A2.4 core concepts and A2.5 generated concept entities"""
-        centroids = {}
+    def deduplicate_chunks(self, chunks: List[ConceptChunk]) -> List[ConceptChunk]:
+        """
+        Remove duplicate or highly similar chunks
         
-        print("Creating concept centroids from A2.4 + A2.5 inputs...")
+        Args:
+            chunks: List of chunks to deduplicate
+            
+        Returns:
+            Deduplicated list of chunks
+        """
+        if not chunks:
+            return []
         
-        # First, create centroids for A2.4 core concepts
-        for concept_id, a24_concept in self.a24_concepts.items():
-            # Extract core terms from A2.4
-            core_terms = a24_concept.get('primary_keywords', [])
-            expanded_terms = core_terms.copy()  # For A2.4, no additional expansion
-            
-            # Combine all terms
-            all_terms = list(set(core_terms + expanded_terms))
-            
-            # Create centroid vector (simplified - in production would use embeddings)
-            centroid_vector = self._create_centroid_vector(all_terms)
-            
-            # Calculate radius based on term diversity and importance
-            radius = self._calculate_centroid_radius(
-                core_terms, expanded_terms, a24_concept.get('importance_score', 0.5)
-            )
-            
-            # Determine domain
-            domain = a24_concept.get('business_category', 'General')
-            
-            centroid = ConceptCentroid(
-                concept_id=concept_id,
-                canonical_name=a24_concept.get('canonical_name', concept_id),
-                core_terms=core_terms,
-                expanded_terms=expanded_terms,
-                all_terms=all_terms,
-                importance_score=a24_concept.get('importance_score', 0.5),
-                related_documents=a24_concept.get('related_documents', []),
-                domain=domain,
-                centroid_vector=centroid_vector,
-                radius=radius
-            )
-            
-            centroids[concept_id] = centroid
+        unique_chunks = []
+        seen_content = set()
         
-        # Second, create centroids for A2.5 generated concept entities
-        for concept_id, a25_concept in self.a25_concepts.items():
-            # Extract terms from A2.5 generated concept
-            core_terms = a25_concept.get('primary_keywords', [])
-            expanded_terms = core_terms.copy()  # For generated concepts, primary_keywords are the expanded terms
-            all_terms = list(set(core_terms))
+        for chunk in chunks:
+            # Create content signature
+            content_sig = chunk.content[:100].lower().replace(' ', '')
             
-            # Create centroid vector
-            centroid_vector = self._create_centroid_vector(all_terms)
-            
-            # Calculate radius (slightly smaller for generated concepts)
-            radius = self._calculate_centroid_radius(
-                core_terms, expanded_terms, 0.4  # Lower importance for generated concepts
-            )
-            
-            # Use domain from generated concept
-            domain = a25_concept.get('domain', 'general')
-            
-            centroid = ConceptCentroid(
-                concept_id=concept_id,
-                canonical_name=a25_concept.get('canonical_name', concept_id),
-                core_terms=core_terms,
-                expanded_terms=expanded_terms,
-                all_terms=all_terms,
-                importance_score=0.4,  # Lower importance for generated concepts
-                related_documents=a25_concept.get('related_documents', []),
-                domain=domain,
-                centroid_vector=centroid_vector,
-                radius=radius
-            )
-            
-            centroids[concept_id] = centroid
-            
-        print(f"Created {len(centroids)} concept centroids ({len(self.a24_concepts)} A2.4 + {len(self.a25_concepts)} A2.5)")
-        return centroids
-    
-    def _create_centroid_vector(self, terms: List[str], dimension: int = 100) -> np.ndarray:
-        """Create a centroid vector from terms (simplified implementation)"""
-        if not terms:
-            return np.zeros(dimension)
-        
-        # Create reproducible vector based on term content
-        combined_text = " ".join(sorted(terms)).lower()
-        hash_value = abs(hash(combined_text)) % (2**31)
-        
-        np.random.seed(hash_value % (2**31))
-        vector = np.random.normal(0, 1, dimension)
-        
-        # Add term-specific variations
-        for i, term in enumerate(terms[:20]):  # Limit to first 20 terms
-            term_hash = abs(hash(term.lower())) % dimension
-            vector[term_hash] += 0.5 / len(terms)
-        
-        # Normalize
-        norm = np.linalg.norm(vector)
-        return vector / norm if norm > 0 else vector
-    
-    def _calculate_centroid_radius(self, core_terms: List[str], 
-                                 expanded_terms: List[str], 
-                                 importance_score: float) -> float:
-        """Calculate the radius of the concept's convex ball"""
-        # Base radius on term diversity and importance
-        core_diversity = len(set(core_terms))
-        expanded_diversity = len(set(expanded_terms))
-        
-        # More diverse concepts have larger radii
-        diversity_factor = math.sqrt(core_diversity + expanded_diversity * 0.5) / 5.0
-        
-        # More important concepts have larger radii
-        importance_factor = importance_score
-        
-        # Base radius between 0.5 and 2.0
-        radius = 0.5 + (diversity_factor * importance_factor * 1.5)
-        
-        return min(max(radius, 0.5), 2.0)
-    
-    def process_all_documents(self) -> Dict[str, List[ConceptChunk]]:
-        """Process all documents with concept-based chunking"""
-        print(f"\nProcessing {len(self.documents)} documents with concept-based chunking...")
-        
-        for doc_id, document_text in self.documents.items():
-            print(f"\nProcessing document: {doc_id}")
-            
-            # Get relevant concepts for this document
-            doc_concepts = self._get_document_concepts(doc_id)
-            
-            if not doc_concepts:
-                print(f"  No concepts found for {doc_id}, skipping...")
+            # Check for exact duplicates
+            if content_sig in seen_content:
                 continue
             
-            # Create chunks for this document
-            chunks = self._create_document_chunks(doc_id, document_text, doc_concepts)
+            # Check for high similarity with existing chunks
+            is_duplicate = False
+            for unique_chunk in unique_chunks:
+                similarity = self._calculate_similarity(chunk.content, unique_chunk.content)
+                if similarity > self.dedup_threshold:
+                    # Merge concept memberships if highly similar
+                    unique_chunk.concept_memberships = list(set(
+                        unique_chunk.concept_memberships + chunk.concept_memberships
+                    ))
+                    unique_chunk.membership_scores.update(chunk.membership_scores)
+                    is_duplicate = True
+                    break
             
-            # Store results
-            self.document_chunks[doc_id] = chunks
-            self.chunking_statistics['total_documents'] += 1
-            self.chunking_statistics['total_chunks'] += len(chunks)
-            
-            print(f"  Created {len(chunks)} chunks for {doc_id}")
-            
-            # Update chunk type statistics
-            for chunk in chunks:
-                if chunk.chunk_type == 'single_concept':
-                    self.chunking_statistics['single_concept_chunks'] += 1
-                elif chunk.chunk_type == 'multi_concept':
-                    self.chunking_statistics['multi_concept_chunks'] += 1
-                elif chunk.chunk_type == 'overlap_zone':
-                    self.chunking_statistics['overlap_zones'] += 1
+            if not is_duplicate:
+                unique_chunks.append(chunk)
+                seen_content.add(content_sig)
         
-        self._calculate_final_statistics()
-        return self.document_chunks
+        return unique_chunks
     
-    def _get_document_concepts(self, doc_id: str) -> List[str]:
-        """Get concept IDs related to a specific document"""
-        doc_concepts = []
-        for concept_id, centroid in self.concept_centroids.items():
-            if doc_id in centroid.related_documents:
-                doc_concepts.append(concept_id)
-        return doc_concepts
-    
-    def _create_document_chunks(self, doc_id: str, text: str, 
-                              concept_ids: List[str]) -> List[ConceptChunk]:
-        """Create chunks for a document using relevant concept centroids"""
+    def _calculate_similarity(self, text1: str, text2: str) -> float:
+        """Calculate similarity between two text chunks"""
+        words1 = set(text1.lower().split())
+        words2 = set(text2.lower().split())
         
-        # Split text into sentences
-        sentences = self._split_into_sentences(text)
-        
-        # Create sliding window chunks
-        base_chunks = self._create_base_chunks(sentences)
-        
-        # Calculate concept memberships for each chunk
-        concept_chunks = []
-        
-        for i, (chunk_sentences, chunk_text) in enumerate(base_chunks):
-            chunk_id = f"{doc_id}_concept_chunk_{i}"
-            
-            # Calculate memberships and distances to each concept centroid
-            memberships, distances, convex_memberships = self._calculate_chunk_memberships(
-                chunk_text, concept_ids
-            )
-            
-            # Determine primary centroid and chunk type
-            primary_centroid, chunk_type = self._determine_chunk_classification(
-                memberships, convex_memberships
-            )
-            
-            chunk = ConceptChunk(
-                chunk_id=chunk_id,
-                doc_id=doc_id,
-                text=chunk_text,
-                sentences=chunk_sentences,
-                word_count=len(chunk_text.split()),
-                concept_memberships=memberships,
-                centroid_distances=distances,
-                convex_ball_memberships=convex_memberships,
-                primary_centroid=primary_centroid,
-                chunk_type=chunk_type
-            )
-            
-            concept_chunks.append(chunk)
-        
-        return concept_chunks
-    
-    def _split_into_sentences(self, text: str) -> List[str]:
-        """Split text into sentences"""
-        # Clean and normalize text
-        text = re.sub(r'\s+', ' ', text.strip())
-        
-        # Simple sentence splitting (could be enhanced with nltk/spacy)
-        sentences = re.split(r'[.!?]+\s+', text)
-        sentences = [s.strip() for s in sentences if len(s.strip()) > 10]
-        
-        return sentences
-    
-    def _create_base_chunks(self, sentences: List[str]) -> List[Tuple[List[str], str]]:
-        """Create base chunks from sentences with sliding window approach"""
-        chunks = []
-        current_chunk = []
-        current_words = 0
-        
-        for sentence in sentences:
-            words_in_sentence = len(sentence.split())
-            
-            # If adding this sentence would exceed max size and we have content
-            if current_words + words_in_sentence > self.max_chunk_size and current_chunk:
-                # Save current chunk
-                chunk_text = ' '.join(current_chunk)
-                chunks.append((current_chunk.copy(), chunk_text))
-                
-                # Start new chunk (with overlap for multi-layered approach)
-                if len(current_chunk) > 1:
-                    # Keep last sentence for continuity
-                    current_chunk = [current_chunk[-1], sentence]
-                    current_words = len(current_chunk[-1].split()) + words_in_sentence
-                else:
-                    current_chunk = [sentence]
-                    current_words = words_in_sentence
-            else:
-                current_chunk.append(sentence)
-                current_words += words_in_sentence
-                
-                # If we've reached minimum size, this could be a chunk boundary
-                if current_words >= self.min_chunk_size:
-                    # Create chunk but continue building (allows overlapping)
-                    chunk_text = ' '.join(current_chunk)
-                    chunks.append((current_chunk.copy(), chunk_text))
-        
-        # Add final chunk if it has content
-        if current_chunk:
-            chunk_text = ' '.join(current_chunk)
-            chunks.append((current_chunk, chunk_text))
-        
-        return chunks
-    
-    def _calculate_chunk_memberships(self, chunk_text: str, 
-                                   concept_ids: List[str]) -> Tuple[Dict[str, float], Dict[str, float], Dict[str, bool]]:
-        """Calculate chunk membership in each concept centroid"""
-        
-        # Create chunk vector (simplified)
-        chunk_terms = self._extract_chunk_terms(chunk_text)
-        chunk_vector = self._create_centroid_vector(chunk_terms)
-        
-        memberships = {}
-        distances = {}
-        convex_memberships = {}
-        
-        for concept_id in concept_ids:
-            centroid = self.concept_centroids[concept_id]
-            
-            # Calculate similarity/membership score
-            similarity = np.dot(chunk_vector, centroid.centroid_vector)
-            membership_score = max(0.0, similarity)  # Ensure non-negative
-            
-            # Calculate distance
-            distance = np.linalg.norm(chunk_vector - centroid.centroid_vector)
-            
-            # Check convex ball membership
-            adjusted_radius = centroid.radius * self.convex_ball_radius_multiplier
-            in_convex_ball = distance <= adjusted_radius
-            
-            # Enhance membership with term overlap
-            term_overlap_score = self._calculate_term_overlap(chunk_terms, centroid.all_terms)
-            final_membership = (membership_score * 0.7) + (term_overlap_score * 0.3)
-            
-            memberships[concept_id] = final_membership
-            distances[concept_id] = distance
-            convex_memberships[concept_id] = in_convex_ball
-        
-        return memberships, distances, convex_memberships
-    
-    def _extract_chunk_terms(self, text: str) -> List[str]:
-        """Extract terms from chunk text"""
-        # Simple tokenization and cleaning
-        words = re.findall(r'\b[a-zA-Z]{3,}\b', text.lower())
-        
-        # Remove common stop words
-        stop_words = {
-            'the', 'and', 'for', 'are', 'with', 'this', 'that', 'from', 'they',
-            'have', 'was', 'been', 'their', 'said', 'each', 'which', 'she', 'you',
-            'one', 'our', 'had', 'but', 'not', 'can', 'may', 'all', 'any', 'were'
-        }
-        
-        terms = [word for word in words if word not in stop_words and len(word) > 2]
-        return terms
-    
-    def _calculate_term_overlap(self, chunk_terms: List[str], concept_terms: List[str]) -> float:
-        """Calculate term overlap between chunk and concept"""
-        if not chunk_terms or not concept_terms:
+        if not words1 or not words2:
             return 0.0
         
-        chunk_set = set(term.lower() for term in chunk_terms)
-        concept_set = set(term.lower() for term in concept_terms)
+        intersection = words1.intersection(words2)
+        union = words1.union(words2)
         
-        intersection = len(chunk_set & concept_set)
-        union = len(chunk_set | concept_set)
-        
-        return intersection / union if union > 0 else 0.0
+        return len(intersection) / len(union)
     
-    def _determine_chunk_classification(self, memberships: Dict[str, float], 
-                                      convex_memberships: Dict[str, bool]) -> Tuple[str, str]:
-        """Determine primary centroid and chunk type"""
+    def aggregate_chunks(self, 
+                        strategy_chunks: Dict[str, List[ConceptChunk]]) -> List[Dict[str, Any]]:
+        """
+        Aggregate chunks from multiple strategies
         
-        # Find highest membership
-        if not memberships:
-            return "unknown", "isolated"
-        
-        sorted_memberships = sorted(memberships.items(), key=lambda x: x[1], reverse=True)
-        primary_centroid = sorted_memberships[0][0]
-        primary_score = sorted_memberships[0][1]
-        
-        # Count significant memberships (above threshold)
-        significant_memberships = sum(1 for score in memberships.values() 
-                                    if score > self.overlap_threshold)
-        
-        # Count convex ball memberships
-        convex_count = sum(1 for in_ball in convex_memberships.values() if in_ball)
-        
-        # Classify chunk type
-        if significant_memberships == 1:
-            chunk_type = "single_concept"
-        elif significant_memberships > 1 and convex_count > 1:
-            chunk_type = "overlap_zone"
-        elif significant_memberships > 1:
-            chunk_type = "multi_concept"
-        else:
-            chunk_type = "weak_association"
-        
-        return primary_centroid, chunk_type
-    
-    def _calculate_final_statistics(self):
-        """Calculate final chunking statistics"""
-        if self.chunking_statistics['total_chunks'] > 0:
-            total_memberships = 0
-            concept_usage = defaultdict(int)
+        Args:
+            strategy_chunks: Dictionary mapping strategy names to chunk lists
             
-            for chunks in self.document_chunks.values():
-                for chunk in chunks:
-                    # Count significant memberships
-                    significant = sum(1 for score in chunk.concept_memberships.values() 
-                                    if score > self.overlap_threshold)
-                    total_memberships += significant
-                    
-                    # Track concept usage
-                    for concept_id in chunk.concept_memberships:
-                        if chunk.concept_memberships[concept_id] > self.overlap_threshold:
-                            concept_usage[concept_id] += 1
-            
-            self.chunking_statistics['average_memberships_per_chunk'] = (
-                total_memberships / self.chunking_statistics['total_chunks']
-            )
-            self.chunking_statistics['concept_utilization'] = dict(concept_usage)
-    
-    def save_results(self):
-        """Save A3 chunking results to files"""
-        output_timestamp = datetime.now().isoformat()
+        Returns:
+            Aggregated and weighted chunk list
+        """
+        # Collect all chunks with strategy weights
+        weighted_chunks = []
         
-        # Save detailed chunks
-        chunks_data = {
+        for strategy_name, chunks in strategy_chunks.items():
+            weight = self.strategy_weights.get(strategy_name, 1.0)
+            
+            for chunk in chunks:
+                chunk_dict = chunk.to_dict()
+                chunk_dict['strategy_weight'] = weight
+                chunk_dict['source_strategies'] = [strategy_name]
+                weighted_chunks.append(chunk_dict)
+        
+        # Save raw chunks before deduplication
+        raw_chunks_path = self.output_dir / "A3_raw_chunks_no_dedup.json"
+        raw_output = {
+            'chunks': weighted_chunks,
+            'total_raw_chunks': len(weighted_chunks),
+            'chunks_by_strategy': {name: len(chunks) for name, chunks in strategy_chunks.items()},
             'metadata': {
-                'generation_timestamp': output_timestamp,
-                'total_documents': len(self.document_chunks),
-                'total_chunks': sum(len(chunks) for chunks in self.document_chunks.values()),
-                'input_sources': ['A2.4_core_concepts.json', 'A2.5_expanded_concepts.json'],
-                'chunking_method': 'concept_centroid_multi_layered'
-            },
-            'concept_centroids': {
-                concept_id: {
-                    'canonical_name': centroid.canonical_name,
-                    'core_terms_count': len(centroid.core_terms),
-                    'expanded_terms_count': len(centroid.expanded_terms),
-                    'total_terms': len(centroid.all_terms),
-                    'importance_score': centroid.importance_score,
-                    'radius': centroid.radius,
-                    'domain': centroid.domain,
-                    'related_documents': centroid.related_documents
-                }
-                for concept_id, centroid in self.concept_centroids.items()
-            },
-            'document_chunks': {}
+                'timestamp': datetime.now().isoformat(),
+                'deduplication_applied': False
+            }
         }
+        with open(raw_chunks_path, 'w', encoding='utf-8') as f:
+            json.dump(raw_output, f, indent=2, ensure_ascii=False)
+        print(f"\n  Saved {len(weighted_chunks)} raw chunks to {raw_chunks_path.name}")
         
-        # Add chunk data
-        for doc_id, chunks in self.document_chunks.items():
-            chunks_data['document_chunks'][doc_id] = []
-            for chunk in chunks:
-                chunks_data['document_chunks'][doc_id].append({
-                    'chunk_id': chunk.chunk_id,
-                    'text': chunk.text[:200] + "..." if len(chunk.text) > 200 else chunk.text,
-                    'word_count': chunk.word_count,
-                    'sentence_count': len(chunk.sentences),
-                    'concept_memberships': chunk.concept_memberships,
-                    'centroid_distances': chunk.centroid_distances,
-                    'convex_ball_memberships': {k: bool(v) for k, v in chunk.convex_ball_memberships.items()},
-                    'primary_centroid': chunk.primary_centroid,
-                    'chunk_type': chunk.chunk_type
-                })
-        
-        # Save main results
-        output_path = self.outputs_dir / "A3_concept_based_chunks.json"
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(chunks_data, f, indent=2, ensure_ascii=False)
-        
-        # Save statistics
-        stats_data = {
-            'chunking_statistics': self.chunking_statistics,
-            'generation_timestamp': output_timestamp,
-            'concept_centroid_summary': [
-                {
-                    'concept_id': concept_id,
-                    'canonical_name': centroid.canonical_name,
-                    'usage_count': self.chunking_statistics['concept_utilization'].get(concept_id, 0),
-                    'core_terms': len(centroid.core_terms),
-                    'expanded_terms': len(centroid.expanded_terms),
-                    'radius': round(centroid.radius, 3)
-                }
-                for concept_id, centroid in self.concept_centroids.items()
+        # Deduplicate if enabled
+        if self.merge_overlapping:
+            print("\n  Deduplicating chunks across strategies...")
+            # Convert back to ConceptChunk for deduplication
+            chunk_objects = [
+                ConceptChunk(
+                    chunk_id=c['chunk_id'],
+                    doc_id=c['doc_id'],
+                    content=c['content'],
+                    chunk_type=c['chunk_type'],
+                    start_index=c['start_index'],
+                    end_index=c['end_index'],
+                    concept_memberships=c['concept_memberships'],
+                    membership_scores=c['membership_scores'],
+                    metadata=c['metadata']
+                ) for c in weighted_chunks
             ]
+            
+            unique_chunks = self.deduplicate_chunks(chunk_objects)
+            weighted_chunks = [c.to_dict() for c in unique_chunks]
+            print(f"    Reduced from {len(chunk_objects)} to {len(weighted_chunks)} chunks")
+        
+        return weighted_chunks
+    
+    def calculate_statistics(self, chunks: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Calculate comprehensive statistics for the chunking results"""
+        if not chunks:
+            return {
+                'total_chunks': 0,
+                'error': 'No chunks to analyze',
+                'chunks_per_document': {},
+                'multi_concept_chunks': 0,
+                'multi_concept_ratio': 0,
+                'average_concepts_per_chunk': 0,
+                'average_chunk_size': 0,
+                'chunk_size_std': 0,
+                'strategy_contribution': {},
+                'processing_stats': self.stats
+            }
+        
+        # Basic statistics
+        total_chunks = len(chunks)
+        chunks_per_doc = defaultdict(int)
+        concept_memberships = []
+        chunk_sizes = []
+        
+        for chunk in chunks:
+            chunks_per_doc[chunk['doc_id']] += 1
+            concept_memberships.append(len(chunk['concept_memberships']))
+            chunk_sizes.append(len(chunk['content']))
+        
+        # Multi-concept analysis
+        multi_concept_chunks = sum(1 for c in chunks if len(c['concept_memberships']) > 1)
+        
+        # Strategy contribution
+        strategy_contribution = Counter()
+        for chunk in chunks:
+            strategies = chunk.get('source_strategies', [chunk['chunk_type']])
+            for strategy in strategies:
+                strategy_contribution[strategy] += 1
+        
+        return {
+            'total_chunks': total_chunks,
+            'chunks_per_document': dict(chunks_per_doc),
+            'multi_concept_chunks': multi_concept_chunks,
+            'multi_concept_ratio': multi_concept_chunks / total_chunks if total_chunks > 0 else 0,
+            'average_concepts_per_chunk': np.mean(concept_memberships) if concept_memberships else 0,
+            'average_chunk_size': np.mean(chunk_sizes) if chunk_sizes else 0,
+            'chunk_size_std': np.std(chunk_sizes) if chunk_sizes else 0,
+            'strategy_contribution': dict(strategy_contribution),
+            'processing_stats': self.stats
+        }
+    
+    def save_results(self, chunks: List[Dict[str, Any]], statistics: Dict[str, Any]):
+        """Save chunking results and statistics"""
+        # Save chunks
+        output_path = self.output_dir / "A3_multi_strategy_chunks.json"
+        output_data = {
+            'chunks': chunks,
+            'statistics': statistics,
+            'metadata': {
+                'timestamp': datetime.now().isoformat(),
+                'enabled_strategies': self.enabled_strategies,
+                'strategy_weights': self.strategy_weights,
+                'total_strategies': len(self.enabled_strategies)
+            }
         }
         
-        stats_path = self.outputs_dir / "A3_chunking_statistics.json"
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(output_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"\nSaved multi-strategy chunks to {output_path}")
+        
+        # Save statistics separately for easy access
+        stats_path = self.output_dir / "A3_chunking_statistics.json"
         with open(stats_path, 'w', encoding='utf-8') as f:
-            json.dump(stats_data, f, indent=2, ensure_ascii=False)
+            json.dump(statistics, f, indent=2, ensure_ascii=False)
         
-        # Create CSV summary for easy analysis
-        csv_data = []
-        for doc_id, chunks in self.document_chunks.items():
-            for chunk in chunks:
-                # Find memberships above threshold
-                significant_memberships = {
-                    concept_id: score for concept_id, score in chunk.concept_memberships.items()
-                    if score > self.overlap_threshold
-                }
-                
-                csv_data.append({
-                    'Doc_ID': doc_id,
-                    'Chunk_ID': chunk.chunk_id,
-                    'Word_Count': chunk.word_count,
-                    'Sentence_Count': len(chunk.sentences),
-                    'Primary_Centroid': chunk.primary_centroid,
-                    'Chunk_Type': chunk.chunk_type,
-                    'Membership_Count': len(significant_memberships),
-                    'Max_Membership_Score': max(chunk.concept_memberships.values()),
-                    'Min_Distance': min(chunk.centroid_distances.values()),
-                    'Convex_Ball_Count': sum(chunk.convex_ball_memberships.values()),
-                    'Overlapping_Concepts': '|'.join(significant_memberships.keys()) if len(significant_memberships) > 1 else '',
-                    'Text_Preview': chunk.text[:100] + "..." if len(chunk.text) > 100 else chunk.text
-                })
+        print(f"Saved statistics to {stats_path}")
+    
+    def orchestrate(self, 
+                   strategies: Optional[List[str]] = None,
+                   strategy_configs: Optional[Dict[str, Dict[str, Any]]] = None):
+        """
+        Main orchestration method that coordinates all chunking strategies
         
-        csv_path = self.outputs_dir / "A3_concept_chunks_summary.csv"
-        pd.DataFrame(csv_data).to_csv(csv_path, index=False)
+        Args:
+            strategies: List of strategy names to run (None = all)
+            strategy_configs: Optional configuration for each strategy
+        """
+        print("=" * 80)
+        print("A3: MULTI-STRATEGY CONCEPT-BASED CHUNKING ORCHESTRATOR")
+        print("Hybrid Architecture with Modular Strategies")
+        print("=" * 80)
         
-        print(f"\nA3 Results saved:")
-        print(f"  Main results: {output_path}")
-        print(f"  Statistics: {stats_path}")
-        print(f"  CSV summary: {csv_path}")
+        # Load concepts and documents
+        concepts = self.load_concepts()
+        documents = self.load_documents()
         
-        return output_path, stats_path, csv_path
+        if not documents:
+            print("No documents to process. Exiting.")
+            return
+        
+        print(f"\nProcessing {len(documents)} documents...")
+        
+        # Determine which strategies to run
+        strategies_to_run = strategies or self.enabled_strategies
+        print(f"\nEnabled strategies: {', '.join(strategies_to_run)}")
+        
+        # Run each strategy
+        strategy_chunks = {}
+        for strategy_name in strategies_to_run:
+            if strategy_name not in list_strategies():
+                print(f"  Warning: Unknown strategy '{strategy_name}', skipping...")
+                continue
+            
+            config = (strategy_configs or {}).get(strategy_name, {})
+            chunks = self.run_strategy(strategy_name, documents, concepts, config)
+            strategy_chunks[strategy_name] = chunks
+        
+        # Aggregate results
+        print("\nAggregating chunks from all strategies...")
+        aggregated_chunks = self.aggregate_chunks(strategy_chunks)
+        
+        # Calculate statistics
+        print("\nCalculating statistics...")
+        statistics = self.calculate_statistics(aggregated_chunks)
+        
+        # Display summary
+        print("\n" + "=" * 80)
+        print("CHUNKING SUMMARY")
+        print("=" * 80)
+        print(f"Total chunks created: {statistics['total_chunks']}")
+        print(f"Multi-concept chunks: {statistics['multi_concept_chunks']} "
+              f"({statistics['multi_concept_ratio']:.1%})")
+        print(f"Average concepts per chunk: {statistics['average_concepts_per_chunk']:.2f}")
+        print(f"Average chunk size: {statistics['average_chunk_size']:.0f} characters")
+        
+        print("\nStrategy contribution:")
+        for strategy, count in statistics['strategy_contribution'].items():
+            print(f"  - {strategy}: {count} chunks")
+        
+        # Save results
+        self.save_results(aggregated_chunks, statistics)
+        
+        print("\n" + "=" * 80)
+        print("Multi-strategy chunking complete!")
+        print("=" * 80)
 
 
 def main():
     """Main execution function"""
-    print("="*80)
-    print("A3: CONCEPT-BASED CHUNKING SYSTEM")
-    print("Multi-layered chunking with overlapping convex ball memberships")
-    print("="*80)
+    orchestrator = A3ConceptChunkingOrchestrator()
     
-    # Initialize chunker
-    chunker = A3ConceptBasedChunker()
+    # Example: Run with specific strategies and custom configuration
+    # strategies = ['semantic_sentence', 'concept_aware', 'quality_based']
+    # configs = {
+    #     'semantic_sentence': {'alignment_threshold': 0.4},
+    #     'quality_based': {'min_quality_score': 0.7}
+    # }
+    # orchestrator.orchestrate(strategies=strategies, strategy_configs=configs)
     
-    print(f"\nLoaded {len(chunker.concept_centroids)} concept centroids")
-    print(f"Processing {len(chunker.documents)} documents")
-    
-    # Process all documents
-    results = chunker.process_all_documents()
-    
-    # Print summary
-    print(f"\nCHUNKING SUMMARY:")
-    print(f"="*50)
-    stats = chunker.chunking_statistics
-    print(f"Documents processed: {stats['total_documents']}")
-    print(f"Total chunks created: {stats['total_chunks']}")
-    print(f"Single-concept chunks: {stats['single_concept_chunks']}")
-    print(f"Multi-concept chunks: {stats['multi_concept_chunks']}")
-    print(f"Overlap zones: {stats['overlap_zones']}")
-    print(f"Avg memberships per chunk: {stats['average_memberships_per_chunk']:.2f}")
-    
-    # Save results
-    output_files = chunker.save_results()
-    
-    print(f"\nSuccessfully implemented A3 concept-based chunking!")
-    print(f"[SUCCESS] Multi-layered chunking with concept centroids")
-    print(f"[SUCCESS] Overlapping membership in convex balls")
-    print(f"[SUCCESS] Uses both A2.4 core and A2.5 expanded concepts")
-    print(f"[SUCCESS] Document-specific concept processing")
-    
-    return results
+    # Run with all strategies and default configuration
+    orchestrator.orchestrate()
 
 
 if __name__ == "__main__":

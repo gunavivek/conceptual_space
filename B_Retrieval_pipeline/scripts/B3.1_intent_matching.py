@@ -300,5 +300,56 @@ def main():
         print(f"Error in B3.1 Intent Matching: {str(e)}")
         raise
 
+def match_chunks_by_intent(question_text, chunks, intent_modeling):
+    """
+    Interface function for orchestrator to match chunks by intent
+    
+    Args:
+        question_text: Question string
+        chunks: List of chunks from A-Pipeline
+        intent_modeling: Intent analysis from B2.1
+        
+    Returns:
+        dict: Intent matching results with ranked chunks
+    """
+    # Convert chunks to concept dictionary format for processing
+    concepts = {}
+    for chunk in chunks:
+        chunk_id = chunk.get("chunk_id", "")
+        concepts[chunk_id] = {
+            "theme_name": chunk_id,
+            "domain": chunk.get("metadata", {}).get("doc_type", "general"),
+            "keywords": chunk.get("content", "").split()[:20],  # Use first 20 words as keywords
+            "chunk_data": chunk  # Store original chunk data
+        }
+    
+    # Create question data structure
+    question_data = {
+        "question": question_text,
+        "intent_analysis": intent_modeling
+    }
+    
+    # Process intent matching
+    matches = match_intent_to_concepts(question_data, concepts)
+    
+    # Convert matches back to chunk format
+    ranked_chunks = []
+    for match in matches:
+        chunk_data = match["concept"]["chunk_data"]
+        ranked_chunks.append({
+            "chunk_id": chunk_data.get("chunk_id", ""),
+            "content": chunk_data.get("content", ""),
+            "similarity_score": match["similarity_score"],
+            "match_strategy": "intent_based",
+            "match_details": match["match_details"]
+        })
+    
+    return {
+        "strategy": "intent_matching",
+        "ranked_chunks": ranked_chunks,
+        "total_matches": len(ranked_chunks),
+        "processing_timestamp": datetime.now().isoformat()
+    }
+
 if __name__ == "__main__":
     main()
