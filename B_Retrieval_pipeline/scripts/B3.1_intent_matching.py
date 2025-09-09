@@ -300,7 +300,7 @@ def main():
         print(f"Error in B3.1 Intent Matching: {str(e)}")
         raise
 
-def match_chunks_by_intent(question_text, chunks, intent_modeling):
+def match_chunks_by_intent(question_text, chunks, intent_modeling, temporal_analysis=None):
     """
     Interface function for orchestrator to match chunks by intent
     
@@ -308,6 +308,7 @@ def match_chunks_by_intent(question_text, chunks, intent_modeling):
         question_text: Question string
         chunks: List of chunks from A-Pipeline
         intent_modeling: Intent analysis from B2.1
+        temporal_analysis: Temporal analysis from B2.4 (optional)
         
     Returns:
         dict: Intent matching results with ranked chunks
@@ -328,6 +329,10 @@ def match_chunks_by_intent(question_text, chunks, intent_modeling):
         "question": question_text,
         "intent_analysis": intent_modeling
     }
+    
+    # Add temporal analysis if available
+    if temporal_analysis and temporal_analysis.get('is_temporal_question'):
+        question_data["temporal_analysis"] = temporal_analysis
     
     # Process intent matching
     matches = match_intent_to_concepts(question_data, concepts)

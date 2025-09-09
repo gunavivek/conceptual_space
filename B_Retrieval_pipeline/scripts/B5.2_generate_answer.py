@@ -51,9 +51,13 @@ class B52AnswerGenerator:
     
     def load_a3_chunks(self, target_record_id: str = None) -> List[Dict]:
         """Load chunks from A3 output with optional record ID filtering"""
-        chunk_path = Path("../../A_Concept_pipeline/outputs/A3_raw_chunks_no_dedup.json")
+        # Use absolute path relative to script location
+        script_dir = Path(__file__).parent
+        project_root = script_dir.parent.parent  # Go up to conceptual_space/
+        
+        chunk_path = project_root / "A_Concept_pipeline" / "outputs" / "A3_multi_strategy_chunks.json"
         if not chunk_path.exists():
-            chunk_path = Path("../../A_Concept_pipeline/outputs/A3_multi_strategy_chunks.json")
+            chunk_path = project_root / "A_Concept_pipeline" / "outputs" / "A3_raw_chunks_no_dedup.json"
         
         if chunk_path.exists():
             with open(chunk_path, 'r', encoding='utf-8') as f:
@@ -69,7 +73,6 @@ class B52AnswerGenerator:
                         if chunk_id.startswith(target_record_id):
                             filtered_chunks.append(chunk)
                     
-                    print(f"Record ID filtering: {len(chunks)} -> {len(filtered_chunks)} chunks (target: {target_record_id})")
                     return filtered_chunks
                 
                 return chunks

@@ -154,13 +154,14 @@ def load_documents(data_path="data/test_mode_5_records.parquet"):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/A1.1_raw_documents.json"):
+def save_output(data, output_path="outputs/A1.1_raw_documents.json", append_mode=False):
     """
     Save processed documents to JSON
     
     Args:
         data: Document data to save
         output_path: Path for output file
+        append_mode: If True, append to existing documents instead of overwriting
     """
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -168,11 +169,39 @@ def save_output(data, output_path="outputs/A1.1_raw_documents.json"):
     # Create output directory if it doesn't exist
     full_path.parent.mkdir(parents=True, exist_ok=True)
     
+    # Handle append mode
+    if append_mode and full_path.exists():
+        # Load existing data and append new documents
+        with open(full_path, 'r', encoding='utf-8') as f:
+            existing_data = json.load(f)
+        
+        # Append new documents to existing ones
+        existing_docs = existing_data.get('documents', [])
+        new_docs = data.get('documents', [])
+        all_docs = existing_docs + new_docs
+        
+        # Update the data structure
+        data['documents'] = all_docs
+        data['count'] = len(all_docs)
+        
+        # Update domain classification stats
+        if 'domain_classification' in existing_data and 'domain_classification' in data:
+            for domain, count in data['domain_classification'].items():
+                if domain in existing_data['domain_classification']:
+                    existing_data['domain_classification'][domain] += count
+                else:
+                    existing_data['domain_classification'][domain] = count
+            data['domain_classification'] = existing_data['domain_classification']
+        
+        print(f"[OK] Appending {len(new_docs)} documents (total: {len(all_docs)})")
+    else:
+        print(f"[OK] Saving {data['count']} documents")
+    
     # Save to JSON
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"[OK] Saved {data['count']} documents to {full_path}")
+    print(f"[OK] Saved to {full_path}")
     
     # Also save metadata
     meta_path = full_path.with_suffix('.meta.json')
@@ -180,7 +209,8 @@ def save_output(data, output_path="outputs/A1.1_raw_documents.json"):
         "script": "A1.1_document_reader.py",
         "timestamp": data["processing_timestamp"],
         "document_count": data["count"],
-        "output_file": str(full_path)
+        "output_file": str(full_path),
+        "mode": "append" if append_mode else "overwrite"
     }
     
     with open(meta_path, 'w') as f:
@@ -192,12 +222,19 @@ def main():
     print("A1.1: Document Reader with RAGBench Domain Authority (ENHANCED)")
     print("="*70)
     
-    # Check for command line argument for data path
+    # Check for command line arguments
     import sys
     data_path = "data/test_mode_5_records.parquet"  # default
+    append_mode = False
+    
     if len(sys.argv) > 1:
         data_path = sys.argv[1]
         print(f"Using data file: {data_path}")
+    
+    # Check for append mode flag
+    if len(sys.argv) > 2 and sys.argv[2] == "--append":
+        append_mode = True
+        print("Running in APPEND mode - will add to existing documents")
     
     try:
         # Load documents with RAGBench domain integration
@@ -223,8 +260,8 @@ def main():
             print(f"  Text length: {len(first_doc['text'])} characters")
             print(f"  Text preview: {first_doc['text'][:100]}...")
         
-        # Save output
-        save_output(documents)
+        # Save output with append mode support
+        save_output(documents, append_mode=append_mode)
         
         print("\nA1.1 Document Reader completed successfully!")
         

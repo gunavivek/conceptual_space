@@ -249,10 +249,13 @@ class BPipelineOrchestrator:
         start_time = datetime.now()
         b3_results = {}
         
-        # Load A3 chunks for matching
-        chunk_path = Path("../../A_Concept_pipeline/outputs/A3_raw_chunks_no_dedup.json")
+        # Load A3 chunks for matching - use absolute paths
+        script_dir = Path(__file__).parent
+        project_root = script_dir.parent.parent
+        
+        chunk_path = project_root / "A_Concept_pipeline" / "outputs" / "A3_multi_strategy_chunks.json"
         if not chunk_path.exists():
-            chunk_path = Path("../../A_Concept_pipeline/outputs/A3_multi_strategy_chunks.json")
+            chunk_path = project_root / "A_Concept_pipeline" / "outputs" / "A3_raw_chunks_no_dedup.json"
         
         if chunk_path.exists():
             with open(chunk_path, 'r', encoding='utf-8') as f:
@@ -260,7 +263,7 @@ class BPipelineOrchestrator:
                 chunks = chunk_data.get('chunks', [])
             print(f"   Loaded {len(chunks)} chunks from A-Pipeline")
         else:
-            print("❌ No A3 chunks found - cannot perform matching")
+            print("[X] No A3 chunks found - cannot perform matching")
             chunks = []
         
         question_text = question_data["question"]
@@ -271,10 +274,21 @@ class BPipelineOrchestrator:
             B3_1 = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(B3_1)
             
+            # Filter chunks by record ID to prevent data leakage
+            question_id = question_data.get('question_id', '')
+            filtered_chunks = []
+            for chunk in chunks:
+                chunk_id = chunk.get('chunk_id', '')
+                if chunk_id.startswith(question_id):
+                    filtered_chunks.append(chunk)
+            
+            print(f"   Filtered chunks: {len(chunks)} -> {len(filtered_chunks)} (target: {question_id})")
+            
             intent_matches = B3_1.match_chunks_by_intent(
                 question_text, 
-                chunks, 
-                b2_results.get("intent_modeling", {})
+                filtered_chunks, 
+                b2_results.get("intent_modeling", {}),
+                b2_results.get("temporal_analysis", {})
             )
             
             # Save B3.1 individual output
@@ -297,7 +311,7 @@ class BPipelineOrchestrator:
             spec.loader.exec_module(B3_2)
             
             declarative_matches = B3_2.match_declarative_patterns(
-                chunks,
+                filtered_chunks,
                 b2_results.get("declarative_transformation", {})
             )
             
@@ -321,7 +335,7 @@ class BPipelineOrchestrator:
             spec.loader.exec_module(B3_3)
             
             backward_matches = B3_3.match_by_answer_expectations(
-                chunks,
+                filtered_chunks,
                 b2_results.get("answer_expectation", {})
             )
             

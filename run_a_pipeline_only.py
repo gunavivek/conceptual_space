@@ -34,30 +34,35 @@ class APipelineProcessor:
         print(f"  Created record file: {record_file.name}")
         return record_file
     
-    def run_a_pipeline_for_record(self, record_data, record_id):
-        """Run complete A-pipeline for a specific record following proper sequence:
-        A1.1 -> A1.2 -> A2.1 -> A2.2 -> A2.3 -> A2.4 -> A2.5 -> A3"""
+    def run_a_pipeline_for_record(self, record_data, record_id, is_first_record=False):
+        """Run A-pipeline steps A1.1 -> A1.2 -> A2.1 -> A2.2 -> A2.3 -> A2.4 -> A2.5 for a specific record
+        Note: A3 will be run once at the end for all records together"""
         print(f"\n{'='*60}")
-        print(f"Processing COMPLETE A-Pipeline for: {record_id}")
+        print(f"Processing A-Pipeline Steps 1-7 for: {record_id}")
         print(f"{'='*60}")
         
         # Create individual record file
         record_file = self.create_individual_record_file(record_data, record_id)
         
-        # Step 1: A1.1 - Document reader
-        print("\n[Step 1/8] A1.1 - Document Reader")
+        # Step 1: A1.1 - Document reader (with append mode for non-first records)
+        print("\n[Step 1/7] A1.1 - Document Reader")
         a11_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A1.1_document_reader.py"
         data_file_path = f"data/{record_id}.parquet"
-        cmd = [sys.executable, str(a11_script), data_file_path]
+        # Use append mode for all records except the first one
+        if is_first_record:
+            cmd = [sys.executable, str(a11_script), data_file_path]
+        else:
+            cmd = [sys.executable, str(a11_script), data_file_path, "--append"]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
         
         if result.returncode != 0:
             print(f"  [ERROR] A1.1 failed: {result.stderr[:200]}")
             return False
-        print(f"  [OK] A1.1 completed - Document loaded and processed")
+        mode_str = " (overwrite mode)" if is_first_record else " (append mode)"
+        print(f"  [OK] A1.1 completed - Document loaded and processed{mode_str}")
             
         # Step 2: A1.2 - Domain concept enrichment
-        print("\n[Step 2/8] A1.2 - Domain Concept Enrichment")
+        print("\n[Step 2/7] A1.2 - Domain Concept Enrichment")
         a12_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A1.2_domain_concept_enrichment.py"
         cmd = [sys.executable, str(a12_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
@@ -68,7 +73,7 @@ class APipelineProcessor:
         print(f"  [OK] A1.2 completed - Domain concepts enriched")
             
         # Step 3: A2.1 - Document preprocessing and analysis
-        print("\n[Step 3/8] A2.1 - Document Preprocessing & Analysis")
+        print("\n[Step 3/7] A2.1 - Document Preprocessing & Analysis")
         a21_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A2.1_preprocess_document_analysis.py"
         cmd = [sys.executable, str(a21_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
@@ -79,7 +84,7 @@ class APipelineProcessor:
         print(f"  [OK] A2.1 completed - Documents preprocessed and analyzed")
             
         # Step 4: A2.2 - Keyword & phrase extraction
-        print("\n[Step 4/8] A2.2 - Keyword & Phrase Extraction")
+        print("\n[Step 4/7] A2.2 - Keyword & Phrase Extraction")
         a22_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A2.2_keyword_phrase_extraction.py"
         cmd = [sys.executable, str(a22_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
@@ -90,7 +95,7 @@ class APipelineProcessor:
         print(f"  [OK] A2.2 completed - Keywords and phrases extracted")
             
         # Step 5: A2.3 - Concept grouping thematic
-        print("\n[Step 5/8] A2.3 - Concept Grouping Thematic")
+        print("\n[Step 5/7] A2.3 - Concept Grouping Thematic")
         a23_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A2.3_concept_grouping_thematic.py"
         cmd = [sys.executable, str(a23_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
@@ -101,7 +106,7 @@ class APipelineProcessor:
         print(f"  [OK] A2.3 completed - Concepts grouped thematically")
             
         # Step 6: A2.4 - Synthesize core concepts
-        print("\n[Step 6/8] A2.4 - Synthesize Core Concepts")
+        print("\n[Step 6/7] A2.4 - Synthesize Core Concepts")
         a24_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A2.4_synthesize_core_concepts.py"
         cmd = [sys.executable, str(a24_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
@@ -112,7 +117,7 @@ class APipelineProcessor:
         print(f"  [OK] A2.4 completed - Core concepts synthesized")
             
         # Step 7: A2.5 - Expanded concepts orchestrator
-        print("\n[Step 7/8] A2.5 - Expanded Concepts Orchestrator")
+        print("\n[Step 7/7] A2.5 - Expanded Concepts Orchestrator")
         a25_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A2.5_expanded_concepts_orchestrator.py"
         cmd = [sys.executable, str(a25_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
@@ -122,18 +127,24 @@ class APipelineProcessor:
             return False
         print(f"  [OK] A2.5 completed - Concepts expanded")
             
-        # Step 8: A3 - Multi-strategy concept-based chunking
-        print("\n[Step 8/8] A3 - Multi-Strategy Chunking")
+        # Note: A3 will be run once at the end for all records
+        print(f"\n[SUCCESS] A-Pipeline steps 1-7 completed for {record_id}")
+        return True
+    
+    def run_a3_batch_chunking(self):
+        """Run A3 chunking once for all processed records"""
+        print("\n" + "="*70)
+        print("Running A3 - Multi-Strategy Chunking for ALL Records")
+        print("="*70)
+        
         a3_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A3_concept_based_chunking.py"
         cmd = [sys.executable, str(a3_script)]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
         
         if result.returncode != 0:
-            print(f"  [ERROR] A3 failed: {result.stderr[:200]}")
+            print(f"  [ERROR] A3 failed: {result.stderr[:500]}")
             return False
-        print(f"  [OK] A3 completed - Chunks generated")
-            
-        print(f"\n[SUCCESS] Complete A-Pipeline completed successfully for {record_id}")
+        print(f"  [OK] A3 completed - Chunks generated for all records")
         return True
     
     def process_all_records(self):
@@ -148,26 +159,39 @@ class APipelineProcessor:
         success_count = 0
         failed_records = []
         
-        # Process each record
+        # Process each record (steps 1-7)
         for i, record in enumerate(records, 1):
             record_id = record['id']
             print(f"\n[{i}/20] Processing: {record_id}")
             
-            if self.run_a_pipeline_for_record(record, record_id):
+            is_first = (i == 1)  # First record will overwrite, others will append
+            if self.run_a_pipeline_for_record(record, record_id, is_first_record=is_first):
                 success_count += 1
                 self.processed_records.append(record_id)
             else:
                 failed_records.append(record_id)
                 print(f"[WARNING] Failed to process {record_id}")
         
-        # Summary
+        # Summary of record processing
         print("\n" + "="*70)
-        print("A-PIPELINE PROCESSING COMPLETE")
+        print("RECORD PROCESSING COMPLETE")
         print("="*70)
         print(f"[SUCCESS] Successfully processed: {success_count}/20 records")
         
         if failed_records:
             print(f"[ERROR] Failed records: {', '.join(failed_records)}")
+            print("[WARNING] A3 will only process successful records")
+        
+        # Run A3 once for all records
+        if success_count > 0:
+            print("\n" + "="*70)
+            print("FINAL STEP: A3 BATCH CHUNKING")
+            print("="*70)
+            if self.run_a3_batch_chunking():
+                print("[SUCCESS] A3 batch chunking completed successfully")
+            else:
+                print("[ERROR] A3 batch chunking failed")
+                success_count = 0  # Mark as failure if A3 fails
         
         # Check final chunk output
         self.verify_chunk_output()

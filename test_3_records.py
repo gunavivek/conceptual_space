@@ -1,91 +1,122 @@
 #!/usr/bin/env python3
 """
-Test 3 Records Processing
+Test script to process just 3 records through the fixed A-Pipeline
+This will help verify the batch aggregation fix before running all 20 records
 """
 
 import pandas as pd
 import subprocess
 import json
-import os
 import sys
 from pathlib import Path
-from datetime import datetime
-
-class Test3RecordsController:
-    def __init__(self):
-        self.base_dir = Path(__file__).parent
-        self.a_pipeline_dir = self.base_dir / "A_Concept_pipeline"
-        self.b_pipeline_dir = self.base_dir / "B_Retrieval_pipeline"
-        self.sample_file = self.base_dir / "sample_20_records.parquet"
-        self.batch_results = []
-        
-    def load_sample_records(self, count=3):
-        """Load first N sample records"""
-        df = pd.read_parquet(self.sample_file)
-        print(f"Loading {count} records from: {self.sample_file}")
-        return df.head(count).to_dict('records')
-    
-    def create_individual_record_file(self, record_data, record_id):
-        """Create individual record parquet file from batch data"""
-        record_df = pd.DataFrame([record_data])
-        record_file = self.a_pipeline_dir / "data" / f"{record_id}.parquet"
-        record_df.to_parquet(record_file, index=False)
-        print(f"Created individual record file: {record_file}")
-        return record_file
-    
-    def run_a_pipeline(self, record_data, record_id):
-        """Run A-pipeline for a specific record"""
-        print(f"\n=== Running A-pipeline for record: {record_id} ===")
-        
-        # Create individual record file
-        record_file = self.create_individual_record_file(record_data, record_id)
-        
-        # Run A1.1 only for now to test
-        a11_script = self.base_dir / "A_Concept_pipeline" / "scripts" / "A1.1_document_reader.py"
-        data_file_path = f"data/{record_id}.parquet"
-        cmd = [sys.executable, str(a11_script), data_file_path]
-        print(f"Running: {' '.join(cmd)}")
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=str(self.base_dir / "A_Concept_pipeline"))
-        
-        if result.returncode != 0:
-            print(f"A1.1 failed for {record_id}: {result.stderr}")
-            return False
-            
-        print(f"A1.1 completed successfully for {record_id}")
-        return True
-    
-    def test_records(self):
-        """Test processing 3 records"""
-        print("=== TESTING 3 RECORDS PIPELINE ===")
-        
-        # Load sample records
-        records = self.load_sample_records(3)
-        
-        # Process each record
-        for i, record in enumerate(records, 1):
-            record_id = record['id']
-            print(f"\n{'='*60}")
-            print(f"PROCESSING RECORD {i}/3: {record_id}")
-            print(f"{'='*60}")
-            
-            # Run A-pipeline
-            if not self.run_a_pipeline(record, record_id):
-                print(f"A-pipeline failed for {record_id}")
-                continue
-                
-            print(f"Successfully processed {record_id} ({i}/3)")
-        
-        print(f"\n=== TEST COMPLETED ===")
-        return True
 
 def main():
-    controller = Test3RecordsController()
-    success = controller.test_records()
+    print("="*70)
+    print("TEST: Processing 3 Records with Fixed A-Pipeline")
+    print("="*70)
     
-    if success:
-        print("3-record test completed!")
+    # Load sample records
+    df = pd.read_parquet("sample_20_records.parquet")
+    records = df.head(3).to_dict('records')  # Get first 3 records
+    
+    print(f"\nProcessing {len(records)} test records:")
+    for r in records:
+        print(f"  - {r['id']}")
+    
+    # Process each record through steps 1-7
+    for i, record in enumerate(records, 1):
+        record_id = record['id']
+        print(f"\n[{i}/3] Processing: {record_id}")
+        
+        # Create individual record file
+        record_df = pd.DataFrame([record])
+        record_file = Path("A_Concept_pipeline/data") / f"{record_id}.parquet"
+        record_df.to_parquet(record_file, index=False)
+        print(f"  Created: {record_file.name}")
+        
+        # Run A1.1 with append mode (except for first record)
+        a11_script = "scripts/A1.1_document_reader.py"
+        data_file = f"data/{record_id}.parquet"
+        
+        if i == 1:
+            cmd = [sys.executable, a11_script, data_file]
+            print("  Running A1.1 in overwrite mode...")
+        else:
+            cmd = [sys.executable, a11_script, data_file, "--append"]
+            print("  Running A1.1 in append mode...")
+        
+        result = subprocess.run(cmd, capture_output=True, text=True, 
+                              cwd="A_Concept_pipeline")
+        
+        if result.returncode != 0:
+            print(f"  [ERROR] A1.1 failed: {result.stderr[:200]}")
+            sys.exit(1)
+        print(f"  [OK] A1.1 completed")
+        
+        # Run remaining steps (A1.2 through A2.5)
+        steps = [
+            ("A1.2", "A1.2_domain_concept_enrichment.py"),
+            ("A2.1", "A2.1_preprocess_document_analysis.py"),
+            ("A2.2", "A2.2_keyword_phrase_extraction.py"),
+            ("A2.3", "A2.3_concept_grouping_thematic.py"),
+            ("A2.4", "A2.4_synthesize_core_concepts.py"),
+            ("A2.5", "A2.5_expanded_concepts_orchestrator.py")
+        ]
+        
+        for step_name, script_name in steps:
+            print(f"  Running {step_name}...")
+            script = f"scripts/{script_name}"
+            cmd = [sys.executable, script]
+            result = subprocess.run(cmd, capture_output=True, text=True,
+                                  cwd="A_Concept_pipeline")
+            
+            if result.returncode != 0:
+                print(f"  [ERROR] {step_name} failed")
+                sys.exit(1)
+            print(f"  [OK] {step_name} completed")
+    
+    # Run A3 once for all records
+    print("\n" + "="*70)
+    print("Running A3 - Multi-Strategy Chunking for ALL 3 Records")
+    print("="*70)
+    
+    a3_script = "scripts/A3_concept_based_chunking.py"
+    cmd = [sys.executable, a3_script]
+    result = subprocess.run(cmd, capture_output=True, text=True,
+                          cwd="A_Concept_pipeline")
+    
+    if result.returncode != 0:
+        print(f"[ERROR] A3 failed: {result.stderr[:500]}")
+        sys.exit(1)
+    print("[OK] A3 completed")
+    
+    # Verify chunks
+    print("\n" + "="*70)
+    print("VERIFICATION")
+    print("="*70)
+    
+    chunk_file = Path("A_Concept_pipeline/outputs/A3_multi_strategy_chunks.json")
+    with open(chunk_file, 'r') as f:
+        chunk_data = json.load(f)
+    
+    chunks = chunk_data.get('chunks', [])
+    print(f"Total chunks: {len(chunks)}")
+    
+    # Check which records have chunks
+    chunk_record_ids = set(c.get('doc_id') for c in chunks)
+    print(f"Unique record IDs in chunks: {len(chunk_record_ids)}")
+    
+    for record_id in ['finqa_test_1630', 'finqa_test_1431', 'finqa_test_1212']:
+        chunk_count = sum(1 for c in chunks if c.get('doc_id') == record_id)
+        status = "✓" if chunk_count > 0 else "✗"
+        print(f"  {status} {record_id}: {chunk_count} chunks")
+    
+    if len(chunk_record_ids) == 3:
+        print("\n[SUCCESS] All 3 records have chunks in the output!")
+        print("The batch aggregation fix is working correctly.")
     else:
-        print("3-record test failed!")
+        print(f"\n[FAILURE] Only {len(chunk_record_ids)} records have chunks.")
+        print("The batch aggregation issue persists.")
 
 if __name__ == "__main__":
     main()

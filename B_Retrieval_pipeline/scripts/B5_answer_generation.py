@@ -33,7 +33,10 @@ def generate_answer(question_data, b4_ranking):
     for i, chunk in enumerate(top_chunks, 1):
         print(f"\nChunk {i} (Score: {chunk['combined_score']:.3f}):")
         print(f"ID: {chunk['chunk_id']}")
-        print(f"Content: {chunk['content']}")
+        try:
+            print(f"Content: {chunk['content']}")
+        except (UnicodeEncodeError, OSError):
+            print(f"Content: [Content contains special characters - {len(chunk['content'])} chars]")
         context_info.append({
             "rank": i,
             "chunk_id": chunk["chunk_id"],
