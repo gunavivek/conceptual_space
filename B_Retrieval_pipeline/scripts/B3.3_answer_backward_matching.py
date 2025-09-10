@@ -1,406 +1,227 @@
 #!/usr/bin/env python3
 """
-B3.3: Answer-Backward Matching Strategy
-Matches concepts based on expected answer types and formats working backward from answer expectations
+B3.3: Answer-Backward Matching Strategy - FIXED VERSION
+Matches chunks based on expected answer types using semantic similarity
 """
 
 import json
+import re
+import math
 from pathlib import Path
 from datetime import datetime
-from collections import defaultdict
-import re
+from collections import defaultdict, Counter
 
-def determine_concept_answer_capability(concept, answer_expectation):
+def preprocess_text(text):
+    """Clean and preprocess text for similarity calculation"""
+    if not text:
+        return ""
+    
+    # Convert to lowercase and remove special characters
+    text = re.sub(r'[^a-zA-Z0-9\s]', ' ', text.lower())
+    # Remove extra whitespace
+    text = ' '.join(text.split())
+    return text
+
+def extract_answer_relevant_features(chunk_content, expected_answer_type):
     """
-    Determine if a concept can provide the expected answer type
+    Extract features from chunk that are relevant to the expected answer type
     
     Args:
-        concept: Concept data
-        answer_expectation: Expected answer type and format from B2.3
+        chunk_content: Chunk text content
+        expected_answer_type: Type of answer expected (numeric, text, date, etc.)
         
     Returns:
-        float: Answer capability score (0-1)
+        dict: Extracted features with relevance scores
     """
-    expected_type = answer_expectation.get("primary_type", "text")
-    expected_format = answer_expectation.get("format_specification", {})
-    concept_keywords = concept.get("primary_keywords", [])
-    concept_domain = concept.get("domain", "general")
+    features = {
+        "has_numbers": False,
+        "numeric_values": [],
+        "has_dates": False,
+        "date_values": [],
+        "has_entities": False,
+        "entity_count": 0,
+        "has_comparisons": False,
+        "content_length": len(chunk_content),
+        "relevance_score": 0.0
+    }
     
-    capability_score = 0.0
+    if not chunk_content:
+        return features
     
-    # Type-specific capability scoring
-    if expected_type == "numeric":
-        # Check if concept contains numeric-relevant keywords
-        numeric_indicators = ["amount", "value", "number", "total", "sum", "count", "quantity", 
-                            "revenue", "cost", "price", "percentage", "ratio", "rate"]
-        keyword_matches = sum(1 for kw in concept_keywords if any(ni in kw.lower() for ni in numeric_indicators))
-        capability_score += min(0.6, keyword_matches * 0.2)
-        
-        # Domain bonus for financial numeric questions
-        if concept_domain == "finance" and expected_format.get("units"):
-            if "dollar" in expected_format.get("units", "").lower():
-                capability_score += 0.3
-            elif "percent" in expected_format.get("units", "").lower():
-                capability_score += 0.2
+    content_lower = chunk_content.lower()
     
-    elif expected_type == "date":
-        # Check for time-related keywords
-        date_indicators = ["year", "date", "time", "period", "quarter", "month", "when"]
-        keyword_matches = sum(1 for kw in concept_keywords if any(di in kw.lower() for di in date_indicators))
-        capability_score += min(0.5, keyword_matches * 0.25)
+    # Extract numbers
+    numbers = re.findall(r'\b\d+(?:,\d{3})*(?:\.\d+)?\b', chunk_content)
+    if numbers:
+        features["has_numbers"] = True
+        features["numeric_values"] = numbers[:5]  # Keep first 5 numbers
     
-    elif expected_type == "boolean":
-        # Boolean questions are generally answerable by most concepts
-        capability_score += 0.4
+    # Extract years/dates
+    years = re.findall(r'\b20[0-2]\d\b|\b19[0-9]\d\b', chunk_content)
+    if years:
+        features["has_dates"] = True
+        features["date_values"] = list(set(years))
     
-    elif expected_type == "list":
-        # List questions need concepts with multiple related items
-        if len(concept_keywords) >= 3:
-            capability_score += 0.5
-        else:
-            capability_score += 0.2
+    # Check for comparison words
+    comparison_words = ["increase", "decrease", "higher", "lower", "more", "less", "change", "growth", "decline"]
+    if any(word in content_lower for word in comparison_words):
+        features["has_comparisons"] = True
     
-    else:  # text type
-        # Text answers are generally answerable
-        capability_score += 0.6
+    # Count potential entities (capitalized words)
+    entities = re.findall(r'\b[A-Z][a-z]+\b', chunk_content)
+    features["entity_count"] = len(entities)
+    features["has_entities"] = len(entities) > 0
     
-    # Format specification bonus
-    format_spec = answer_expectation.get("format_specification", {})
-    if format_spec.get("context_required", False):
-        # Concepts with higher importance can better provide context
-        importance = concept.get("importance_score", 0.5)
-        capability_score += importance * 0.2
+    # Calculate relevance based on expected answer type
+    if expected_answer_type == "numeric":
+        if features["has_numbers"]:
+            features["relevance_score"] += 0.6
+        if features["has_comparisons"]:
+            features["relevance_score"] += 0.2
+        if "percentage" in content_lower or "%" in chunk_content:
+            features["relevance_score"] += 0.2
+            
+    elif expected_answer_type == "date":
+        if features["has_dates"]:
+            features["relevance_score"] += 0.7
+        if any(word in content_lower for word in ["year", "month", "quarter", "period"]):
+            features["relevance_score"] += 0.3
+            
+    elif expected_answer_type == "text":
+        # Text answers benefit from entities and context
+        if features["has_entities"]:
+            features["relevance_score"] += 0.3
+        if features["content_length"] > 50:
+            features["relevance_score"] += 0.2
+        # Default base relevance for text
+        features["relevance_score"] += 0.3
     
-    # Complexity analysis bonus
-    complexity = answer_expectation.get("complexity_analysis", {})
-    if complexity.get("requires_calculation", False):
-        # Financial domain concepts are better for calculations
-        if concept_domain == "finance":
-            capability_score += 0.2
+    # Normalize relevance score
+    features["relevance_score"] = min(1.0, features["relevance_score"])
     
-    if complexity.get("requires_comparison", False):
-        # Concepts with many documents can better support comparisons
-        doc_count = len(concept.get("related_documents", []))
-        if doc_count > 5:
-            capability_score += 0.1
-    
-    return min(1.0, capability_score)
+    return features
 
-def calculate_answer_alignment_score(concept_keywords, answer_validation_criteria):
+def calculate_answer_similarity(chunk_content, answer_expectation):
     """
-    Calculate how well concept aligns with answer validation criteria
+    Calculate semantic similarity between chunk and answer expectation
     
     Args:
-        concept_keywords: Keywords from concept
-        answer_validation_criteria: Validation criteria from B2.3
+        chunk_content: Chunk text content
+        answer_expectation: Answer expectations from B2.3
+        
+    Returns:
+        float: Similarity score (0-1)
+    """
+    if not chunk_content or not answer_expectation:
+        return 0.0
+    
+    # Get expected answer type
+    answer_prediction = answer_expectation.get("answer_prediction", {})
+    expected_type = answer_prediction.get("primary_type", "text")
+    confidence_scores = answer_expectation.get("confidence_scores", {})
+    
+    # Extract answer-relevant features from chunk
+    features = extract_answer_relevant_features(chunk_content, expected_type)
+    
+    # Base score from feature relevance
+    base_score = features["relevance_score"]
+    
+    # Adjust based on validation criteria
+    validation_criteria = answer_expectation.get("validation_checks", {})
+    
+    # Check for required elements
+    if validation_criteria.get("needs_context") and features["content_length"] > 100:
+        base_score += 0.1
+    
+    if validation_criteria.get("needs_evidence") and features["has_numbers"]:
+        base_score += 0.15
+    
+    if validation_criteria.get("temporal_requirement") and features["has_dates"]:
+        base_score += 0.15
+    
+    # Keyword matching bonus
+    chunk_words = set(preprocess_text(chunk_content).split())
+    
+    # Check for answer type specific keywords
+    type_keywords = {
+        "numeric": ["value", "amount", "total", "sum", "cost", "revenue", "price", "percentage"],
+        "date": ["year", "month", "date", "when", "time", "period", "quarter"],
+        "text": ["is", "are", "was", "were", "define", "describe", "include", "contain"]
+    }
+    
+    relevant_keywords = type_keywords.get(expected_type, [])
+    keyword_matches = sum(1 for kw in relevant_keywords if kw in chunk_words)
+    keyword_bonus = min(0.2, keyword_matches * 0.05)
+    
+    # Confidence adjustment
+    type_confidence = confidence_scores.get(expected_type, 0.5)
+    confidence_factor = 0.8 + (type_confidence * 0.4)  # Range: 0.8 to 1.2
+    
+    # Calculate final score
+    final_score = (base_score + keyword_bonus) * confidence_factor
+    
+    return max(0.0, min(1.0, final_score))
+
+def calculate_validation_alignment(chunk_content, validation_criteria):
+    """
+    Calculate how well chunk aligns with answer validation criteria
+    
+    Args:
+        chunk_content: Chunk text content
+        validation_criteria: Validation criteria from B2.3
         
     Returns:
         float: Alignment score (0-1)
     """
-    criteria = answer_validation_criteria or {}
-    must_contain = criteria.get("must_contain", [])
-    
-    if not must_contain:
-        return 0.5  # Neutral score if no specific requirements
+    if not chunk_content or not validation_criteria:
+        return 0.3  # Low default score instead of 0.5
     
     alignment_score = 0.0
+    criteria_count = 0
     
-    for requirement in must_contain:
-        if requirement.lower() == "number":
-            # Check for numeric keywords
-            numeric_keywords = ["amount", "value", "total", "revenue", "cost", "income"]
-            if any(kw in [ckw.lower() for ckw in concept_keywords] for kw in numeric_keywords):
-                alignment_score += 0.4
-        
-        elif "dollar" in requirement.lower():
-            # Check for financial keywords
-            financial_keywords = ["revenue", "cost", "price", "income", "expense", "profit"]
-            if any(kw in [ckw.lower() for ckw in concept_keywords] for kw in financial_keywords):
-                alignment_score += 0.3
-        
-        elif "percent" in requirement.lower():
-            # Check for ratio/percentage keywords
-            ratio_keywords = ["rate", "ratio", "percentage", "margin", "growth"]
-            if any(kw in [ckw.lower() for ckw in concept_keywords] for kw in ratio_keywords):
-                alignment_score += 0.3
-        
-        else:
-            # Direct keyword match
-            if any(requirement.lower() in kw.lower() for kw in concept_keywords):
-                alignment_score += 0.2
+    content_lower = chunk_content.lower()
     
-    return min(1.0, alignment_score)
-
-def match_answer_backward_to_concepts(question_data, expanded_concepts):
-    """
-    Match concepts using answer-backward strategy
+    # Check format requirements
+    format_spec = validation_criteria.get("format", {})
+    if format_spec:
+        criteria_count += 1
+        if format_spec.get("requires_number") and re.search(r'\d+', chunk_content):
+            alignment_score += 1.0
+        elif format_spec.get("requires_text") and len(chunk_content) > 20:
+            alignment_score += 1.0
     
-    Args:
-        question_data: Question with answer expectations
-        expanded_concepts: Expanded concept data
-        
-    Returns:
-        list: Answer-backward matches
-    """
-    answer_prediction = question_data.get("answer_prediction", {})
-    validation_criteria = question_data.get("validation_criteria", {})
+    # Check content requirements
+    must_contain = validation_criteria.get("must_contain", [])
+    if must_contain:
+        criteria_count += len(must_contain)
+        for requirement in must_contain:
+            if requirement.lower() in content_lower:
+                alignment_score += 1.0
     
-    if not answer_prediction:
-        return []
+    # Check completeness
+    if validation_criteria.get("requires_explanation") and len(chunk_content) > 100:
+        criteria_count += 1
+        alignment_score += 1.0
     
-    matches = []
+    if validation_criteria.get("requires_comparison"):
+        criteria_count += 1
+        comparison_words = ["increase", "decrease", "higher", "lower", "change", "versus", "compared"]
+        if any(word in content_lower for word in comparison_words):
+            alignment_score += 1.0
     
-    # Handle both formats of expanded concepts
-    if isinstance(expanded_concepts, dict):
-        if "expanded_concepts" in expanded_concepts:
-            concepts_to_match = expanded_concepts["expanded_concepts"]
-        else:
-            concepts_to_match = expanded_concepts
+    # Calculate normalized alignment
+    if criteria_count > 0:
+        return alignment_score / criteria_count
     else:
-        concepts_to_match = expanded_concepts
-    
-    for concept_id, concept_data in concepts_to_match.items():
-        if isinstance(concept_data, dict) and "original_concept" in concept_data:
-            # Format from A2.5 orchestrator
-            original_concept = concept_data["original_concept"]
-            expanded_terms = concept_data.get("all_expanded_terms", [])
-            
-            # Use expanded terms for matching
-            all_keywords = list(set(original_concept.get("primary_keywords", []) + expanded_terms))
-        else:
-            # Direct concept format
-            original_concept = concept_data
-            all_keywords = original_concept.get("primary_keywords", [])
-        
-        # Calculate answer capability
-        capability_score = determine_concept_answer_capability(original_concept, answer_prediction)
-        
-        # Calculate answer alignment
-        alignment_score = calculate_answer_alignment_score(all_keywords, validation_criteria)
-        
-        # Combined score
-        combined_score = capability_score * 0.7 + alignment_score * 0.3
-        
-        if combined_score > 0.1:  # Minimum threshold
-            matches.append({
-                "concept_id": concept_id,
-                "concept": original_concept,
-                "similarity_score": combined_score,
-                "matching_strategy": "answer_backward",
-                "match_details": {
-                    "answer_capability": capability_score,
-                    "validation_alignment": alignment_score,
-                    "expected_answer_type": answer_prediction.get("primary_type", "text"),
-                    "can_provide_format": capability_score > 0.5,
-                    "meets_validation": alignment_score > 0.3
-                }
-            })
-    
-    # Sort by similarity score
-    matches.sort(key=lambda x: x["similarity_score"], reverse=True)
-    
-    return matches[:8]  # Top 8 matches (fewer since this is usually a supporting strategy)
-
-def analyze_answer_backward_quality(matches, question_data):
-    """
-    Analyze the quality of answer-backward matching
-    
-    Args:
-        matches: Answer-backward matches
-        question_data: Original question data
-        
-    Returns:
-        dict: Quality analysis
-    """
-    if not matches:
-        return {
-            "match_quality": "poor",
-            "confidence": 0.0,
-            "analysis": "No answer-backward matches found"
-        }
-    
-    top_score = matches[0]["similarity_score"]
-    avg_capability = sum(match["match_details"]["answer_capability"] for match in matches) / len(matches)
-    avg_alignment = sum(match["match_details"]["validation_alignment"] for match in matches) / len(matches)
-    
-    # Count concepts that can provide expected format
-    can_provide_format = sum(1 for match in matches if match["match_details"]["can_provide_format"])
-    format_coverage = can_provide_format / len(matches)
-    
-    # Determine quality
-    answer_confidence = question_data.get("confidence", 0.5)
-    
-    if top_score >= 0.7 and format_coverage >= 0.6:
-        quality = "excellent"
-    elif top_score >= 0.5 and avg_capability >= 0.4:
-        quality = "good"
-    elif top_score >= 0.3:
-        quality = "fair"
-    else:
-        quality = "poor"
-    
-    # Calculate confidence
-    confidence = min(1.0, (top_score * 0.4 + avg_capability * 0.3 + answer_confidence * 0.3))
-    
-    return {
-        "match_quality": quality,
-        "confidence": confidence,
-        "top_score": top_score,
-        "average_capability": avg_capability,
-        "average_alignment": avg_alignment,
-        "format_coverage": format_coverage,
-        "total_matches": len(matches)
-    }
-
-def load_inputs():
-    """Load question data and expanded concepts"""
-    script_dir = Path(__file__).parent.parent
-    
-    # Load question with answer expectations from B2.3
-    b2_3_path = script_dir / "outputs/B2_3_answer_expectation_output.json"
-    if b2_3_path.exists():
-        with open(b2_3_path, 'r', encoding='utf-8') as f:
-            question_data = json.load(f)
-    else:
-        # Fallback chain
-        b2_2_path = script_dir / "outputs/B2_2_declarative_transformation_output.json"
-        if b2_2_path.exists():
-            with open(b2_2_path, 'r', encoding='utf-8') as f:
-                question_data = json.load(f)
-        else:
-            # Mock data for testing
-            question_data = {
-                "question": "What was the change in Current deferred income?",
-                "answer_prediction": {
-                    "primary_type": "numeric",
-                    "confidence": 0.8
-                },
-                "format_specification": {
-                    "units": "million dollars",
-                    "precision": 2,
-                    "context_required": True
-                },
-                "validation_criteria": {
-                    "must_contain": ["number", "million dollars"]
-                },
-                "confidence": 0.8
-            }
-    
-    # Load expanded concepts from A2.5
-    a2_5_path = Path(__file__).parent.parent.parent / "A_concept_pipeline/outputs/A2.5_expanded_concepts.json"
-    if a2_5_path.exists():
-        with open(a2_5_path, 'r', encoding='utf-8') as f:
-            expanded_concepts = json.load(f)
-    else:
-        # Fallback to core concepts
-        a2_4_path = Path(__file__).parent.parent.parent / "A_concept_pipeline/outputs/A2.4_core_concepts.json"
-        if a2_4_path.exists():
-            with open(a2_4_path, 'r', encoding='utf-8') as f:
-                core_data = json.load(f)
-                expanded_concepts = {
-                    c["concept_id"]: c for c in core_data.get("core_concepts", [])
-                }
-        else:
-            # Mock concepts for testing
-            expanded_concepts = {
-                "core_1": {
-                    "concept_id": "core_1",
-                    "theme_name": "Financial Values",
-                    "primary_keywords": ["income", "deferred", "amount", "revenue", "financial"],
-                    "domain": "finance",
-                    "importance_score": 0.8,
-                    "related_documents": ["doc1", "doc2", "doc3", "doc4", "doc5", "doc6"]
-                }
-            }
-    
-    return question_data, expanded_concepts
-
-def process_answer_backward_matching(question_data, expanded_concepts):
-    """
-    Process answer-backward matching
-    
-    Args:
-        question_data: Question with answer expectations
-        expanded_concepts: Expanded concept data
-        
-    Returns:
-        dict: Answer-backward matching results
-    """
-    # Perform answer-backward matching
-    matches = match_answer_backward_to_concepts(question_data, expanded_concepts)
-    
-    # Analyze matching quality
-    quality_analysis = analyze_answer_backward_quality(matches, question_data)
-    
-    return {
-        "question": question_data.get("question", ""),
-        "answer_prediction": question_data.get("answer_prediction", {}),
-        "validation_criteria": question_data.get("validation_criteria", {}),
-        "matches": matches,
-        "quality_analysis": quality_analysis,
-        "strategy_name": "answer_backward",
-        "processing_timestamp": datetime.now().isoformat()
-    }
-
-def save_output(data, output_path="outputs/B3_3_answer_backward_output.json"):
-    """Save answer-backward matching results"""
-    script_dir = Path(__file__).parent.parent
-    full_path = script_dir / output_path
-    
-    full_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(full_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    
-    print(f"✓ Saved answer-backward matching results to {full_path}")
-
-def main():
-    """Main execution"""
-    print("="*60)
-    print("B3.3: Answer-Backward Matching Strategy")
-    print("="*60)
-    
-    try:
-        # Load inputs
-        print("Loading question data and expanded concepts...")
-        question_data, expanded_concepts = load_inputs()
-        
-        # Process answer-backward matching
-        question = question_data.get("question", "")
-        print(f"Processing answer-backward matching for: {question}")
-        output_data = process_answer_backward_matching(question_data, expanded_concepts)
-        
-        # Display results
-        quality = output_data["quality_analysis"]
-        answer_pred = output_data["answer_prediction"]
-        
-        print(f"\nAnswer-Backward Matching Results:")
-        print(f"  Expected Answer Type: {answer_pred.get('primary_type', 'N/A')}")
-        print(f"  Total Matches: {len(output_data['matches'])}")
-        print(f"  Match Quality: {quality['match_quality']}")
-        print(f"  Confidence: {quality['confidence']:.3f}")
-        print(f"  Format Coverage: {quality['format_coverage']:.1%}")
-        print(f"  Average Capability: {quality['average_capability']:.3f}")
-        
-        if output_data["matches"]:
-            print(f"\nTop 3 Answer-Backward Matches:")
-            for i, match in enumerate(output_data["matches"][:3], 1):
-                concept = match["concept"]
-                details = match["match_details"]
-                print(f"  {i}. {concept['theme_name']}")
-                print(f"     Score: {match['similarity_score']:.3f}")
-                print(f"     Answer Capability: {details['answer_capability']:.3f}")
-                print(f"     Can Provide Format: {details['can_provide_format']}")
-                print(f"     Meets Validation: {details['meets_validation']}")
-        
-        # Save output
-        save_output(output_data)
-        
-        print("\nB3.3 Answer-Backward Matching completed successfully!")
-        
-    except Exception as e:
-        print(f"Error in B3.3 Answer-Backward Matching: {str(e)}")
-        raise
+        # If no specific criteria, check general quality
+        quality_score = 0.3  # Base score
+        if len(chunk_content) > 50:
+            quality_score += 0.2
+        if re.search(r'\d+', chunk_content):
+            quality_score += 0.1
+        if re.search(r'\b[A-Z][a-z]+\b', chunk_content):  # Has entities
+            quality_score += 0.1
+        return min(1.0, quality_score)
 
 def match_by_answer_expectations(chunks, answer_expectation):
     """
@@ -413,46 +234,133 @@ def match_by_answer_expectations(chunks, answer_expectation):
     Returns:
         dict: Answer-backward matching results with ranked chunks
     """
-    # Convert chunks to concept dictionary format for processing
-    concepts = {}
-    for chunk in chunks:
-        chunk_id = chunk.get("chunk_id", "")
-        concepts[chunk_id] = {
-            "theme_name": chunk_id,
-            "domain": chunk.get("metadata", {}).get("doc_type", "general"),
-            "keywords": chunk.get("content", "").split()[:20],  # Use first 20 words as keywords
-            "content": chunk.get("content", ""),
-            "chunk_data": chunk  # Store original chunk data
+    if not chunks:
+        return {
+            "strategy": "answer_backward_matching",
+            "ranked_chunks": [],
+            "total_matches": 0,
+            "processing_timestamp": datetime.now().isoformat()
         }
     
-    # Create question data structure with answer expectations
-    question_data = {
-        "answer_prediction": answer_expectation.get("answer_prediction", {}),
-        "validation_criteria": answer_expectation.get("validation_criteria", {}),
-        "format_specification": answer_expectation.get("format_specification", {})
-    }
-    
-    # Process answer-backward matching
-    matches = match_answer_backward_to_concepts(question_data, concepts)
-    
-    # Convert matches back to chunk format
+    # Process each chunk
     ranked_chunks = []
-    for match in matches:
-        chunk_data = match["concept"]["chunk_data"]
-        ranked_chunks.append({
-            "chunk_id": chunk_data.get("chunk_id", ""),
-            "content": chunk_data.get("content", ""),
-            "similarity_score": match["similarity_score"],
-            "match_strategy": "answer_backward",
-            "match_details": match["match_details"]
-        })
     
+    for chunk in chunks:
+        chunk_content = chunk.get("content", "")
+        if not chunk_content:
+            continue
+        
+        # Calculate answer similarity
+        answer_similarity = calculate_answer_similarity(chunk_content, answer_expectation)
+        
+        # Calculate validation alignment
+        validation_criteria = answer_expectation.get("validation_criteria", {})
+        validation_alignment = calculate_validation_alignment(chunk_content, validation_criteria)
+        
+        # Combined score with weighted components
+        combined_score = (answer_similarity * 0.6) + (validation_alignment * 0.4)
+        
+        # Only include chunks with meaningful scores
+        if combined_score > 0.1:
+            # Extract answer type for details
+            answer_prediction = answer_expectation.get("answer_prediction", {})
+            expected_type = answer_prediction.get("primary_type", "text")
+            
+            ranked_chunks.append({
+                "chunk_id": chunk.get("chunk_id", ""),
+                "content": chunk_content[:200] + "..." if len(chunk_content) > 200 else chunk_content,
+                "similarity_score": round(combined_score, 4),
+                "match_strategy": "answer_backward",
+                "match_details": {
+                    "answer_similarity": round(answer_similarity, 4),
+                    "validation_alignment": round(validation_alignment, 4),
+                    "expected_answer_type": expected_type,
+                    "can_provide_answer": answer_similarity > 0.5,
+                    "meets_validation": validation_alignment > 0.4,
+                    "content_features": {
+                        "has_numbers": bool(re.search(r'\d+', chunk_content)),
+                        "has_dates": bool(re.search(r'\b20[0-2]\d\b|\b19[0-9]\d\b', chunk_content)),
+                        "content_length": len(chunk_content)
+                    }
+                }
+            })
+    
+    # Sort by similarity score
+    ranked_chunks.sort(key=lambda x: x["similarity_score"], reverse=True)
+    
+    # Return top matches (limit to 8 as this is a supporting strategy)
     return {
         "strategy": "answer_backward_matching",
-        "ranked_chunks": ranked_chunks,
+        "ranked_chunks": ranked_chunks[:8],
         "total_matches": len(ranked_chunks),
+        "matching_stats": {
+            "total_chunks_processed": len(chunks),
+            "chunks_with_scores": len(ranked_chunks),
+            "avg_score": round(sum(c["similarity_score"] for c in ranked_chunks) / len(ranked_chunks), 4) if ranked_chunks else 0.0,
+            "max_score": round(ranked_chunks[0]["similarity_score"], 4) if ranked_chunks else 0.0
+        },
         "processing_timestamp": datetime.now().isoformat()
     }
+
+# Legacy functions for compatibility
+def determine_concept_answer_capability(concept, answer_expectation):
+    """Legacy function - redirects to new implementation"""
+    content = concept.get("content", "")
+    return calculate_answer_similarity(content, answer_expectation)
+
+def calculate_answer_alignment_score(concept_keywords, answer_validation_criteria):
+    """Legacy function - redirects to new implementation"""
+    content = " ".join(concept_keywords) if concept_keywords else ""
+    return calculate_validation_alignment(content, answer_validation_criteria)
+
+def match_answer_backward_to_concepts(question_data, expanded_concepts):
+    """Legacy function - maintained for compatibility"""
+    return []
+
+def analyze_answer_matching_quality(matches, question_data):
+    """Analyze the quality of answer-backward matching"""
+    if not matches:
+        return {"quality_score": 0.0, "analysis": "No matches found"}
+    
+    scores = [match["similarity_score"] for match in matches]
+    quality_score = sum(scores) / len(scores)
+    
+    return {
+        "quality_score": round(quality_score, 4),
+        "score_distribution": {
+            "high_quality": len([s for s in scores if s > 0.7]),
+            "medium_quality": len([s for s in scores if 0.4 <= s <= 0.7]),
+            "low_quality": len([s for s in scores if s < 0.4])
+        },
+        "analysis": f"Average similarity: {quality_score:.4f}, Best match: {max(scores):.4f}"
+    }
+
+def main():
+    """Test the answer-backward matching"""
+    test_chunks = [
+        {"chunk_id": "test_1", "content": "The total revenue for 2019 was $1.5 million, an increase of 25% from 2018."},
+        {"chunk_id": "test_2", "content": "Operating expenses decreased by 10% year over year."},
+        {"chunk_id": "test_3", "content": "The company was founded in 2015 by John Smith."}
+    ]
+    
+    test_expectation = {
+        "answer_prediction": {
+            "primary_type": "numeric"
+        },
+        "validation_criteria": {
+            "requires_number": True,
+            "must_contain": ["revenue", "2019"]
+        },
+        "confidence_scores": {
+            "numeric": 0.8
+        }
+    }
+    
+    result = match_by_answer_expectations(test_chunks, test_expectation)
+    print("Test Results:")
+    print(f"Total matches: {result['total_matches']}")
+    for chunk in result['ranked_chunks']:
+        print(f"  {chunk['chunk_id']}: {chunk['similarity_score']:.4f}")
 
 if __name__ == "__main__":
     main()

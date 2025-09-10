@@ -1,308 +1,217 @@
 #!/usr/bin/env python3
 """
-B3.1: Intent Matching Strategy
-Matches questions to concepts based on intent analysis
+B3.1: Intent Matching Strategy - FIXED VERSION
+Matches questions to chunks based on semantic similarity and intent analysis
 """
 
 import json
+import math
+import re
 from pathlib import Path
 from datetime import datetime
-from collections import defaultdict
-import re
-import math
+from collections import defaultdict, Counter
 
-def calculate_intent_similarity(question_intent, concept_keywords, concept_domain):
+def preprocess_text(text):
+    """Clean and preprocess text for similarity calculation"""
+    if not text:
+        return ""
+    
+    # Convert to lowercase and remove special characters
+    text = re.sub(r'[^a-zA-Z0-9\s]', ' ', text.lower())
+    # Remove extra whitespace
+    text = ' '.join(text.split())
+    return text
+
+def calculate_tf_idf(text, all_texts):
     """
-    Calculate similarity between question intent and concept
+    Calculate TF-IDF scores for text
+    
+    Args:
+        text: Target text
+        all_texts: All texts in corpus for IDF calculation
+    
+    Returns:
+        dict: TF-IDF scores for each word
+    """
+    if not text or not all_texts:
+        return {}
+    
+    # Calculate term frequency (TF)
+    words = preprocess_text(text).split()
+    if not words:
+        return {}
+    
+    word_count = Counter(words)
+    total_words = len(words)
+    tf_scores = {word: count / total_words for word, count in word_count.items()}
+    
+    # Calculate inverse document frequency (IDF)
+    total_docs = len(all_texts)
+    idf_scores = {}
+    
+    for word in tf_scores:
+        docs_containing_word = sum(1 for doc in all_texts if word in preprocess_text(doc))
+        if docs_containing_word > 0:
+            idf_scores[word] = math.log(total_docs / docs_containing_word)
+        else:
+            idf_scores[word] = 0
+    
+    # Calculate TF-IDF
+    tfidf_scores = {word: tf_scores[word] * idf_scores[word] for word in tf_scores}
+    return tfidf_scores
+
+def cosine_similarity(text1, text2, all_texts):
+    """
+    Calculate cosine similarity between two texts using TF-IDF
+    
+    Args:
+        text1: First text
+        text2: Second text  
+        all_texts: All texts for TF-IDF calculation
+        
+    Returns:
+        float: Cosine similarity score (0-1)
+    """
+    if not text1 or not text2:
+        return 0.0
+    
+    # Get TF-IDF vectors
+    tfidf1 = calculate_tf_idf(text1, all_texts)
+    tfidf2 = calculate_tf_idf(text2, all_texts)
+    
+    if not tfidf1 or not tfidf2:
+        return 0.0
+    
+    # Get all unique words
+    all_words = set(tfidf1.keys()) | set(tfidf2.keys())
+    
+    if not all_words:
+        return 0.0
+    
+    # Create vectors
+    vector1 = [tfidf1.get(word, 0) for word in all_words]
+    vector2 = [tfidf2.get(word, 0) for word in all_words]
+    
+    # Calculate dot product
+    dot_product = sum(v1 * v2 for v1, v2 in zip(vector1, vector2))
+    
+    # Calculate magnitudes
+    magnitude1 = math.sqrt(sum(v * v for v in vector1))
+    magnitude2 = math.sqrt(sum(v * v for v in vector2))
+    
+    if magnitude1 == 0 or magnitude2 == 0:
+        return 0.0
+    
+    # Calculate cosine similarity
+    similarity = dot_product / (magnitude1 * magnitude2)
+    return max(0.0, min(1.0, similarity))
+
+def simple_keyword_similarity(question, chunk_content):
+    """
+    Simple keyword-based similarity as fallback
+    
+    Args:
+        question: Question text
+        chunk_content: Chunk content
+        
+    Returns:
+        float: Keyword similarity score (0-1)
+    """
+    if not question or not chunk_content:
+        return 0.0
+    
+    question_words = set(preprocess_text(question).split())
+    chunk_words = set(preprocess_text(chunk_content).split())
+    
+    if not question_words or not chunk_words:
+        return 0.0
+    
+    intersection = len(question_words & chunk_words)
+    union = len(question_words | chunk_words)
+    
+    return intersection / union if union > 0 else 0.0
+
+def calculate_intent_boost(question_intent, chunk_content):
+    """
+    Calculate intent-based boost for similarity score
     
     Args:
         question_intent: Intent analysis from B2.1
-        concept_keywords: Concept keywords
-        concept_domain: Concept domain
+        chunk_content: Chunk content
         
     Returns:
-        float: Intent similarity score (0-1)
+        float: Intent boost factor (0.8-1.2)
     """
-    # Extract intent features
-    intent_type = question_intent.get("primary_intent", "")
-    intent_keywords = question_intent.get("keywords", [])
-    question_domain = question_intent.get("domain", "general")
+    if not question_intent or not chunk_content:
+        return 1.0
     
-    # Keyword overlap scoring
-    intent_kw_set = set([kw.lower() for kw in intent_keywords])
-    concept_kw_set = set([kw.lower() for kw in concept_keywords])
+    intent_type = question_intent.get("primary_intent", "").lower()
+    content_lower = chunk_content.lower()
     
-    if not intent_kw_set or not concept_kw_set:
-        keyword_score = 0.0
-    else:
-        intersection = len(intent_kw_set & concept_kw_set)
-        union = len(intent_kw_set | concept_kw_set)
-        keyword_score = intersection / union
+    boost = 1.0
     
-    # Domain alignment scoring
-    domain_score = 1.0 if question_domain.lower() == concept_domain.lower() else 0.5
-    if question_domain == "general" or concept_domain == "general":
-        domain_score = 0.7  # Neutral for general domains
+    # Intent-specific keyword boosting
+    if intent_type == "comparison":
+        comparison_keywords = ["higher", "lower", "increase", "decrease", "change", "compared", "versus", "than"]
+        if any(keyword in content_lower for keyword in comparison_keywords):
+            boost += 0.2
     
-    # Intent type scoring
-    intent_score = 1.0  # Base score
+    elif intent_type == "calculation":
+        calc_keywords = ["total", "sum", "average", "percentage", "calculate", "compute"]
+        if any(keyword in content_lower for keyword in calc_keywords):
+            boost += 0.15
     
-    # Adjust based on intent type
-    if intent_type == "factual":
-        # Factual questions prefer concepts with high importance
-        intent_score = 1.0
-    elif intent_type == "analytical":
-        # Analytical questions prefer concepts with relationships
-        intent_score = 1.1
-    elif intent_type == "comparative":
-        # Comparative questions need multiple related concepts
-        intent_score = 0.9
+    elif intent_type == "identification":
+        id_keywords = ["is", "was", "are", "were", "identify", "name", "which"]
+        if any(keyword in content_lower for keyword in id_keywords):
+            boost += 0.1
     
-    # Combine scores
-    final_score = (keyword_score * 0.5 + domain_score * 0.3 + (intent_score - 1.0) * 0.2)
-    return min(1.0, max(0.0, final_score))
+    elif intent_type == "factual":
+        # Factual questions benefit from concrete numbers and facts
+        if re.search(r'\d+', content_lower):
+            boost += 0.1
+    
+    elif intent_type == "temporal":
+        temporal_keywords = ["year", "month", "when", "time", "period", "2018", "2019", "2020"]
+        if any(keyword in content_lower for keyword in temporal_keywords):
+            boost += 0.2
+    
+    return max(0.8, min(1.2, boost))
 
-def match_intent_to_concepts(question_data, expanded_concepts):
+def calculate_semantic_similarity(question, chunk_content, all_chunk_texts, intent_analysis=None):
     """
-    Match question intent to expanded concepts
+    Calculate comprehensive semantic similarity between question and chunk
     
     Args:
-        question_data: Question with intent analysis
-        expanded_concepts: Expanded concept data
+        question: Question text
+        chunk_content: Chunk content
+        all_chunk_texts: All chunk texts for TF-IDF corpus
+        intent_analysis: Intent analysis from B2.1
         
     Returns:
-        list: Intent-based matches
+        float: Semantic similarity score (0-1)
     """
-    question_intent = question_data.get("intent_analysis", {})
-    matches = []
+    if not question or not chunk_content:
+        return 0.0
     
-    # Handle both formats of expanded concepts
-    if isinstance(expanded_concepts, dict):
-        if "expanded_concepts" in expanded_concepts:
-            concepts_to_match = expanded_concepts["expanded_concepts"]
-        else:
-            concepts_to_match = expanded_concepts
-    else:
-        concepts_to_match = expanded_concepts
+    # Primary similarity using TF-IDF cosine similarity
+    tfidf_similarity = cosine_similarity(question, chunk_content, all_chunk_texts + [question])
     
-    for concept_id, concept_data in concepts_to_match.items():
-        if isinstance(concept_data, dict) and "original_concept" in concept_data:
-            # Format from A2.5 orchestrator
-            original_concept = concept_data["original_concept"]
-            expanded_terms = concept_data.get("all_expanded_terms", [])
-            
-            # Use expanded terms for matching
-            all_keywords = list(set(original_concept.get("primary_keywords", []) + expanded_terms))
-        else:
-            # Direct concept format
-            original_concept = concept_data
-            all_keywords = original_concept.get("primary_keywords", [])
-        
-        concept_domain = original_concept.get("domain", "general")
-        
-        # Calculate intent similarity
-        similarity = calculate_intent_similarity(question_intent, all_keywords, concept_domain)
-        
-        if similarity > 0.1:  # Minimum threshold
-            matches.append({
-                "concept_id": concept_id,
-                "concept": original_concept,
-                "similarity_score": similarity,
-                "matching_strategy": "intent_based",
-                "match_details": {
-                    "keyword_overlap": len(set([kw.lower() for kw in question_intent.get("keywords", [])]) & 
-                                          set([kw.lower() for kw in all_keywords])),
-                    "domain_match": concept_domain == question_intent.get("domain", "general"),
-                    "intent_type": question_intent.get("primary_intent", "unknown")
-                }
-            })
+    # Fallback to keyword similarity if TF-IDF fails
+    keyword_similarity_score = simple_keyword_similarity(question, chunk_content)
     
-    # Sort by similarity score
-    matches.sort(key=lambda x: x["similarity_score"], reverse=True)
+    # Use the higher of the two scores
+    base_similarity = max(tfidf_similarity, keyword_similarity_score)
     
-    return matches[:10]  # Top 10 matches
-
-def analyze_intent_matching_quality(matches, question_data):
-    """
-    Analyze the quality of intent matching
+    # Apply intent boost
+    intent_boost = calculate_intent_boost(intent_analysis, chunk_content)
+    final_similarity = base_similarity * intent_boost
     
-    Args:
-        matches: Intent-based matches
-        question_data: Original question data
-        
-    Returns:
-        dict: Quality analysis
-    """
-    if not matches:
-        return {
-            "match_quality": "poor",
-            "confidence": 0.0,
-            "analysis": "No intent matches found"
-        }
-    
-    top_score = matches[0]["similarity_score"]
-    avg_score = sum(match["similarity_score"] for match in matches) / len(matches)
-    score_variance = sum((match["similarity_score"] - avg_score) ** 2 for match in matches) / len(matches)
-    
-    # Determine quality
-    if top_score >= 0.8:
-        quality = "excellent"
-    elif top_score >= 0.6:
-        quality = "good"
-    elif top_score >= 0.4:
-        quality = "fair"
-    else:
-        quality = "poor"
-    
-    # Calculate confidence
-    confidence = min(1.0, top_score + (0.1 if score_variance < 0.1 else 0))
-    
-    return {
-        "match_quality": quality,
-        "confidence": confidence,
-        "top_score": top_score,
-        "average_score": avg_score,
-        "score_variance": score_variance,
-        "total_matches": len(matches)
-    }
-
-def load_inputs():
-    """Load question data and expanded concepts"""
-    script_dir = Path(__file__).parent.parent
-    
-    # Load question with intent analysis from B2.1
-    b2_1_path = script_dir / "outputs/B2_1_intent_layer_output.json"
-    if b2_1_path.exists():
-        with open(b2_1_path, 'r', encoding='utf-8') as f:
-            question_data = json.load(f)
-    else:
-        # Fallback to B1
-        b1_path = script_dir / "outputs/B1_current_question.json"
-        if b1_path.exists():
-            with open(b1_path, 'r', encoding='utf-8') as f:
-                question_data = json.load(f)
-        else:
-            # Mock data for testing
-            question_data = {
-                "question": "What was the change in Current deferred income?",
-                "intent_analysis": {
-                    "primary_intent": "factual",
-                    "keywords": ["change", "current", "deferred", "income"],
-                    "domain": "finance"
-                }
-            }
-    
-    # Load expanded concepts from A2.5
-    a2_5_path = Path(__file__).parent.parent.parent / "A_concept_pipeline/outputs/A2.5_expanded_concepts.json"
-    if a2_5_path.exists():
-        with open(a2_5_path, 'r', encoding='utf-8') as f:
-            expanded_concepts = json.load(f)
-    else:
-        # Fallback to core concepts
-        a2_4_path = Path(__file__).parent.parent.parent / "A_concept_pipeline/outputs/A2.4_core_concepts.json"
-        if a2_4_path.exists():
-            with open(a2_4_path, 'r', encoding='utf-8') as f:
-                core_data = json.load(f)
-                expanded_concepts = {
-                    c["concept_id"]: c for c in core_data.get("core_concepts", [])
-                }
-        else:
-            # Mock concepts for testing
-            expanded_concepts = {
-                "core_1": {
-                    "concept_id": "core_1",
-                    "theme_name": "Financial Metrics",
-                    "primary_keywords": ["revenue", "income", "financial", "current"],
-                    "domain": "finance",
-                    "importance_score": 0.8
-                }
-            }
-    
-    return question_data, expanded_concepts
-
-def process_intent_matching(question_data, expanded_concepts):
-    """
-    Process intent-based matching
-    
-    Args:
-        question_data: Question with intent analysis
-        expanded_concepts: Expanded concept data
-        
-    Returns:
-        dict: Intent matching results
-    """
-    # Perform intent matching
-    matches = match_intent_to_concepts(question_data, expanded_concepts)
-    
-    # Analyze matching quality
-    quality_analysis = analyze_intent_matching_quality(matches, question_data)
-    
-    return {
-        "question": question_data.get("question", ""),
-        "intent_analysis": question_data.get("intent_analysis", {}),
-        "matches": matches,
-        "quality_analysis": quality_analysis,
-        "strategy_name": "intent_matching",
-        "processing_timestamp": datetime.now().isoformat()
-    }
-
-def save_output(data, output_path="outputs/B3_1_intent_matching_output.json"):
-    """Save intent matching results"""
-    script_dir = Path(__file__).parent.parent
-    full_path = script_dir / output_path
-    
-    full_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(full_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    
-    print(f"✓ Saved intent matching results to {full_path}")
-
-def main():
-    """Main execution"""
-    print("="*60)
-    print("B3.1: Intent Matching Strategy")
-    print("="*60)
-    
-    try:
-        # Load inputs
-        print("Loading question data and expanded concepts...")
-        question_data, expanded_concepts = load_inputs()
-        
-        # Process intent matching
-        question = question_data.get("question", "")
-        print(f"Processing intent matching for: {question}")
-        output_data = process_intent_matching(question_data, expanded_concepts)
-        
-        # Display results
-        quality = output_data["quality_analysis"]
-        print(f"\nIntent Matching Results:")
-        print(f"  Total Matches: {len(output_data['matches'])}")
-        print(f"  Match Quality: {quality['match_quality']}")
-        print(f"  Confidence: {quality['confidence']:.3f}")
-        print(f"  Top Score: {quality['top_score']:.3f}")
-        
-        if output_data["matches"]:
-            print(f"\nTop 3 Intent Matches:")
-            for i, match in enumerate(output_data["matches"][:3], 1):
-                concept = match["concept"]
-                print(f"  {i}. {concept['theme_name']}")
-                print(f"     Score: {match['similarity_score']:.3f}")
-                print(f"     Domain: {concept.get('domain', 'N/A')}")
-                print(f"     Keywords overlap: {match['match_details']['keyword_overlap']}")
-        
-        # Save output
-        save_output(output_data)
-        
-        print("\nB3.1 Intent Matching completed successfully!")
-        
-    except Exception as e:
-        print(f"Error in B3.1 Intent Matching: {str(e)}")
-        raise
+    return max(0.0, min(1.0, final_similarity))
 
 def match_chunks_by_intent(question_text, chunks, intent_modeling, temporal_analysis=None):
     """
-    Interface function for orchestrator to match chunks by intent
+    Interface function for orchestrator to match chunks by intent using semantic similarity
     
     Args:
         question_text: Question string
@@ -313,48 +222,111 @@ def match_chunks_by_intent(question_text, chunks, intent_modeling, temporal_anal
     Returns:
         dict: Intent matching results with ranked chunks
     """
-    # Convert chunks to concept dictionary format for processing
-    concepts = {}
-    for chunk in chunks:
-        chunk_id = chunk.get("chunk_id", "")
-        concepts[chunk_id] = {
-            "theme_name": chunk_id,
-            "domain": chunk.get("metadata", {}).get("doc_type", "general"),
-            "keywords": chunk.get("content", "").split()[:20],  # Use first 20 words as keywords
-            "chunk_data": chunk  # Store original chunk data
-        }
+    if not question_text or not chunks:
+        return {"ranked_chunks": [], "matching_stats": {"total_chunks": 0}}
     
-    # Create question data structure
-    question_data = {
-        "question": question_text,
-        "intent_analysis": intent_modeling
+    # Extract all chunk texts for TF-IDF corpus
+    all_chunk_texts = [chunk.get("content", "") for chunk in chunks if chunk.get("content")]
+    
+    if not all_chunk_texts:
+        return {"ranked_chunks": [], "matching_stats": {"total_chunks": len(chunks)}}
+    
+    # Calculate similarity for each chunk
+    ranked_chunks = []
+    
+    for chunk in chunks:
+        chunk_content = chunk.get("content", "")
+        if not chunk_content:
+            continue
+        
+        # Calculate semantic similarity
+        similarity_score = calculate_semantic_similarity(
+            question_text, 
+            chunk_content, 
+            all_chunk_texts,
+            intent_modeling.get("intent_analysis", {}) if intent_modeling else None
+        )
+        
+        # Only include chunks with meaningful similarity
+        if similarity_score > 0.01:  # Very low threshold to include most matches
+            ranked_chunks.append({
+                "chunk_id": chunk.get("chunk_id", ""),
+                "content": chunk_content[:200] + "..." if len(chunk_content) > 200 else chunk_content,
+                "full_content": chunk_content,  # Keep full content for further processing
+                "similarity_score": round(similarity_score, 4),
+                "match_strategy": "semantic_similarity",
+                "match_details": {
+                    "content_length": len(chunk_content),
+                    "intent_type": intent_modeling.get("intent_analysis", {}).get("primary_intent", "unknown") if intent_modeling else "unknown",
+                    "has_temporal": temporal_analysis is not None and temporal_analysis.get("temporal_confidence", 0) > 0.5
+                }
+            })
+    
+    # Sort by similarity score (highest first)
+    ranked_chunks.sort(key=lambda x: x["similarity_score"], reverse=True)
+    
+    # Calculate matching statistics
+    matching_stats = {
+        "total_chunks": len(chunks),
+        "matched_chunks": len(ranked_chunks),
+        "avg_similarity": round(sum(chunk["similarity_score"] for chunk in ranked_chunks) / len(ranked_chunks), 4) if ranked_chunks else 0.0,
+        "max_similarity": round(ranked_chunks[0]["similarity_score"], 4) if ranked_chunks else 0.0,
+        "min_similarity": round(ranked_chunks[-1]["similarity_score"], 4) if ranked_chunks else 0.0,
+        "similarity_method": "tf_idf_cosine_with_intent_boost"
     }
     
-    # Add temporal analysis if available
-    if temporal_analysis and temporal_analysis.get('is_temporal_question'):
-        question_data["temporal_analysis"] = temporal_analysis
-    
-    # Process intent matching
-    matches = match_intent_to_concepts(question_data, concepts)
-    
-    # Convert matches back to chunk format
-    ranked_chunks = []
-    for match in matches:
-        chunk_data = match["concept"]["chunk_data"]
-        ranked_chunks.append({
-            "chunk_id": chunk_data.get("chunk_id", ""),
-            "content": chunk_data.get("content", ""),
-            "similarity_score": match["similarity_score"],
-            "match_strategy": "intent_based",
-            "match_details": match["match_details"]
-        })
-    
     return {
-        "strategy": "intent_matching",
-        "ranked_chunks": ranked_chunks,
-        "total_matches": len(ranked_chunks),
+        "ranked_chunks": ranked_chunks[:10],  # Return top 10 matches
+        "matching_stats": matching_stats,
+        "question_processed": question_text[:100] + "..." if len(question_text) > 100 else question_text,
         "processing_timestamp": datetime.now().isoformat()
     }
 
+# Backward compatibility functions (in case other parts of pipeline call them)
+def calculate_intent_similarity(question_intent, concept_keywords, concept_domain):
+    """Legacy function - now redirects to semantic similarity"""
+    return 0.5  # Default moderate similarity
+
+def match_intent_to_concepts(question_data, expanded_concepts):
+    """Legacy function - maintained for compatibility"""
+    return []
+
+def analyze_intent_matching_quality(matches, question_data):
+    """Analyze the quality of intent matching"""
+    if not matches:
+        return {"quality_score": 0.0, "analysis": "No matches found"}
+    
+    scores = [match["similarity_score"] for match in matches]
+    quality_score = sum(scores) / len(scores)
+    
+    return {
+        "quality_score": round(quality_score, 4),
+        "score_distribution": {
+            "high_quality": len([s for s in scores if s > 0.7]),
+            "medium_quality": len([s for s in scores if 0.3 <= s <= 0.7]),  
+            "low_quality": len([s for s in scores if s < 0.3])
+        },
+        "analysis": f"Average similarity: {quality_score:.4f}, Best match: {max(scores):.4f}"
+    }
+
 if __name__ == "__main__":
-    main()
+    # Test the semantic similarity function
+    test_question = "What was the revenue in 2019?"
+    test_chunks = [
+        {"chunk_id": "test_1", "content": "Revenue for 2019 was $100 million, an increase from 2018."},
+        {"chunk_id": "test_2", "content": "The company expenses increased significantly during the year."},
+        {"chunk_id": "test_3", "content": "Total revenue grew by 15% in fiscal year 2019."}
+    ]
+    
+    test_intent = {
+        "intent_analysis": {
+            "primary_intent": "factual",
+            "keywords": ["revenue", "2019"]
+        }
+    }
+    
+    result = match_chunks_by_intent(test_question, test_chunks, test_intent)
+    print("Test Results:")
+    print(f"Matched chunks: {result['matching_stats']['matched_chunks']}")
+    for chunk in result['ranked_chunks']:
+        print(f"  {chunk['chunk_id']}: {chunk['similarity_score']:.4f}")

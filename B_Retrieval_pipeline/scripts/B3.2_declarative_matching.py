@@ -419,8 +419,17 @@ def match_declarative_patterns(chunks, declarative_transformation):
         }
     
     # Create question data structure with declarative forms
+    # Handle both dict and list formats from B2.2
+    declarative_forms_list = []
+    if isinstance(declarative_transformation, dict):
+        # B2.2 sends {"declarative_forms": [...]}
+        declarative_forms_list = declarative_transformation.get("declarative_forms", [])
+    elif isinstance(declarative_transformation, list):
+        # Direct list format
+        declarative_forms_list = declarative_transformation
+    
     question_data = {
-        "declarative_forms": [{"declarative": d, "quality_score": 0.8} for d in declarative_transformation] if isinstance(declarative_transformation, list) else []
+        "declarative_forms": [{"declarative": d, "quality_score": 0.8} for d in declarative_forms_list]
     }
     
     # Process declarative matching
