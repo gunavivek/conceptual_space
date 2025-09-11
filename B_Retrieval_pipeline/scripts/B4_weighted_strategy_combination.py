@@ -11,57 +11,98 @@ import numpy as np
 
 def load_matching_results():
     """
-    Load results from the three matching strategies
+    Load results from the three matching strategies from actual B3 output files
     
     Returns:
-        dict: Combined matching results
+        dict: Combined matching results with chunk data
     """
     script_dir = Path(__file__).parent.parent
+    outputs_dir = script_dir / "outputs"
     
-    # Try to load B3 outputs (would be created by B3.1, B3.2, B3.3)
-    # For now, we'll simulate with mock data
+    matching_results = {}
+    chunk_content_map = {}
     
-    # Mock matching results from three strategies
-    intent_matching = {
-        "Financial Concepts": 0.85,
-        "Revenue Analysis": 0.72,
-        "Income Statement": 0.68,
-        "Deferred Income": 0.95,
-        "Time Period": 0.60
-    }
+    # Load B3.1 Intent Matching results
+    b31_path = outputs_dir / "B3.1_intent_matching_output.json"
+    if b31_path.exists():
+        with open(b31_path, 'r', encoding='utf-8') as f:
+            b31_data = json.load(f)
+            
+        # Extract the first question's results (or current question)
+        if "results" in b31_data and b31_data["results"]:
+            first_result = b31_data["results"][0]
+            intent_scores = {}
+            
+            for chunk in first_result.get("ranked_chunks", []):
+                chunk_id = chunk.get("chunk_id", "")
+                score = chunk.get("similarity_score", 0.0)
+                intent_scores[chunk_id] = score
+                chunk_content_map[chunk_id] = chunk.get("content", "")
+                
+            matching_results["intent_based"] = intent_scores
+    else:
+        print(f"Warning: B3.1 output not found at {b31_path}")
+        matching_results["intent_based"] = {}
     
-    declarative_matching = {
-        "Financial Concepts": 0.90,
-        "Deferred Income": 0.88,
-        "Revenue Recognition": 0.65,
-        "Annual Report": 0.70,
-        "Accounting Changes": 0.75
-    }
+    # Load B3.2 Declarative Matching results
+    b32_path = outputs_dir / "B3.2_declarative_matching_output.json"
+    if b32_path.exists():
+        with open(b32_path, 'r', encoding='utf-8') as f:
+            b32_data = json.load(f)
+            
+        # Extract the first question's results
+        if "results" in b32_data and b32_data["results"]:
+            first_result = b32_data["results"][0]
+            declarative_scores = {}
+            
+            for chunk in first_result.get("ranked_chunks", []):
+                chunk_id = chunk.get("chunk_id", "")
+                score = chunk.get("similarity_score", 0.0)
+                declarative_scores[chunk_id] = score
+                chunk_content_map[chunk_id] = chunk.get("content", "")
+                
+            matching_results["declarative_form"] = declarative_scores
+    else:
+        print(f"Warning: B3.2 output not found at {b32_path}")
+        matching_results["declarative_form"] = {}
     
-    answer_backwards_matching = {
-        "Financial Concepts": 0.78,
-        "Deferred Income": 0.82,
-        "Monetary Values": 0.88,
-        "Year 2019": 0.85,
-        "Million Units": 0.70
-    }
+    # Load B3.3 Answer Backward Matching results
+    b33_path = outputs_dir / "B3.3_answer_backward_matching_output.json"
+    if b33_path.exists():
+        with open(b33_path, 'r', encoding='utf-8') as f:
+            b33_data = json.load(f)
+            
+        # B3.3 has a different structure (no results wrapper)
+        if "ranked_chunks" in b33_data:
+            answer_scores = {}
+            
+            for chunk in b33_data.get("ranked_chunks", []):
+                chunk_id = chunk.get("chunk_id", "")
+                score = chunk.get("similarity_score", 0.0)
+                answer_scores[chunk_id] = score
+                chunk_content_map[chunk_id] = chunk.get("content", "")
+                
+            matching_results["answer_backwards"] = answer_scores
+    else:
+        print(f"Warning: B3.3 output not found at {b33_path}")
+        matching_results["answer_backwards"] = {}
     
-    return {
-        "intent_based": intent_matching,
-        "declarative_form": declarative_matching,
-        "answer_backwards": answer_backwards_matching
-    }
+    # Store the content map for later use
+    matching_results["_chunk_content_map"] = chunk_content_map
+    
+    return matching_results
 
-def calculate_weighted_scores(matching_results, weights=None):
+def calculate_weighted_scores(matching_results, weights=None, track_contributions=True):
     """
     Calculate weighted combination of matching strategies
     
     Args:
         matching_results: Results from different strategies
         weights: Weight for each strategy
+        track_contributions: Whether to track individual strategy contributions
         
     Returns:
-        dict: Combined weighted scores
+        dict: Combined weighted scores with optional contribution tracking
     """
     if weights is None:
         # Default weights based on snapshot (Intent: 53.8%, Declarative: 36.2%, Backwards: 10%)
@@ -71,22 +112,50 @@ def calculate_weighted_scores(matching_results, weights=None):
             "answer_backwards": 0.100
         }
     
-    # Collect all concepts
-    all_concepts = set()
-    for strategy_results in matching_results.values():
-        all_concepts.update(strategy_results.keys())
+    # Extract chunk content map if present
+    chunk_content_map = matching_results.pop("_chunk_content_map", {})
     
-    # Calculate weighted scores
+    # Collect all chunk IDs
+    all_chunks = set()
+    for strategy, strategy_results in matching_results.items():
+        if isinstance(strategy_results, dict):
+            all_chunks.update(strategy_results.keys())
+    
+    # Calculate weighted scores and track contributions
     combined_scores = {}
+    contributions = {}
     
-    for concept in all_concepts:
+    for chunk_id in all_chunks:
         score = 0
+        chunk_contributions = {}
+        
         for strategy, strategy_results in matching_results.items():
-            if concept in strategy_results:
-                score += strategy_results[concept] * weights[strategy]
-        combined_scores[concept] = score
+            if chunk_id in strategy_results:
+                strategy_score = strategy_results[chunk_id]
+                weighted_contribution = strategy_score * weights.get(strategy, 0)
+                score += weighted_contribution
+                
+                if track_contributions:
+                    chunk_contributions[strategy] = {
+                        "raw_score": strategy_score,
+                        "weight": weights.get(strategy, 0),
+                        "weighted_contribution": weighted_contribution
+                    }
+        
+        combined_scores[chunk_id] = score
+        if track_contributions:
+            contributions[chunk_id] = chunk_contributions
     
-    return combined_scores
+    # Add back the content map
+    result = {
+        "scores": combined_scores,
+        "chunk_content_map": chunk_content_map
+    }
+    
+    if track_contributions:
+        result["contributions"] = contributions
+    
+    return result
 
 def rank_concepts(combined_scores, top_k=5):
     """
@@ -152,48 +221,59 @@ def process_combination(question_data):
         question_data: Question data with intent analysis
         
     Returns:
-        dict: Combined matching results
+        dict: Combined matching results with detailed tracking
     """
     # Load matching results from three strategies
     matching_results = load_matching_results()
     
-    # Calculate weighted combination
-    combined_scores = calculate_weighted_scores(matching_results)
+    # Calculate weighted combination with contribution tracking
+    weights = {
+        "intent_based": 0.538,
+        "declarative_form": 0.362,
+        "answer_backwards": 0.100
+    }
     
-    # Rank concepts
-    top_concepts = rank_concepts(combined_scores, top_k=5)
+    weighted_result = calculate_weighted_scores(matching_results, weights, track_contributions=True)
+    combined_scores = weighted_result["scores"]
+    chunk_content_map = weighted_result["chunk_content_map"]
+    contributions = weighted_result["contributions"]
+    
+    # Rank chunks
+    top_chunks = rank_concepts(combined_scores, top_k=10)
     
     # Calculate confidence
-    confidence = calculate_confidence(top_concepts)
+    confidence = calculate_confidence(top_chunks)
     
-    # Prepare detailed breakdown
-    strategy_contributions = {}
-    for concept, _ in top_concepts:
-        contributions = {}
-        for strategy, results in matching_results.items():
-            if concept in results:
-                contributions[strategy] = results[concept]
-        strategy_contributions[concept] = contributions
+    # Prepare detailed chunk information
+    ranked_chunks = []
+    for chunk_id, score in top_chunks:
+        chunk_info = {
+            "chunk_id": chunk_id,
+            "content": chunk_content_map.get(chunk_id, ""),
+            "combined_score": score,
+            "strategy_contributions": contributions.get(chunk_id, {}),
+            "strategies_participated": len([s for s in contributions.get(chunk_id, {}) if contributions[chunk_id][s]["raw_score"] > 0])
+        }
+        ranked_chunks.append(chunk_info)
+    
+    # Calculate strategy agreement metrics
+    strategy_stats = {
+        "total_chunks_from_intent": len(matching_results.get("intent_based", {})),
+        "total_chunks_from_declarative": len(matching_results.get("declarative_form", {})),
+        "total_chunks_from_answer": len(matching_results.get("answer_backwards", {})),
+        "total_unique_chunks": len(combined_scores),
+        "chunks_in_all_strategies": len([c for c in combined_scores if all(
+            c in matching_results.get(s, {}) for s in ["intent_based", "declarative_form", "answer_backwards"]
+        )])
+    }
     
     return {
         "question_id": question_data.get("question_id"),
         "question": question_data.get("question"),
-        "matching_results": matching_results,
-        "weights": {
-            "intent_based": 0.538,
-            "declarative_form": 0.362,
-            "answer_backwards": 0.100
-        },
-        "combined_scores": combined_scores,
-        "top_concepts": [
-            {
-                "concept": concept,
-                "score": score,
-                "contributions": strategy_contributions.get(concept, {})
-            }
-            for concept, score in top_concepts
-        ],
+        "weights": weights,
+        "ranked_chunks": ranked_chunks,
         "confidence": confidence,
+        "strategy_statistics": strategy_stats,
         "processing_timestamp": datetime.now().isoformat()
     }
 
@@ -207,7 +287,7 @@ def save_output(data, output_path="outputs/B4_weighted_combination_output.json")
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved weighted combination to {full_path}")
+    print(f"[SUCCESS] Saved weighted combination to {full_path}")
 
 def main():
     """Main execution"""
@@ -221,7 +301,7 @@ def main():
         question_data = load_input()
         
         # Process weighted combination
-        print("Combining matching strategies...")
+        print("Loading B3 outputs from files...")
         output_data = process_combination(question_data)
         
         # Display results
@@ -229,13 +309,30 @@ def main():
         for strategy, weight in output_data["weights"].items():
             print(f"  {strategy}: {weight:.1%}")
         
-        print(f"\nTop Concepts:")
-        for i, concept_data in enumerate(output_data["top_concepts"], 1):
-            print(f"\n  {i}. {concept_data['concept']}")
-            print(f"     Final Score: {concept_data['score']:.3f}")
-            print(f"     Contributions:")
-            for strategy, score in concept_data['contributions'].items():
-                print(f"       - {strategy}: {score:.3f}")
+        print(f"\nStrategy Statistics:")
+        stats = output_data.get("strategy_statistics", {})
+        print(f"  Intent chunks: {stats.get('total_chunks_from_intent', 0)}")
+        print(f"  Declarative chunks: {stats.get('total_chunks_from_declarative', 0)}")
+        print(f"  Answer-backward chunks: {stats.get('total_chunks_from_answer', 0)}")
+        print(f"  Total unique chunks: {stats.get('total_unique_chunks', 0)}")
+        print(f"  Chunks in all strategies: {stats.get('chunks_in_all_strategies', 0)}")
+        
+        print(f"\nTop Ranked Chunks:")
+        for i, chunk_data in enumerate(output_data["ranked_chunks"][:5], 1):
+            print(f"\n  {i}. {chunk_data['chunk_id']}")
+            print(f"     Combined Score: {chunk_data['combined_score']:.4f}")
+            print(f"     Content: {chunk_data['content'][:100]}..." if len(chunk_data['content']) > 100 else f"     Content: {chunk_data['content']}")
+            print(f"     Strategies Participated: {chunk_data['strategies_participated']}")
+            
+            # Show contributions from each strategy
+            contribs = chunk_data.get('strategy_contributions', {})
+            if contribs:
+                print(f"     Contributions:")
+                for strategy, contrib_data in contribs.items():
+                    raw = contrib_data.get('raw_score', 0)
+                    weight = contrib_data.get('weight', 0)
+                    weighted = contrib_data.get('weighted_contribution', 0)
+                    print(f"       - {strategy}: raw={raw:.3f}, weight={weight:.1%}, contribution={weighted:.4f}")
         
         print(f"\nOverall Confidence: {output_data['confidence']:.3f}")
         
@@ -246,6 +343,8 @@ def main():
         
     except Exception as e:
         print(f"Error in B4 Weighted Strategy Combination: {str(e)}")
+        import traceback
+        traceback.print_exc()
         raise
 
 def combine_strategy_results(b3_results):
