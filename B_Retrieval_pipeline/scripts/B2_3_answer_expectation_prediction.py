@@ -257,7 +257,7 @@ def process_answer_expectation(data):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/B2_3_answer_expectation_output.json"):
+def save_output(data, output_path="outputs/B2.3_answer_expectation_output.json"):
     """Save answer expectation results"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -267,7 +267,7 @@ def save_output(data, output_path="outputs/B2_3_answer_expectation_output.json")
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved answer expectation to {full_path}")
+    print(f"[OK] Saved answer expectation to {full_path}")
 
 def main():
     """Main execution"""
@@ -278,39 +278,55 @@ def main():
     try:
         # Load transformation data
         print("Loading question transformation data...")
-        input_data = load_input()
+        questions_data = load_input()
         
-        # Process expectation
-        question = input_data.get("question", "")
-        print(f"Analyzing expectations for: {question}")
-        output_data = process_answer_expectation(input_data)
+        # Handle both single question and array
+        if not isinstance(questions_data, list):
+            questions_data = [questions_data]
         
-        # Display results
-        prediction = output_data["answer_prediction"]
-        format_spec = output_data["format_specification"]
-        complexity = output_data["complexity_analysis"]
+        all_results = []
         
-        print(f"\nAnswer Type Prediction:")
-        print(f"  Primary Type: {prediction['primary_type']}")
-        print(f"  Confidence: {prediction['confidence']:.3f}")
-        if prediction["possible_types"]:
-            print(f"  Possible Types: {', '.join(prediction['possible_types'])}")
+        print(f"Processing {len(questions_data)} questions...\n")
         
-        print(f"\nFormat Specification:")
-        if format_spec["units"]:
-            print(f"  Units: {format_spec['units']}")
-        if format_spec["precision"]:
-            print(f"  Precision: {format_spec['precision']}")
-        print(f"  Structure: {format_spec['structure']}")
+        # Process each question
+        for i, input_data in enumerate(questions_data):
+            question = input_data.get("question", "")
+            print(f"[{i+1:2d}/20] Analyzing: {question[:60]}...")
+            
+            # Process expectation
+            output_data = process_answer_expectation(input_data)
+            all_results.append(output_data)
+            
+            # Brief results display
+            prediction = output_data["answer_prediction"]
+            print(f"       Primary Type: {prediction['primary_type']} (conf: {prediction['confidence']:.2f})")
         
-        print(f"\nComplexity Analysis:")
-        print(f"  Level: {complexity['level']}")
-        print(f"  Requires Calculation: {complexity['requires_calculation']}")
-        print(f"  Requires Comparison: {complexity['requires_comparison']}")
-        print(f"  Requires Context: {complexity['requires_context']}")
+        # Save all results
+        save_output(all_results)
         
-        # Save output
-        save_output(output_data)
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("ANSWER EXPECTATION PREDICTION SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
+        
+        # Answer type distribution
+        type_counts = {}
+        for result in all_results:
+            primary_type = result["answer_prediction"]["primary_type"]
+            type_counts[primary_type] = type_counts.get(primary_type, 0) + 1
+        
+        print(f"\nExpected Answer Type Distribution:")
+        for answer_type, count in sorted(type_counts.items()):
+            percentage = count / len(all_results) * 100
+            print(f"  {answer_type}: {count} questions ({percentage:.1f}%)")
+        
+        # Confidence statistics
+        confidences = [result["answer_prediction"]["confidence"] for result in all_results]
+        avg_confidence = sum(confidences) / len(confidences)
+        
+        print(f"\nPrediction Confidence:")
+        print(f"  Average: {avg_confidence:.3f}")
         
         print("\nB2.3 Answer Expectation Prediction completed successfully!")
         

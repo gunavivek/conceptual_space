@@ -123,7 +123,7 @@ def extract_key_entities(question):
     return entities
 
 def load_input(input_path="outputs/B1_current_question.json"):
-    """Load question from B1"""
+    """Load question(s) from B1"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / input_path
     
@@ -131,7 +131,13 @@ def load_input(input_path="outputs/B1_current_question.json"):
         raise FileNotFoundError(f"Input file not found: {full_path}")
     
     with open(full_path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        data = json.load(f)
+    
+    # Handle both single question and array of questions
+    if isinstance(data, list):
+        return data  # Return array of questions
+    else:
+        return [data]  # Wrap single question in array for consistency
 
 def process_question(data):
     """
@@ -167,7 +173,7 @@ def process_question(data):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/B2_1_intent_layer_output.json"):
+def save_output(data, output_path="outputs/B2.1_intent_layer_output.json"):
     """Save intent analysis results"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -177,7 +183,7 @@ def save_output(data, output_path="outputs/B2_1_intent_layer_output.json"):
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved intent analysis to {full_path}")
+    print(f"[OK] Saved intent analysis to {full_path}")
 
 def main():
     """Main execution"""
@@ -186,35 +192,47 @@ def main():
     print("="*60)
     
     try:
-        # Load question
-        print("Loading question from B1...")
-        input_data = load_input()
+        # Load questions
+        print("Loading questions from B1...")
+        questions_data = load_input()
         
-        # Process question
-        print(f"Analyzing question: {input_data['question']}")
-        output_data = process_question(input_data)
+        all_results = []
         
-        # Display results
-        intent = output_data["intent_analysis"]
-        print(f"\nIntent Analysis:")
-        print(f"  Primary Intent: {intent['primary_intent']}")
-        print(f"  All Intents: {intent['all_intents']}")
-        print(f"  Expects Numeric: {intent['expects_numeric']}")
-        print(f"  Is Comparative: {intent['is_comparative']}")
-        print(f"  Confidence: {intent['confidence']:.2f}")
+        print(f"Processing {len(questions_data)} questions...\n")
         
-        if output_data["entities"]:
-            print(f"\nExtracted Entities:")
-            for entity in output_data["entities"]:
-                print(f"  - {entity['type']}: {entity['value']}")
+        # Process each question
+        for i, input_data in enumerate(questions_data):
+            print(f"[{i+1:2d}/20] Analyzing: {input_data['question'][:60]}...")
+            
+            # Process question
+            output_data = process_question(input_data)
+            all_results.append(output_data)
+            
+            # Display brief results
+            intent = output_data["intent_analysis"]
+            print(f"       Primary Intent: {intent['primary_intent']} (confidence: {intent['confidence']:.2f})")
         
-        if output_data["focus_terms"]:
-            print(f"\nFocus Terms: {', '.join(output_data['focus_terms'])}")
+        # Save all results
+        save_output(all_results)
         
-        # Save output
-        save_output(output_data)
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("INTENT ANALYSIS SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
         
-        print("\nB2.1 Intent Layer Modeling completed successfully!")
+        # Intent distribution
+        intent_counts = {}
+        for result in all_results:
+            primary_intent = result["intent_analysis"]["primary_intent"]
+            intent_counts[primary_intent] = intent_counts.get(primary_intent, 0) + 1
+        
+        print(f"\nIntent Distribution:")
+        for intent, count in sorted(intent_counts.items()):
+            percentage = count / len(all_results) * 100
+            print(f"  {intent}: {count} questions ({percentage:.1f}%)")
+        
+        print(f"\nB2.1 Intent Layer Modeling completed successfully!")
         
     except Exception as e:
         print(f"Error in B2.1 Intent Layer Modeling: {str(e)}")

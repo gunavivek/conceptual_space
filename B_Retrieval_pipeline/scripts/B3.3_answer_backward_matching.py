@@ -335,32 +335,130 @@ def analyze_answer_matching_quality(matches, question_data):
         "analysis": f"Average similarity: {quality_score:.4f}, Best match: {max(scores):.4f}"
     }
 
+def load_inputs():
+    """Load B2.3 answer expectation data and A-pipeline chunks"""
+    script_dir = Path(__file__).parent.parent
+    
+    # Load B2.3 answer expectations
+    b2_3_path = script_dir / "outputs" / "B2.3_answer_expectation_output.json"
+    if not b2_3_path.exists():
+        raise FileNotFoundError(f"B2.3 output not found: {b2_3_path}")
+    
+    with open(b2_3_path, 'r', encoding='utf-8') as f:
+        questions_data = json.load(f)
+    
+    # Load A-pipeline chunks from A3_multi_strategy_chunks.json (same as B3.1)
+    a_pipeline_path = script_dir.parent / "A_Concept_pipeline" / "outputs" / "A3_multi_strategy_chunks.json"
+    chunks = []
+    
+    if a_pipeline_path.exists():
+        with open(a_pipeline_path, 'r', encoding='utf-8') as f:
+            chunk_data = json.load(f)
+            # Extract chunks from A3 output
+            if isinstance(chunk_data, dict) and "chunks" in chunk_data:
+                for chunk in chunk_data["chunks"]:
+                    chunks.append({
+                        "chunk_id": chunk.get("chunk_id", ""),
+                        "content": chunk.get("content", ""),
+                        "doc_id": chunk.get("doc_id", ""),
+                        "chunk_type": chunk.get("chunk_type", "")
+                    })
+    
+    if not chunks:
+        raise FileNotFoundError(f"No real chunks found in A-pipeline output: {a_pipeline_path}")
+    
+    return questions_data, chunks
+
+def save_output(data, output_path="outputs/B3.3_answer_backward_matching_output.json"):
+    """Save answer backward matching results"""
+    script_dir = Path(__file__).parent.parent
+    full_path = script_dir / output_path
+    
+    # Create output directory if needed
+    full_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    with open(full_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    
+    print(f"[OK] Saved answer backward matching results to {full_path}")
+
 def main():
-    """Test the answer-backward matching"""
-    test_chunks = [
-        {"chunk_id": "test_1", "content": "The total revenue for 2019 was $1.5 million, an increase of 25% from 2018."},
-        {"chunk_id": "test_2", "content": "Operating expenses decreased by 10% year over year."},
-        {"chunk_id": "test_3", "content": "The company was founded in 2015 by John Smith."}
-    ]
+    """Main execution for processing all 20 questions"""
+    print("="*60)
+    print("B3.3: Answer Backward Matching Strategy")
+    print("="*60)
     
-    test_expectation = {
-        "answer_prediction": {
-            "primary_type": "numeric"
-        },
-        "validation_criteria": {
-            "requires_number": True,
-            "must_contain": ["revenue", "2019"]
-        },
-        "confidence_scores": {
-            "numeric": 0.8
-        }
-    }
-    
-    result = match_by_answer_expectations(test_chunks, test_expectation)
-    print("Test Results:")
-    print(f"Total matches: {result['total_matches']}")
-    for chunk in result['ranked_chunks']:
-        print(f"  {chunk['chunk_id']}: {chunk['similarity_score']:.4f}")
+    try:
+        # Load inputs
+        print("Loading questions and chunks...")
+        questions_data, chunks = load_inputs()
+        
+        if not isinstance(questions_data, list):
+            questions_data = [questions_data]
+        
+        all_results = []
+        
+        print(f"Processing {len(questions_data)} questions with {len(chunks)} chunks...\n")
+        
+        # Process each question
+        for i, question_data in enumerate(questions_data):
+            question_text = question_data.get("question", "")
+            print(f"[{i+1:2d}/20] Backward matching: {question_text[:60]}...")
+            
+            # Perform answer backward matching
+            matching_result = match_by_answer_expectations(chunks, question_data)
+            
+            # Add question metadata
+            result = {
+                "question_id": question_data.get("question_id", f"q_{i}"),
+                "question": question_text,
+                "strategy": "answer_backward_matching",
+                "ranked_chunks": matching_result.get("ranked_chunks", []),
+                "total_matches": matching_result.get("total_matches", 0),
+                "quality_analysis": analyze_answer_matching_quality(
+                    matching_result.get("ranked_chunks", []), 
+                    question_data
+                ),
+                "processing_timestamp": datetime.now().isoformat()
+            }
+            
+            all_results.append(result)
+            
+            # Brief results display
+            matches = result["total_matches"]
+            quality = result["quality_analysis"]
+            print(f"       Matches: {matches}/{len(chunks)} chunks (quality: {quality.get('quality_score', 0):.3f})")
+        
+        # Save all results
+        save_output(all_results)
+        
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("ANSWER BACKWARD MATCHING SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
+        
+        # Quality statistics
+        qualities = [result["quality_analysis"]["quality_score"] for result in all_results]
+        avg_quality = sum(qualities) / len(qualities) if qualities else 0
+        
+        print(f"Average matching quality: {avg_quality:.3f}")
+        
+        # Match distribution
+        high_quality = sum(1 for q in qualities if q > 0.7)
+        medium_quality = sum(1 for q in qualities if 0.4 <= q <= 0.7)
+        low_quality = sum(1 for q in qualities if q < 0.4)
+        
+        print(f"Quality distribution:")
+        print(f"  High quality (>0.7): {high_quality} questions")
+        print(f"  Medium quality (0.4-0.7): {medium_quality} questions") 
+        print(f"  Low quality (<0.4): {low_quality} questions")
+        
+        print("\nB3.3 Answer Backward Matching completed successfully!")
+        
+    except Exception as e:
+        print(f"Error in B3.3 Answer Backward Matching: {str(e)}")
+        raise
 
 if __name__ == "__main__":
     main()

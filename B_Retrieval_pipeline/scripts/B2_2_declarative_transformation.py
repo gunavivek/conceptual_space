@@ -215,7 +215,7 @@ def process_transformation(data):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/B2_2_declarative_transformation_output.json"):
+def save_output(data, output_path="outputs/B2.2_declarative_transformation_output.json"):
     """Save declarative transformation results"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -225,7 +225,7 @@ def save_output(data, output_path="outputs/B2_2_declarative_transformation_outpu
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved declarative transformation to {full_path}")
+    print(f"[OK] Saved declarative transformation to {full_path}")
 
 def main():
     """Main execution"""
@@ -236,27 +236,46 @@ def main():
     try:
         # Load question data
         print("Loading question data...")
-        input_data = load_input()
+        questions_data = load_input()
         
-        # Process transformation
-        question = input_data.get("question", "")
-        print(f"Transforming question: {question}")
-        output_data = process_transformation(input_data)
+        # Handle both single question and array
+        if not isinstance(questions_data, list):
+            questions_data = [questions_data]
         
-        # Display results
-        print(f"\nDeclarative Transformations:")
-        for i, decl_data in enumerate(output_data["declarative_forms"], 1):
-            print(f"  {i}. {decl_data['declarative']}")
-            print(f"     Quality Score: {decl_data['quality_score']:.3f}")
+        all_results = []
         
-        print(f"\nBest Declarative: {output_data['best_declarative']}")
-        print(f"Confidence: {output_data['transformation_confidence']:.3f}")
+        print(f"Processing {len(questions_data)} questions...\n")
         
-        if output_data["key_components"]["subjects"]:
-            print(f"\nKey Subjects: {', '.join(output_data['key_components']['subjects'])}")
+        # Process each question
+        for i, input_data in enumerate(questions_data):
+            question = input_data.get("question", "")
+            print(f"[{i+1:2d}/20] Transforming: {question[:60]}...")
+            
+            # Process transformation
+            output_data = process_transformation(input_data)
+            all_results.append(output_data)
+            
+            # Brief results display
+            print(f"       Best declarative: {output_data['best_declarative'][:60]}... (conf: {output_data['transformation_confidence']:.2f})")
         
-        # Save output
-        save_output(output_data)
+        # Save all results
+        save_output(all_results)
+        
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("DECLARATIVE TRANSFORMATION SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
+        
+        # Confidence statistics
+        confidences = [result["transformation_confidence"] for result in all_results]
+        avg_confidence = sum(confidences) / len(confidences)
+        min_confidence = min(confidences)
+        max_confidence = max(confidences)
+        
+        print(f"\nTransformation Confidence:")
+        print(f"  Average: {avg_confidence:.3f}")
+        print(f"  Range: {min_confidence:.3f} - {max_confidence:.3f}")
         
         print("\nB2.2 Declarative Transformation completed successfully!")
         

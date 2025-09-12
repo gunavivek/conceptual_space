@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-def load_question_from_parquet(data_path="../../A_Concept_pipeline/data/test_mode_5_records.parquet", question_index=0):
+def load_question_from_parquet(data_path="../../A_Concept_pipeline/data/sample_20_records.parquet", question_index=0):
     """
     Load a question from parquet file
     
@@ -25,7 +25,7 @@ def load_question_from_parquet(data_path="../../A_Concept_pipeline/data/test_mod
     
     if not full_path.exists():
         # Try alternative path
-        full_path = Path(__file__).parent.parent.parent / "A_Concept_pipeline/data/test_mode_5_records.parquet"
+        full_path = Path(__file__).parent.parent.parent / "A_Concept_pipeline/data/sample_20_records.parquet"
         if not full_path.exists():
             raise FileNotFoundError(f"Data file not found: {full_path}")
     
@@ -49,6 +49,49 @@ def load_question_from_parquet(data_path="../../A_Concept_pipeline/data/test_mod
     }
     
     return question_data
+
+def load_all_questions_from_parquet(data_path="../../A_Concept_pipeline/data/sample_20_records.parquet"):
+    """
+    Load all questions from parquet file
+    
+    Args:
+        data_path: Path to parquet file
+        
+    Returns:
+        list: List of question data dictionaries
+    """
+    script_dir = Path(__file__).parent.parent
+    full_path = script_dir / data_path
+    
+    if not full_path.exists():
+        # Try alternative path
+        full_path = Path(__file__).parent.parent.parent / "A_Concept_pipeline/data/sample_20_records.parquet"
+        if not full_path.exists():
+            raise FileNotFoundError(f"Data file not found: {full_path}")
+    
+    # Load parquet file - only read ID and Question columns
+    df = pd.read_parquet(full_path, columns=['id', 'question'])
+    
+    all_questions = []
+    
+    for index, row in df.iterrows():
+        question_data = {
+            "question_id": row.get("id", f"question_{index}"),
+            "question": row.get("question", ""),
+            "metadata": {
+                "source_file": str(full_path),
+                "index": index,
+                "loaded_at": datetime.now().isoformat()
+            }
+        }
+        
+        # Add question analysis
+        analysis = analyze_question(question_data['question'])
+        question_data['analysis'] = analysis
+        
+        all_questions.append(question_data)
+    
+    return all_questions
 
 def load_question_by_id(record_id, data_path="data/sample_20_records.parquet"):
     """
@@ -172,31 +215,53 @@ def main():
     print("="*60)
     
     try:
-        # Check for command line argument for specific record ID
+        # Check for command line argument for specific record ID or ALL flag
         import sys
         if len(sys.argv) > 1:
-            record_id = sys.argv[1]
-            print(f"Loading question for record: {record_id}")
-            question_data = load_question_by_id(record_id)
+            if sys.argv[1].upper() == "ALL":
+                print("Loading all questions from sample_20_records.parquet...")
+                all_questions = load_all_questions_from_parquet()
+                
+                print(f"\nLoaded {len(all_questions)} questions:")
+                for i, q in enumerate(all_questions):
+                    print(f"  {i+1:2d}. [{q['question_id']}] {q['analysis']['question_type']} - {q['question'][:60]}...")
+                
+                # Save all questions as array
+                save_output(all_questions)
+                print(f"\nSaved all {len(all_questions)} questions to B1_current_question.json")
+                
+            else:
+                record_id = sys.argv[1]
+                print(f"Loading question for record: {record_id}")
+                question_data = load_question_by_id(record_id)
+                
+                print(f"\nQuestion ID: {question_data['question_id']}")
+                print(f"Question: {question_data['question']}")
+                
+                # Analyze question
+                analysis = analyze_question(question_data['question'])
+                question_data['analysis'] = analysis
+                
+                print(f"\nQuestion Analysis:")
+                print(f"  Type: {analysis['question_type']}")
+                print(f"  Expected Answer Type: {analysis['expected_answer_type']}")
+                print(f"  Word Count: {analysis['word_count']}")
+                
+                # Save single question
+                save_output(question_data)
+                
         else:
-            # Load question (default: first question)
-            print("Loading question from dataset...")
-            question_data = load_question_from_parquet(question_index=0)
-        
-        print(f"\nQuestion ID: {question_data['question_id']}")
-        print(f"Question: {question_data['question']}")
-        
-        # Analyze question
-        analysis = analyze_question(question_data['question'])
-        question_data['analysis'] = analysis
-        
-        print(f"\nQuestion Analysis:")
-        print(f"  Type: {analysis['question_type']}")
-        print(f"  Expected Answer Type: {analysis['expected_answer_type']}")
-        print(f"  Word Count: {analysis['word_count']}")
-        
-        # Save output
-        save_output(question_data)
+            # Default: Load all questions
+            print("Loading all questions from sample_20_records.parquet...")
+            all_questions = load_all_questions_from_parquet()
+            
+            print(f"\nLoaded {len(all_questions)} questions:")
+            for i, q in enumerate(all_questions):
+                print(f"  {i+1:2d}. [{q['question_id']}] {q['analysis']['question_type']} - {q['question'][:60]}...")
+            
+            # Save all questions as array
+            save_output(all_questions)
+            print(f"\nSaved all {len(all_questions)} questions to B1_current_question.json")
         
         print("\nB1 Read Question completed successfully!")
         

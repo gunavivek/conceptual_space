@@ -28,9 +28,9 @@ def load_matching_results():
         with open(b31_path, 'r', encoding='utf-8') as f:
             b31_data = json.load(f)
             
-        # Extract the first question's results (or current question)
-        if "results" in b31_data and b31_data["results"]:
-            first_result = b31_data["results"][0]
+        # Handle array structure (new format)
+        if isinstance(b31_data, list) and b31_data:
+            first_result = b31_data[0]
             intent_scores = {}
             
             for chunk in first_result.get("ranked_chunks", []):
@@ -50,16 +50,19 @@ def load_matching_results():
         with open(b32_path, 'r', encoding='utf-8') as f:
             b32_data = json.load(f)
             
-        # Extract the first question's results
-        if "results" in b32_data and b32_data["results"]:
-            first_result = b32_data["results"][0]
+        # Handle array structure (new format)
+        if isinstance(b32_data, list) and b32_data:
+            first_result = b32_data[0]
             declarative_scores = {}
             
-            for chunk in first_result.get("ranked_chunks", []):
-                chunk_id = chunk.get("chunk_id", "")
-                score = chunk.get("similarity_score", 0.0)
-                declarative_scores[chunk_id] = score
-                chunk_content_map[chunk_id] = chunk.get("content", "")
+            # B3.2 has "matches" instead of "ranked_chunks"
+            for match in first_result.get("matches", []):
+                concept_id = match.get("concept_id", "")
+                score = match.get("final_score", 0.0)
+                declarative_scores[concept_id] = score
+                # B3.2 matches don't have content, use concept name as content
+                concept_data = match.get("concept", {})
+                chunk_content_map[concept_id] = concept_data.get("canonical_name", "")
                 
             matching_results["declarative_form"] = declarative_scores
     else:
@@ -72,11 +75,12 @@ def load_matching_results():
         with open(b33_path, 'r', encoding='utf-8') as f:
             b33_data = json.load(f)
             
-        # B3.3 has a different structure (no results wrapper)
-        if "ranked_chunks" in b33_data:
+        # Handle array structure (new format)
+        if isinstance(b33_data, list) and b33_data:
+            first_result = b33_data[0]
             answer_scores = {}
             
-            for chunk in b33_data.get("ranked_chunks", []):
+            for chunk in first_result.get("ranked_chunks", []):
                 chunk_id = chunk.get("chunk_id", "")
                 score = chunk.get("similarity_score", 0.0)
                 answer_scores[chunk_id] = score
@@ -290,7 +294,7 @@ def save_output(data, output_path="outputs/B4_weighted_combination_output.json")
     print(f"[SUCCESS] Saved weighted combination to {full_path}")
 
 def main():
-    """Main execution"""
+    """Main execution for processing all 20 questions"""
     print("="*60)
     print("B4: Weighted Strategy Combination")
     print("="*60)
@@ -298,46 +302,59 @@ def main():
     try:
         # Load question data
         print("Loading question data...")
-        question_data = load_input()
+        questions_data = load_input()
         
-        # Process weighted combination
-        print("Loading B3 outputs from files...")
-        output_data = process_combination(question_data)
+        # Handle single question or array
+        if not isinstance(questions_data, list):
+            questions_data = [questions_data]
         
-        # Display results
-        print(f"\nStrategy Weights:")
-        for strategy, weight in output_data["weights"].items():
-            print(f"  {strategy}: {weight:.1%}")
+        all_results = []
         
-        print(f"\nStrategy Statistics:")
-        stats = output_data.get("strategy_statistics", {})
-        print(f"  Intent chunks: {stats.get('total_chunks_from_intent', 0)}")
-        print(f"  Declarative chunks: {stats.get('total_chunks_from_declarative', 0)}")
-        print(f"  Answer-backward chunks: {stats.get('total_chunks_from_answer', 0)}")
-        print(f"  Total unique chunks: {stats.get('total_unique_chunks', 0)}")
-        print(f"  Chunks in all strategies: {stats.get('chunks_in_all_strategies', 0)}")
+        print(f"Processing {len(questions_data)} questions...\n")
         
-        print(f"\nTop Ranked Chunks:")
-        for i, chunk_data in enumerate(output_data["ranked_chunks"][:5], 1):
-            print(f"\n  {i}. {chunk_data['chunk_id']}")
-            print(f"     Combined Score: {chunk_data['combined_score']:.4f}")
-            print(f"     Content: {chunk_data['content'][:100]}..." if len(chunk_data['content']) > 100 else f"     Content: {chunk_data['content']}")
-            print(f"     Strategies Participated: {chunk_data['strategies_participated']}")
+        # Process each question
+        for i, question_data in enumerate(questions_data):
+            question_text = question_data.get("question", "")
+            print(f"[{i+1:2d}/20] Combining strategies for: {question_text[:60]}...")
             
-            # Show contributions from each strategy
-            contribs = chunk_data.get('strategy_contributions', {})
-            if contribs:
-                print(f"     Contributions:")
-                for strategy, contrib_data in contribs.items():
-                    raw = contrib_data.get('raw_score', 0)
-                    weight = contrib_data.get('weight', 0)
-                    weighted = contrib_data.get('weighted_contribution', 0)
-                    print(f"       - {strategy}: raw={raw:.3f}, weight={weight:.1%}, contribution={weighted:.4f}")
+            # Process weighted combination for this question
+            output_data = process_combination(question_data)
+            all_results.append(output_data)
+            
+            # Brief results display
+            confidence = output_data.get("confidence", 0)
+            ranked_chunks = output_data.get("ranked_chunks", [])
+            print(f"       Combined chunks: {len(ranked_chunks)} (confidence: {confidence:.3f})")
         
-        print(f"\nOverall Confidence: {output_data['confidence']:.3f}")
+        # Save all results
+        save_output(all_results)
         
-        # Save output
-        save_output(output_data)
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("WEIGHTED STRATEGY COMBINATION SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
+        
+        # Confidence statistics
+        confidences = [result.get("confidence", 0) for result in all_results]
+        avg_confidence = sum(confidences) / len(confidences) if confidences else 0
+        
+        print(f"Average combination confidence: {avg_confidence:.3f}")
+        
+        # Strategy weight statistics (from first result)
+        if all_results:
+            weights = all_results[0].get("weights", {})
+            print(f"\nStrategy Weights Used:")
+            for strategy, weight in weights.items():
+                print(f"  {strategy}: {weight:.1%}")
+        
+        # Chunk statistics
+        total_chunks = sum(len(result.get("ranked_chunks", [])) for result in all_results)
+        avg_chunks = total_chunks / len(all_results) if all_results else 0
+        
+        print(f"\nCombined Chunk Statistics:")
+        print(f"  Total combined chunks: {total_chunks}")
+        print(f"  Average chunks per question: {avg_chunks:.1f}")
         
         print("\nB4 Weighted Strategy Combination completed successfully!")
         

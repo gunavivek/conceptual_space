@@ -251,20 +251,20 @@ def load_inputs():
     """Load question data and expanded concepts"""
     script_dir = Path(__file__).parent.parent
     
-    # Load question with declarative transformations from B2.2
-    b2_2_path = script_dir / "outputs/B2_2_declarative_transformation_output.json"
+    # Load question with declarative transformations from B2.2 (with dots)
+    b2_2_path = script_dir / "outputs/B2.2_declarative_transformation_output.json"
     if b2_2_path.exists():
         with open(b2_2_path, 'r', encoding='utf-8') as f:
             question_data = json.load(f)
     else:
-        # Fallback to B2.1 or B1
-        b2_1_path = script_dir / "outputs/B2_1_intent_layer_output.json"
+        # Fallback to B2.1 or B1 (with dots)
+        b2_1_path = script_dir / "outputs/B2.1_intent_layer_output.json"
         if b2_1_path.exists():
             with open(b2_1_path, 'r', encoding='utf-8') as f:
                 question_data = json.load(f)
         else:
             # Mock data for testing
-            question_data = {
+            question_data = [{
                 "question": "What was the change in Current deferred income?",
                 "declarative_forms": [
                     {
@@ -277,7 +277,7 @@ def load_inputs():
                     }
                 ],
                 "transformation_confidence": 0.8
-            }
+            }]
     
     # Load expanded concepts from A2.5
     a2_5_path = Path(__file__).parent.parent.parent / "A_concept_pipeline/outputs/A2.5_expanded_concepts.json"
@@ -333,7 +333,7 @@ def process_declarative_matching(question_data, expanded_concepts):
         "processing_timestamp": datetime.now().isoformat()
     }
 
-def save_output(data, output_path="outputs/B3_2_declarative_matching_output.json"):
+def save_output(data, output_path="outputs/B3.2_declarative_matching_output.json"):
     """Save declarative matching results"""
     script_dir = Path(__file__).parent.parent
     full_path = script_dir / output_path
@@ -343,10 +343,10 @@ def save_output(data, output_path="outputs/B3_2_declarative_matching_output.json
     with open(full_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✓ Saved declarative matching results to {full_path}")
+    print(f"[OK] Saved declarative matching results to {full_path}")
 
 def main():
-    """Main execution"""
+    """Main execution for processing all 20 questions"""
     print("="*60)
     print("B3.2: Declarative Matching Strategy")
     print("="*60)
@@ -354,40 +354,64 @@ def main():
     try:
         # Load inputs
         print("Loading question data and expanded concepts...")
-        question_data, expanded_concepts = load_inputs()
+        questions_data, expanded_concepts = load_inputs()
         
-        # Process declarative matching
-        question = question_data.get("question", "")
-        print(f"Processing declarative matching for: {question}")
-        output_data = process_declarative_matching(question_data, expanded_concepts)
+        # Handle single question or array
+        if not isinstance(questions_data, list):
+            questions_data = [questions_data]
         
-        # Display results
-        quality = output_data["quality_analysis"]
-        print(f"\nDeclarative Matching Results:")
-        print(f"  Total Matches: {len(output_data['matches'])}")
-        print(f"  Match Quality: {quality['match_quality']}")
-        print(f"  Confidence: {quality['confidence']:.3f}")
-        print(f"  Top Score: {quality['top_score']:.3f}")
-        print(f"  Transformation Confidence: {quality['transformation_confidence']:.3f}")
+        all_results = []
         
-        if output_data["declarative_forms"]:
-            print(f"\nDeclarative Forms:")
-            for i, decl_form in enumerate(output_data["declarative_forms"][:3], 1):
-                print(f"  {i}. \"{decl_form['declarative']}\"")
-                print(f"     Quality: {decl_form.get('quality_score', 0):.3f}")
+        print(f"Processing {len(questions_data)} questions...\n")
         
-        if output_data["matches"]:
-            print(f"\nTop 3 Declarative Matches:")
-            for i, match in enumerate(output_data["matches"][:3], 1):
-                concept = match["concept"]
-                details = match["match_details"]
-                print(f"  {i}. {concept['theme_name']}")
-                print(f"     Score: {match['similarity_score']:.3f}")
-                print(f"     Domain: {concept.get('domain', 'N/A')}")
-                print(f"     Best declarative: \"{details['best_declarative'][:50]}...\"")
+        # Process each question
+        for i, question_data in enumerate(questions_data):
+            question = question_data.get("question", "")
+            print(f"[{i+1:2d}/20] Matching: {question[:60]}...")
+            
+            # Process declarative matching
+            output_data = process_declarative_matching(question_data, expanded_concepts)
+            
+            # Add question metadata
+            result = {
+                "question_id": question_data.get("question_id", f"q_{i}"),
+                "question": question,
+                "strategy": "declarative_matching",
+                "declarative_forms": output_data.get("declarative_forms", []),
+                "matches": output_data.get("matches", []),
+                "quality_analysis": output_data.get("quality_analysis", {}),
+                "processing_timestamp": datetime.now().isoformat()
+            }
+            
+            all_results.append(result)
+            
+            # Brief results display
+            quality = result["quality_analysis"]
+            matches = len(result["matches"])
+            confidence = quality.get("confidence", 0)
+            print(f"       Matches: {matches} (quality: {quality.get('match_quality', 'unknown')}, conf: {confidence:.3f})")
         
-        # Save output
-        save_output(output_data)
+        # Save all results
+        save_output(all_results)
+        
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("DECLARATIVE MATCHING SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
+        
+        # Quality statistics
+        confidences = [result["quality_analysis"].get("confidence", 0) for result in all_results]
+        avg_confidence = sum(confidences) / len(confidences) if confidences else 0
+        
+        print(f"Average matching confidence: {avg_confidence:.3f}")
+        
+        # Match statistics
+        total_matches = sum(len(result["matches"]) for result in all_results)
+        avg_matches = total_matches / len(all_results) if all_results else 0
+        
+        print(f"Total matches found: {total_matches}")
+        print(f"Average matches per question: {avg_matches:.1f}")
         
         print("\nB3.2 Declarative Matching completed successfully!")
         

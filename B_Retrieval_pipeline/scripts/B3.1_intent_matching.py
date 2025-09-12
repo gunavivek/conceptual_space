@@ -309,24 +309,134 @@ def analyze_intent_matching_quality(matches, question_data):
         "analysis": f"Average similarity: {quality_score:.4f}, Best match: {max(scores):.4f}"
     }
 
+def load_inputs():
+    """Load B2.1 intent analysis and A-pipeline chunks"""
+    script_dir = Path(__file__).parent.parent
+    
+    # Load B2.1 intent analysis (20 questions)
+    b2_1_path = script_dir / "outputs" / "B2.1_intent_layer_output.json"
+    if not b2_1_path.exists():
+        raise FileNotFoundError(f"B2.1 output not found: {b2_1_path}")
+    
+    with open(b2_1_path, 'r', encoding='utf-8') as f:
+        questions_data = json.load(f)
+    
+    # Load A-pipeline chunks from A3_multi_strategy_chunks.json
+    a_pipeline_path = script_dir.parent / "A_Concept_pipeline" / "outputs" / "A3_multi_strategy_chunks.json"
+    chunks = []
+    
+    if a_pipeline_path.exists():
+        with open(a_pipeline_path, 'r', encoding='utf-8') as f:
+            chunk_data = json.load(f)
+            # Extract chunks from A3 output
+            if isinstance(chunk_data, dict) and "chunks" in chunk_data:
+                for chunk in chunk_data["chunks"]:
+                    chunks.append({
+                        "chunk_id": chunk.get("chunk_id", ""),
+                        "content": chunk.get("content", ""),
+                        "doc_id": chunk.get("doc_id", ""),
+                        "chunk_type": chunk.get("chunk_type", "")
+                    })
+    
+    if not chunks:
+        raise FileNotFoundError(f"No real chunks found in A-pipeline output: {a_pipeline_path}")
+    
+    return questions_data, chunks
+
+def save_output(data, output_path="outputs/B3.1_intent_matching_output.json"):
+    """Save intent matching results"""
+    script_dir = Path(__file__).parent.parent
+    full_path = script_dir / output_path
+    
+    # Create output directory if needed
+    full_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    with open(full_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    
+    print(f"[OK] Saved intent matching results to {full_path}")
+
+def main():
+    """Main execution for processing all 20 questions"""
+    print("="*60)
+    print("B3.1: Intent Matching Strategy")
+    print("="*60)
+    
+    try:
+        # Load inputs
+        print("Loading questions and chunks...")
+        questions_data, chunks = load_inputs()
+        
+        if not isinstance(questions_data, list):
+            questions_data = [questions_data]
+        
+        all_results = []
+        
+        print(f"Processing {len(questions_data)} questions with {len(chunks)} chunks...\n")
+        
+        # Process each question
+        for i, question_data in enumerate(questions_data):
+            question_text = question_data.get("question", "")
+            print(f"[{i+1:2d}/20] Matching: {question_text[:60]}...")
+            
+            # Perform intent matching
+            matching_result = match_chunks_by_intent(
+                question_text, 
+                chunks, 
+                question_data
+            )
+            
+            # Add question metadata
+            result = {
+                "question_id": question_data.get("question_id", f"q_{i}"),
+                "question": question_text,
+                "strategy": "intent_matching",
+                "ranked_chunks": matching_result.get("ranked_chunks", []),
+                "matching_stats": matching_result.get("matching_stats", {}),
+                "quality_analysis": analyze_intent_matching_quality(
+                    matching_result.get("ranked_chunks", []), 
+                    question_data
+                ),
+                "processing_timestamp": datetime.now().isoformat()
+            }
+            
+            all_results.append(result)
+            
+            # Brief results display
+            stats = result["matching_stats"]
+            quality = result["quality_analysis"]
+            print(f"       Matches: {stats.get('matched_chunks', 0)}/{stats.get('total_chunks', 0)} chunks (quality: {quality.get('quality_score', 0):.3f})")
+        
+        # Save all results
+        save_output(all_results)
+        
+        # Summary statistics
+        print(f"\n{'='*60}")
+        print("INTENT MATCHING SUMMARY")
+        print(f"{'='*60}")
+        print(f"Total questions processed: {len(all_results)}")
+        
+        # Quality statistics
+        qualities = [result["quality_analysis"]["quality_score"] for result in all_results]
+        avg_quality = sum(qualities) / len(qualities) if qualities else 0
+        
+        print(f"Average matching quality: {avg_quality:.3f}")
+        
+        # Match distribution
+        high_quality = sum(1 for q in qualities if q > 0.7)
+        medium_quality = sum(1 for q in qualities if 0.3 <= q <= 0.7)
+        low_quality = sum(1 for q in qualities if q < 0.3)
+        
+        print(f"Quality distribution:")
+        print(f"  High quality (>0.7): {high_quality} questions")
+        print(f"  Medium quality (0.3-0.7): {medium_quality} questions") 
+        print(f"  Low quality (<0.3): {low_quality} questions")
+        
+        print("\nB3.1 Intent Matching completed successfully!")
+        
+    except Exception as e:
+        print(f"Error in B3.1 Intent Matching: {str(e)}")
+        raise
+
 if __name__ == "__main__":
-    # Test the semantic similarity function
-    test_question = "What was the revenue in 2019?"
-    test_chunks = [
-        {"chunk_id": "test_1", "content": "Revenue for 2019 was $100 million, an increase from 2018."},
-        {"chunk_id": "test_2", "content": "The company expenses increased significantly during the year."},
-        {"chunk_id": "test_3", "content": "Total revenue grew by 15% in fiscal year 2019."}
-    ]
-    
-    test_intent = {
-        "intent_analysis": {
-            "primary_intent": "factual",
-            "keywords": ["revenue", "2019"]
-        }
-    }
-    
-    result = match_chunks_by_intent(test_question, test_chunks, test_intent)
-    print("Test Results:")
-    print(f"Matched chunks: {result['matching_stats']['matched_chunks']}")
-    for chunk in result['ranked_chunks']:
-        print(f"  {chunk['chunk_id']}: {chunk['similarity_score']:.4f}")
+    main()
