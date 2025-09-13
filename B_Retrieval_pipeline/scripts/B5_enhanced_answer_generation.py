@@ -42,25 +42,28 @@ class EnhancedB5AnswerGenerator:
         self.output_dir = self.script_dir.parent / "outputs"
         
         # Initialize OpenAI client (if API key available)
-        # Try to load API key from Config.py first, then environment variable
+        # Try to load API key from .env file first, then environment variable
         self.openai_api_key = None
-        try:
-            # Import Config.py from parent directory
-            import sys
-            config_path = self.script_dir.parent.parent
-            if str(config_path) not in sys.path:
-                sys.path.append(str(config_path))
-            
-            from Config import OPENAI_API_KEY as config_key
-            if config_key and config_key.startswith('sk-'):
-                self.openai_api_key = config_key
-                print("[INFO] Using OpenAI API key from Config.py")
-            else:
-                self.openai_api_key = os.getenv("OPENAI_API_KEY")
-                print("[INFO] Trying OpenAI API key from environment variable")
-        except ImportError:
-            self.openai_api_key = os.getenv("OPENAI_API_KEY")
-            print("[INFO] Config.py not found, using environment variable")
+        
+        # Load .env file from project root
+        env_path = self.script_dir.parent.parent / ".env"
+        if env_path.exists():
+            with open(env_path, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith('#') and '=' in line:
+                        key, value = line.split('=', 1)
+                        # Remove quotes if present
+                        value = value.strip('\'"')
+                        os.environ[key] = value
+            print(f"[INFO] Loaded environment variables from {env_path}")
+        
+        # Get API key from environment
+        self.openai_api_key = os.getenv("OPENAI_API_KEY")
+        if self.openai_api_key:
+            print("[INFO] Using OpenAI API key from environment variable")
+        else:
+            print("[INFO] No OPENAI_API_KEY found in environment")
         
         self.openai_client = None
         
@@ -102,6 +105,61 @@ class EnhancedB5AnswerGenerator:
         b4_path = self.output_dir / "B4_weighted_combination_output.json"
         with open(b4_path, 'r', encoding='utf-8') as f:
             return json.load(f)
+    
+    def load_b3_enhanced_ranking(self) -> Dict:
+        """Load enhanced ranked chunks directly from B3.3 output (RECOMMENDED)"""
+        b3_path = self.output_dir / "B3.3_answer_capability_assessment_output.json"
+        try:
+            with open(b3_path, 'r', encoding='utf-8') as f:
+                b3_data = json.load(f)
+            print(f"[ENHANCED] Using B3.3 capability assessment data from {b3_path}")
+            return b3_data
+        except FileNotFoundError:
+            print(f"[FALLBACK] B3.3 enhanced output not found, falling back to B4...")
+            return self.load_b4_ranking()
+    
+    def convert_b3_to_b5_format(self, b3_data: List[Dict]) -> List[Dict]:
+        """Convert B3.3 enhanced format to B5-compatible format"""
+        converted_results = []
+        
+        for question_result in b3_data:
+            # Extract B3.3 ranked chunks
+            b3_chunks = question_result.get("ranked_chunks", [])
+            
+            # Convert each chunk to B5-expected format
+            converted_chunks = []
+            for chunk in b3_chunks:
+                # Map B3.3 similarity_score to B5-expected combined_score
+                converted_chunk = {
+                    "chunk_id": chunk.get("chunk_id", ""),
+                    "content": chunk.get("content", ""),
+                    "combined_score": chunk.get("similarity_score", 0.0),  # Use enhanced score!
+                    "match_strategy": chunk.get("match_strategy", "capability_assessment"),
+                    
+                    # Preserve B3.3 enhanced metadata for advanced processing
+                    "b3_assessment_details": chunk.get("assessment_details", {}),
+                    "b3_enhanced_metadata": {
+                        "can_provide_answer": chunk.get("assessment_details", {}).get("can_provide_answer", False),
+                        "expected_answer_type": chunk.get("assessment_details", {}).get("expected_answer_type", "text"),
+                        "answer_similarity": chunk.get("assessment_details", {}).get("answer_similarity", 0.0),
+                        "concept_enhancement": chunk.get("assessment_details", {}).get("concept_enhancement", {}),
+                        "content_features": chunk.get("assessment_details", {}).get("content_features", {})
+                    }
+                }
+                converted_chunks.append(converted_chunk)
+            
+            # Create B5-compatible result structure
+            converted_result = {
+                "question_id": question_result.get("question_id", ""),
+                "question": question_result.get("question", ""),
+                "ranked_chunks": converted_chunks,
+                "strategy": "b3_enhanced_capability_assessment",
+                "total_matches": len(converted_chunks),
+                "processing_timestamp": question_result.get("processing_timestamp", "")
+            }
+            converted_results.append(converted_result)
+        
+        return converted_results
     
     def classify_question_type(self, question: str) -> QuestionType:
         """Classify the type of question to determine processing strategy"""
@@ -295,24 +353,57 @@ Answer:"""
             }
     
     def calculate_openai_confidence(self, answer_text: str, context_chunks: List[Dict], question_type: str) -> float:
-        """Calculate confidence score for OpenAI-generated answers"""
-        confidence = 0.5  # Base confidence
+        """Calculate confidence score for OpenAI-generated answers (ENHANCED with B3.3 metadata)"""
+        # Check if we have B3.3 enhanced metadata
+        has_b3_metadata = any('b3_enhanced_metadata' in chunk for chunk in context_chunks)
         
-        # Boost confidence for percentage answers with calculations
-        if question_type == "percentage_change" and "%" in answer_text:
-            if any(keyword in answer_text.lower() for keyword in ["calculate", "2018", "2019", "revenue"]):
-                confidence += 0.3
+        if has_b3_metadata:
+            print("[B3.3 ENHANCED] Using capability assessment for confidence calculation...")
+            
+            # Use B3.3 answer similarity scores as base confidence
+            answer_similarities = []
+            concept_boosts = []
+            
+            for chunk in context_chunks:
+                metadata = chunk.get('b3_enhanced_metadata', {})
+                answer_sim = metadata.get('answer_similarity', 0.0)
+                concept_boost = metadata.get('concept_enhancement', {}).get('concept_boost', 0.0)
+                
+                answer_similarities.append(answer_sim)
+                concept_boosts.append(concept_boost)
+            
+            # Base confidence from chunk capability assessment
+            if answer_similarities:
+                base_confidence = sum(answer_similarities) / len(answer_similarities)
+                concept_enhancement = sum(concept_boosts) / len(concept_boosts)
+                
+                # Enhanced confidence calculation
+                confidence = base_confidence + (concept_enhancement * 0.5)
+                print(f"[CONFIDENCE] Base: {base_confidence:.3f}, Concept boost: {concept_enhancement:.3f}")
+            else:
+                confidence = 0.5  # Fallback
+        else:
+            # Legacy confidence calculation
+            confidence = 0.5  # Base confidence
+            
+            # Boost confidence for percentage answers with calculations
+            if question_type == "percentage_change" and "%" in answer_text:
+                if any(keyword in answer_text.lower() for keyword in ["calculate", "2018", "2019", "revenue"]):
+                    confidence += 0.3
+            
+            # Boost confidence if answer references specific context
+            if any(chunk_id in answer_text for chunk in context_chunks for chunk_id in [chunk.get('chunk_id', '')]):
+                confidence += 0.1
         
-        # Boost confidence if answer references specific context
-        if any(chunk_id in answer_text for chunk in context_chunks for chunk_id in [chunk.get('chunk_id', '')]):
-            confidence += 0.1
-        
+        # Universal adjustments (apply to both enhanced and legacy)
         # Reduce confidence for uncertain language
         uncertain_words = ["might", "could", "possibly", "unclear", "not available", "missing"]
         if any(word in answer_text.lower() for word in uncertain_words):
             confidence -= 0.2
         
-        return max(0.1, min(1.0, confidence))
+        final_confidence = max(0.1, min(1.0, confidence))
+        print(f"[FINAL CONFIDENCE] {final_confidence:.3f}")
+        return final_confidence
 
     def validate_answer(self, answer: Union[str, float], expected_type: AnswerType, question_type: QuestionType) -> Tuple[bool, str]:
         """Validate if the generated answer matches expected type and reasonableness"""
@@ -344,11 +435,38 @@ Answer:"""
         
         return is_valid, issues_text
     
-    def generate_answer(self, question_data: Dict, b4_ranking: Dict) -> Dict:
+    def generate_answer(self, question_data: Dict, b4_ranking: Dict, use_b3_enhanced: bool = True) -> Dict:
         """Enhanced answer generation with numerical extraction and calculation"""
         question = question_data.get("question", "")
         question_id = question_data.get("question_id", "unknown")
-        top_chunks = b4_ranking.get("ranked_chunks", [])[:10]
+        
+        # Choose data source: B3.3 enhanced (recommended) or B4 legacy
+        if use_b3_enhanced:
+            try:
+                # Load B3.3 enhanced data for this specific question
+                b3_data = self.load_b3_enhanced_ranking()
+                b3_converted = self.convert_b3_to_b5_format(b3_data)
+                
+                # Find matching question result
+                question_result = None
+                for result in b3_converted:
+                    if (result.get("question_id") == question_id or 
+                        result.get("question") == question):
+                        question_result = result
+                        break
+                
+                if question_result:
+                    top_chunks = question_result.get("ranked_chunks", [])[:10]
+                    print(f"[B3.3 ENHANCED] Using {len(top_chunks)} capability-assessed chunks")
+                    print(f"[SCORES] B3.3 scores: {[c.get('combined_score', 0) for c in top_chunks[:3]]}")
+                else:
+                    print("[FALLBACK] Question not found in B3.3, using B4...")
+                    top_chunks = b4_ranking.get("ranked_chunks", [])[:10]
+            except Exception as e:
+                print(f"[FALLBACK] Error loading B3.3 data: {e}")
+                top_chunks = b4_ranking.get("ranked_chunks", [])[:10]
+        else:
+            top_chunks = b4_ranking.get("ranked_chunks", [])[:10]
         
         print(f"\nGenerating enhanced answer for: {question}")
         print(f"Using {len(top_chunks)} top-ranked chunks as context...")
@@ -356,6 +474,29 @@ Answer:"""
         # Classify question and determine expected answer type
         question_type = self.classify_question_type(question)
         expected_answer_type = self.determine_expected_answer_type(question, question_type)
+        
+        # Enhanced chunk filtering using B3.3 metadata (if available)
+        if use_b3_enhanced and top_chunks and 'b3_enhanced_metadata' in top_chunks[0]:
+            print("[B3.3 ENHANCED] Applying capability-based chunk selection...")
+            
+            # Filter chunks that can provide answers
+            capable_chunks = [chunk for chunk in top_chunks 
+                            if chunk.get('b3_enhanced_metadata', {}).get('can_provide_answer', False)]
+            
+            # Filter by answer type alignment
+            type_aligned_chunks = [chunk for chunk in capable_chunks
+                                 if chunk.get('b3_enhanced_metadata', {}).get('expected_answer_type', 'text').lower() 
+                                    == expected_answer_type.value.lower()]
+            
+            # Use the best available chunks
+            if type_aligned_chunks:
+                top_chunks = type_aligned_chunks[:5]  # Use top 5 type-aligned, capable chunks
+                print(f"[OPTIMIZED] Using {len(top_chunks)} type-aligned, capable chunks")
+            elif capable_chunks:
+                top_chunks = capable_chunks[:5]  # Use top 5 capable chunks
+                print(f"[OPTIMIZED] Using {len(top_chunks)} capable chunks")
+            else:
+                print("[FALLBACK] No capable chunks found, using top scored chunks")
         
         print(f"Question Type: {question_type.value}")
         print(f"Expected Answer Type: {expected_answer_type.value}")
@@ -565,11 +706,15 @@ Answer:"""
         
         return answer_result
 
-def main():
+def main(use_b3_enhanced: bool = True):
     """Main execution for processing all 20 questions"""
     print("="*60)
-    print("B5: ENHANCED ANSWER GENERATION")
-    print("With numerical extraction, calculation, and validation")
+    if use_b3_enhanced:
+        print("B5: ENHANCED ANSWER GENERATION - B3.3 CONCEPT-AWARE MODE")
+        print("Using capability assessment with concept integration")
+    else:
+        print("B5: ENHANCED ANSWER GENERATION - LEGACY B4 MODE")
+        print("With numerical extraction, calculation, and validation")
     print("="*60)
     
     generator = EnhancedB5AnswerGenerator()
@@ -597,8 +742,8 @@ def main():
             question_text = question_data.get("question", "")
             print(f"[{i+1:2d}/20] Generating answer for: {question_text[:60]}...")
             
-            # Generate answer for this question
-            result = generator.generate_answer(question_data, b4_ranking)
+            # Generate answer for this question (with B3.3 enhancement option)
+            result = generator.generate_answer(question_data, b4_ranking, use_b3_enhanced=use_b3_enhanced)
             
             # Add metadata
             result.update({
