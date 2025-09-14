@@ -169,7 +169,6 @@ def process_question(data):
         "entities": entities,
         "focus_terms": focus_terms,
         "document_id": data.get("document_id"),
-        "ground_truth": data.get("answer"),
         "processing_timestamp": datetime.now().isoformat()
     }
 

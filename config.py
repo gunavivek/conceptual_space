@@ -5,7 +5,6 @@ Central configuration for the Conceptual Space Pipeline System
 import os
 from pathlib import Path
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "your-api-key-here")
 # Base paths
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"

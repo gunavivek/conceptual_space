@@ -69,8 +69,8 @@ def load_matching_results():
         print(f"Warning: B3.2 output not found at {b32_path}")
         matching_results["declarative_form"] = {}
     
-    # Load B3.3 Answer Backward Matching results
-    b33_path = outputs_dir / "B3.3_answer_backward_matching_output.json"
+    # Load B3.3 Answer Capability Assessment results
+    b33_path = outputs_dir / "B3.3_answer_capability_assessment_output.json"
     if b33_path.exists():
         with open(b33_path, 'r', encoding='utf-8') as f:
             b33_data = json.load(f)

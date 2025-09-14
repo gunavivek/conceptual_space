@@ -328,24 +328,24 @@ class BPipelineOrchestrator:
             print(f"[X] B3.2 Failed: {e}")
             b3_results["declarative_matching"] = {"error": str(e)}
         
-        # B3.3: Answer Backward Matching
+        # B3.3: Answer Capability Assessment
         try:
-            spec = importlib.util.spec_from_file_location("B3_3", self.script_dir / "B3.3_answer_backward_matching.py")
+            spec = importlib.util.spec_from_file_location("B3_3", self.script_dir / "B3.3_answer_capability_assessment.py")
             B3_3 = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(B3_3)
             
-            backward_matches = B3_3.match_by_answer_expectations(
+            capability_assessment = B3_3.assess_answer_capability(
                 filtered_chunks,
                 b2_results.get("answer_expectation", {})
             )
             
             # Save B3.3 individual output
-            b3_3_path = self.output_dir / "B3.3_answer_backward_output.json"
+            b3_3_path = self.output_dir / "B3.3_answer_capability_assessment_output.json"
             with open(b3_3_path, 'w') as f:
-                json.dump(backward_matches, f, indent=2)
+                json.dump(capability_assessment, f, indent=2)
             
-            b3_results["answer_backward"] = backward_matches
-            print(f"[OK] B3.3: Found {len(backward_matches.get('ranked_chunks', []))} backward matches")
+            b3_results["answer_backward"] = capability_assessment  # Keep key for B4 compatibility
+            print(f"[OK] B3.3: Found {len(capability_assessment.get('ranked_chunks', []))} capability assessments")
             print(f"   Output: {b3_3_path}")
             
         except Exception as e:

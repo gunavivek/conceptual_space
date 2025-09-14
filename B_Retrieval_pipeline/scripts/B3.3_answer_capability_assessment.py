@@ -539,22 +539,196 @@ def analyze_capability_assessment_quality(matches, question_data):
         "analysis": f"Average similarity: {quality_score:.4f}, Best match: {max(scores):.4f}"
     }
 
-def load_inputs():
-    """Load B2.3 answer expectation data and A-pipeline chunks"""
+def assess_answer_capability_with_b25(chunks, answer_expectation, question_concepts, concepts_lookup):
+    """
+    B2.5-Enhanced answer capability assessment with question-concept mapping integration
+
+    Args:
+        chunks: List of chunks from A-Pipeline with concept memberships
+        answer_expectation: Answer expectations from B2.3
+        question_concepts: B2.5 question-concept mappings
+        concepts_lookup: A2.4 concept data
+
+    Returns:
+        dict: Enhanced answer capability assessment results with B2.5 integration
+    """
+    if not chunks:
+        return {
+            "strategy": "answer_capability_assessment_b25_enhanced",
+            "ranked_chunks": [],
+            "total_matches": 0,
+            "processing_timestamp": datetime.now().isoformat()
+        }
+
+    concept_enhancement_enabled = len(concepts_lookup) > 0
+    b25_enhancement_enabled = bool(question_concepts)
+
+    # Process each chunk
+    ranked_chunks = []
+
+    for chunk in chunks:
+        chunk_content = chunk.get("content", "")
+        if not chunk_content:
+            continue
+
+        # Calculate answer similarity (original)
+        answer_similarity = calculate_answer_similarity(chunk_content, answer_expectation)
+
+        # Calculate validation alignment (original)
+        validation_criteria = answer_expectation.get("validation_criteria", {})
+        validation_alignment = calculate_validation_alignment(chunk_content, validation_criteria)
+
+        # Calculate A2.4 concept enhancement (original)
+        if concept_enhancement_enabled:
+            concept_enhancement = calculate_concept_enhancement(chunk, answer_expectation, concepts_lookup)
+            a24_boost = concept_enhancement["concept_boost"]
+            importance_multiplier = concept_enhancement["importance_multiplier"]
+            keyword_enhancement = concept_enhancement["keyword_enhancement"]
+        else:
+            concept_enhancement = {
+                "concept_boost": 0.0,
+                "importance_multiplier": 1.0,
+                "keyword_enhancement": 0.0,
+                "concept_details": []
+            }
+            a24_boost = 0.0
+            importance_multiplier = 1.0
+            keyword_enhancement = 0.0
+
+        # Calculate B2.5 enhancement (new)
+        if b25_enhancement_enabled:
+            b25_enhancement = calculate_b25_enhancement_score(chunk, question_concepts, concepts_lookup)
+            b25_multiplier = b25_enhancement["enhancement_multiplier"]
+            b25_details = b25_enhancement["details"]
+        else:
+            b25_enhancement = {
+                "enhancement_multiplier": 1.0,
+                "primary_concept_boost": 0.0,
+                "membership_boost": 0.0,
+                "details": []
+            }
+            b25_multiplier = 1.0
+            b25_details = []
+
+        # Enhanced combined score with dual concept integration
+        base_score = (answer_similarity * 0.6) + (validation_alignment * 0.4)
+        a24_enhanced_score = base_score + a24_boost + keyword_enhancement
+        final_score = a24_enhanced_score * importance_multiplier * b25_multiplier
+
+        # Only include chunks with meaningful scores
+        if final_score > 0.1:
+            # Extract answer type for details
+            answer_prediction = answer_expectation.get("answer_prediction", {})
+            expected_type = answer_prediction.get("primary_type", "text")
+
+            ranked_chunks.append({
+                "chunk_id": chunk.get("chunk_id", ""),
+                "content": chunk_content[:200] + "..." if len(chunk_content) > 200 else chunk_content,
+                "similarity_score": round(final_score, 4),
+                "match_strategy": "capability_assessment_b25_enhanced",
+                "assessment_details": {
+                    "answer_similarity": round(answer_similarity, 4),
+                    "validation_alignment": round(validation_alignment, 4),
+                    "expected_answer_type": expected_type,
+                    "can_provide_answer": answer_similarity > 0.5,
+                    "meets_validation": validation_alignment > 0.4,
+                    "content_features": {
+                        "has_numbers": bool(re.search(r'\d+', chunk_content)),
+                        "has_dates": bool(re.search(r'\b20[0-2]\d\b|\b19[0-9]\d\b', chunk_content)),
+                        "content_length": len(chunk_content),
+                        "readability": "high" if len(chunk_content) > 100 else "medium"
+                    }
+                },
+                "concept_enhancement": {
+                    "a24_enabled": concept_enhancement_enabled,
+                    "a24_boost": round(a24_boost, 4),
+                    "a24_importance_multiplier": round(importance_multiplier, 4),
+                    "a24_keyword_enhancement": round(keyword_enhancement, 4),
+                    "b25_enabled": b25_enhancement_enabled,
+                    "b25_enhancement_multiplier": round(b25_multiplier, 4),
+                    "b25_details": b25_details,
+                    "final_enhancement": round((importance_multiplier * b25_multiplier), 4)
+                },
+                "doc_id": chunk.get("doc_id", ""),
+                "chunk_type": chunk.get("chunk_type", ""),
+                "confidence": round(min(1.0, final_score * 0.8), 4)
+            })
+
+    # Sort by similarity score
+    ranked_chunks.sort(key=lambda x: x["similarity_score"], reverse=True)
+
+    # Limit to top 8 matches
+    ranked_chunks = ranked_chunks[:8]
+
+    return {
+        "strategy": "answer_capability_assessment_b25_enhanced",
+        "ranked_chunks": ranked_chunks,
+        "total_matches": len(ranked_chunks),
+        "processing_timestamp": datetime.now().isoformat(),
+        "enhancement_summary": {
+            "a24_concept_enhancement": concept_enhancement_enabled,
+            "b25_question_mapping": b25_enhancement_enabled,
+            "dual_enhancement": concept_enhancement_enabled and b25_enhancement_enabled,
+            "chunks_processed": len(chunks),
+            "chunks_with_scores": len([c for c in chunks if calculate_answer_similarity(c.get("content", ""), answer_expectation) > 0.1])
+        }
+    }
+
+def load_b25_concept_mappings():
+    """
+    Load B2.5 question-concept mapping data for enhanced retrieval
+
+    Returns:
+        dict: B2.5 concept mappings by question_id
+    """
     script_dir = Path(__file__).parent.parent
-    
+    b25_path = script_dir / "outputs" / "B2.5_question_concept_mapping_output.json"
+
+    if not b25_path.exists():
+        print(f"Warning: B2.5 concept mappings not found at {b25_path}")
+        return {}
+
+    try:
+        with open(b25_path, 'r', encoding='utf-8') as f:
+            b25_data = json.load(f)
+
+        # Convert to lookup by question_id
+        concept_mappings = {}
+        for result in b25_data.get("results", []):
+            question_id = result.get("question_id")
+            if question_id:
+                concept_mappings[question_id] = {
+                    "fuzzy_memberships": result.get("concept_mappings", {}).get("fuzzy_memberships", {}),
+                    "primary_concepts": result.get("concept_mappings", {}).get("primary_concepts", []),
+                    "mapping_confidence": result.get("quality_indicators", {}).get("mapping_confidence", 0.5)
+                }
+
+        print(f"Loaded B2.5 concept mappings for {len(concept_mappings)} questions")
+        return concept_mappings
+
+    except Exception as e:
+        print(f"Warning: Error loading B2.5 concept mappings: {e}")
+        return {}
+
+def load_inputs():
+    """Load B2.3 answer expectation data, B2.5 concept mappings, and A-pipeline chunks"""
+    script_dir = Path(__file__).parent.parent
+
     # Load B2.3 answer expectations
     b2_3_path = script_dir / "outputs" / "B2.3_answer_expectation_output.json"
     if not b2_3_path.exists():
         raise FileNotFoundError(f"B2.3 output not found: {b2_3_path}")
-    
+
     with open(b2_3_path, 'r', encoding='utf-8') as f:
         questions_data = json.load(f)
-    
+
+    # Load B2.5 concept mappings
+    b25_mappings = load_b25_concept_mappings()
+
     # Load A-pipeline chunks from A3_multi_strategy_chunks.json (same as B3.1)
     a_pipeline_path = script_dir.parent / "A_Concept_pipeline" / "outputs" / "A3_multi_strategy_chunks.json"
     chunks = []
-    
+
     if a_pipeline_path.exists():
         with open(a_pipeline_path, 'r', encoding='utf-8') as f:
             chunk_data = json.load(f)
@@ -570,11 +744,123 @@ def load_inputs():
                         "membership_scores": chunk.get("membership_scores", {}),
                         "metadata": chunk.get("metadata", {})
                     })
-    
+
     if not chunks:
         raise FileNotFoundError(f"No real chunks found in A-pipeline output: {a_pipeline_path}")
-    
-    return questions_data, chunks
+
+    return questions_data, chunks, b25_mappings
+
+def apply_b25_concept_filtering(chunks, question_id, b25_mappings, membership_threshold=0.3):
+    """
+    Filter chunks based on B2.5 concept mappings for enhanced retrieval
+
+    Args:
+        chunks: List of chunks with concept memberships
+        question_id: Question identifier
+        b25_mappings: B2.5 concept mappings
+        membership_threshold: Minimum membership score for inclusion
+
+    Returns:
+        tuple: (filtered_chunks, question_concepts)
+    """
+    if question_id not in b25_mappings:
+        return chunks, {}
+
+    question_concepts = b25_mappings[question_id]
+    fuzzy_memberships = question_concepts["fuzzy_memberships"]
+    primary_concepts = question_concepts["primary_concepts"]
+
+    # Get relevant concept IDs based on membership threshold
+    relevant_concepts = set()
+    for concept_id, membership_data in fuzzy_memberships.items():
+        if membership_data["membership_score"] >= membership_threshold:
+            relevant_concepts.add(concept_id)
+
+    # Add primary concepts regardless of threshold
+    relevant_concepts.update(primary_concepts)
+
+    if not relevant_concepts:
+        # If no concepts meet threshold, return all chunks
+        return chunks, question_concepts
+
+    # Filter chunks that have membership in relevant concepts
+    filtered_chunks = []
+    for chunk in chunks:
+        chunk_concepts = set(chunk.get("concept_memberships", []))
+        if chunk_concepts.intersection(relevant_concepts):
+            filtered_chunks.append(chunk)
+
+    # If filtering removes all chunks, return original set
+    if not filtered_chunks:
+        return chunks, question_concepts
+
+    return filtered_chunks, question_concepts
+
+def calculate_b25_enhancement_score(chunk, question_concepts, concepts_lookup):
+    """
+    Calculate enhancement score based on B2.5 concept mappings
+
+    Args:
+        chunk: Chunk with concept memberships
+        question_concepts: B2.5 concept mappings for question
+        concepts_lookup: A2.4 concept data
+
+    Returns:
+        dict: Enhancement scores and details
+    """
+    fuzzy_memberships = question_concepts.get("fuzzy_memberships", {})
+    primary_concepts = question_concepts.get("primary_concepts", [])
+    chunk_concepts = chunk.get("concept_memberships", [])
+
+    if not fuzzy_memberships or not chunk_concepts:
+        return {
+            "enhancement_multiplier": 1.0,
+            "primary_concept_boost": 0.0,
+            "membership_boost": 0.0,
+            "details": {"no_concept_overlap": True}
+        }
+
+    enhancement_multiplier = 1.0
+    primary_concept_boost = 0.0
+    membership_boost = 0.0
+    concept_details = []
+
+    for concept_id in chunk_concepts:
+        # Check if concept has fuzzy membership for this question
+        if concept_id in fuzzy_memberships:
+            membership_score = fuzzy_memberships[concept_id]["membership_score"]
+            confidence = fuzzy_memberships[concept_id]["confidence"]
+
+            # Apply membership boost
+            membership_contribution = membership_score * confidence * 0.3
+            membership_boost += membership_contribution
+
+            concept_details.append({
+                "concept_id": concept_id,
+                "membership_score": membership_score,
+                "confidence": confidence,
+                "contribution": membership_contribution
+            })
+
+        # Check if concept is a primary concept
+        if concept_id in primary_concepts:
+            primary_concept_boost += 0.4  # 40% boost per primary concept
+            concept_details.append({
+                "concept_id": concept_id,
+                "primary_concept": True,
+                "boost": 0.4
+            })
+
+    # Calculate total enhancement multiplier
+    enhancement_multiplier += membership_boost + primary_concept_boost
+    enhancement_multiplier = min(enhancement_multiplier, 2.5)  # Cap at 2.5x
+
+    return {
+        "enhancement_multiplier": enhancement_multiplier,
+        "primary_concept_boost": primary_concept_boost,
+        "membership_boost": membership_boost,
+        "details": concept_details
+    }
 
 def save_output(data, output_path="outputs/B3.3_answer_capability_assessment_output.json"):
     """Save answer capability assessment results"""
@@ -597,15 +883,20 @@ def main():
     
     try:
         # Load inputs
-        print("Loading questions and chunks...")
-        questions_data, chunks = load_inputs()
-        
+        print("Loading questions, chunks, and B2.5 concept mappings...")
+        questions_data, chunks, b25_mappings = load_inputs()
+
         # Load concept data for enhancement
         concepts_lookup = load_concept_data()
         if concepts_lookup:
-            print(f"Concept enhancement: ENABLED ({len(concepts_lookup)} concepts loaded)")
+            print(f"A2.4 Concept enhancement: ENABLED ({len(concepts_lookup)} concepts loaded)")
         else:
-            print("Concept enhancement: DISABLED (no concept data found)")
+            print("A2.4 Concept enhancement: DISABLED (no concept data found)")
+
+        if b25_mappings:
+            print(f"B2.5 Question-Concept mapping: ENABLED ({len(b25_mappings)} questions mapped)")
+        else:
+            print("B2.5 Question-Concept mapping: DISABLED (no mapping data found)")
         
         if not isinstance(questions_data, list):
             questions_data = [questions_data]
@@ -617,20 +908,40 @@ def main():
         # Process each question
         for i, question_data in enumerate(questions_data):
             question_text = question_data.get("question", "")
+            question_id = question_data.get("question_id", f"q_{i}")
             print(f"[{i+1:2d}/20] Capability assessment: {question_text[:60]}...")
-            
-            # Perform answer capability assessment
-            matching_result = assess_answer_capability(chunks, question_data)
-            
+
+            # Apply B2.5 concept-guided filtering
+            if b25_mappings and question_id in b25_mappings:
+                filtered_chunks, question_concepts = apply_b25_concept_filtering(
+                    chunks, question_id, b25_mappings
+                )
+                print(f"    B2.5 filtering: {len(chunks)} -> {len(filtered_chunks)} chunks")
+            else:
+                filtered_chunks = chunks
+                question_concepts = {}
+
+            # Perform answer capability assessment on filtered chunks
+            matching_result = assess_answer_capability_with_b25(
+                filtered_chunks, question_data, question_concepts, concepts_lookup
+            )
+
             # Add question metadata
             result = {
-                "question_id": question_data.get("question_id", f"q_{i}"),
+                "question_id": question_id,
                 "question": question_text,
-                "strategy": "answer_capability_assessment",
+                "strategy": "answer_capability_assessment_b25_enhanced",
                 "ranked_chunks": matching_result.get("ranked_chunks", []),
                 "total_matches": matching_result.get("total_matches", 0),
+                "b25_integration": {
+                    "concept_filtering_enabled": bool(b25_mappings and question_id in b25_mappings),
+                    "chunks_before_filtering": len(chunks),
+                    "chunks_after_filtering": len(filtered_chunks),
+                    "primary_concepts": question_concepts.get("primary_concepts", []),
+                    "mapping_confidence": question_concepts.get("mapping_confidence", 0.0)
+                },
                 "quality_analysis": analyze_capability_assessment_quality(
-                    matching_result.get("ranked_chunks", []), 
+                    matching_result.get("ranked_chunks", []),
                     question_data
                 ),
                 "processing_timestamp": datetime.now().isoformat()

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python:*)",
       "Bash(sed:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": []

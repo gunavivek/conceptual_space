@@ -1,0 +1,64 @@
+{
+  "description": "B2.5 Question-Concept Mapping Configuration - Sample",
+  "version": "1.0",
+
+  "fuzzy_parameters": {
+    "importance_scaling": 1.0,
+    "distance_weights": {
+      "keyword_overlap": 0.6,
+      "semantic_similarity": 0.3,
+      "answer_relevance": 0.25,
+      "temporal_alignment": 0.1
+    },
+    "confidence_thresholds": {
+      "high_confidence": 0.8,
+      "medium_confidence": 0.6,
+      "low_confidence": 0.4
+    }
+  },
+
+  "membership_thresholds": {
+    "strong_membership": 0.7,
+    "medium_membership": 0.3,
+    "weak_membership": 0.1,
+    "max_concepts_output": 5,
+    "min_concepts_output": 1
+  },
+
+  "processing": {
+    "enable_expanded_concepts": true,
+    "a25_requirement": "MANDATORY",
+    "_a25_requirement_options": "MANDATORY or OPTIONAL",
+    "_a25_requirement_note": "Change to OPTIONAL to run with A2.4 only if A2.5 missing",
+    "enable_temporal_context": true,
+    "enable_declarative_elements": true,
+    "cache_concept_data": true,
+    "graceful_degradation": true
+  },
+
+  "file_paths": {
+    "b21_output": "B2.1_intent_layer_output.json",
+    "b22_output": "B2.2_declarative_transformation_output.json",
+    "b23_output": "B2.3_answer_expectation_output.json",
+    "b24_output": "B2.4_temporal_analysis_output.json",
+    "output_path": "B2.5_question_concept_mapping_output.json"
+  },
+
+  "performance": {
+    "max_processing_time_ms": 50,
+    "enable_performance_logging": true
+  },
+
+  "quality_control": {
+    "min_mapping_confidence": 0.5,
+    "require_primary_concepts": true,
+    "validate_output_format": true
+  },
+
+  "experimental": {
+    "_note": "Configuration options for testing different approaches",
+    "compare_a24_vs_a24_plus_a25": false,
+    "detailed_distance_logging": false,
+    "concept_expansion_boost": 1.1
+  }
+}
