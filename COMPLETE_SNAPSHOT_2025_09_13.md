@@ -287,6 +287,8 @@ B-Pipeline: Question → Same Centroids → Question Coordinates → Intra-Ball 
 ---
 
 ## 🔗 KEY FILE LOCATIONS FOR TOMORROW
+### Overall B-pipeline redesign architecture document
+- `C:\AiSearch\conceptual_space\B_Retrieval_pipeline\architecture\B_PIPELINE_CONVEX_BALL_REDESIGN.md`
 
 ### Architecture Documents:
 - `C:\AiSearch\conceptual_space\B_Retrieval_pipeline\architecture\B_PIPELINE_CONVEX_BALL_REDESIGN.md`

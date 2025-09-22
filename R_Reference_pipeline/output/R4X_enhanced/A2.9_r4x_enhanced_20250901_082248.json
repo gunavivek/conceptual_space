@@ -1,0 +1,27 @@
+{
+  "batch_timestamp": "2025-09-01T08:22:48.273912",
+  "input_file": "sample_documents.json",
+  "documents_processed": 2,
+  "successful_enhancements": 0,
+  "failed_enhancements": 2,
+  "processing_time_seconds": 0.0,
+  "enhancement_metrics": {
+    "documents_processed": 0,
+    "concepts_enhanced": 0,
+    "tri_semantic_insights": 0,
+    "relationship_discoveries": 0,
+    "confidence_improvements": 0
+  },
+  "batch_results": [
+    {
+      "doc_id": "test_001",
+      "error": "'charmap' codec can't encode character '\\U0001f517' in position 2: character maps to <undefined>",
+      "processing_status": "failed"
+    },
+    {
+      "doc_id": "test_002",
+      "error": "'charmap' codec can't encode character '\\U0001f517' in position 2: character maps to <undefined>",
+      "processing_status": "failed"
+    }
+  ]
+}

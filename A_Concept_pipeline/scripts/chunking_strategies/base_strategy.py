@@ -119,43 +119,56 @@ class BaseChunkingStrategy(ABC):
     def extract_concept_memberships(self,
                                    text: str,
                                    concepts: Dict[str, Any],
-                                   threshold: float = 0.3) -> Tuple[List[str], Dict[str, float]]:
+                                   threshold: float = 0.3,
+                                   doc_id: str = None) -> Tuple[List[str], Dict[str, float]]:
         """
         Determine which concepts a text chunk belongs to
-        
+        WITH DOCUMENT-AWARE FILTERING to prevent cross-document contamination
+
         Args:
             text: Text to analyze
             concepts: Dictionary of concepts with their terms
             threshold: Minimum alignment score for membership
-            
+            doc_id: Document ID to filter concepts (only match concepts from same document)
+
         Returns:
             Tuple of (concept_ids, membership_scores)
         """
         memberships = []
         scores = {}
-        
-        # Process core concepts
+
+        # Process core concepts - ONLY from the same document
         if 'core' in concepts and 'concepts' in concepts['core']:
             for concept in concepts['core']['concepts']:
                 concept_id = concept.get('concept_id', '')
+
+                # CRITICAL FIX: Skip concepts from different documents
+                if doc_id and not concept_id.startswith(f"{doc_id}_"):
+                    continue
+
                 terms = concept.get('terms', [])
-                
+
                 score = self.calculate_concept_alignment(text, terms)
                 if score >= threshold:
                     memberships.append(concept_id)
                     scores[concept_id] = score
-        
-        # Process expanded concepts
+
+        # Process expanded concepts - ONLY from the same document
         if 'expanded' in concepts and 'expanded_concepts' in concepts['expanded']:
             for concept in concepts['expanded']['expanded_concepts']:
                 concept_id = concept.get('concept_id', '')
+
+                # CRITICAL FIX: Skip concepts from different documents
+                if doc_id and not concept_id.startswith(f"{doc_id}_"):
+                    continue
+
                 terms = concept.get('expanded_terms', [])
-                
+
                 score = self.calculate_concept_alignment(text, terms)
                 if score >= threshold:
                     memberships.append(concept_id)
                     scores[concept_id] = score
-        
+
         return memberships, scores
     
     def split_sentences(self, text: str) -> List[Tuple[str, int, int]]:
@@ -235,7 +248,8 @@ class BaseChunkingStrategy(ABC):
         Create a ConceptChunk with automatic concept membership detection
         """
         chunk_id = self.generate_chunk_id(doc_id, chunk_index)
-        memberships, scores = self.extract_concept_memberships(content, concepts)
+        # DOCUMENT-AWARE FILTERING: Only match concepts from the same document
+        memberships, scores = self.extract_concept_memberships(content, concepts, doc_id=doc_id)
         
         if metadata is None:
             metadata = {}

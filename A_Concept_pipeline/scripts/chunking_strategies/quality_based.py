@@ -43,6 +43,7 @@ class QualityBasedStrategy(BaseChunkingStrategy):
         Returns:
             Affinity score between 0 and 1
         """
+        # Note: For quality calculation, we use generic matching
         memberships, scores = self.extract_concept_memberships(text, concepts, threshold=0.2)
         
         if not scores:
@@ -252,7 +253,9 @@ class QualityBasedStrategy(BaseChunkingStrategy):
                 continue
             
             # Extract concept memberships
-            memberships, scores = self.extract_concept_memberships(chunk_text, concepts)
+            # DOCUMENT-AWARE: Only match concepts from same document
+
+            memberships, scores = self.extract_concept_memberships(chunk_text, concepts, doc_id=doc_id)
             
             # Skip if no concept memberships
             if not memberships:

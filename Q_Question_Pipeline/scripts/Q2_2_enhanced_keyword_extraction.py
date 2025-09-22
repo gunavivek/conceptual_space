@@ -648,68 +648,97 @@ class Q2_2_EnhancedKeywordExtraction:
 
 
 def main():
-    """Main execution function"""
-    print("=" * 60)
-    print("Q2.2: Enhanced Keyword Extraction Test")
-    print("=" * 60)
+    """Process all questions from Q1 output"""
+    print("=" * 70)
+    print("Q2.2: Enhanced Keyword Extraction - Processing All Questions from Q1")
+    print("=" * 70)
 
     # Initialize Q2.2
     q22 = Q2_2_EnhancedKeywordExtraction()
 
-    # Process the sample question
-    question_id = "finqa_test_1630"
-    print(f"Processing Q2.2 for question: {question_id}")
+    try:
+        # Load all questions from Q1 output
+        q1_path = "../outputs/Q1_Question_ingestion.json"
+        with open(q1_path, 'r') as f:
+            q1_data = json.load(f)
 
-    # Run enhanced keyword extraction
-    result = q22.extract_keywords(question_id)
+        questions = q1_data.get('questions', [])
+        print(f"Found {len(questions)} questions from Q1")
 
-    print(f"Question: {result['question_text'][:60]}...")
+        all_results = {}
+        successful = 0
+        failed = 0
 
-    print("\n" + "=" * 40)
-    print("Q2.2 OUTPUT - Enhanced Keyword Extraction:")
-    print("=" * 40)
-    print(f"Question ID: {result['question_id']}")
+        for i, question_data in enumerate(questions, 1):
+            question_id = question_data.get('question_id', f'q_{i}')
+            question_text = question_data.get('question_text', '')
 
-    # Show primary keywords
-    print(f"\nPrimary Keywords ({len(result['keyword_extraction']['primary_keywords'])}):")
-    for kw in result['keyword_extraction']['primary_keywords'][:5]:
-        print(f"  - {kw['keyword']}: weight={kw['weight']:.2f}, category={kw['category']}")
+            print(f"\n[{i}/{len(questions)}] Processing: {question_id}")
+            print(f"Question: {question_text[:80]}...")
 
-    # Show domain terms
-    print(f"\nDomain-Specific Terms ({len(result['keyword_extraction']['domain_specific_terms'])}):")
-    for term in result['keyword_extraction']['domain_specific_terms']:
-        print(f"  - {term['term']}: domain={term['domain']}, importance={term['importance']:.2f}")
+            try:
+                # Modify the load function temporarily to use the question data directly
+                original_load = q22._load_question_from_q1
+                q22._load_question_from_q1 = lambda qid: {
+                    'question_id': question_data.get('question_id', qid),
+                    'doc_id': question_data.get('doc_id', qid),
+                    'question_text': question_data.get('question_text', '')
+                }
 
-    # Show entity keywords
-    print(f"\nEntity Keywords ({len(result['keyword_extraction']['entity_keywords'])}):")
-    for entity in result['keyword_extraction']['entity_keywords'][:5]:
-        print(f"  - {entity['entity']}: type={entity['entity_type']}, confidence={entity['confidence']:.2f}")
+                # Run keyword extraction
+                result = q22.extract_keywords(question_id)
+                all_results[question_id] = result
 
-    # Show semantic clusters
-    print(f"\nSemantic Clusters ({len(result['keyword_extraction']['semantic_clusters'])}):")
-    for cluster in result['keyword_extraction']['semantic_clusters']:
-        print(f"  - {cluster['cluster_theme']}: {', '.join(cluster['keywords'][:3])}")
+                # Show brief summary
+                kw_count = len(result['keyword_extraction']['primary_keywords'])
+                domain_count = len(result['keyword_extraction']['domain_specific_terms'])
+                entity_count = len(result['keyword_extraction']['entity_keywords'])
 
-    # Show keyword features
-    print(f"\nKeyword Features:")
-    features = result['keyword_features']
-    print(f"  Total keywords: {features['total_keywords']}")
-    print(f"  Domain term ratio: {features['domain_term_ratio']:.2f}")
-    print(f"  Semantic density: {features['semantic_density']:.2f}")
-    print(f"  Keyword diversity: {features['keyword_diversity']:.2f}")
+                print(f"  -> Keywords: {kw_count}, Domain terms: {domain_count}, Entities: {entity_count}")
+                successful += 1
 
-    # Show embedding info
-    print(f"\nKeyword Embeddings:")
-    print(f"  Vector dimension: {result['keyword_embeddings']['vector_dimension']}")
-    print(f"  Keywords with embeddings: {len(result['keyword_embeddings']['keyword_vectors'])}")
+                # Restore original function
+                q22._load_question_from_q1 = original_load
 
-    print(f"\nProcessing Time: {result['processing_metadata']['processing_time_ms']:.1f}ms")
-    print(f"Confidence Score: {result['processing_metadata']['confidence_score']:.2f}")
+            except Exception as e:
+                print(f"  -> ERROR: {e}")
+                failed += 1
+                # Restore original function
+                q22._load_question_from_q1 = original_load
 
-    # Save output
-    q22.save_output(result)
+        # Save all results
+        output_path = "../outputs/Q2.2_enhanced_keyword_extraction.json"
+        with open(output_path, 'w') as f:
+            json.dump(all_results, f, indent=2)
 
-    return result
+        print(f"\n" + "=" * 70)
+        print("Q2.2 BATCH PROCESSING COMPLETE")
+        print("=" * 70)
+        print(f"Total questions: {len(questions)}")
+        print(f"Successful: {successful}")
+        print(f"Failed: {failed}")
+        print(f"Success rate: {successful/len(questions)*100:.1f}%")
+        print(f"Results saved to: {output_path}")
+
+        # Show summary statistics
+        if all_results:
+            total_keywords = sum(len(r['keyword_extraction']['primary_keywords']) for r in all_results.values())
+            total_domain_terms = sum(len(r['keyword_extraction']['domain_specific_terms']) for r in all_results.values())
+            total_entities = sum(len(r['keyword_extraction']['entity_keywords']) for r in all_results.values())
+
+            print(f"\nExtraction Summary:")
+            print(f"  Total keywords extracted: {total_keywords}")
+            print(f"  Total domain terms: {total_domain_terms}")
+            print(f"  Total entities: {total_entities}")
+            print(f"  Avg keywords per question: {total_keywords/len(all_results):.1f}")
+
+        return all_results
+
+    except Exception as e:
+        print(f"Error in Q2.2 batch processing: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
 
 
 if __name__ == "__main__":

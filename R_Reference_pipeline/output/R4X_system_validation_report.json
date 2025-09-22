@@ -1,0 +1,168 @@
+{
+  "validation_metadata": {
+    "timestamp": "2025-08-31T09:01:46.610835",
+    "test_question": "What was the change in Current deferred income?",
+    "validator_version": "R4X_v1.0",
+    "total_execution_time": 3.3545494079589844
+  },
+  "test_results": {
+    "core_components": {
+      "cross_pipeline_integrator": {
+        "status": "fail",
+        "error": "'NoneType' object has no attribute 'fuse_tri_semantic_perspectives'",
+        "details": "R4X Cross-Pipeline Integrator test failed: 'NoneType' object has no attribute 'fuse_tri_semantic_perspectives'"
+      },
+      "semantic_fusion_engine": {
+        "status": "fail",
+        "error": "SemanticFusionEngine.__init__() missing 4 required positional arguments: 'ontology_space', 'document_space', 'question_space', and 'cross_space_bridges'",
+        "details": "R4X Semantic Fusion Engine test failed: SemanticFusionEngine.__init__() missing 4 required positional arguments: 'ontology_space', 'document_space', 'question_space', and 'cross_space_bridges'"
+      },
+      "tri_semantic_visualizer": {
+        "status": "pass",
+        "initialization": true,
+        "data_loading": true,
+        "semantic_colors_count": 7,
+        "visualization_types": 5,
+        "details": "R5X Tri-Semantic Visualizer functioning correctly"
+      }
+    },
+    "pipeline_integrations": {
+      "A_Pipeline": {
+        "A2.9_r4x_semantic_enhancement.py": {
+          "status": "pass",
+          "execution_time": "completed",
+          "output_length": 1112,
+          "error_output": null,
+          "details": "Enhanced A-Pipeline script executed successfully"
+        }
+      },
+      "B_Pipeline": {
+        "B3.4_r4x_intent_enhancement.py": {
+          "status": "pass",
+          "execution_time": "completed",
+          "output_length": 1302,
+          "error_output": null,
+          "details": "Enhanced B-Pipeline script executed successfully"
+        },
+        "B4.1_r4x_answer_synthesis.py": {
+          "status": "pass",
+          "execution_time": "completed",
+          "output_length": 1449,
+          "error_output": null,
+          "details": "Enhanced B-Pipeline script executed successfully"
+        },
+        "B5.1_r4x_question_understanding.py": {
+          "status": "pass",
+          "execution_time": "completed",
+          "output_length": 2200,
+          "error_output": null,
+          "details": "Enhanced B-Pipeline script executed successfully"
+        }
+      }
+    },
+    "end_to_end": {
+      "comprehensive_question_processing": {
+        "status": "pass",
+        "execution_successful": true,
+        "output_length": 2200,
+        "contains_r4x_indicators": true,
+        "contains_tri_semantic": true,
+        "details": "Complete question processing pipeline tested"
+      },
+      "output_file_generation": {
+        "total_expected": 6,
+        "files_found": 4,
+        "completion_rate": 0.6666666666666666,
+        "file_details": {
+          "R4X_cross_pipeline_integration_output.json": {
+            "exists": false,
+            "expected_path": "C:\\AiSearch\\conceptual_space\\R_Reference_pipeline\\outputs\\R4X_cross_pipeline_integration_output.json"
+          },
+          "A2.9_r4x_semantic_enhancement_output.json": {
+            "exists": false,
+            "expected_path": "C:\\AiSearch\\conceptual_space\\A_Concept_pipeline\\outputs\\A2.9_r4x_semantic_enhancement_output.json"
+          },
+          "B3_4_r4x_intent_enhancement_output.json": {
+            "exists": true,
+            "size_bytes": 2435,
+            "size_readable": "2.4 KB"
+          },
+          "B4_1_r4x_answer_synthesis_output.json": {
+            "exists": true,
+            "size_bytes": 2626,
+            "size_readable": "2.6 KB"
+          },
+          "B5_1_r4x_question_understanding_output.json": {
+            "exists": true,
+            "size_bytes": 6396,
+            "size_readable": "6.2 KB"
+          },
+          "R5X_tri_semantic_visualization.html": {
+            "exists": true,
+            "size_bytes": 15288,
+            "size_readable": "14.9 KB"
+          }
+        },
+        "status": "partial"
+      },
+      "visualization_generation": {
+        "status": "fail",
+        "error": "'charmap' codec can't encode character '\\u2713' in position 0: character maps to <undefined>",
+        "details": "Visualization generation failed: 'charmap' codec can't encode character '\\u2713' in position 0: character maps to <undefined>"
+      }
+    },
+    "performance_metrics": {
+      "overall_success_rate": 0.375,
+      "total_tests_run": 8,
+      "tests_passed": 3,
+      "execution_time_seconds": 3.3545494079589844,
+      "system_status": "Poor - System requires immediate attention",
+      "performance_grade": "D",
+      "recommendations": [
+        "Review failed test cases and address underlying issues",
+        "Fix core component issues: cross_pipeline_integrator, semantic_fusion_engine",
+        "Ensure all expected output files are being generated"
+      ]
+    },
+    "quality_assessments": {}
+  },
+  "summary": {
+    "core_components_status": {
+      "status": "needs_attention",
+      "total_tests": 3,
+      "passed_tests": 1,
+      "failed_tests": 2,
+      "success_rate": 0.3333333333333333,
+      "summary": "1/3 tests passed (33.3% success rate)"
+    },
+    "pipeline_integrations_status": {
+      "status": "excellent",
+      "total_tests": 4,
+      "passed_tests": 4,
+      "failed_tests": 0,
+      "success_rate": 1.0,
+      "summary": "4/4 tests passed (100.0% success rate)"
+    },
+    "end_to_end_status": {
+      "status": "needs_attention",
+      "total_tests": 3,
+      "passed_tests": 1,
+      "failed_tests": 2,
+      "success_rate": 0.3333333333333333,
+      "summary": "1/3 tests passed (33.3% success rate)"
+    },
+    "overall_performance": {
+      "overall_success_rate": 0.375,
+      "total_tests_run": 8,
+      "tests_passed": 3,
+      "execution_time_seconds": 3.3545494079589844,
+      "system_status": "Poor - System requires immediate attention",
+      "performance_grade": "D",
+      "recommendations": [
+        "Review failed test cases and address underlying issues",
+        "Fix core component issues: cross_pipeline_integrator, semantic_fusion_engine",
+        "Ensure all expected output files are being generated"
+      ]
+    }
+  }
+}

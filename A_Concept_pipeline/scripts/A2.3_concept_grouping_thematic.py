@@ -170,11 +170,19 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
             # Generate theme name from top 2-3 keywords
             top_keywords = sorted(cluster['keywords'], key=lambda x: x['score'], reverse=True)[:3]
             cluster['theme_name'] = ' & '.join(kw['term'].title() for kw in top_keywords[:2])
+
+            # ENHANCED: Preserve both individual and compound concepts
+            cluster['individual_concepts'] = [kw['term'].title() for kw in cluster['keywords']]
+            cluster['compound_concept'] = cluster['theme_name']
         else:
             cluster['theme_name'] = cluster['keywords'][0]['term'].title()
-        
+            # Single concept - individual and compound are the same
+            cluster['individual_concepts'] = [cluster['theme_name']]
+            cluster['compound_concept'] = cluster['theme_name']
+
         clusters.append(cluster)
-        print(f"  Created cluster '{cluster['theme_name']}' with {len(cluster['keywords'])} keywords")
+        individual_count = len(cluster['individual_concepts'])
+        print(f"  Created cluster '{cluster['theme_name']}' with {len(cluster['keywords'])} keywords -> {individual_count} individual + 1 compound concept")
     
     # Create explicit mapping structure
     doc_cluster_keyword_mapping = {
@@ -186,9 +194,16 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
         doc_cluster_keyword_mapping['mappings'].append({
             'cluster_id': cluster['cluster_id'],
             'theme': cluster['theme_name'],
-            'keyword_ids': cluster['keyword_ids']
+            'keyword_ids': cluster['keyword_ids'],
+            # ENHANCED: Include both individual and compound concepts
+            'individual_concepts': cluster['individual_concepts'],
+            'compound_concept': cluster['compound_concept']
         })
     
+    # Calculate enhanced statistics
+    total_individual_concepts = sum(len(c['individual_concepts']) for c in clusters)
+    total_compound_concepts = len(clusters)
+
     return {
         'doc_id': doc_id,
         'keyword_clusters': clusters,
@@ -196,7 +211,14 @@ def cluster_keywords_within_document(doc_data, similarity_threshold=0.3):
         'keywords_clustered': sum(len(c['keywords']) for c in clusters),
         'keywords_total': len(keywords),
         'clustering_effectiveness': len(clusters) / len(keywords) if keywords else 0,
-        'doc_cluster_keyword_mapping': doc_cluster_keyword_mapping  # Add explicit mapping
+        'doc_cluster_keyword_mapping': doc_cluster_keyword_mapping,  # Add explicit mapping
+        # ENHANCED: Concept preservation statistics
+        'concept_preservation_stats': {
+            'individual_concepts': total_individual_concepts,
+            'compound_concepts': total_compound_concepts,
+            'total_concepts': total_individual_concepts + total_compound_concepts,
+            'concept_expansion_factor': (total_individual_concepts + total_compound_concepts) / len(keywords) if keywords else 0
+        }
     }
 
 def load_input(input_path="outputs/A2.2_keyword_extractions.json"):
@@ -230,27 +252,45 @@ def process_all_documents(documents):
             'total_keywords': 0,
             'keywords_clustered': 0,
             'avg_clusters_per_doc': 0,
-            'clustering_effectiveness': 0
+            'clustering_effectiveness': 0,
+            # ENHANCED: Concept preservation statistics
+            'concept_preservation_stats': {
+                'individual_concepts': 0,
+                'compound_concepts': 0,
+                'total_concepts': 0,
+                'concept_expansion_factor': 0
+            }
         },
         'processing_timestamp': datetime.now().isoformat()
     }
-    
+
     for doc in documents:
         doc_result = cluster_keywords_within_document(doc)
         results['documents'].append(doc_result)
-        
+
         # Update statistics
         results['statistics']['total_clusters'] += doc_result['cluster_count']
         results['statistics']['total_keywords'] += doc_result['keywords_total']
         results['statistics']['keywords_clustered'] += doc_result['keywords_clustered']
-    
+
+        # ENHANCED: Aggregate concept preservation stats
+        if 'concept_preservation_stats' in doc_result:
+            doc_concept_stats = doc_result['concept_preservation_stats']
+            results['statistics']['concept_preservation_stats']['individual_concepts'] += doc_concept_stats['individual_concepts']
+            results['statistics']['concept_preservation_stats']['compound_concepts'] += doc_concept_stats['compound_concepts']
+            results['statistics']['concept_preservation_stats']['total_concepts'] += doc_concept_stats['total_concepts']
+
     # Calculate averages
     if results['statistics']['total_documents'] > 0:
         results['statistics']['avg_clusters_per_doc'] = results['statistics']['total_clusters'] / results['statistics']['total_documents']
-    
+
     if results['statistics']['total_keywords'] > 0:
         results['statistics']['clustering_effectiveness'] = results['statistics']['total_clusters'] / results['statistics']['total_keywords']
-    
+        # ENHANCED: Calculate overall concept expansion factor
+        results['statistics']['concept_preservation_stats']['concept_expansion_factor'] = (
+            results['statistics']['concept_preservation_stats']['total_concepts'] / results['statistics']['total_keywords']
+        )
+
     return results
 
 def save_output(data, output_path="outputs/A2.3_concept_grouping_thematic.json"):
@@ -290,16 +330,29 @@ def main():
     print(f"  Average Clusters per Document: {stats['avg_clusters_per_doc']:.1f}")
     print(f"  Keywords Processed: {stats['total_keywords']}")
     print(f"  Clustering Effectiveness: {stats['clustering_effectiveness']:.2f}")
-    
-    # Show sample clusters
-    print(f"\\nSample Keyword Clusters:")
-    for doc_result in results['documents'][:3]:  # Show first 3 documents
+
+    # ENHANCED: Show concept preservation statistics
+    if 'concept_preservation_stats' in stats:
+        concept_stats = stats['concept_preservation_stats']
+        print(f"\\nENHANCED CONCEPT PRESERVATION:")
+        print(f"  Individual Concepts: {concept_stats['individual_concepts']}")
+        print(f"  Compound Concepts: {concept_stats['compound_concepts']}")
+        print(f"  Total Concepts Generated: {concept_stats['total_concepts']}")
+        print(f"  Concept Expansion Factor: {concept_stats['concept_expansion_factor']:.2f}x")
+
+    # Show sample clusters with enhanced concept information
+    print(f"\\nSample Enhanced Clusters (Individual + Compound):")
+    for doc_result in results['documents'][:2]:  # Show first 2 documents
         print(f"\\n  Document: {doc_result['doc_id']}")
-        for cluster in doc_result['keyword_clusters'][:3]:  # Show first 3 clusters per doc
+        for cluster in doc_result['keyword_clusters'][:2]:  # Show first 2 clusters per doc
             keywords = [kw['term'] for kw in cluster['keywords']]
-            print(f"    Cluster: {cluster['theme_name']} - {keywords}")
-    
-    print(f"\\nA2.3 Intra-Document Keyword Clustering completed successfully!")
+            individual = cluster.get('individual_concepts', [])
+            compound = cluster.get('compound_concept', cluster['theme_name'])
+            print(f"    Keywords: {keywords}")
+            print(f"    -> Individual: {individual}")
+            print(f"    -> Compound: {compound}")
+
+    print(f"\\nA2.3 Enhanced Intra-Document Keyword Clustering completed successfully!")
 
 if __name__ == "__main__":
     main()

@@ -184,7 +184,8 @@ class ConceptAwareStrategy(BaseChunkingStrategy):
             region_text = content[region['start']:region['end']]
             
             # Get all concepts for this region
-            memberships, scores = self.extract_concept_memberships(region_text, concepts)
+            # DOCUMENT-AWARE: Only match concepts from same document
+            memberships, scores = self.extract_concept_memberships(region_text, concepts, doc_id=doc_id)
             
             # Limit concepts per chunk if specified
             if len(memberships) > self.max_concepts_per_chunk:

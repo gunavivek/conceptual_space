@@ -113,6 +113,7 @@ class ContextualOverlapStrategy(BaseChunkingStrategy):
         overlap_text_curr = curr_chunk[:self.overlap_size]
         
         # Calculate concept preservation in overlap
+        # Note: For overlap, we keep generic matching
         prev_concepts, prev_scores = self.extract_concept_memberships(overlap_text_prev, concepts)
         curr_concepts, curr_scores = self.extract_concept_memberships(overlap_text_curr, concepts)
         
@@ -157,7 +158,8 @@ class ContextualOverlapStrategy(BaseChunkingStrategy):
         
         for segment_text, start_idx, end_idx in segments:
             # Extract concept memberships
-            memberships, scores = self.extract_concept_memberships(segment_text, concepts)
+            # DOCUMENT-AWARE: Only match concepts from same document
+            memberships, scores = self.extract_concept_memberships(segment_text, concepts, doc_id=doc_id)
             
             # Skip if no concept memberships
             if not memberships:

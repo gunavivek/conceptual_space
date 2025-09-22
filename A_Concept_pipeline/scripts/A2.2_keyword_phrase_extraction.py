@@ -141,14 +141,25 @@ def extract_keybert_keywords(text: str, max_keywords: int = 30) -> List[Tuple[st
     
     try:
         kw_model = KeyBERT()
-        keywords = kw_model.extract_keywords(
-            text,
-            keyphrase_ngram_range=(1, 3),  # 1-3 word phrases
-            stop_words='english',
-            use_mmr=True,  # Use Maximal Marginal Relevance for diversity
-            diversity=0.5,
-            top_k=max_keywords
-        )
+        # Try modern KeyBERT API first, fallback to legacy parameters
+        try:
+            keywords = kw_model.extract_keywords(
+                text,
+                keyphrase_ngram_range=(1, 3),  # 1-3 word phrases
+                stop_words='english',
+                use_mmr=True,  # Use Maximal Marginal Relevance for diversity
+                diversity=0.5,
+                top_k=max_keywords
+            )
+        except TypeError:
+            # Fallback for newer KeyBERT versions
+            keywords = kw_model.extract_keywords(
+                text,
+                keyphrase_ngram_range=(1, 3),
+                stop_words='english',
+                use_mmr=True,
+                diversity=0.5
+            )[:max_keywords]  # Limit results manually
         
         # Filter for business relevance
         business_dict = get_business_term_dictionary()

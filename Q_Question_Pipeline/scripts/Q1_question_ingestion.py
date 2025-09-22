@@ -239,33 +239,74 @@ class Q1_QuestionIngestion:
 
 
 if __name__ == "__main__":
-    # Test Q1 module
+    # Process all 20 records from parquet file
+    import pandas as pd
+    from datetime import datetime
+
     q1 = Q1_QuestionIngestion()
 
-    # Try loading a sample question
+    print("="*70)
+    print("Q1 QUESTION INGESTION - PROCESSING ALL 20 RECORDS")
+    print("="*70)
+
     try:
-        # First, let's see what questions are available
-        import pandas as pd
-        if os.path.exists("data/sample_20_records.parquet"):
-            df = pd.read_parquet("data/sample_20_records.parquet")
+        # Load all questions from parquet
+        parquet_path = "../../sample_20_records.parquet"  # Updated path
+        if os.path.exists(parquet_path):
+            df = pd.read_parquet(parquet_path)
             print(f"Found {len(df)} questions in dataset")
-            print(f"Sample question IDs: {df['question_id'].head().tolist()}")
 
-            # Load first question
-            first_qid = df['question_id'].iloc[0]
-            question = q1.load_question(first_qid)
+            # Process all questions
+            all_questions = []
+            for idx, row in df.iterrows():
+                question_id = row.get('id', f'q_{idx}')
+                question_text = row.get('question', '')
+                doc_id = question_id  # Use question_id as doc_id
 
-            print("\n" + "="*50)
-            print("Q1 Output - Ingested Question:")
-            print("="*50)
-            print(f"Question ID: {question['question_id']}")
-            print(f"Doc ID: {question['doc_id']}")
-            print(f"Question: {question['question_text'][:100]}...")
-            print(f"Pipeline Ready: {question['pipeline_ready']}")
+                # Create question object
+                question = {
+                    'question_id': question_id,
+                    'doc_id': doc_id,
+                    'question_text': question_text,
+                    'original_source': 'sample_data',
+                    'ingestion_timestamp': datetime.now().isoformat(),
+                    'pipeline_ready': True,
+                    'ground_truth_answer': row.get('response', ''),
+                    'metadata': {
+                        'source_file': parquet_path,
+                        'dataset_name': row.get('dataset_name', 'tatqa_test'),
+                        'generation_model': row.get('generation_model_name', ''),
+                        'row_index': idx
+                    }
+                }
 
-            # Save output
-            q1.save_output(question)
+                all_questions.append(question)
+                print(f"  Processed: {question_id}")
+
+            # Save all questions to standard Q1 output file
+            output_data = {
+                'ingestion_metadata': {
+                    'ingestion_timestamp': datetime.now().isoformat(),
+                    'source_file': parquet_path,
+                    'total_questions': len(all_questions),
+                    'pipeline_stage': 'Q1_question_ingestion'
+                },
+                'questions': all_questions
+            }
+
+            # Always save to the same file
+            output_path = "../outputs/Q1_Question_ingestion.json"
+            with open(output_path, 'w') as f:
+                import json
+                json.dump(output_data, f, indent=2)
+
+            print(f"\n[SUCCESS] All {len(all_questions)} questions saved to: {output_path}")
+            print(f"[READY] Q2 stages can now process Q1 output")
+
+        else:
+            print(f"Error: Parquet file not found at {parquet_path}")
 
     except Exception as e:
-        print(f"Error in Q1 testing: {e}")
-        print("Will use fallback data from B-Pipeline outputs")
+        print(f"Error in Q1 batch processing: {e}")
+        import traceback
+        traceback.print_exc()

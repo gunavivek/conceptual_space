@@ -27,6 +27,24 @@ import ast
 from typing import List, Dict, Any, Tuple
 import warnings
 
+# Import enhanced table converter for richer table-to-text conversion
+try:
+    from A2_1_enhanced_table_converter import enhanced_convert_table_to_text
+    ENHANCED_TABLE_CONVERTER_AVAILABLE = True
+except ImportError:
+    ENHANCED_TABLE_CONVERTER_AVAILABLE = False
+    # Silent fallback - enhanced converter is optional
+
+# Import intelligent table converter for semantic table analysis
+try:
+    from intelligent_table_converter import intelligent_convert_table_to_text
+    INTELLIGENT_CONVERTER_AVAILABLE = True
+    print("[INFO] Intelligent table converter loaded successfully")
+except ImportError:
+    INTELLIGENT_CONVERTER_AVAILABLE = False
+    print("[INFO] Intelligent table converter not available, using standard conversion")
+    # Silent fallback - intelligent converter is optional
+
 # Try to import spacy for lemmatization
 try:
     import spacy
@@ -500,9 +518,32 @@ def convert_tables_to_text(text: str, concept_intelligence: Dict[str, Any] = Non
             
             # Parse the table
             parsed_table = parse_financial_table(table_pattern['data'])
-            
+
             # Convert to natural language with context
-            table_text = convert_table_to_text(parsed_table, pre_table_text)
+            # Try intelligent converter first for best semantic understanding
+            if INTELLIGENT_CONVERTER_AVAILABLE:
+                table_str = str(table_pattern['data'])
+                context = text[max(0, table_pattern['start']-300):table_pattern['start']]
+                domain = concept_intelligence.get('domain', 'finance') if concept_intelligence else 'finance'
+
+                print(f"[DEBUG] Using intelligent converter for table")
+                table_text = intelligent_convert_table_to_text(
+                    table_str=table_str,
+                    context=context,
+                    domain=domain
+                )
+                print(f"[DEBUG] Intelligent conversion result preview: {table_text[:100]}...")
+            elif ENHANCED_TABLE_CONVERTER_AVAILABLE:
+                table_text = enhanced_convert_table_to_text(
+                    parsed_table,
+                    text,
+                    table_pattern['start'],
+                    table_pattern['end'],
+                    pre_table_text
+                )
+            else:
+                # Fall back to standard converter if neither available
+                table_text = convert_table_to_text(parsed_table, pre_table_text)
             
             if table_text:
                 # Replace just the table part, preserving surrounding text structure
@@ -821,6 +862,10 @@ def process_documents(data):
             doc["has_tables"] = False
         
         # Step 2: Update the main text field with converted text for downstream compatibility
+        if doc["doc_id"] == "finqa_test_1630":  # Debug specific document
+            print(f"[DEBUG] Original text length: {len(raw_text)}")
+            print(f"[DEBUG] Converted text length: {len(text_with_tables_converted)}")
+            print(f"[DEBUG] Converted preview: {text_with_tables_converted[:200]}...")
         doc["text"] = text_with_tables_converted  # CRITICAL FIX: Update primary text field
         
         # Step 3: Domain-aware text cleaning with concept preservation

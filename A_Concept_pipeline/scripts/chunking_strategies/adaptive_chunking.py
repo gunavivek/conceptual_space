@@ -78,6 +78,7 @@ class AdaptiveChunkingStrategy(BaseChunkingStrategy):
             
             # Calculate metrics for this chunk size
             density = self.calculate_concept_density(chunk_text, concepts)
+            # Note: In boundary finding, we don't have doc_id yet, keep generic for density calc
             memberships, scores = self.extract_concept_memberships(chunk_text, concepts)
             
             # Score based on how close we are to target concepts
@@ -137,8 +138,8 @@ class AdaptiveChunkingStrategy(BaseChunkingStrategy):
                 end_pos = min(current_pos + self.min_chunk_size, len(content))
                 chunk_text = content[current_pos:end_pos].strip()
             
-            # Extract concept memberships
-            memberships, scores = self.extract_concept_memberships(chunk_text, concepts)
+            # Extract concept memberships - DOCUMENT-AWARE
+            memberships, scores = self.extract_concept_memberships(chunk_text, concepts, doc_id=doc_id)
             
             # Create chunk if it has concept memberships
             if memberships:

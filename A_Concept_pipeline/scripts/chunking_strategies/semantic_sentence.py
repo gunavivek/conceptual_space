@@ -57,9 +57,9 @@ class SemanticSentenceStrategy(BaseChunkingStrategy):
             if len(sentence_text) < self.min_sentence_length:
                 continue
             
-            # Extract concept memberships for this sentence
+            # Extract concept memberships for this sentence - DOCUMENT-AWARE
             memberships, scores = self.extract_concept_memberships(
-                sentence_text, concepts, threshold
+                sentence_text, concepts, threshold, doc_id=doc_id
             )
             
             # Only create chunk if it has concept memberships

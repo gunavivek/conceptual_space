@@ -14,6 +14,15 @@ from datetime import datetime
 from collections import Counter, defaultdict
 from typing import List, Dict, Any
 
+# Import intelligent table converter
+try:
+    from intelligent_table_converter import intelligent_convert_table_to_text
+    INTELLIGENT_CONVERTER_AVAILABLE = True
+    print("[INFO] Intelligent table converter loaded for A1.2")
+except ImportError:
+    INTELLIGENT_CONVERTER_AVAILABLE = False
+    print("[INFO] Intelligent table converter not available in A1.2, using basic conversion")
+
 def load_a11_documents(input_path="outputs/A1.1_raw_documents.json"):
     """Load documents with authoritative domain classifications from A1.1"""
     script_dir = Path(__file__).parent.parent
@@ -188,44 +197,58 @@ def convert_table_to_text(table_info: Dict[str, Any], context: str = "") -> str:
     
     return ". ".join(text_parts) + "." if text_parts else ""
 
-def convert_tables_to_text(text: str) -> str:
-    """Convert all tables in text to natural language"""
+def convert_tables_to_text(text: str, domain: str = "finance") -> str:
+    """Convert all tables in text to natural language using intelligent converter"""
     table_patterns = detect_table_patterns(text)
-    
+
     if not table_patterns:
         return text
-    
+
     # Sort by position (end to start) to avoid offset issues
     table_patterns.sort(key=lambda x: x['start'], reverse=True)
-    
+
     converted_text = text
-    
+
     for table_pattern in table_patterns:
         try:
-            # Extract pre-table context
-            pre_table_text = ""
-            context_start = max(0, table_pattern['start'] - 150)
-            context = text[context_start:table_pattern['start']]
-            
-            # Look for context pattern
-            pre_table_match = re.search(r'(\d+\.\s*)?([^\n]+?)\s*$', context.strip())
-            if pre_table_match:
-                pre_table_text = pre_table_match.group(2).strip()
-                pre_table_text = re.sub(r'^\d+\.\s*', '', pre_table_text)
-                pre_table_text = pre_table_text.strip()
-            
-            # Parse and convert table
-            parsed_table = parse_financial_table(table_pattern['data'])
-            table_text = convert_table_to_text(parsed_table, pre_table_text)
-            
+            # Use intelligent converter if available
+            if INTELLIGENT_CONVERTER_AVAILABLE:
+                # Extract wider context for semantic analysis
+                context_start = max(0, table_pattern['start'] - 300)
+                context = text[context_start:table_pattern['start']]
+
+                table_text = intelligent_convert_table_to_text(
+                    table_str=str(table_pattern['data']),
+                    context=context,
+                    domain=domain
+                )
+                print(f"[INFO] A1.2 using intelligent table conversion")
+            else:
+                # Fallback to basic conversion
+                pre_table_text = ""
+                context_start = max(0, table_pattern['start'] - 150)
+                context = text[context_start:table_pattern['start']]
+
+                # Look for context pattern
+                pre_table_match = re.search(r'(\d+\.\s*)?([^\n]+?)\s*$', context.strip())
+                if pre_table_match:
+                    pre_table_text = pre_table_match.group(2).strip()
+                    pre_table_text = re.sub(r'^\d+\.\s*', '', pre_table_text)
+                    pre_table_text = pre_table_text.strip()
+
+                # Parse and convert table
+                parsed_table = parse_financial_table(table_pattern['data'])
+                table_text = convert_table_to_text(parsed_table, pre_table_text)
+
             if table_text:
                 # Replace table with natural language text
-                converted_text = (converted_text[:table_pattern['start']] + 
-                               table_text + 
+                converted_text = (converted_text[:table_pattern['start']] +
+                               table_text +
                                converted_text[table_pattern['end']:])
-        except Exception:
+        except Exception as e:
+            print(f"[WARNING] A1.2 table conversion failed: {e}")
             continue
-    
+
     return converted_text
 
 def extract_semantic_terms(text):
@@ -363,8 +386,8 @@ def enrich_document_concepts(doc, r4s_ontology, r1_domains):
     doc_id = doc.get("doc_id", "")
     text = doc.get("text", "")
     
-    # Convert tables to readable text before concept analysis
-    text_with_tables_converted = convert_tables_to_text(text)
+    # Convert tables to readable text before concept analysis using intelligent converter
+    text_with_tables_converted = convert_tables_to_text(text, domain)
     
     # Stage 2: Domain-Specific Concept Filtering
     domain_concepts = get_domain_concepts(domain, r4s_ontology, r1_domains)

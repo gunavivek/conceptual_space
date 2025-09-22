@@ -1128,111 +1128,143 @@ class Q24TemporalCoordinateMapping:
         return output_file
 
 def main():
-    """Main execution function"""
+    """Main execution function - processes all questions from Q1 output"""
     print("Q2.4 TEMPORAL COORDINATE MAPPING")
     print("=" * 50)
+
+    # Load Q1 output to get all questions
+    q1_output_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        'outputs', 'Q1_Question_ingestion.json'
+    )
+
+    try:
+        with open(q1_output_path, 'r', encoding='utf-8') as f:
+            q1_data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error loading Q1 output: {e}")
+        return 1
+
+    # Extract questions list from Q1 output
+    if 'questions' in q1_data:
+        questions_list = q1_data['questions']
+    else:
+        print("No 'questions' key found in Q1 output")
+        return 1
+
+    print(f"Loaded Q1 output with {len(questions_list)} questions")
+    print()
 
     # Initialize Q2.4 processor
     processor = Q24TemporalCoordinateMapping()
 
-    # Sample question ID for testing
-    question_id = "finqa_test_1630"
+    # Process all questions and collect results
+    all_results = {}
+    success_count = 0
+    error_count = 0
 
+    print("Processing Questions:")
+    print("-" * 30)
+
+    for question_data in questions_list:
+        question_id = question_data.get('question_id', 'unknown')
+        print(f"Processing {question_id}...", end=" ")
+
+        # Temporarily modify the load function to use the question data directly
+        original_load = processor.load_question_from_q1
+        processor.load_question_from_q1 = lambda qid: {
+            'question_id': question_data.get('question_id', qid),
+            'doc_id': question_data.get('doc_id', qid),
+            'question_text': question_data.get('question_text', ''),
+            'pipeline_ready': question_data.get('pipeline_ready', True),
+            'metadata': question_data.get('metadata', {})
+        }
+
+        try:
+            # Process temporal coordinate mapping
+            result = processor.analyze_temporal_coordinates(question_id)
+
+            if question_id in result and 'error' not in result[question_id]:
+                # Merge into all_results
+                all_results.update(result)
+                success_count += 1
+                print("SUCCESS")
+            else:
+                # Handle error
+                all_results.update(result)
+                error_count += 1
+                print("ERROR")
+
+        except Exception as e:
+            # Create error result
+            error_result = processor.create_error_response(question_id, f"Exception: {str(e)}")
+            all_results.update(error_result)
+            error_count += 1
+            print(f"EXCEPTION: {str(e)}")
+
+        finally:
+            # Restore original load function
+            processor.load_question_from_q1 = original_load
+
+    print()
     print("=" * 60)
-    print("Q2.4: Temporal Coordinate Mapping Test")
+    print("Q2.4 BATCH PROCESSING SUMMARY")
     print("=" * 60)
-    print(f"Processing Q2.4 for question: {question_id}")
+    print(f"Total questions processed: {len(questions_list)}")
+    print(f"Successful analyses: {success_count}")
+    print(f"Failed analyses: {error_count}")
+    print(f"Success rate: {(success_count/len(questions_list))*100:.1f}%")
+    print()
 
-    # Load and display question
-    question_data = processor.load_question_from_q1(question_id)
-    if question_data:
-        question_text = question_data['question_text']
-        print(f"Question: {question_text[:60]}...")
-        print()
+    # Show sample results
+    if success_count > 0:
+        print("Sample Analysis Results:")
+        print("-" * 30)
 
-    # Process temporal coordinate mapping
-    result = processor.analyze_temporal_coordinates(question_id)
+        sample_results = []
+        for question_id, result in all_results.items():
+            if 'error' not in result:
+                sample_results.append((question_id, result))
+            if len(sample_results) >= 3:  # Show up to 3 samples
+                break
 
-    if question_id in result and 'error' not in result[question_id]:
-        analysis_result = result[question_id]
+        for question_id, result in sample_results:
+            print(f"\nQuestion {question_id}:")
+            print(f"  Question: {result['question_text'][:80]}...")
 
-        print("=" * 40)
-        print("Q2.4 OUTPUT - Temporal Coordinate Mapping:")
-        print("=" * 40)
-        print(f"Question ID: {analysis_result['question_id']}")
-        print()
+            # Show temporal entities summary
+            temporal_entities = result['temporal_analysis']['temporal_entities']
+            total_entities = sum(len(entities) if isinstance(entities, list) else 0
+                               for entities in temporal_entities.values())
+            print(f"  Temporal entities found: {total_entities}")
 
-        # Display temporal entities
-        temporal_entities = analysis_result['temporal_analysis']['temporal_entities']
-        print("Temporal Entities:")
-        for entity_type, entities in temporal_entities.items():
-            if entities:
-                if entity_type == 'chronological_indicators':
-                    print(f"  {entity_type}: {', '.join(entities)}")
-                else:
-                    print(f"  {entity_type}: {len(entities)} detected")
-                    for entity in entities[:2]:  # Show first 2
-                        if hasattr(entity, 'text'):
-                            print(f"    - {entity.text} ({entity.entity_type})")
-        print()
+            # Show geometric coordinates summary
+            geometric_coords = result['geometric_temporal_coordinates']
+            primary_vector = geometric_coords.get('primary_temporal_vector', [])
+            if primary_vector:
+                print(f"  Primary temporal vector: [{', '.join([f'{x:.2f}' for x in primary_vector[:3]])}...]")
 
-        # Display temporal relationships
-        temporal_relationships = analysis_result['temporal_analysis']['temporal_relationships']
-        print("Temporal Relationships:")
-        for rel_type, relationships in temporal_relationships.items():
-            if isinstance(relationships, list) and relationships:
-                print(f"  {rel_type}: {len(relationships)} found")
-            elif relationships:
-                print(f"  {rel_type}: {relationships}")
-        print()
+            # Show constraints summary
+            constraints = result['constraint_specifications']
+            hard_constraints = len(constraints.get('hard_temporal_constraints', []))
+            soft_preferences = len(constraints.get('soft_temporal_preferences', []))
+            print(f"  Constraints: {hard_constraints} hard, {soft_preferences} soft")
 
-        # Display geometric coordinates
-        geometric_coords = analysis_result['geometric_temporal_coordinates']
-        print("Geometric Temporal Coordinates:")
-        primary_vector = geometric_coords.get('primary_temporal_vector', [])
-        if primary_vector:
-            print(f"  Primary temporal vector: [{'  '.join([f'{x:.2f}' for x in primary_vector[:5]])}...]")
-
-        comparative_vectors = geometric_coords.get('comparative_temporal_vectors', [])
-        if comparative_vectors:
-            print(f"  Comparative vectors: {len(comparative_vectors)} vectors")
-
-        constraint_boundaries = geometric_coords.get('temporal_constraint_boundaries', [])
-        if constraint_boundaries:
-            print(f"  Constraint boundaries: {len(constraint_boundaries)} boundaries")
-        print()
-
-        # Display constraint specifications
-        constraints = analysis_result['constraint_specifications']
-        print("Temporal Constraints:")
-        hard_constraints = constraints.get('hard_temporal_constraints', [])
-        if hard_constraints:
-            print(f"  Hard constraints: {len(hard_constraints)}")
-
-        soft_preferences = constraints.get('soft_temporal_preferences', [])
-        if soft_preferences:
-            print(f"  Soft preferences: {len(soft_preferences)}")
-        print()
-
-        # Display processing metadata
-        metadata = analysis_result['processing_metadata']
-        print(f"Processing Time: {metadata['processing_time_ms']:.1f}ms")
-        print(f"Extraction Confidence: {metadata['temporal_extraction_confidence']:.2f}")
-        print(f"Mapping Status: {metadata['geometric_mapping_status']}")
-
-    else:
-        print("ERROR in Q2.4 processing:")
-        print(result.get(question_id, {}).get('error', 'Unknown error'))
-        return 1
+            # Show processing info
+            metadata = result['processing_metadata']
+            print(f"  Processing: {metadata['processing_time_ms']:.1f}ms, confidence: {metadata['temporal_extraction_confidence']:.2f}")
 
     # Save output
-    output_file = processor.save_output(result)
-    print(f"Q2.4 output saved to {output_file}")
-    print(f"Q2.4_temporal_coordinate_mapping.json created successfully")
+    output_file = processor.save_output(all_results)
+    print()
+    print("=" * 60)
+    print("OUTPUT SAVED")
+    print("=" * 60)
+    print(f"Q2.4 output saved to: {output_file}")
+    print(f"Total results: {len(all_results)} question analyses")
+    print("Q2.4 temporal coordinate mapping complete -> ready for Q2.5 integration")
 
-    print("Temporal coordinate mapping complete - ready for Q2.5 integration")
-
-    return 0
+    return 0 if error_count == 0 else 1
 
 if __name__ == "__main__":
     sys.exit(main())

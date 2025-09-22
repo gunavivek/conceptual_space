@@ -14,7 +14,7 @@ from datetime import datetime
 sys.path.append(os.path.dirname(__file__))
 
 from Q1_question_ingestion import Q1_QuestionIngestion
-from Q2_5_convex_ball_assignment import Q25_ConvexBallAssignment
+from Q_Question_Pipeline.scripts.archive.Q2_5_convex_ball_assignment import Q25_ConvexBallAssignment
 from Q3_1_constrained_geometric_matching import Q31_ConstrainedGeometricMatching
 
 

@@ -31,6 +31,7 @@ class ParagraphAwareStrategy(BaseChunkingStrategy):
         Determine if two adjacent paragraphs should be merged based on concept similarity
         """
         # Get concept memberships for each paragraph
+        # Note: For similarity calculation, we use generic matching
         memberships1, scores1 = self.extract_concept_memberships(para1, concepts)
         memberships2, scores2 = self.extract_concept_memberships(para2, concepts)
         
@@ -95,7 +96,8 @@ class ParagraphAwareStrategy(BaseChunkingStrategy):
                     break
             
             # Extract concept memberships
-            memberships, scores = self.extract_concept_memberships(merged_text, concepts)
+            # DOCUMENT-AWARE: Only match concepts from same document
+            memberships, scores = self.extract_concept_memberships(merged_text, concepts, doc_id=doc_id)
             
             # Create chunk if it has concept memberships
             if memberships:

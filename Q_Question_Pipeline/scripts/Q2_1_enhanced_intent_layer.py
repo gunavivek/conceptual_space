@@ -492,54 +492,81 @@ class Q2_1_EnhancedIntentLayer:
 
 
 def main():
-    """Main execution function"""
+    """Process all questions from Q1 output"""
     print("=" * 70)
-    print("Q2.1: Enhanced Intent Layer Test (Corrected - Question Semantics)")
+    print("Q2.1: Enhanced Intent Layer - Processing All Questions from Q1")
     print("=" * 70)
 
     # Initialize Q2.1
     q21 = Q2_1_EnhancedIntentLayer()
 
-    # Process the sample question
-    question_id = "finqa_test_1630"
-    print(f"Processing Q2.1 for question: {question_id}")
+    try:
+        # Load all questions from Q1 output
+        q1_path = "../outputs/Q1_Question_ingestion.json"
+        with open(q1_path, 'r') as f:
+            q1_data = json.load(f)
 
-    # Run enhanced intent classification
-    result = q21.classify_enhanced_intent(question_id)
+        questions = q1_data.get('questions', [])
+        print(f"Found {len(questions)} questions from Q1")
 
-    print(f"Question: {result['question_text'][:60]}...")
+        all_results = {}
+        successful = 0
+        failed = 0
 
-    print("\n" + "=" * 50)
-    print("Q2.1 OUTPUT - Enhanced Intent Classification:")
-    print("=" * 50)
-    print(f"Question ID: {result['question_id']}")
-    print(f"Primary Intent: {result['primary_intent']}")
-    print(f"Confidence: {result['intent_confidence']:.3f}")
+        for i, question_data in enumerate(questions, 1):
+            question_id = question_data.get('question_id', f'q_{i}')
+            question_text = question_data.get('question_text', '')
 
-    print(f"\nTop Intent Scores:")
-    # Show top 5 intent scores
-    sorted_intents = sorted(result['intent_classification'].items(),
-                           key=lambda x: x[1], reverse=True)
-    for i, (intent, score) in enumerate(sorted_intents[:5]):
-        print(f"  {i+1}. {intent}: {score:.3f}")
+            print(f"\n[{i}/{len(questions)}] Processing: {question_id}")
+            print(f"Question: {question_text[:80]}...")
 
-    print(f"\nQuestion Semantic Indicators:")
-    indicators = result['question_semantic_indicators']
-    print(f"  temporal_markers: {indicators['temporal_markers']}")
-    print(f"  calculation_keywords: {indicators['calculation_keywords']}")
-    print(f"  comparison_indicators: {indicators['comparison_indicators'][:3]}")  # Show first 3
-    print(f"  computational_signals: {indicators['computational_signals'][:3]}")  # Show first 3
+            try:
+                # Modify the load function temporarily to use the question data directly
+                original_load = q21._load_question_from_q1
+                q21._load_question_from_q1 = lambda qid: {
+                    'question_id': question_data.get('question_id', qid),
+                    'doc_id': question_data.get('doc_id', qid),
+                    'question_text': question_data.get('question_text', ''),
+                    'original_source': question_data.get('original_source', 'sample_data')
+                }
 
-    print(f"\nProcessing Metadata:")
-    metadata = result['processing_metadata']
-    print(f"  Processing time: {metadata['processing_time_ms']:.1f}ms")
-    print(f"  Pattern matches: {metadata['pattern_matches']}")
-    print(f"  Confidence factors: {metadata['confidence_factors']}")
+                # Run intent classification
+                result = q21.classify_enhanced_intent(question_id)
+                all_results[question_id] = result
 
-    # Save output
-    q21.save_output(result)
+                print(f"  -> Primary intent: {result['primary_intent']} (conf: {result['intent_confidence']:.3f})")
+                successful += 1
 
-    return result
+                # Restore original function
+                q21._load_question_from_q1 = original_load
+
+            except Exception as e:
+                print(f"  -> ERROR: {e}")
+                failed += 1
+                # Restore original function
+                q21._load_question_from_q1 = original_load
+
+        # Save all results
+        output_path = "../outputs/Q2.1_enhanced_intent_classification.json"
+        with open(output_path, 'w') as f:
+            json.dump(all_results, f, indent=2)
+
+        print(f"\n" + "=" * 70)
+        print("Q2.1 BATCH PROCESSING COMPLETE")
+        print("=" * 70)
+        print(f"Total questions: {len(questions)}")
+        print(f"Successful: {successful}")
+        print(f"Failed: {failed}")
+        print(f"Success rate: {successful/len(questions)*100:.1f}%")
+        print(f"Results saved to: {output_path}")
+
+        return all_results
+
+    except Exception as e:
+        print(f"Error in Q2.1 batch processing: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
 
 
 if __name__ == "__main__":

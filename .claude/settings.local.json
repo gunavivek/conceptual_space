@@ -4,7 +4,10 @@
       "Bash(python:*)",
       "Bash(sed:*)",
       "Bash(mv:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(mkdir:*)",
+      "Read(//c/c/AiSearch/conceptual_space/**)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

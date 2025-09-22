@@ -779,75 +779,104 @@ class Q2_3_QuestionStructureAnalysis:
 
 
 def main():
-    """Main execution function"""
-    print("=" * 60)
-    print("Q2.3: Question Structure Analysis Test")
-    print("=" * 60)
+    """Process all questions from Q1 output"""
+    print("=" * 70)
+    print("Q2.3: Question Structure Analysis - Processing All Questions from Q1")
+    print("=" * 70)
 
     # Initialize Q2.3
     q23 = Q2_3_QuestionStructureAnalysis()
 
-    # Process the sample question
-    question_id = "finqa_test_1630"
-    print(f"Processing Q2.3 for question: {question_id}")
+    try:
+        # Load all questions from Q1 output
+        q1_path = "../outputs/Q1_Question_ingestion.json"
+        with open(q1_path, 'r') as f:
+            q1_data = json.load(f)
 
-    # Run question structure analysis
-    result = q23.analyze_question_structure(question_id)
+        questions = q1_data.get('questions', [])
+        print(f"Found {len(questions)} questions from Q1")
 
-    print(f"Question: {result['question_text'][:60]}...")
+        all_results = {}
+        successful = 0
+        failed = 0
 
-    print("\n" + "=" * 40)
-    print("Q2.3 OUTPUT - Question Structure Analysis:")
-    print("=" * 40)
-    print(f"Question ID: {result['question_id']}")
+        for i, question_data in enumerate(questions, 1):
+            question_id = question_data.get('question_id', f'q_{i}')
+            question_text = question_data.get('question_text', '')
 
-    # Show syntactic features
-    syntactic = result['structural_analysis']['syntactic_features']
-    print(f"\nSyntactic Features:")
-    print(f"  Question type: {syntactic['question_type']}")
-    print(f"  WH-word: {syntactic['wh_word']}")
-    print(f"  Voice: {syntactic['voice']}")
-    print(f"  Tense: {syntactic['tense']}")
+            print(f"\n[{i}/{len(questions)}] Processing: {question_id}")
+            print(f"Question: {question_text[:80]}...")
 
-    # Show complexity metrics
-    complexity = result['structural_analysis']['complexity_metrics']
-    print(f"\nComplexity Metrics:")
-    print(f"  Token count: {complexity['token_count']}")
-    print(f"  Dependency depth: {complexity['dependency_depth']}")
-    print(f"  Clause count: {complexity['clause_count']}")
-    print(f"  Syntactic complexity: {complexity['syntactic_complexity_score']:.2f}")
+            try:
+                # Modify the load function temporarily to use the question data directly
+                original_load = q23._load_question_from_q1
+                q23._load_question_from_q1 = lambda qid: {
+                    'question_id': question_data.get('question_id', qid),
+                    'doc_id': question_data.get('doc_id', qid),
+                    'question_text': question_data.get('question_text', '')
+                }
 
-    # Show dependency structure
-    deps = result['structural_analysis']['dependency_structure']
-    print(f"\nDependency Structure:")
-    print(f"  Root: {deps['root_token']}")
-    print(f"  Subject: {deps['subject']}")
-    print(f"  Object: {deps['object']}")
+                # Run structure analysis
+                result = q23.analyze_question_structure(question_id)
+                all_results[question_id] = result
 
-    # Show linguistic patterns
-    patterns = result['structural_analysis']['linguistic_patterns']
-    print(f"\nLinguistic Patterns:")
-    print(f"  Noun phrases: {', '.join(patterns['noun_phrases'][:3])}")
-    print(f"  Named entities: {len(patterns['named_entities'])}")
+                # Show brief summary
+                syntactic = result['structural_analysis']['syntactic_features']
+                complexity = result['structural_analysis']['complexity_metrics']
 
-    # Show ambiguity assessment
-    ambiguity = result['ambiguity_assessment']
-    print(f"\nAmbiguity Assessment:")
-    print(f"  Overall clarity: {ambiguity['overall_clarity_score']:.2f}")
-    print(f"  Structural ambiguity: {ambiguity['structural_ambiguity']:.2f}")
+                print(f"  -> Type: {syntactic['question_type']}, Tokens: {complexity['token_count']}, Complexity: {complexity['syntactic_complexity_score']:.2f}")
+                successful += 1
 
-    # Show feature vector
-    print(f"\nStructural Feature Vector:")
-    print(f"  Dimension: {len(result['structural_features_vector'])}")
-    print(f"  Values: {[f'{v:.2f}' for v in result['structural_features_vector'][:5]]}...")
+                # Restore original function
+                q23._load_question_from_q1 = original_load
 
-    print(f"\nProcessing Time: {result['processing_metadata']['processing_time_ms']:.1f}ms")
-    print(f"Parser Confidence: {result['processing_metadata']['parser_confidence']:.2f}")
+            except Exception as e:
+                print(f"  -> ERROR: {e}")
+                failed += 1
+                # Restore original function
+                q23._load_question_from_q1 = original_load
 
-    # Save output
-    q23.save_output(result)
+        # Save all results
+        output_path = "../outputs/Q2.3_question_structure_analysis.json"
+        with open(output_path, 'w') as f:
+            json.dump(all_results, f, indent=2)
 
-    return result
+        print(f"\n" + "=" * 70)
+        print("Q2.3 BATCH PROCESSING COMPLETE")
+        print("=" * 70)
+        print(f"Total questions: {len(questions)}")
+        print(f"Successful: {successful}")
+        print(f"Failed: {failed}")
+        print(f"Success rate: {successful/len(questions)*100:.1f}%")
+        print(f"Results saved to: {output_path}")
+
+        # Show summary statistics
+        if all_results:
+            total_tokens = sum(r['structural_analysis']['complexity_metrics']['token_count'] for r in all_results.values())
+            avg_complexity = sum(r['structural_analysis']['complexity_metrics']['syntactic_complexity_score'] for r in all_results.values()) / len(all_results)
+
+            # Count question types
+            question_types = {}
+            for result in all_results.values():
+                qtype = result['structural_analysis']['syntactic_features']['question_type']
+                question_types[qtype] = question_types.get(qtype, 0) + 1
+
+            print(f"\nStructural Analysis Summary:")
+            print(f"  Total tokens analyzed: {total_tokens}")
+            print(f"  Average complexity: {avg_complexity:.3f}")
+            print(f"  Average tokens per question: {total_tokens/len(all_results):.1f}")
+
+            print(f"\nQuestion Type Distribution:")
+            for qtype, count in sorted(question_types.items()):
+                print(f"  {qtype}: {count} questions")
+
+        return all_results
+
+    except Exception as e:
+        print(f"Error in Q2.3 batch processing: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
 
 
 if __name__ == "__main__":

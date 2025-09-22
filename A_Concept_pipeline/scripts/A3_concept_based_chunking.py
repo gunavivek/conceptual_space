@@ -45,19 +45,20 @@ class A3ConceptChunkingOrchestrator:
     multi-layered chunks for the conceptual space system
     """
     
-    def __init__(self):
+    def __init__(self, use_strategy_weights: bool = True):
         self.script_dir = Path(__file__).parent.parent
         self.input_dir = self.script_dir / "outputs"
         self.output_dir = self.script_dir / "outputs"
-        
+
         # Strategy configuration
         self.enabled_strategies = list_strategies()  # All strategies by default
-        self.strategy_weights = self._get_default_weights()
-        
+        self.use_strategy_weights = use_strategy_weights
+        self.strategy_weights = self._get_default_weights() if use_strategy_weights else self._get_equal_weights()
+
         # Deduplication and merging configuration
         self.dedup_threshold = 0.85  # Similarity threshold for deduplication
         self.merge_overlapping = True
-        
+
         # Statistics tracking
         self.stats = defaultdict(dict)
         
@@ -71,6 +72,18 @@ class A3ConceptChunkingOrchestrator:
             'concept_aware': 1.3,  # Favor concept-driven chunking
             'contextual_overlap': 0.9,
             'quality_based': 1.4  # Highest weight for quality-optimized
+        }
+
+    def _get_equal_weights(self) -> Dict[str, float]:
+        """Get equal weights for all strategies (no preference)"""
+        return {
+            'semantic_sentence': 1.0,
+            'paragraph_aware': 1.0,
+            'document_structure': 1.0,
+            'adaptive': 1.0,
+            'concept_aware': 1.0,
+            'contextual_overlap': 1.0,
+            'quality_based': 1.0
         }
     
     def load_concepts(self) -> Dict[str, Any]:
@@ -310,27 +323,46 @@ class A3ConceptChunkingOrchestrator:
             json.dump(raw_output, f, indent=2, ensure_ascii=False)
         print(f"\n  Saved {len(weighted_chunks)} raw chunks to {raw_chunks_path.name}")
         
-        # Deduplicate if enabled
+        # Deduplicate if enabled - DOCUMENT-AWARE DEDUPLICATION
         if self.merge_overlapping:
-            print("\n  Deduplicating chunks across strategies...")
-            # Convert back to ConceptChunk for deduplication
-            chunk_objects = [
-                ConceptChunk(
-                    chunk_id=c['chunk_id'],
-                    doc_id=c['doc_id'],
-                    content=c['content'],
-                    chunk_type=c['chunk_type'],
-                    start_index=c['start_index'],
-                    end_index=c['end_index'],
-                    concept_memberships=c['concept_memberships'],
-                    membership_scores=c['membership_scores'],
-                    metadata=c['metadata']
-                ) for c in weighted_chunks
-            ]
-            
-            unique_chunks = self.deduplicate_chunks(chunk_objects)
-            weighted_chunks = [c.to_dict() for c in unique_chunks]
-            print(f"    Reduced from {len(chunk_objects)} to {len(weighted_chunks)} chunks")
+            print("\n  Deduplicating chunks within each document...")
+
+            # Group chunks by document for document-aware deduplication
+            chunks_by_doc = defaultdict(list)
+            for c in weighted_chunks:
+                chunks_by_doc[c['doc_id']].append(c)
+
+            all_deduplicated = []
+            total_before = 0
+            total_after = 0
+
+            for doc_id, doc_chunks in chunks_by_doc.items():
+                total_before += len(doc_chunks)
+
+                # Convert to ConceptChunk objects for this document only
+                chunk_objects = [
+                    ConceptChunk(
+                        chunk_id=c['chunk_id'],
+                        doc_id=c['doc_id'],
+                        content=c['content'],
+                        chunk_type=c['chunk_type'],
+                        start_index=c['start_index'],
+                        end_index=c['end_index'],
+                        concept_memberships=c['concept_memberships'],
+                        membership_scores=c['membership_scores'],
+                        metadata=c['metadata']
+                    ) for c in doc_chunks
+                ]
+
+                # Deduplicate within this document only
+                unique_doc_chunks = self.deduplicate_chunks(chunk_objects)
+                all_deduplicated.extend([c.to_dict() for c in unique_doc_chunks])
+                total_after += len(unique_doc_chunks)
+
+                print(f"    {doc_id}: {len(doc_chunks)} -> {len(unique_doc_chunks)} chunks")
+
+            weighted_chunks = all_deduplicated
+            print(f"    Total: Reduced from {total_before} to {total_after} chunks (document-aware)")
         
         return weighted_chunks
     

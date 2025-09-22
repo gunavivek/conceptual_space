@@ -196,6 +196,9 @@ class Q31_ConstrainedGeometricMatching:
                 chunk_balls = set(chunk['convex_balls'])
             elif 'concepts' in chunk:
                 chunk_balls = set(chunk['concepts'])
+            elif 'concept_memberships' in chunk:
+                # A3 chunks use concept_memberships field
+                chunk_balls = set(chunk['concept_memberships'])
 
             # Check for shared balls - CRITICAL CONSTRAINT
             shared_balls = question_balls.intersection(chunk_balls)
@@ -495,11 +498,19 @@ if __name__ == "__main__":
     print("Q3.1: Constrained Geometric Matching Test")
     print("="*60)
 
-    q31 = Q31_ConstrainedGeometricMatching()
+    # Initialize with correct paths
+    base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    a_pipeline_path = os.path.join(base_path, "A_Concept_pipeline", "outputs")
+    q_pipeline_path = os.path.join(base_path, "Q_Question_Pipeline", "outputs")
+
+    q31 = Q31_ConstrainedGeometricMatching(
+        a_pipeline_path=a_pipeline_path,
+        q_pipeline_path=q_pipeline_path
+    )
 
     # Test with Q2.5 output if available
     try:
-        q25_path = "Q_Question_Pipeline/outputs/Q2.5_document_aware_assignment.json"
+        q25_path = os.path.join(q_pipeline_path, "Q2.5_document_aware_assignment.json")
         if os.path.exists(q25_path):
             with open(q25_path, 'r') as f:
                 q25_data = json.load(f)

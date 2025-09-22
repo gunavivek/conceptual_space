@@ -119,7 +119,8 @@ class DocumentStructureStrategy(BaseChunkingStrategy):
                 continue
             
             # Extract concept memberships
-            memberships, scores = self.extract_concept_memberships(section_text, concepts)
+            # DOCUMENT-AWARE: Only match concepts from same document
+            memberships, scores = self.extract_concept_memberships(section_text, concepts, doc_id=doc_id)
             
             # Create chunk if it has concept memberships
             if memberships:

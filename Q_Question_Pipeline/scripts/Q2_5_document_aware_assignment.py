@@ -574,9 +574,9 @@ def main():
     """Process all questions from Q1 output with document-aware assignment."""
 
     # Initialize module with correct paths
-    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     a_pipeline_path = os.path.join(base_path, "A_Concept_pipeline", "outputs")
-    q_pipeline_path = os.path.join(base_path, "outputs")
+    q_pipeline_path = os.path.join(base_path, "Q_Question_Pipeline", "outputs")
 
     q25 = Q25_DocumentAwareAssignment(
         a_pipeline_path=a_pipeline_path,
