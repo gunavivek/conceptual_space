@@ -7,7 +7,10 @@
       "Bash(awk:*)",
       "Bash(mkdir:*)",
       "Read(//c/c/AiSearch/conceptual_space/**)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(git commit:*)",
+      "Bash(timeout:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

@@ -189,7 +189,7 @@ class ContextualOverlapStrategy(BaseChunkingStrategy):
                     'shared_concepts_count': len(overlap_metrics['shared_concepts'])
                 })
             
-            chunk = self.create_chunk(
+            chunk = self.create_chunk_detailed(
                 doc_id=doc_id,
                 content=segment_text,
                 chunk_index=chunk_index,

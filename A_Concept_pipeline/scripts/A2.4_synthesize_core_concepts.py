@@ -145,29 +145,31 @@ def normalize_theme_name(theme_name):
     words = [w for w in name_lower.replace('&', ' ').split() if len(w) > 2]
     return ' '.join(words[:2]) if len(words) >= 2 else theme_name.lower()
 
-def identify_core_concepts(theme_aggregation, total_docs, top_k=10):
+def identify_core_concepts(theme_aggregation, total_docs):
     """
-    Identify core business concepts from aggregated themes
-    
+    Identify ALL discovered concepts from aggregated themes for comprehensive coverage
+
     Args:
         theme_aggregation: Aggregated themes across documents
         total_docs: Total number of documents
-        top_k: Number of core concepts to identify
-        
+
     Returns:
-        list: Core concepts with metadata and keyword_id tracking
+        list: ALL discovered concepts with metadata and keyword_id tracking
     """
     core_concepts = []
     
     for theme_group in theme_aggregation.values():
         importance = calculate_concept_importance(theme_group, total_docs)
-        
+
+        # Include ALL discovered themes - no filtering by importance
+        # Importance score becomes metadata for ranking/weighting
+
         # Get most representative keywords
         keyword_frequency = {}
         for instance in theme_group["document_instances"]:
             for kw in instance["keywords"]:
                 keyword_frequency[kw] = keyword_frequency.get(kw, 0) + 1
-        
+
         top_keywords = sorted(keyword_frequency.items(), key=lambda x: x[1], reverse=True)[:5]
         
         # Generate enhanced concept metadata
@@ -207,10 +209,10 @@ def identify_core_concepts(theme_aggregation, total_docs, top_k=10):
         }
         
         core_concepts.append(core_concept)
-    
-    # Sort by importance and take top k
+
+    # Sort by importance (all concepts that meet threshold)
     core_concepts.sort(key=lambda x: x["importance_score"], reverse=True)
-    return core_concepts[:top_k]
+    return core_concepts
 
 def create_concept_hierarchy(core_concepts):
     """

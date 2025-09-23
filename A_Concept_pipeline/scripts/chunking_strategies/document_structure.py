@@ -133,7 +133,7 @@ class DocumentStructureStrategy(BaseChunkingStrategy):
                     'concept_alignment': max(scores.values()) if scores else 0
                 }
                 
-                chunk = self.create_chunk(
+                chunk = self.create_chunk_detailed(
                     doc_id=doc_id,
                     content=section_text,
                     chunk_index=chunk_index,

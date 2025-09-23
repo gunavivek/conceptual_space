@@ -95,39 +95,29 @@ class A3ConceptChunkingOrchestrator:
         if core_path.exists():
             with open(core_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                # Extract the core_concepts list and adapt to expected format
-                core_concepts = data.get('core_concepts', [])
-                # Convert primary_keywords to terms for compatibility
+
+                # A2.4 stores concepts nested under documents
+                core_concepts = []
+                if 'documents' in data:
+                    for doc in data['documents']:
+                        if 'core_concepts' in doc:
+                            core_concepts.extend(doc['core_concepts'])
+                else:
+                    # Fallback: try direct core_concepts key
+                    core_concepts = data.get('core_concepts', [])
+
+                # Convert keywords to terms for compatibility with chunking strategies
                 for concept in core_concepts:
-                    if 'primary_keywords' in concept and 'terms' not in concept:
+                    if 'keywords' in concept and 'terms' not in concept:
+                        concept['terms'] = concept['keywords']
+                    elif 'primary_keywords' in concept and 'terms' not in concept:
                         concept['terms'] = concept['primary_keywords']
+
                 concepts['core'] = {'concepts': core_concepts}
                 print(f"Loaded {len(core_concepts)} core concepts")
         
-        # Load expanded concepts (A2.5)
-        expanded_path = self.input_dir / "A2.5_expanded_concepts.json"
-        if expanded_path.exists():
-            with open(expanded_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                # Extract and convert expanded_concepts dict to list
-                expanded_dict = data.get('expanded_concepts', {})
-                expanded_list = []
-                for concept_id, concept_data in expanded_dict.items():
-                    # Create unified concept structure
-                    expanded_concept = {
-                        'concept_id': concept_id,
-                        'expanded_terms': []
-                    }
-                    # Collect terms from all strategies
-                    if 'strategy_contributions' in concept_data:
-                        for strategy, contrib in concept_data['strategy_contributions'].items():
-                            if 'terms' in contrib:
-                                expanded_concept['expanded_terms'].extend(contrib['terms'])
-                    # Remove duplicates
-                    expanded_concept['expanded_terms'] = list(set(expanded_concept['expanded_terms']))
-                    expanded_list.append(expanded_concept)
-                concepts['expanded'] = {'expanded_concepts': expanded_list}
-                print(f"Loaded {len(expanded_list)} expanded concepts")
+        # SKIP A2.5 expanded concepts loading to test with A2.4 only
+        print("Skipping A2.5 expanded concepts - running with A2.4 core concepts only")
         
         return concepts
     
@@ -263,6 +253,15 @@ class A3ConceptChunkingOrchestrator:
                         unique_chunk.concept_memberships + chunk.concept_memberships
                     ))
                     unique_chunk.membership_scores.update(chunk.membership_scores)
+
+                    # Merge concept_details if available
+                    if hasattr(chunk, 'concept_details') and chunk.concept_details:
+                        if not hasattr(unique_chunk, 'concept_details'):
+                            unique_chunk.concept_details = {}
+                        if unique_chunk.concept_details is None:
+                            unique_chunk.concept_details = {}
+                        unique_chunk.concept_details.update(chunk.concept_details)
+
                     is_duplicate = True
                     break
             
@@ -350,7 +349,8 @@ class A3ConceptChunkingOrchestrator:
                         end_index=c['end_index'],
                         concept_memberships=c['concept_memberships'],
                         membership_scores=c['membership_scores'],
-                        metadata=c['metadata']
+                        metadata=c['metadata'],
+                        concept_details=c.get('concept_details', {})  # Include concept_details!
                     ) for c in doc_chunks
                 ]
 

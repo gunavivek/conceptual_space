@@ -57,8 +57,8 @@ class SemanticSentenceStrategy(BaseChunkingStrategy):
             if len(sentence_text) < self.min_sentence_length:
                 continue
             
-            # Extract concept memberships for this sentence - DOCUMENT-AWARE
-            memberships, scores = self.extract_concept_memberships(
+            # Extract concept memberships for this sentence - DOCUMENT-AWARE with detailed keyword info
+            memberships, scores, concept_details = self.extract_concept_memberships_detailed(
                 sentence_text, concepts, threshold, doc_id=doc_id
             )
             
@@ -71,14 +71,15 @@ class SemanticSentenceStrategy(BaseChunkingStrategy):
                     'avg_alignment_score': sum(scores.values()) / len(scores) if scores else 0
                 }
                 
-                chunk = self.create_chunk(
+                chunk = self.create_chunk_detailed(
                     doc_id=doc_id,
                     content=sentence_text,
                     chunk_index=chunk_index,
                     start_index=start_idx,
                     end_index=end_idx,
                     concepts=concepts,
-                    metadata=metadata
+                    metadata=metadata,
+                    concept_details=concept_details
                 )
                 
                 chunks.append(chunk)

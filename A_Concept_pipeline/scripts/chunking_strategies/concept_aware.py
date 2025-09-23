@@ -206,7 +206,7 @@ class ConceptAwareStrategy(BaseChunkingStrategy):
                 'concept_overlap_ratio': len(set(memberships)) / len(memberships) if memberships else 0
             }
             
-            chunk = self.create_chunk(
+            chunk = self.create_chunk_detailed(
                 doc_id=doc_id,
                 content=region_text,
                 chunk_index=chunk_index,

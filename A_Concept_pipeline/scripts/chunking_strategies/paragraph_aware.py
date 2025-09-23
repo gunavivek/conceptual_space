@@ -108,7 +108,7 @@ class ParagraphAwareStrategy(BaseChunkingStrategy):
                     'concept_density': len(memberships) / len(merged_text.split()) if merged_text.split() else 0
                 }
                 
-                chunk = self.create_chunk(
+                chunk = self.create_chunk_detailed(
                     doc_id=doc_id,
                     content=merged_text,
                     chunk_index=chunk_index,

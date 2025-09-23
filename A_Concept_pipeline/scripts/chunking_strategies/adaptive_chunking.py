@@ -138,8 +138,8 @@ class AdaptiveChunkingStrategy(BaseChunkingStrategy):
                 end_pos = min(current_pos + self.min_chunk_size, len(content))
                 chunk_text = content[current_pos:end_pos].strip()
             
-            # Extract concept memberships - DOCUMENT-AWARE
-            memberships, scores = self.extract_concept_memberships(chunk_text, concepts, doc_id=doc_id)
+            # Extract concept memberships - DOCUMENT-AWARE with detailed keyword info
+            memberships, scores, concept_details = self.extract_concept_memberships_detailed(chunk_text, concepts, doc_id=doc_id)
             
             # Create chunk if it has concept memberships
             if memberships:
@@ -154,14 +154,15 @@ class AdaptiveChunkingStrategy(BaseChunkingStrategy):
                     'avg_concept_score': np.mean(list(scores.values())) if scores else 0
                 }
                 
-                chunk = self.create_chunk(
+                chunk = self.create_chunk_detailed(
                     doc_id=doc_id,
                     content=chunk_text,
                     chunk_index=chunk_index,
                     start_index=current_pos,
                     end_index=end_pos,
                     concepts=concepts,
-                    metadata=metadata
+                    metadata=metadata,
+                    concept_details=concept_details
                 )
                 
                 chunks.append(chunk)

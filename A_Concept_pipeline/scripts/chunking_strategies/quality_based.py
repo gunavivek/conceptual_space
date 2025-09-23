@@ -272,7 +272,7 @@ class QualityBasedStrategy(BaseChunkingStrategy):
                 'retrieval_weight': quality_score * len(memberships)  # Combined metric for retrieval
             }
             
-            chunk = self.create_chunk(
+            chunk = self.create_chunk_detailed(
                 doc_id=doc_id,
                 content=chunk_text,
                 chunk_index=chunk_index,

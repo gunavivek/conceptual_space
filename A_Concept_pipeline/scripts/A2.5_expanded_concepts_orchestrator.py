@@ -219,37 +219,90 @@ def combine_expansion_results(strategy_results):
 def generate_expansion_summary(combined_expansions, strategy_results):
     """
     Generate summary of expansion results
-    
+
     Args:
         combined_expansions: Combined expansion results
         strategy_results: Original strategy results
-        
+
     Returns:
         dict: Expansion summary
     """
     total_concepts = len(combined_expansions)
-    
+
     # Calculate statistics
     expansion_ratios = [exp["expansion_scores"]["expansion_ratio"] for exp in combined_expansions.values()]
     avg_expansion_ratio = sum(expansion_ratios) / max(len(expansion_ratios), 1)
-    
+
+    # Enhanced strategy coverage with original performance metrics
     strategy_coverage = {}
+    strategy_performance = {}
+
     for strategy_name in STRATEGY_WEIGHTS:
-        covered_concepts = len([exp for exp in combined_expansions.values() 
+        covered_concepts = len([exp for exp in combined_expansions.values()
                               if strategy_name in exp["strategy_contributions"]])
         strategy_coverage[strategy_name] = {
             "covered_concepts": covered_concepts,
             "coverage_ratio": covered_concepts / max(total_concepts, 1)
         }
-    
+
+        # Extract original strategy performance metrics
+        strategy_data = strategy_results.get(strategy_name)
+        if strategy_data and "results" in strategy_data:
+            results = strategy_data["results"]
+            if "statistics" in results:
+                stats = results["statistics"]
+                strategy_performance[strategy_name] = {
+                    "total_concepts": stats.get("total_concepts", 0),
+                    "concepts_expanded": stats.get("concepts_expanded", 0),
+                    "expansion_coverage": stats.get("expansion_coverage", 0.0),
+                    "average_expansion_ratio": stats.get("average_expansion_ratio", 1.0),
+                    "total_original_keywords": stats.get("total_original_keywords", 0),
+                    "total_expanded_keywords": stats.get("total_expanded_keywords", 0),
+                    "processing_time": stats.get("processing_time", 0),
+                    "performance_metrics": stats.get("performance_metrics", {})
+                }
+            else:
+                # Fallback for strategies without detailed statistics
+                strategy_performance[strategy_name] = {
+                    "total_concepts": 0,
+                    "concepts_expanded": 0,
+                    "expansion_coverage": 0.0,
+                    "average_expansion_ratio": 1.0,
+                    "total_original_keywords": 0,
+                    "total_expanded_keywords": 0,
+                    "processing_time": 0,
+                    "performance_metrics": {}
+                }
+        else:
+            strategy_performance[strategy_name] = {
+                "total_concepts": 0,
+                "concepts_expanded": 0,
+                "expansion_coverage": 0.0,
+                "average_expansion_ratio": 1.0,
+                "total_original_keywords": 0,
+                "total_expanded_keywords": 0,
+                "processing_time": 0,
+                "performance_metrics": {}
+            }
+
     # Quality distribution
     quality_scores = [exp["expansion_scores"]["overall_quality"] for exp in combined_expansions.values()]
     high_quality_concepts = len([score for score in quality_scores if score > 0.7])
-    
+
+    # Calculate aggregate performance metrics
+    total_processing_time = sum(perf.get("processing_time", 0) for perf in strategy_performance.values())
+    total_concepts_expanded_by_strategies = sum(perf.get("concepts_expanded", 0) for perf in strategy_performance.values())
+
     return {
         "total_concepts": total_concepts,
         "average_expansion_ratio": avg_expansion_ratio,
         "strategy_coverage": strategy_coverage,
+        "strategy_performance": strategy_performance,
+        "aggregate_metrics": {
+            "total_processing_time": total_processing_time,
+            "total_strategy_expansions": total_concepts_expanded_by_strategies,
+            "average_processing_time_per_strategy": total_processing_time / len(strategy_performance),
+        },
         "quality_distribution": {
             "high_quality_concepts": high_quality_concepts,
             "average_quality_score": sum(quality_scores) / max(len(quality_scores), 1)
@@ -325,9 +378,23 @@ def main():
         print(f"  High Quality Concepts: {summary['quality_distribution']['high_quality_concepts']}")
         print(f"  Average Quality Score: {summary['quality_distribution']['average_quality_score']:.3f}")
         
-        print(f"\nStrategy Coverage:")
-        for strategy, coverage in summary["strategy_coverage"].items():
-            print(f"  {strategy}: {coverage['covered_concepts']}/{summary['total_concepts']} ({coverage['coverage_ratio']:.1%})")
+        print(f"\nIndividual Strategy Performance:")
+        for strategy, performance in summary["strategy_performance"].items():
+            coverage = summary["strategy_coverage"][strategy]
+            print(f"  {strategy}:")
+            print(f"    Concepts Expanded: {performance['concepts_expanded']}/{performance['total_concepts']}")
+            print(f"    Expansion Coverage: {performance['expansion_coverage']:.1%}")
+            print(f"    Avg Expansion Ratio: {performance['average_expansion_ratio']:.2f}x")
+            print(f"    Processing Time: {performance['processing_time']:.2f}s")
+            if performance['performance_metrics'].get('algorithm_complexity'):
+                print(f"    Complexity: {performance['performance_metrics']['algorithm_complexity']}")
+            print(f"    Orchestrator Coverage: {coverage['covered_concepts']}/{summary['total_concepts']} ({coverage['coverage_ratio']:.1%})")
+
+        print(f"\nAggregate Performance:")
+        agg = summary["aggregate_metrics"]
+        print(f"  Total Processing Time: {agg['total_processing_time']:.2f}s")
+        print(f"  Total Strategy Expansions: {agg['total_strategy_expansions']}")
+        print(f"  Average Time per Strategy: {agg['average_processing_time_per_strategy']:.2f}s")
         
         # Show top expanded concepts
         print(f"\nTop Expanded Concepts:")

@@ -355,57 +355,10 @@ class A4GeometricConceptSpace:
                     }
                 }
 
-        # Process A2.5 surrounding concepts (contextual)
-        if 'expanded_concepts' in a25_data:
-            print(f"A4: Processing {len(a25_data['expanded_concepts'])} A2.5 surrounding concepts...")
-            for original_id, a25_concept_data in a25_data['expanded_concepts'].items():
-                # Extract the original concept from A2.5 structure
-                a25_concept = a25_concept_data.get('original_concept', {})
-                if not a25_concept or not a25_concept.get('concept_id'):
-                    continue
+        # TEMPORARILY SKIP A2.5 processing to focus on A2.4 concepts only
+        print("A4: Skipping A2.5 processing to focus on A2.4 core concepts only")
 
-                # Use readable concept name as ID (make it safe for use as ID)
-                canonical_name = a25_concept.get('canonical_name', original_id)
-                readable_id = canonical_name.lower().replace(' ', '_').replace('-', '_').replace('/', '_')
-
-                # Check for duplicates and add source prefix if needed
-                if readable_id in concept_centroids:
-                    readable_id = f"a25_{readable_id}"
-
-                # Store mapping from old ID to new readable ID
-                old_to_new_id_mapping[original_id] = readable_id
-
-                # Create definition text using name + definition + synonyms + keywords
-                definition_text = self.definition_embedder.create_concept_definition_text(
-                    a25_concept, "A2.5 surrounding"
-                )
-
-                # Create embedding and centroid
-                concept_embedding = self.definition_embedder.create_concept_embedding(definition_text)
-                concept_centroid = self.definition_embedder.calculate_concept_centroid(concept_embedding)
-
-                # Store centroid with A2.5 metadata
-                concept_centroids[readable_id] = {
-                    'concept_id': readable_id,
-                    'original_id': original_id,
-                    'canonical_name': canonical_name,
-                    'centroid_coordinates': concept_centroid.tolist(),
-                    'definition_text': definition_text,
-                    'concept_source': 'A2.5_surrounding',
-                    'geometric_properties': {
-                        'magnitude': float(np.linalg.norm(concept_embedding)),
-                        'unit_vector': concept_centroid.tolist(),
-                        'embedding_confidence': 1.0 if len(definition_text) > 10 else 0.5
-                    },
-                    'concept_metadata': {
-                        'importance_score': a25_concept.get('importance_score', 0.5),
-                        'document_count': a25_concept.get('document_count', 1),
-                        'coverage_ratio': a25_concept.get('coverage_ratio', 0.1),
-                        'definition_completeness': min(1.0, len(definition_text) / 500.0)
-                    }
-                }
-
-        print(f"A4: Created {len(concept_centroids)} total concept centroids from A2.4 + A2.5")
+        print(f"A4: Created {len(concept_centroids)} total concept centroids from A2.4 only")
         return concept_centroids, old_to_new_id_mapping
 
     def map_chunks_geometrically(self, a3_chunks: Dict, concept_centroids: Dict, old_to_new_id_mapping: Dict = None) -> Dict:
